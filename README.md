@@ -8,7 +8,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 * **Integrante 1** - [Camila Ayala](https://github.com/camilaayala01)
 * **Integrante 2** - [Melina Aylen Loscalzo Acosta](https://github.com/Melulatana)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
+* **Integrante 3** - [Julieta Perez Goldstein](https://github.com/perezgjulieta)
 * **Integrante 4** - [Kevin Vasquez](https://github.com/kaibakev1984)
 * **Integrante 5** - [Integrante 5](https://github.com/integrante5)
 
