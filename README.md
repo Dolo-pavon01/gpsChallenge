@@ -1,6 +1,6 @@
 ![tp2](https://github.com/Dolo-pavon01/gpsChallenge/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/Dolo-pavon01/gpsChallenge/branch/master/graph/badge.svg)](https://codecov.io/gh/Dolo-pavon01/gpsChallenge)
 
-# TP2 Algoritmos 3: {nombre} 
+# TP2 Algoritmos 3: {GPS Challenge} 
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
@@ -12,7 +12,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 4** - [Kevin Vasquez](https://github.com/kaibakev1984)
 * **Integrante 5** - [Pavon Maria Dolores](https://github.com/Dolo-pavon01)
 
-Corrector: **{Corrector}**
+Corrector: **{Maia Naftali}**
 
 ## Aplicación
 
