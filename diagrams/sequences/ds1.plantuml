@@ -1,0 +1,38 @@
+@startuml
+
+/'
+Caso de uso 1
+- Una moto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada
+en tres movimientos.
+Supuestos a tener en cuenta:
+-Pozos: Le suma 3 movimientos de penalización a autos y motos. Para una 4x4 penaliza en 2
+movimientos luego de atravesar 3 pozos.
+
+NOTAS:
+- Los obstáculos pueden tener la penalización
+- Se van acumulando los obstáculos que van atravesando en el vehículo
+- vehiculo va a tener contador de movimientos
+
+'/
+
+title Una moto atraviesa la ciudad y se encuentra con un pozo. Es penalizada en tres movimientos
+
+note left of Moto
+moto.pasar(obstaculo)
+moto.calcularMovimientos()
+
+end note
+
+actor Gameplay
+participant ":Grilla" as Grilla
+participant ":Pozos" as Pozos
+participant ":Moto" as Moto
+
+activate Gameplay
+Gameplay -> Grilla: avanzarEnDireccion(moto, direccion)
+Grilla -> Grilla: estaEnJuego(identificacionVehiculo)
+Grilla -> Pozos: hayObstaculoAlFrente(unaUbicacion)
+return false
+Grilla -> Moto: avanzar(unaCantidad: X)
+
+@enduml

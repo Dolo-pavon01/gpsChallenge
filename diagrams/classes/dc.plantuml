@@ -1,0 +1,39 @@
+@startuml
+
+/'
+
+'/
+
+class Gameplay {}
+class Grilla {
+    + avanzarCantidad(unVehiculo: Vehiculo, unaCantidad: int)
+    + estaEnJuego(identificacionVehiculo: String)
+}
+class Obstaculos {
+    - posiciones: String[]
+    + hayObstaculoAlFrente(unaUbicacion: int): bool
+}
+class Usuario {}
+
+abstract class Vehiculo {}
+
+class Moto {
+    - identificacionVehiculo: Integer
+    identificacion(): String
+    avanzar(unaCantidad: int)
+}
+
+class Obstaculo {
+    - posicion: Posicion
+    - tipo: Tipo
+
+}
+
+Gameplay --> Grilla
+Grilla *-- Obstaculos
+Gameplay --> "1..*" Usuario
+Usuario --> Moto
+Grilla ..> Moto
+Grilla --> "0..*" Obstaculo
+
+@enduml

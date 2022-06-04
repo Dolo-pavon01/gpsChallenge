@@ -1,0 +1,17 @@
+@startuml
+
+title Una moto atraviesa la grilla sin obstaculos y la cantidad de movimientos es X
+
+actor Gameplay
+participant ":Grilla" as Grilla
+participant ":Obstaculos" as Obstaculos
+participant ":Moto" as Moto
+
+activate Gameplay
+Gameplay -> Grilla: avanzarCantidad(unVehiculo: Moto, unaCantidad: X)
+Grilla -> Grilla: estaEnJuego(identificacionVehiculo: String)
+Grilla -> Obstaculos: hayObstaculoAlFrente(unaUbicacion: ubicacionFinal)
+return false
+Grilla -> Moto: avanzar(unaCantidad: X)
+
+@enduml
