@@ -4,7 +4,7 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo {10}
 
 * **Integrante 1** - [Camila Ayala](https://github.com/camilaayala01)
 * **Integrante 2** - [Melina Aylen Loscalzo Acosta](https://github.com/Melulatana)
