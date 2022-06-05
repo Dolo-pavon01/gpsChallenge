@@ -14,9 +14,21 @@ abstract class Vehiculo {
     + posicion(): int
     + actualizarPosicion(proximaPosicion: int)
     + actualizarCantidadMovimientos(movimientos: int)
+    + {abstract} pasarPor(obstaculo: Obstaculo)
 }
 
-class Moto {}
+class Moto {
+    + pasarPor(obstaculo: Obstaculo)
+}
+
+class Auto {
+    + pasarPor(obstaculo: Obstaculo)
+}
+
+class Auto4x4 {
+    - contadorPozos: int
+    + pasarPor(obstaculo: Obstaculo)
+}
 
 abstract class Obstaculo {
     # posicion: Posicion

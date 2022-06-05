@@ -8,6 +8,12 @@ public class Auto extends Vehiculo {
 
   @Override
   public void pasarPor(Obstaculo obstaculo) {
-    this.movimientos += 3;
+    String nombreObstaculo = obstaculo.getNombre();
+    if (nombreObstaculo.equals("pozo")) {
+      this.movimientos += 3;
+    }
+    if (nombreObstaculo.equals("piquete")) {
+      this.movimientos += 2;
+    }
   }
 }

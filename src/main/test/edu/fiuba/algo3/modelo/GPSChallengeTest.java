@@ -90,7 +90,7 @@ public class GPSChallengeTest {
     grilla.avanzar(auto4x4, "D");
 
     // assert
-    assertEquals(1, auto4x4.movimientos() );
+    assertEquals(1, auto4x4.movimientos());
   }
 
   @Test
@@ -142,5 +142,25 @@ public class GPSChallengeTest {
 
     // assert
     assertEquals(4, auto.movimientos());
+  }
+
+  @Test
+  public void test074x4AtraviesaLaCiudadYSeEncuentraCon3PozosYEsPenalizada() {
+    // arrange
+    List obstaculos = new ArrayList<Obstaculo>();
+    obstaculos.add(new Pozo(1));
+    obstaculos.add(new Pozo(2));
+    obstaculos.add(new Pozo(3));
+
+    Grilla grilla = new Grilla(obstaculos);
+    Auto4x4 auto4x4 = new Auto4x4();
+
+    // act
+    grilla.avanzar(auto4x4, "D");
+    grilla.avanzar(auto4x4, "D");
+    grilla.avanzar(auto4x4, "D");
+
+    // assert
+    assertEquals(5, auto4x4.movimientos());
   }
 }
