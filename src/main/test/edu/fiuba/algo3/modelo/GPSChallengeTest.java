@@ -71,10 +71,10 @@ public class GPSChallengeTest {
     Auto auto = new Auto("SADDASDS");
 
     // act
-    // grilla.avanzar(auto, "D");
+    grilla.avanzar(auto, "D");
 
     // assert
-    assertEquals(auto.movimientos(), 4);
+    assertEquals(4, auto.movimientos());
   }
 
   @Test
@@ -109,5 +109,38 @@ public class GPSChallengeTest {
 
     // assert
     assertEquals(8, moto.movimientos());
+  }
+
+  @Test
+  public void test05MotoAtraviesaCiudadAtraviesaPiquete() {
+    // arrange
+    List obstaculos = new ArrayList<>();
+    obstaculos.add(new Piquete(1));
+
+    Grilla grilla = new Grilla(obstaculos);
+    Moto moto = new Moto("SASSDSAS");
+
+    // act
+    grilla.avanzar(moto, "D");
+
+    // assert
+    assertEquals(3, moto.movimientos());
+  }
+
+  @Test
+  public void
+  test06AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
+    // arrange
+    List obstaculos = new ArrayList<Pozo>();
+    obstaculos.add(new Pozo(1));
+
+    Grilla grilla = new Grilla(new Pozo(1));
+    Auto auto = new Auto("SADDASDS");
+
+    // act
+    grilla.avanzar(auto, "D");
+
+    // assert
+    assertEquals(4, auto.movimientos());
   }
 }
