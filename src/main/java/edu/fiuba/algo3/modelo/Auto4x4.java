@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-public class Auto4x4 {
-    private String identificacion;
-    public Auto4x4(String idetificacion) {
-        this.identificacion = identificacion;
-    }
+public class Auto4x4 extends Vehiculo {
+  public Auto4x4() {
+    super();
+  }
 
-    public int movimientos() {
-        return 1;
-    }
+  @Override
+  public void pasarPor(Obstaculo obstaculo) {
+  }
 }

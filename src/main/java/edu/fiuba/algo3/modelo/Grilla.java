@@ -16,14 +16,11 @@ public class Grilla {
   }
 
   public void avanzar(Vehiculo vehiculo, String direccion) {
-    int posicionActual = vehiculo.posicion();
-    int proximaPosicion = posicionActual + 1;
-    int penalizacion = 0;
-
+    vehiculo.mover();
     for (Obstaculo obstaculo : this.obstaculos) {
-      penalizacion += obstaculo.penalizar(proximaPosicion);
+      if (obstaculo.posicion == vehiculo.posicion) {
+        vehiculo.pasarPor(obstaculo);
+      }
     }
-
-    vehiculo.mover(proximaPosicion, 1 + penalizacion);
   }
 }

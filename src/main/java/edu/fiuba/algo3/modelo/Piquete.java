@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 public class Piquete extends Obstaculo {
   public Piquete(int posicion) {
     this.posicion = posicion;
+    this.nombreObstaculo = "piquete";
   }
 
   @Override

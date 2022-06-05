@@ -17,8 +17,12 @@ public abstract class Vehiculo {
         return this.posicion;
     }
 
-    public void mover(int nuevaPosicion, int movimientos) {
-        this.posicion += nuevaPosicion;
-        this.movimientos += movimientos;
+    public void mover() {
+        this.posicion += 1;
+        this.movimientos += 1;
     }
+
+    public abstract void pasarPor(Obstaculo obstaculo);
+
+
 }
