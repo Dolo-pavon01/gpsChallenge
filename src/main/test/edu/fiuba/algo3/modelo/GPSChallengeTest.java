@@ -51,7 +51,7 @@ public class GPSChallengeTest {
     obstaculos.add(new Pozo(1));
 
     Grilla grilla = new Grilla(new Pozo(1));
-    Moto moto = new Moto("SADDASDS");
+    Moto moto = new Moto();
 
     // act
     grilla.avanzar(moto, "D");
@@ -68,13 +68,13 @@ public class GPSChallengeTest {
     obstaculos.add(new Pozo(1));
 
     Grilla grilla = new Grilla(new Pozo(1));
-    Auto auto = new Auto("SADDASDS");
+    Auto auto = new Auto();
 
     // act
-    // grilla.avanzar(auto, "D");
+    grilla.avanzar(auto, "D");
 
     // assert
-    assertEquals(auto.movimientos(), 4);
+    assertEquals(4, auto.movimientos());
   }
 
   @Test
@@ -84,13 +84,13 @@ public class GPSChallengeTest {
     obstaculos.add(new Pozo(1));
 
     Grilla grilla = new Grilla(new Pozo(1));
-    Auto4x4 auto4x4 = new Auto4x4("SADDASDS");
+    Auto4x4 auto4x4 = new Auto4x4();
 
     // act
-    // grilla.avanzar(auto, "D");
+    grilla.avanzar(auto4x4, "D");
 
     // assert
-    assertEquals(auto4x4.movimientos(), 1);
+    assertEquals(1, auto4x4.movimientos());
   }
 
   @Test
@@ -101,7 +101,7 @@ public class GPSChallengeTest {
     obstaculos.add(new Pozo(2));
 
     Grilla grilla = new Grilla(obstaculos);
-    Moto moto = new Moto("SADDASDS");
+    Moto moto = new Moto();
 
     // act
     grilla.avanzar(moto, "D");
@@ -109,5 +109,58 @@ public class GPSChallengeTest {
 
     // assert
     assertEquals(8, moto.movimientos());
+  }
+
+  @Test
+  public void test05MotoAtraviesaCiudadAtraviesaPiquete() {
+    // arrange
+    List obstaculos = new ArrayList<>();
+    obstaculos.add(new Piquete(1));
+
+    Grilla grilla = new Grilla(obstaculos);
+    Moto moto = new Moto();
+
+    // act
+    grilla.avanzar(moto, "D");
+
+    // assert
+    assertEquals(3, moto.movimientos());
+  }
+
+  @Test
+  public void
+      test06AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
+    // arrange
+    List obstaculos = new ArrayList<Pozo>();
+    obstaculos.add(new Pozo(1));
+
+    Grilla grilla = new Grilla(new Pozo(1));
+    Auto auto = new Auto();
+
+    // act
+    grilla.avanzar(auto, "D");
+
+    // assert
+    assertEquals(4, auto.movimientos());
+  }
+
+  @Test
+  public void test074x4AtraviesaLaCiudadYSeEncuentraCon3PozosYEsPenalizada() {
+    // arrange
+    List obstaculos = new ArrayList<Obstaculo>();
+    obstaculos.add(new Pozo(1));
+    obstaculos.add(new Pozo(2));
+    obstaculos.add(new Pozo(3));
+
+    Grilla grilla = new Grilla(obstaculos);
+    Auto4x4 auto4x4 = new Auto4x4();
+
+    // act
+    grilla.avanzar(auto4x4, "D");
+    grilla.avanzar(auto4x4, "D");
+    grilla.avanzar(auto4x4, "D");
+
+    // assert
+    assertEquals(5, auto4x4.movimientos());
   }
 }
