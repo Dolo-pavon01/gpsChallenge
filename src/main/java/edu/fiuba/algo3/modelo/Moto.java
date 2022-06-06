@@ -8,12 +8,6 @@ public class Moto extends Vehiculo {
 
   @Override
   public void pasarPor(Obstaculo obstaculo) {
-    String nombreObstaculo = obstaculo.getNombre();
-    if (nombreObstaculo.equals("pozo")) {
-      this.movimientos += 3;
-    }
-    if (nombreObstaculo.equals("piquete")) {
-      this.movimientos += 2;
-    }
+    obstaculo.penalizar(this);
   }
 }

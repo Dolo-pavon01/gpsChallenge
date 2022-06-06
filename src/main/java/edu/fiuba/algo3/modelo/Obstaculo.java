@@ -1,13 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
 public abstract class Obstaculo {
-    protected int posicion;
-    protected String nombreObstaculo;
+  protected int posicion;
 
-    public String getNombre() {
-        return this.nombreObstaculo;
-    }
+  public boolean tieneMismaPosicion(int posicion) {
+    return posicion == this.posicion;
+  }
 
-    public abstract int penalizar(int posicion);
+  public abstract void penalizar(Auto auto);
 
+  public abstract void penalizar(Moto moto);
+
+  public abstract void penalizar(Auto4x4 auto4x4);
 }
