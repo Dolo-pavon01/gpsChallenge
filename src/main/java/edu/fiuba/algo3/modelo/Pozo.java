@@ -3,14 +3,20 @@ package edu.fiuba.algo3.modelo;
 public class Pozo extends Obstaculo {
   public Pozo(int posicion) {
     this.posicion = posicion;
-    this.nombreObstaculo = "pozo";
   }
 
   @Override
-  public int penalizar(int posicion) {
-    if (this.posicion == posicion) {
-      return 3;
-    }
-    return 0;
+  public void penalizar(Auto auto) {
+    auto.serPenalizadoCon(3);
+  }
+
+  @Override
+  public void penalizar(Moto moto) {
+    moto.serPenalizadoCon(3);
+  }
+
+  @Override
+  public void penalizar(Auto4x4 auto4x4) {
+    auto4x4.serPenalizadoCon(2);
   }
 }

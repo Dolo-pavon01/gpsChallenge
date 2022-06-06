@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GPSChallengeTest {
 
@@ -34,7 +35,7 @@ public class GPSChallengeTest {
   }
 
   @Test
-  public void test034x4AtraviesaLaCiudadYSeEncuentraConUnPozoNoEsPenalizada() {
+  public void test03Auto4x4AtraviesaLaCiudadYSeEncuentraConUnPozoNoEsPenalizada() {
     // arrange
     Grilla grilla = new Grilla(new Pozo(1));
     Auto4x4 auto4x4 = new Auto4x4();
@@ -91,7 +92,7 @@ public class GPSChallengeTest {
   }
 
   @Test
-  public void test074x4AtraviesaLaCiudadYSeEncuentraCon3PozosYEsPenalizada() {
+  public void test07Auto4x4AtraviesaLaCiudadYSeEncuentraCon3PozosYEsPenalizada() {
     // arrange
     Pozo pozo1 = new Pozo(1);
     Pozo pozo2 = new Pozo(2);
@@ -106,5 +107,18 @@ public class GPSChallengeTest {
 
     // assert
     assertEquals(5, auto4x4.movimientos());
+  }
+
+  @Test
+  public void test08AutoAtraviesaCiudadIntentaAtravesarPiquiteNoPuede() {
+    // arrange
+    Piquete piquete = new Piquete(1);
+    Grilla grilla = new Grilla(piquete);
+    Auto auto = new Auto();
+
+    // act & assert
+    assertThrows(RuntimeException.class, () -> {
+      grilla.avanzar(auto);
+    });
   }
 }
