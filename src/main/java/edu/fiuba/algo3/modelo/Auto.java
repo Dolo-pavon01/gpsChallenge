@@ -13,9 +13,4 @@ public class Auto extends Vehiculo {
     }
     obstaculo.penalizar(this);
   }
-
-  @Override
-  public void serPenalizadoCon(int puntosPenalizacion) {
-    this.movimientos += puntosPenalizacion;
-  }
 }

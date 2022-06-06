@@ -16,14 +16,9 @@ public class Auto4x4 extends Vehiculo {
     }
     if (this.contadorPozos < LIMITE_POZOS_ATRAVESADOS) {
       this.contadorPozos += 1;
-    } else {
-      obstaculo.penalizar(this);
-      this.contadorPozos = 0;
+      return;
     }
-  }
-
-  @Override
-  public void serPenalizadoCon(int puntosPenalizacion) {
-    this.movimientos += puntosPenalizacion;
+    obstaculo.penalizar(this);
+    this.contadorPozos = 0;
   }
 }

@@ -20,5 +20,7 @@ public abstract class Vehiculo {
 
   public abstract void pasarPor(Obstaculo obstaculo);
 
-  public abstract void serPenalizadoCon(int puntosPenalizacion);
+  public void serPenalizadoCon(int puntosPenalizacion) {
+    this.movimientos += puntosPenalizacion;
+  }
 }
