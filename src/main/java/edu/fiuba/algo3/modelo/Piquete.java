@@ -18,7 +18,7 @@ public class Piquete extends Obstaculo {
 
   @Override
   public void penalizar(Auto4x4 auto4x4) {
-    auto4x4.serPenalizadoCon(2);
+    throw new HayPiqueteException();
   }
 
 }
