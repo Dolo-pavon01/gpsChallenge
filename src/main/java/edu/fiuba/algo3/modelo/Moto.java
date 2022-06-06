@@ -8,9 +8,6 @@ public class Moto extends Vehiculo {
 
   @Override
   public void pasarPor(Obstaculo obstaculo) {
-    if (!obstaculo.tieneMismaPosicion(posicion)) {
-      return;
-    }
     obstaculo.penalizar(this);
   }
 }
