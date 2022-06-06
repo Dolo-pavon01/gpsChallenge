@@ -6,16 +6,14 @@ import java.util.List;
 public class Grilla {
   List<Obstaculo> obstaculos;
 
-  public Grilla(Obstaculo obstaculo) {
+  public Grilla(Obstaculo... obstaculos) {
     this.obstaculos = new ArrayList<Obstaculo>();
-    this.obstaculos.add(obstaculo);
+    for (Obstaculo obstaculo : obstaculos) {
+      this.obstaculos.add(obstaculo);
+    }
   }
 
-  public Grilla(List obstaculos) {
-    this.obstaculos = obstaculos;
-  }
-
-  public void avanzar(Vehiculo vehiculo, String direccion) {
+  public void avanzar(Vehiculo vehiculo) {
     vehiculo.mover();
     for (Obstaculo obstaculo : this.obstaculos) {
       if (obstaculo.posicion == vehiculo.posicion) {
