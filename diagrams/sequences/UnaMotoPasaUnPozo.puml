@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+title Moto pasa por un pozo y es penalizado 3 movimientos
+actor Gameplay
+participant ":Grilla" as Grilla
+participant ":Pozo" as Pozo
+participant ":Moto" as Moto
+
+activate Gameplay
+Gameplay -> Grilla: avanzar(moto)
+Grilla -> Moto: mover()
+Grilla -> Moto:  posicion()
+Grilla <-- Moto: posicionMoto
+
+
+
+    loop : por cada Obstaculo
+
+    alt
+    Grilla ->Obstaculo: tieneMismaPosicion(posicion_vehiculo)
+    Grilla <-- Obstaculo: true
+    Grilla -> Moto: pasarPor(Obstaculo)
+    Moto-> Pozo: penalizar(moto)
+    Pozo -> Moto: serPenalizadoCon(3)
+end
+end
+
+
+@enduml
