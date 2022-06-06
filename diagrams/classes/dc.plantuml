@@ -33,6 +33,7 @@ class Auto4x4 {
 abstract class Obstaculo {
     # posicion: Posicion
     + {abstract} penalizar(posicion: int)
+    + tieneLaMismaPosicion(posicion:int)
 }
 
 class Pozo {
