@@ -8,6 +8,8 @@ public abstract class Vehiculo {
     this.posicion = 0;
     this.movimientos = 0;
   }
+  public int posicion()
+  {return this.posicion;}
 
   public int movimientos() {
     return this.movimientos;
