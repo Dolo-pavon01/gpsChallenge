@@ -9,12 +9,12 @@ class Grilla {
 class Usuario {}
 
 abstract class Vehiculo {
-    # posicionActual: int
+    # posicion: int
     # movimientos: int
     + posicion(): int
-    + actualizarPosicion(proximaPosicion: int)
-    + actualizarCantidadMovimientos(movimientos: int)
+    + mover(): void
     + {abstract} pasarPor(obstaculo: Obstaculo)
+    + serPenalizadoCon(puntosPenalizacion: int)
 }
 
 class Moto {
@@ -32,16 +32,16 @@ class Auto4x4 {
 
 abstract class Obstaculo {
     # posicion: Posicion
-    + {abstract} penalizar(posicion: int)
+    + {abstract} penalizar(vehiculo:Vehiculo)
     + tieneLaMismaPosicion(posicion:int)
 }
 
 class Pozo {
-    + penalizar(posicion: int)
+    + penalizar(vehiculo:Vehiculo)
 }
 
 class Piquete {
-    + penalizar(posicion: int)
+    + penalizar(vehiculo:Vehiculo)
 }
 
 Gameplay --> Grilla
