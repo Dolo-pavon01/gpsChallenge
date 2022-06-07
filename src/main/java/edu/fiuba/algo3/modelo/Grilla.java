@@ -14,11 +14,11 @@ public class Grilla {
   }
 
   public void avanzar(Vehiculo vehiculo) {
-    vehiculo.mover();
-    int posicion_vehiculo = vehiculo.posicion();
+    int frente_vehiculo = vehiculo.posicion() + 1;
     for (Obstaculo obstaculo : this.obstaculos) {
-      if (obstaculo.tieneMismaPosicion(posicion_vehiculo))
+      if (obstaculo.tieneMismaPosicion(frente_vehiculo))
           vehiculo.pasarPor(obstaculo);
     }
+    vehiculo.mover();
   }
 }
