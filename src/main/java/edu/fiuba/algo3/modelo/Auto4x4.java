@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Auto4x4 extends Vehiculo {
+public class Auto4x4 implements Movible {
   private int contadorPozos;
   private static final int LIMITE_POZOS_ATRAVESADOS = 2;
 
@@ -18,4 +18,5 @@ public class Auto4x4 extends Vehiculo {
     obstaculo.penalizar(this);
     this.contadorPozos = 0;
   }
+
 }

@@ -1,28 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
-public abstract class Vehiculo {
-  protected int posicion;
-  protected int movimientos;
+public abstract class Vehiculo extends Movible {
+  protected Posicion posicion;
 
   public Vehiculo() {
-    this.posicion = 0;
-    this.movimientos = 0;
+   posicion = new Posicion(0,0);
   }
-  public int posicion()
+  public Posicion posicion()
   {return this.posicion;}
 
-  public int movimientos() {
-    return this.movimientos;
-  }
 
-  public void mover() {
-    this.posicion += 1;
-    this.movimientos += 1;
-  }
+  public abstract int pasarPor(Penalizador obstaculo);
 
-  public abstract void pasarPor(Obstaculo obstaculo);
 
-  public void serPenalizadoCon(int puntosPenalizacion) {
-    this.movimientos += puntosPenalizacion;
-  }
 }

@@ -10,14 +10,16 @@ public class GPSChallengeTest {
   @Test
   public void test01MotoAtraviesaCiudadDeUnaCuadraAtraviesaPozoYTiene3MovimientosDePenalizacion() {
     // arrange
-    Grilla grilla = new Grilla(new Pozo(1));
-    Moto moto = new Moto();
+
+    Grilla grilla = new Grilla(new Pozo(new Posicion(1,0)));
+    Moto moto = new Moto(new Posicion(0,0));
 
     // act
+    moto.trasladar(new Posicion(1,0));
     grilla.avanzar(moto);
 
     // assert
-    assertEquals(4, moto.movimientos());
+    assertEquals(4, grilla.movimientos());
   }
 
   @Test

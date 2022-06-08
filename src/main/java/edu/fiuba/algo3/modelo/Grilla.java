@@ -6,19 +6,21 @@ import java.util.List;
 import java.util.Collection;
 
 public class Grilla {
-  List<Obstaculo> obstaculos;
+  List<Penalizador> obstaculos;
+  private int movimientos;
 
-  public Grilla(Obstaculo... obstaculosEnJuego) {
+  public Grilla(Penalizador... obstaculosEnJuego) {
     obstaculos = new ArrayList<>();
     Collections.addAll(this.obstaculos,obstaculosEnJuego);
+    this.movimientos = 0;
   }
 
   public void avanzar(Vehiculo vehiculo) {
-    int frente_vehiculo = vehiculo.posicion() + 1;
-    for (Obstaculo obstaculo : this.obstaculos) {
-      if (obstaculo.tieneMismaPosicion(frente_vehiculo))
-          vehiculo.pasarPor(obstaculo);
+    for (Penalizador obstaculo : this.obstaculos) {
+      if (obstaculo.esMismaPosicion(vehiculo.posicion)) {
+        this.movimientos = vehiculo.pasarPor(obstaculo);
+      }
     }
-    vehiculo.mover();
+
   }
 }
