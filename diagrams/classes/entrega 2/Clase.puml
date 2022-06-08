@@ -1,0 +1,77 @@
+@startuml
+
+class Gameplay {}
+
+class Grilla {
+    + avanzar(vehiculo: Vehiculo, direccion: String)
+}
+
+class Usuario {}
+
+abstract class Vehiculo {
+    # posicion: int
+    # movimientos: int
+    + posicion(): int
+    + mover(): void
+    + {abstract} pasarPor(obstaculo: Obstaculo)
+    + serPenalizadoCon(puntosPenalizacion: int)
+}
+
+class Moto {
+    + pasarPor(obstaculo: Obstaculo)
+    + penalizar(piquete:Piquete)
+    + penalizar(pozo:Pozo)
+    + penalizar(controlPolicial:controlPolicial)
+}
+
+class Auto {
+    + pasarPor(obstaculo: Obstaculo)
+    + penalizar(piquete:Piquete)
+    + penalizar(pozo:Pozo)
+    + penalizar(controlPolicial:controlPolicial)
+}
+
+class Auto4x4 {
+    - contadorPozos: int
+    + pasarPor(obstaculo: Obstaculo)
+    + penalizar(piquete:Piquete)
+    + penalizar(pozo:Pozo)
+    + penalizar(controlPolicial:controlPolicial)
+}
+
+abstract class Obstaculo {
+    # posicion: Posicion
+    + tieneLaMismaPosicion(posicion:int)
+}
+
+class Pozo {
+}
+
+class Piquete {
+
+}
+interface Penalizable
+{
+
+    + {abstract}penalizar(piquete:Piquete)
+    + {abstract} penalizar(pozo:Pozo)
+    +{abstract} penalizar(controlPolicial:controlPolicial)
+}
+
+Gameplay --> Grilla
+Usuario --> Vehiculo
+
+Gameplay --> "1..*" Usuario
+Grilla ..> Vehiculo
+Grilla *-- "0..*" Obstaculo
+Auto ..|> Penalizable
+Moto ..|> Penalizable
+Auto4x4 ..|> Penalizable
+Vehiculo <|-- Moto
+Vehiculo <|-- Auto
+Vehiculo <|-- Auto4x4
+
+Obstaculo <|-- Pozo
+Obstaculo <|-- Piquete
+
+@enduml
