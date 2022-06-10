@@ -1,24 +1,19 @@
 package edu.fiuba.algo3.modelo;
 
-public class Pozo extends Penalizador {
-  private Posicion posicion;
+public class Pozo implements Obstaculo {
+  public Posicion posicion;
 
   public Pozo(Posicion posicion) {
     this.posicion = posicion;
   }
 
-  @Override
-  public int penalizarA(Auto auto) {
-    return 3;
+
+  public int penalizarA(Vehiculo vehiculo,char direccion)
+  {
+    if(this.posicion.esMismaPosicion(vehiculo.getPosicionSiguiente(direccion)))
+      return vehiculo.pasarPor(this);
+    return 0;
   }
 
-  @Override
-  public int penalizarA(Moto moto) {
-    return 3;
-  }
 
-  @Override
-  public int penalizarA(Auto4x4 auto4x4) {
-    return 2;
-  }
 }

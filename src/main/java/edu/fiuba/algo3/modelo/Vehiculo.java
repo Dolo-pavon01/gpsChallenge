@@ -1,16 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-public abstract class Vehiculo extends Movible {
-  protected Posicion posicion;
+public interface Vehiculo {
 
-  public Vehiculo() {
-   posicion = new Posicion(0,0);
-  }
-  public Posicion posicion()
-  {return this.posicion;}
-
-
-  public abstract int pasarPor(Penalizador obstaculo);
-
-
+     int pasarPor(Piquete piquete);
+     int pasarPor(Pozo pozo);
+    Posicion getPosicionSiguiente(char unaDireccion);
 }

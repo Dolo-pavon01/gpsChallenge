@@ -7,9 +7,9 @@ public class Posicion {
     private int x;
     private int y;
 
-    public void trasladar(int x, int y) {
-        this.x += x;
-        this.y += y;
+    public void trasladar(Posicion nueva) {
+        this.x += nueva.x;
+        this.y += nueva.y;
     }
     public Posicion(int x, int y)
     {
@@ -21,12 +21,19 @@ public class Posicion {
     {
         return( this.x == unaPosicion.x && this.y == unaPosicion.y);
     }
-    public double distancia(Posicion unaPosicion) {
-        double p1 = pow(this.x - unaPosicion.x, 2);
-        double p2 = pow(this.y - unaPosicion.y, 2);
-        double p3 = sqrt(p1+p2);
-        return p3;
-    }
 
+    public Posicion siguiente(char unaDireccion)
+    {
+        Posicion siguiente = this;
+        if(unaDireccion == 'w')
+            siguiente.y+=1;
+        if(unaDireccion == 's')
+            siguiente.y-=1;
+        if(unaDireccion == 'd')
+            siguiente.x+=1;
+        if(unaDireccion == 'a')
+            siguiente.x-=1;
+        return siguiente;
+    }
 
 }
