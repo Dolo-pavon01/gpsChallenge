@@ -1,0 +1,79 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Vehiculo
+{
++pasarPor(e:Piquete)
++pasarPor(e:Pozo)
++pasarPor(e:ControlPolicial)
+}
+class Auto
+{
+- Posicion posicion
++pasarPor(e:Piquete)
++pasarPor(e:Pozo)
++pasarPor(e:ControlPolicial)
+}
+class Moto
+{
+- Posicion posicion
++pasarPor(e:Piquete)
++pasarPor(e:Pozo)
++pasarPor(e:ControlPolicial)
+}
+class 4x4
+{
+- Posicion posicion
++pasarPor(e:Piquete)
++pasarPor(e:Pozo)
++pasarPor(e:ControlPolicial)
+}
+class Grilla
+{
++obstaculo.penalizar(new.ConcreteVisitor())
+}
+
+
+interface Obstaculo
+{
++penalizar(v:Vehiculo)
+}
+class Piquete
+{
+-Posicion posicion
++penalizar(v:Vehiculo)
+}
+class ControlPolicial
+{
+-Posicion posicion
++penalizar(v:Vehiculo)
+}
+class Pozo
+{
+-Posicion posicion
++featureA();
++penalizar(v:Vehiculo) (v.visit(this)
+}
+
+Obstaculo <|.. Pozo
+Obstaculo <|.. ControlPolicial
+Obstaculo <|.. Piquete
+
+Vehiculo <|.. Auto
+Vehiculo <|.. Moto
+Vehiculo <|.. 4x4
+Obstaculo ..> Vehiculo
+Vehiculo ..> Pozo
+Vehiculo ..> Piquete
+Vehiculo ..> ControlPolicial
+
+Moto <.. Grilla
+Auto <.. Grilla
+4x4 <.. Grilla
+
+
+
+
+
+
+@enduml
