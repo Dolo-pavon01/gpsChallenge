@@ -6,23 +6,21 @@ public class Auto4x4 implements Vehiculo {
   private Posicion posicion;
 
   public Auto4x4() {
-    this.posicion = new Posicion(0,0);
+    this.posicion = Posicion.getPosicion(0,0);
     this.contadorPozos = 0;
   }
 
 
   public int pasarPor(Piquete piquete) {
-    return 2;
+    throw new HayPiqueteException();
   }
-  public Posicion getPosicionSiguiente(char unaDireccion)
-  {
-    return this.posicion.siguiente(unaDireccion);
+  public Posicion getPosicion() {
+    return this.posicion;
   }
   public int pasarPor(Pozo pozo) {
-    moverse(pozo.posicion);
-    if(contadorPozos> LIMITE_POZOS_ATRAVESADOS)
-      return 2;
     this.contadorPozos +=1;
+    if(contadorPozos > LIMITE_POZOS_ATRAVESADOS)
+      return 2;
     return 0;
   }
 

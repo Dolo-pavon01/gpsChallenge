@@ -1,39 +1,49 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.*;
+
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class Posicion {
     private int x;
     private int y;
+    private static List<Posicion> instances = new ArrayList<Posicion>();
 
-    public void trasladar(Posicion nueva) {
-        this.x += nueva.x;
-        this.y += nueva.y;
+    public void trasladar(Posicion nueva)
+    {
+        getPosicion(nueva.x,nueva.y);
     }
-    public Posicion(int x, int y)
+    private Posicion(int x, int y)
     {
         this.x = x;
         this.y =y;
+        instances.add(this);
+    }
+    public static Posicion getPosicion(int x, int y)
+    {
+        for (Posicion i: instances) {
+            if(i.x == x && i.y == y)
+                return i;
+        }
+        return new Posicion(x,y);
     }
 
-    public boolean esMismaPosicion(Posicion unaPosicion)
-    {
-        return( this.x == unaPosicion.x && this.y == unaPosicion.y);
-    }
 
     public Posicion siguiente(char unaDireccion)
     {
-        Posicion siguiente = this;
+        int x = this.x;
+        int y = this.y ;
+
         if(unaDireccion == 'w')
-            siguiente.y+=1;
+           y+=1;
         if(unaDireccion == 's')
-            siguiente.y-=1;
+            y-=1;
         if(unaDireccion == 'd')
-            siguiente.x+=1;
+            x+=1;
         if(unaDireccion == 'a')
-            siguiente.x-=1;
-        return siguiente;
+            x-=1;
+        return getPosicion(x,y);
     }
 
 }

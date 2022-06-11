@@ -4,5 +4,6 @@ public interface Vehiculo {
 
      int pasarPor(Piquete piquete);
      int pasarPor(Pozo pozo);
-    Posicion getPosicionSiguiente(char unaDireccion);
+     void moverse (Posicion posicion);
+    Posicion getPosicion();
 }
