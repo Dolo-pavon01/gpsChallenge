@@ -79,9 +79,9 @@ Moto <.. Grilla
 Auto <.. Grilla
 4x4 <.. Grilla
 
-Auto <-- Posicion
-Moto <-- Posicion
-4x4 <-- Posicion
+Auto --> Posicion
+Moto --> Posicion
+4x4 --> Posicion
 
 
 
