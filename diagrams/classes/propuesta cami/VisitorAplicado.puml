@@ -30,29 +30,37 @@ class 4x4
 }
 class Grilla
 {
-+obstaculo.penalizar(new.ConcreteVisitor())
+    -HashMap<Posicion, Obstaculo> obstaculos
+    -int movimientos
+    +getMovimientos()
+    +avanzar(Vehiculo vehiculo,char direccion)
 }
 
-
+class Posicion
+{
+- int x
+- int y
+- List instances
++ transladar(Posicion nueva)
++   getPosicion(int x, int y)
++ siguiente(char direccion)
+}
 interface Obstaculo
 {
-+penalizar(v:Vehiculo)
+    +penalizarA(v:Vehiculo)
 }
 class Piquete
 {
--Posicion posicion
-+penalizar(v:Vehiculo)
++penalizarA(v:Vehiculo)
 }
 class ControlPolicial
 {
--Posicion posicion
-+penalizar(v:Vehiculo)
++penalizarA(v:Vehiculo)
 }
 class Pozo
 {
--Posicion posicion
-+featureA();
-+penalizar(v:Vehiculo) (v.visit(this)
+
++penalizarA(v:Vehiculo) (v.visit(this)
 }
 
 Obstaculo <|.. Pozo
@@ -71,6 +79,9 @@ Moto <.. Grilla
 Auto <.. Grilla
 4x4 <.. Grilla
 
+Auto <-- Posicion
+Moto <-- Posicion
+4x4 <-- Posicion
 
 
 
