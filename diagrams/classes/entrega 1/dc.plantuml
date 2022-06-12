@@ -13,27 +13,26 @@ abstract class Vehiculo {
     # movimientos: int
     + posicion(): int
     + mover(): void
-    + {abstract} pasarPor(obstaculo: Obstaculo)
+    + {abstract} pasarPor(obstaculo: Penalizador)
     + serPenalizadoCon(puntosPenalizacion: int)
 }
 
 class Moto {
-    + pasarPor(obstaculo: Obstaculo)
+    + pasarPor(obstaculo: Penalizador)
 }
 
 class Auto {
-    + pasarPor(obstaculo: Obstaculo)
+    + pasarPor(obstaculo: Penalizador)
 }
 
 class Auto4x4 {
     - contadorPozos: int
-    + pasarPor(obstaculo: Obstaculo)
+    + pasarPor(obstaculo: Penalizador)
 }
 
-abstract class Obstaculo {
-    # posicion: Posicion
+interface Penalizador {
     + {abstract} penalizar(vehiculo:Vehiculo)
-    + tieneLaMismaPosicion(posicion:int)
+    + {abstract} tieneLaMismaPosicion(posicion:int)
 }
 
 class Pozo {
@@ -49,12 +48,12 @@ Usuario --> Vehiculo
 
 Gameplay --> "1..*" Usuario
 Grilla ..> Vehiculo
-Grilla *-- "0..*" Obstaculo
+Grilla *-- "0..*" Penalizador
 Vehiculo <|-- Moto
 Vehiculo <|-- Auto
 Vehiculo <|-- Auto4x4
 
-Obstaculo <|-- Pozo
-Obstaculo <|-- Piquete
+Penalizador <|.. Pozo
+Penalizador <|.. Piquete
 
 @enduml
