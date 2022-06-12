@@ -5,7 +5,5 @@ public class Moto implements TipoVehiculo {
 
   public int pasarPor(IVisitor visitor) {
     visitor.visit(this);
-
   }
-
 }

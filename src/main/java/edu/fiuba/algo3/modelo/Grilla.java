@@ -12,9 +12,7 @@ public class Grilla {
     this.movimientos = 0;
   }
 
-  public int getMovimientos() {
-    return this.movimientos;
-  }
+
 
   public void avanzar(Vehiculo vehiculo, char direccion) {
     this.movimientos += 1;
@@ -28,13 +26,11 @@ public class Grilla {
     private void pasarPorObstaculos (Vehiculo vehiculo, Posicion posicion)
     {
       IVisitor obstaculo = obstaculos.get(posicion);
-      this.movimientos += vehiculo.pasarPor(obstaculo);
+      vehiculo.pasarPor(obstaculo);
     }
 
     private void abrirSorpresas(Posicion posicion)
     {
       Sorpresa sorpresa = sorpresas.get(posicion);
-
-
     }
 }
