@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 public class Piquete implements IVisitor {
-  public int visit(Auto auto ) {
+  public int visit(Auto auto) {
     throw new HayPiqueteException();
-
   }
+
   public int visit(Moto moto) {
     return 2;
   }
