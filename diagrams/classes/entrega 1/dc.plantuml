@@ -1,20 +1,15 @@
 @startuml
 
-class Gameplay {}
-
 class Grilla {
     + avanzar(vehiculo: Vehiculo, direccion: String)
 }
-
-class Usuario {}
 
 abstract class Vehiculo {
     # posicion: int
     # movimientos: int
     + posicion(): int
-    + mover(): void
+    + trasladar(): void
     + {abstract} pasarPor(obstaculo: Penalizador)
-    + serPenalizadoCon(puntosPenalizacion: int)
 }
 
 class Moto {
@@ -30,30 +25,94 @@ class Auto4x4 {
     + pasarPor(obstaculo: Penalizador)
 }
 
+class Posicion {
+    - x: int
+    - y: int
+    - instances: Instances[]
+    + getPosicion(x: int, y: int)
+    + trasladar(posicionNueva: Posicion): Posicion
+    + sonIguales(posicion: Posicion): bool
+}
+
+interface Movimiento {
+    + {abstract} trasladar(posicion: Posicion): Posicion
+}
+
+class Arriba {
+    + trasladar(posicion: Posicion): Posicion
+}
+
+class Izquierda {
+    + trasladar(posicion: Posicion): Posicion
+}
+
+class Derecha {
+    + trasladar(posicion: Posicion): Posicion
+}
+
+class Abajo {
+    + trasladar(posicion: Posicion): Posicion
+}
+
+abstract class IObstaculo {
+    + {abstract} tieneMismaPosicion(posicion: Posicion)
+}
+
 interface Penalizador {
-    + {abstract} penalizar(vehiculo:Vehiculo)
     + {abstract} tieneLaMismaPosicion(posicion:int)
+    + {abstract} penalizar(moto: Moto)
+    + {abstract} penalizar(auto: Auto)
+    + {abstract} penalizar(auto4x4: Auto4x4)
 }
 
 class Pozo {
-    + penalizar(vehiculo:Vehiculo)
+    + tieneLaMismaPosicion(posicion:int)
+    + penalizar(moto: Moto)
+    + penalizar(auto: Auto)
+    + penalizar(auto4x4: Auto4x4)
 }
 
 class Piquete {
-    + penalizar(vehiculo:Vehiculo)
+    + tieneLaMismaPosicion(posicion:int)
+    + penalizar(moto: Moto)
+    + penalizar(auto: Auto)
+    + penalizar(auto4x4: Auto4x4)
 }
 
-Gameplay --> Grilla
-Usuario --> Vehiculo
+class ControlPolicial {
+    + tieneLaMismaPosicion(posicion:int)
+    + penalizar(moto: Moto)
+    + penalizar(auto: Auto)
+    + penalizar(auto4x4: Auto4x4)
+}
 
-Gameplay --> "1..*" Usuario
+class Sorpresa {
+    - tipoSorpresa: String
+    + aplicarBonificacion(vehiculo: Vehiculo)
+    + aplicarDescuento(vehiculo: Vehiculo)
+    + aplicarCambioVehiculo(vehiculo: Vehiculo)
+}
+
 Grilla ..> Vehiculo
 Grilla *-- "0..*" Penalizador
+Grilla *-- "0..*" Sorpresa
+
 Vehiculo <|-- Moto
 Vehiculo <|-- Auto
 Vehiculo <|-- Auto4x4
 
+Vehiculo *-- Posicion
+Vehiculo *-- Movimiento
+
 Penalizador <|.. Pozo
 Penalizador <|.. Piquete
+Penalizador <|.. ControlPolicial
+
+Movimiento <|.. Arriba
+Movimiento <|.. Abajo
+Movimiento <|.. Izquierda
+Movimiento <|.. Derecha
+
+Movimiento ..> Posicion
 
 @enduml
