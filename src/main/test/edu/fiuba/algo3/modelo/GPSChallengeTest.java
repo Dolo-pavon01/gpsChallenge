@@ -9,7 +9,6 @@ public class GPSChallengeTest {
   @Test
   public void test01MotoAtraviesaCiudadDeUnaCuadraAtraviesaPozoYTiene3MovimientosDePenalizacion() {
     // arrange
-
     Grilla grilla = new Grilla();
     grilla.obstaculos.put(Posicion.getPosicion(1,0), new Pozo());
     Moto moto = new Moto();
