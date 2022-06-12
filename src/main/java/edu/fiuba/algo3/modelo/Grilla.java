@@ -3,11 +3,12 @@ package edu.fiuba.algo3.modelo;
 import java.util.HashMap;
 
 public class Grilla {
-  HashMap<Posicion, Obstaculo> obstaculos;
+  HashMap<Posicion, IVisitor> obstaculos;
+  HashMap<Posicion, Sorpresa> sorpresas;
   private int movimientos;
 
   public Grilla() {
-    this.obstaculos = new HashMap<Posicion, Obstaculo>(10, 70);
+    this.obstaculos = new HashMap<Posicion, IVisitor>(10, 70);
     this.movimientos = 0;
   }
 
@@ -19,13 +20,21 @@ public class Grilla {
     this.movimientos += 1;
     Posicion posicionActual = vehiculo.getPosicion();
     Posicion posicion = posicionActual.siguiente(direccion);
-    Obstaculo obstaculo = obstaculos.get(posicion);
-    try {
-      this.movimientos += obstaculo.penalizarA(vehiculo);
-      // Hay que revisarlo por las dudas
-    } catch (RuntimeException HayPiqueteException) {
-      return;
-    }
+
+    abrirSorpresas();
     vehiculo.moverse(posicion);
-  }
+    }
+
+    private void pasarPorObstaculos (Vehiculo vehiculo, Posicion posicion)
+    {
+      IVisitor obstaculo = obstaculos.get(posicion);
+      this.movimientos += vehiculo.pasarPor(obstaculo);
+    }
+
+    private void abrirSorpresas(Posicion posicion)
+    {
+      Sorpresa sorpresa = sorpresas.get(posicion);
+
+
+    }
 }
