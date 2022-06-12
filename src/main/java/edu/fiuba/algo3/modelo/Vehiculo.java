@@ -14,9 +14,9 @@ public class Vehiculo {
     {
         this.tipo.pasarPor(visitor);
     }
-    public int abrirSopresa(Sorpresa sorpresa)
+    public void abrirSopresa(Sorpresa sorpresa)
     {
-        return sorpresa.activar(this);
+         this.movimientos *= sorpresa.activar();
     }
     public void moverse(Posicion posicion) {
         this.posicion.trasladar(posicion);
