@@ -3,8 +3,8 @@ package edu.fiuba.algo3.modelo;
 import java.util.*;
 
 public class Posicion {
-  private int x;
-  private int y;
+  public int x;
+  public int y;
   private static List<Posicion> instances = new ArrayList<Posicion>();
 
   public Posicion trasladar(Posicion nueva) {
@@ -25,12 +25,7 @@ public class Posicion {
   }
 
   public Posicion siguiente(char unaDireccion) {
-    int x = this.x;
-    int y = this.y;
-    if (unaDireccion == 'w') y += 1;
-    if (unaDireccion == 's') y -= 1;
-    if (unaDireccion == 'd') x += 1;
-    if (unaDireccion == 'a') x -= 1;
-    return getPosicion(x, y);
+    Direccion direccion =  new Direccion();
+    return direccion.moverA(this, unaDireccion);
   }
 }

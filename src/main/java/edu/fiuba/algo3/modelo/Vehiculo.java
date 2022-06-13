@@ -27,8 +27,10 @@ public class Vehiculo {
     this.posicion = this.posicion.trasladar(posicion);
   }
 
-  Posicion getPosicion() {
-    return this.posicion;
+  Posicion getPosicionSiguiente(char unaDireccion) {
+
+    return this.posicion.siguiente(unaDireccion);
+
   }
 
   public int movimientos() {

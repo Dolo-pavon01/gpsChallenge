@@ -21,7 +21,7 @@ public class GPSChallengeTest {
 
   @Test
   public void
-      test02AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
+  test02AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
     // arrange
     Grilla grilla = new Grilla();
     grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
@@ -73,7 +73,7 @@ public class GPSChallengeTest {
 
   @Test
   public void
-      test06AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
+  test06AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
     // arrange
     Grilla grilla = new Grilla();
     grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
@@ -109,10 +109,10 @@ public class GPSChallengeTest {
     Vehiculo auto = new Vehiculo(new Auto());
     // act & assert
     Assertions.assertThrows(
-        RuntimeException.class,
-        () -> {
-          grilla.avanzar(auto, 'd');
-        });
+            RuntimeException.class,
+            () -> {
+              grilla.avanzar(auto, 'd');
+            });
     assertEquals(0, auto.movimientos());
   }
 
@@ -177,18 +177,28 @@ public class GPSChallengeTest {
 
   @Test
   public void
-      test13MotoPasaPorSorpresaCambioDeVehiculoCambiaAAutoYAlPasarPorPozoNoPuedePasarPorPiquete() {
+  test13MotoPasaPorSorpresaCambioDeVehiculoCambiaAAutoYAlPasarPorPozoNoPuedePasarPorPiquete() {
     // arrange
     Grilla grilla = new Grilla();
     grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
     grilla.obstaculos.put(Posicion.getPosicion(2, 0), Piquete.getInstance());
-    Vehiculo auto = new Vehiculo(new Moto());
+    Vehiculo moto = new Vehiculo(new Moto());
     // act
-    grilla.avanzar(auto, 'd');
+    grilla.avanzar(moto, 'd');
     Assertions.assertThrows(
-        RuntimeException.class,
-        () -> {
-          grilla.avanzar(auto, 'd');
-        });
+            RuntimeException.class,
+            () -> {
+              grilla.avanzar(moto, 'd');
+            });
+  }
+
+  @Test
+  public void
+  test14ElControlPolicialGeneraUnaMulta() {
+    // arrange
+    ControlPolicial controlPolicial = ControlPolicial.getInstance();
+    // act
+    int multa = controlPolicial.multar(10);
+    assertEquals(3, multa);
   }
 }
