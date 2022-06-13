@@ -1,0 +1,37 @@
+@startuml
+class Grilla{}
+class Vehiculo{
+-movimientos : Integer
+-posicion: Posicion
++moverse(Posicion posicion)
++getPosicionSiguiente(char unaDireccion)
++accept(Ivisitor visitor)
++abrirSopresa(Sorpresa sorpresa)
++PasarPor(Ivisitor visitor)
++RecibirSorpresa(CambioVehiculo cambioVehiculo)
+}
+interface Sorpresa{
++activar(Vehiculo vehiculo)
+
+}
+class SorpresaFavorable{
++activar(Vehiculo vehiculo)
+}
+
+class SorpresaDesfavorable{
++activar(Vehiculo vehiculo)
+}
+
+class CambioVehiculo{
++activar(Vehiculo vehiculo)
++swapVehiculo(Auto auto)
++swapVehiculo(Auto4x4 auto4x4)
++swapVehiculo(Moto moto)
+}
+Grilla --> Sorpresa
+Grilla --> Vehiculo
+Sorpresa <|..  SorpresaFavorable
+Sorpresa <|..  SorpresaDesfavorable
+Sorpresa <|.. CambioVehiculo
+
+@enduml
