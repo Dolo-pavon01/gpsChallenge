@@ -4,6 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import edu.fiuba.algo3.modelo.Grilla;
+import edu.fiuba.algo3.modelo.IVisitor;
+import edu.fiuba.algo3.modelo.TipoVehiculo;
+import edu.fiuba.algo3.modelo.Moto;
 
 public class GPSChallengeTest {
 
@@ -21,7 +27,7 @@ public class GPSChallengeTest {
 
   @Test
   public void
-  test02AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
+      test02AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
     // arrange
     Grilla grilla = new Grilla();
     grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
@@ -73,7 +79,7 @@ public class GPSChallengeTest {
 
   @Test
   public void
-  test06AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
+      test06AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
     // arrange
     Grilla grilla = new Grilla();
     grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
@@ -109,10 +115,10 @@ public class GPSChallengeTest {
     Vehiculo auto = new Vehiculo(new Auto());
     // act & assert
     Assertions.assertThrows(
-            RuntimeException.class,
-            () -> {
-              grilla.avanzar(auto, 'd');
-            });
+        RuntimeException.class,
+        () -> {
+          grilla.avanzar(auto, 'd');
+        });
     assertEquals(0, auto.movimientos());
   }
 
@@ -177,7 +183,7 @@ public class GPSChallengeTest {
 
   @Test
   public void
-  test13MotoPasaPorSorpresaCambioDeVehiculoCambiaAAutoYAlPasarPorPozoNoPuedePasarPorPiquete() {
+      test13MotoPasaPorSorpresaCambioDeVehiculoCambiaAAutoYAlPasarPorPozoNoPuedePasarPorPiquete() {
     // arrange
     Grilla grilla = new Grilla();
     grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
@@ -186,19 +192,44 @@ public class GPSChallengeTest {
     // act
     grilla.avanzar(moto, 'd');
     Assertions.assertThrows(
-            RuntimeException.class,
-            () -> {
-              grilla.avanzar(moto, 'd');
-            });
+        RuntimeException.class,
+        () -> {
+          grilla.avanzar(moto, 'd');
+        });
   }
 
   @Test
-  public void
-  test14ElControlPolicialGeneraUnaMulta() {
+  public void test14MotoPasaPorControlYEsMultadoPorLaYuta() {
     // arrange
-    ControlPolicial controlPolicial = ControlPolicial.getInstance();
+    Moto tipoMoto = new Moto();
+    IVisitor controlMock = mock(IVisitor.class);
+    Moto tipoMock = mock(Moto.class);
+    when(controlMock.visit(tipoMock)).thenReturn(3);
+
+    Grilla grilla = new Grilla();
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), controlMock);
+    Vehiculo moto = new Vehiculo(tipoMoto);
     // act
-    int multa = controlPolicial.multar(10);
-    assertEquals(3, multa);
+    grilla.avanzar(moto, 'd');
+    // assert
+    assertEquals(4, moto.movimientos());
   }
+
+  /*
+   @Test
+   public void test14AutoPasaPorControlYEsMultadoPorLaYuta() {
+     // arrange
+     ControlPolicial controlMock = mock(ControlPolicial.class);
+     Auto tipoAuto = new Auto();
+     when(controlMock.visit(tipoAuto)).thenReturn(3);
+     Grilla grilla = new Grilla();
+     grilla.obstaculos.put(Posicion.getPosicion(1, 0), controlMock);
+     Vehiculo auto = new Vehiculo(tipoAuto);
+     // act
+     grilla.avanzar(auto, 'd');
+     // assert
+     assertEquals(4, auto.movimientos());
+   }
+
+  */
 }
