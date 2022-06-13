@@ -11,7 +11,7 @@ public class GPSChallengeTest {
   public void test01MotoAtraviesaCiudadDeUnaCuadraAtraviesaPozoYTiene3MovimientosDePenalizacion() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.obstaculos.put(Posicion.getPosicion(1, 0), new Pozo());
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
     Vehiculo moto = new Vehiculo(new Moto());
     // act
     grilla.avanzar(moto, 'd');
@@ -24,7 +24,7 @@ public class GPSChallengeTest {
       test02AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.obstaculos.put(Posicion.getPosicion(1, 0), new Pozo());
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
     Vehiculo auto = new Vehiculo(new Auto());
     // act
     grilla.avanzar(auto, 'd');
@@ -36,20 +36,21 @@ public class GPSChallengeTest {
   public void test03Auto4x4AtraviesaLaCiudadYSeEncuentraConUnPozoNoEsPenalizada() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.obstaculos.put(Posicion.getPosicion(1, 0), new Pozo());
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
     Vehiculo auto4x4 = new Vehiculo(new Auto4x4());
     // act
     grilla.avanzar(auto4x4, 'd');
     // assert
     assertEquals(1, auto4x4.movimientos());
+    Pozo.getInstance().resetContadorPozos();
   }
 
   @Test
   public void test04MotoAtraviesaCiudadSeEncuentraCon2PozosYEsPenalizada() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.obstaculos.put(Posicion.getPosicion(1, 0), new Pozo());
-    grilla.obstaculos.put(Posicion.getPosicion(2, 0), new Pozo());
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
+    grilla.obstaculos.put(Posicion.getPosicion(2, 0), Pozo.getInstance());
     Vehiculo moto = new Vehiculo(new Moto());
     // act
     grilla.avanzar(moto, 'd');
@@ -62,7 +63,7 @@ public class GPSChallengeTest {
   public void test05MotoAtraviesaCiudadAtraviesaPiquete() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.obstaculos.put(Posicion.getPosicion(1, 0), new Piquete());
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), Piquete.getInstance());
     Vehiculo moto = new Vehiculo(new Moto());
     // act
     grilla.avanzar(moto, 'd');
@@ -75,7 +76,7 @@ public class GPSChallengeTest {
       test06AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.obstaculos.put(Posicion.getPosicion(1, 0), new Pozo());
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
     Vehiculo auto = new Vehiculo(new Auto());
     // act
     grilla.avanzar(auto, 'd');
@@ -87,10 +88,9 @@ public class GPSChallengeTest {
   public void test07Auto4x4AtraviesaLaCiudadYSeEncuentraCon3PozosYEsPenalizada() {
     // arrange
     Grilla grilla = new Grilla();
-    Pozo pozo = new Pozo();
-    grilla.obstaculos.put(Posicion.getPosicion(1, 0), pozo);
-    grilla.obstaculos.put(Posicion.getPosicion(2, 0), pozo);
-    grilla.obstaculos.put(Posicion.getPosicion(3, 0), pozo);
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
+    grilla.obstaculos.put(Posicion.getPosicion(2, 0), Pozo.getInstance());
+    grilla.obstaculos.put(Posicion.getPosicion(3, 0), Pozo.getInstance());
     Vehiculo auto4x4 = new Vehiculo(new Auto4x4());
     // act
     grilla.avanzar(auto4x4, 'd');
@@ -98,13 +98,14 @@ public class GPSChallengeTest {
     grilla.avanzar(auto4x4, 'd');
     // assert
     assertEquals(5, auto4x4.movimientos());
+    Pozo.getInstance().resetContadorPozos();
   }
 
   @Test
   public void test08AutoAtraviesaCiudadIntentaAtravesarPiquiteNoPuede() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.obstaculos.put(Posicion.getPosicion(1, 0), new Piquete());
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), Piquete.getInstance());
     Vehiculo auto = new Vehiculo(new Auto());
     // act & assert
     Assertions.assertThrows(
@@ -148,13 +149,15 @@ public class GPSChallengeTest {
     // arrange
     Grilla grilla = new Grilla();
     grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
-    grilla.obstaculos.put(Posicion.getPosicion(2, 0), new Pozo());
+    grilla.obstaculos.put(Posicion.getPosicion(2, 0), Pozo.getInstance());
+    grilla.obstaculos.put(Posicion.getPosicion(3, 0), Pozo.getInstance());
     Vehiculo auto = new Vehiculo(new Auto());
     // act
     grilla.avanzar(auto, 'd');
     grilla.avanzar(auto, 'd');
+    grilla.avanzar(auto, 'd');
     // assert
-    assertEquals(2, auto.movimientos());
+    assertEquals(3, auto.movimientos());
   }
 
   @Test
@@ -162,13 +165,14 @@ public class GPSChallengeTest {
     // arrange
     Grilla grilla = new Grilla();
     grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
-    grilla.obstaculos.put(Posicion.getPosicion(2, 0), new Pozo());
+    grilla.obstaculos.put(Posicion.getPosicion(2, 0), Pozo.getInstance());
     Vehiculo auto = new Vehiculo(new Auto4x4());
     // act
     grilla.avanzar(auto, 'd');
     grilla.avanzar(auto, 'd');
     // assert
     assertEquals(5, auto.movimientos());
+    Pozo.getInstance().resetContadorPozos();
   }
 
   @Test
@@ -177,7 +181,7 @@ public class GPSChallengeTest {
     // arrange
     Grilla grilla = new Grilla();
     grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
-    grilla.obstaculos.put(Posicion.getPosicion(2, 0), new Piquete());
+    grilla.obstaculos.put(Posicion.getPosicion(2, 0), Piquete.getInstance());
     Vehiculo auto = new Vehiculo(new Moto());
     // act
     grilla.avanzar(auto, 'd');
