@@ -15,8 +15,8 @@ public class SorpresaCambioVehiculo implements Sorpresa {
   }
 
   @Override
-  public double activar(Vehiculo vehiculo) {
+  public int activar(Vehiculo vehiculo,int movimientos) {
     vehiculo.recibirSorpresa(this);
-    return 1;
+    return movimientos;
   }
 }

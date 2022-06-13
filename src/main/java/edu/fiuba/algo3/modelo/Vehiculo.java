@@ -19,7 +19,7 @@ public class Vehiculo {
 
   public void abrirSopresa(Sorpresa sorpresa) {
     if (sorpresa == null) return;
-    this.movimientos *= sorpresa.activar(this);
+    this.movimientos = sorpresa.activar(this,this.movimientos);
   }
 
   public void moverse(Posicion posicion) {
