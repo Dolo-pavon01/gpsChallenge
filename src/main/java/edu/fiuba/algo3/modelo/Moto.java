@@ -1,13 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-public class Moto extends Vehiculo {
+public class Moto implements TipoVehiculo {
 
-  public Moto() {
-    super();
+  public int pasarPor(IVisitor visitor) {
+    return visitor.visit(this);
   }
 
   @Override
-  public void pasarPor(Obstaculo obstaculo) {
-    obstaculo.penalizar(this);
+  public TipoVehiculo cambiarTipo() {
+    return new Auto();
   }
 }

@@ -1,24 +1,24 @@
 package edu.fiuba.algo3.modelo;
 
-public class Piquete extends Obstaculo {
-  public Piquete(int posicion) {
-    this.posicion = posicion;
-  }
+public class Piquete implements IVisitor {
+  private static Piquete instance;
+  private static final int multaMoto =2;
+  public static Piquete getInstance()
+  {
+    if(instance == null)
+      instance = new Piquete();
+    return instance;
 
-  @Override
-  public void penalizar(Auto auto) {
-    throw new HayPiqueteException();
-    // auto.serPenalizadoCon(2);
   }
-
-  @Override
-  public void penalizar(Moto moto) {
-    moto.serPenalizadoCon(2);
-  }
-
-  @Override
-  public void penalizar(Auto4x4 auto4x4) {
+  public int visit(Auto auto) {
     throw new HayPiqueteException();
   }
 
+  public int visit(Moto moto) {
+    return multaMoto;
+  }
+
+  public int visit(Auto4x4 auto4x4) {
+    throw new HayPiqueteException();
+  }
 }

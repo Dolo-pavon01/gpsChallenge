@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Gameplay {}
+
+class Grilla {
+    + avanzar(vehiculo: Vehiculo, direccion: String)
+}
+abstract class Obstaculo {
+    # posicion: Posicion
+    + tieneLaMismaPosicion(posicion:int)
+}
+
+abstract class Vehiculo {
+    # posicion: int
+    # movimientos: int
+    + posicion(): int
+    + mover(): void
+    + {abstract} pasarPor(obstaculo: Obstaculo)
+    + serPenalizadoCon(puntosPenalizacion: int)
+}
+
+@enduml

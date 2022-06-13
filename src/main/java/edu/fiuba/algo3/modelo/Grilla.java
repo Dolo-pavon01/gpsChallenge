@@ -1,24 +1,33 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Collection;
+import java.util.HashMap;
 
 public class Grilla {
-  List<Obstaculo> obstaculos;
+  HashMap<Posicion, IVisitor> obstaculos;
+  HashMap<Posicion, Sorpresa> sorpresas;
 
-  public Grilla(Obstaculo... obstaculosEnJuego) {
-    obstaculos = new ArrayList<>();
-    Collections.addAll(this.obstaculos,obstaculosEnJuego);
+  public Grilla() {
+    this.obstaculos = new HashMap<Posicion, IVisitor>(10, 70);
+    this.sorpresas = new HashMap<Posicion, Sorpresa>(10, 70);
   }
 
-  public void avanzar(Vehiculo vehiculo) {
-    vehiculo.mover();
-    int posicion_vehiculo = vehiculo.posicion();
-    for (Obstaculo obstaculo : this.obstaculos) {
-      if (obstaculo.tieneMismaPosicion(posicion_vehiculo))
-          vehiculo.pasarPor(obstaculo);
-    }
+  public void avanzar(Vehiculo vehiculo, char direccion)
+  {
+    Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
+    this.pasarPorObstaculos(vehiculo, posicion);
+    this.abrirSorpresas(vehiculo, posicion);
+    vehiculo.moverse(posicion);
+  }
+
+  private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion)
+  {
+    IVisitor obstaculo = obstaculos.get(posicion);
+    vehiculo.pasarPor(obstaculo);
+  }
+
+  private void abrirSorpresas(Vehiculo vehiculo, Posicion posicion)
+  {
+    Sorpresa sorpresa = sorpresas.get(posicion);
+    vehiculo.abrirSopresa(sorpresa);
   }
 }
