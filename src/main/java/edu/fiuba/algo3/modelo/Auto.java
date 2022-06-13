@@ -7,7 +7,7 @@ public class Auto implements TipoVehiculo {
   }
 
   @Override
-  public TipoVehiculo recibirSorpresa(SorpresaCambioVehiculo sorpresaCambioVehiculo) {
-    return sorpresaCambioVehiculo.cambiarVehiculo(this);
+  public TipoVehiculo cambiarTipo() {
+    return new Auto4x4();
   }
 }
