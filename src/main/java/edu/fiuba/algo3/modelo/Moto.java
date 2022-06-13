@@ -8,6 +8,6 @@ public class Moto implements TipoVehiculo {
 
   @Override
   public TipoVehiculo recibirSorpresa(SorpresaCambioVehiculo sorpresaCambioVehiculo) {
-    return sorpresaCambioVehiculo.swapVehiculo(this);
+    return sorpresaCambioVehiculo.cambiarVehiculo(this);
   }
 }

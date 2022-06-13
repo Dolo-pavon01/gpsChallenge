@@ -2,15 +2,15 @@ package edu.fiuba.algo3.modelo;
 
 public class SorpresaCambioVehiculo implements Sorpresa {
 
-  public TipoVehiculo swapVehiculo(Moto moto) {
+  public TipoVehiculo cambiarVehiculo(Moto moto) {
     return new Auto();
   }
 
-  public TipoVehiculo swapVehiculo(Auto4x4 auto4x4) {
+  public TipoVehiculo cambiarVehiculo(Auto4x4 auto4x4) {
     return new Moto();
   }
 
-  public TipoVehiculo swapVehiculo(Auto auto) {
+  public TipoVehiculo cambiarVehiculo(Auto auto) {
     return new Auto4x4();
   }
 
