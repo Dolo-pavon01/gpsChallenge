@@ -3,11 +3,11 @@ package edu.fiuba.algo3.modelo;
 import java.util.HashMap;
 
 public class Grilla {
-  HashMap<Posicion, Penalizador> obstaculos;
+  HashMap<Posicion, IVisitor> obstaculos;
   HashMap<Posicion, Sorpresa> sorpresas;
 
   public Grilla() {
-    this.obstaculos = new HashMap<Posicion, Penalizador>(10, 70);
+    this.obstaculos = new HashMap<Posicion, IVisitor>(10, 70);
     this.sorpresas = new HashMap<Posicion, Sorpresa>(10, 70);
   }
 
@@ -20,7 +20,7 @@ public class Grilla {
   }
 
   private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion) {
-    Penalizador obstaculo = obstaculos.get(posicion);
+    IVisitor obstaculo = obstaculos.get(posicion);
     vehiculo.pasarPor(obstaculo);
   }
 

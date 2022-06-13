@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Piquete implements Penalizador {
+public class Piquete implements IVisitor {
   public int visit(Auto auto) {
     throw new HayPiqueteException();
   }
