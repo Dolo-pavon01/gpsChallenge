@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Pozo implements IVisitor {
+public class Pozo implements Penalizador {
 
   private int contadorPozos;
   private static final int LIMITE_POZOS_ATRAVESADOS = 2;

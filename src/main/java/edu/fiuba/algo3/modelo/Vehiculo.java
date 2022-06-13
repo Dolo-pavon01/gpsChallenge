@@ -12,14 +12,13 @@ public class Vehiculo {
     this.posicion = Posicion.getPosicion(0, 0);
   }
 
-  public void pasarPor(IVisitor visitor) {
+  public void pasarPor(Penalizador visitor) {
     if (visitor == null) return;
     this.movimientos += this.tipo.pasarPor(visitor);
   }
 
   public void abrirSopresa(Sorpresa sorpresa) {
     if (sorpresa == null) return;
-    // this.movimientos *= sorpresa.activar(this);
     sorpresa.activar(this);
   }
 

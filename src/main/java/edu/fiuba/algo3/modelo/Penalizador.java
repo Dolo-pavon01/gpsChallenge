@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public interface IVisitor {
+public interface Penalizador {
 
   int visit(Moto moto);
 

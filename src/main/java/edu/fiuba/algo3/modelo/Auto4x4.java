@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public class Auto4x4 implements TipoVehiculo {
 
-  public int pasarPor(IVisitor visitor) {
+  public int pasarPor(Penalizador visitor) {
     return visitor.visit(this);
   }
 
