@@ -1,16 +1,22 @@
 package edu.fiuba.algo3.modelo;
 
-public class SorpresaCambioVehiculo implements IVisitor {
+public class SorpresaCambioVehiculo implements Sorpresa {
 
-  public int visit(Moto moto) {
-    return 0;
+  public TipoVehiculo swapVehiculo(Moto moto) {
+    return new Auto();
   }
 
-  public int visit(Auto4x4 auto4x4) {
-    return 0;
+  public TipoVehiculo swapVehiculo(Auto4x4 auto4x4) {
+    return new Moto();
   }
 
-  public int visit(Auto auto) {
-    return 0;
+  public TipoVehiculo swapVehiculo(Auto auto) {
+    return new Auto4x4();
+  }
+
+  @Override
+  public double activar(Vehiculo vehiculo) {
+    vehiculo.recibirSorpresa(this);
+    return 1;
   }
 }

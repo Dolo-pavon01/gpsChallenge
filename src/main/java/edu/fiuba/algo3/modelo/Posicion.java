@@ -7,8 +7,8 @@ public class Posicion {
   private int y;
   private static List<Posicion> instances = new ArrayList<Posicion>();
 
-  public void trasladar(Posicion nueva) {
-    getPosicion(nueva.x, nueva.y);
+  public Posicion trasladar(Posicion nueva) {
+    return getPosicion(nueva.x, nueva.y);
   }
 
   private Posicion(int x, int y) {

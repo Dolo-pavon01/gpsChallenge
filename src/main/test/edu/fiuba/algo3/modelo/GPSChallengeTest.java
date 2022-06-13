@@ -87,9 +87,10 @@ public class GPSChallengeTest {
   public void test07Auto4x4AtraviesaLaCiudadYSeEncuentraCon3PozosYEsPenalizada() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.obstaculos.put(Posicion.getPosicion(1, 0), new Pozo());
-    grilla.obstaculos.put(Posicion.getPosicion(2, 0), new Pozo());
-    grilla.obstaculos.put(Posicion.getPosicion(3, 0), new Pozo());
+    Pozo pozo = new Pozo();
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), pozo);
+    grilla.obstaculos.put(Posicion.getPosicion(2, 0), pozo);
+    grilla.obstaculos.put(Posicion.getPosicion(3, 0), pozo);
     Vehiculo auto4x4 = new Vehiculo(new Auto4x4());
     // act
     grilla.avanzar(auto4x4, 'd');
@@ -112,5 +113,78 @@ public class GPSChallengeTest {
           grilla.avanzar(auto, 'd');
         });
     assertEquals(0, auto.movimientos());
+  }
+
+  @Test
+  public void test09AutoAtraviesaCiudadYSeEncuentraConSorpresaFavorable() {
+    // arrange
+    Grilla grilla = new Grilla();
+    grilla.sorpresas.put(Posicion.getPosicion(5, 0), new SorpresaFavorable());
+    Vehiculo auto = new Vehiculo(new Auto());
+    // act
+    for (int i = 0; i < 5; i++) {
+      grilla.avanzar(auto, 'd');
+    }
+    // assert
+    assertEquals(4, auto.movimientos());
+  }
+
+  @Test
+  public void test10AutoAtraviesaCiudadYSeEncuentraConSorpresaDesfavorable() {
+    // arrange
+    Grilla grilla = new Grilla();
+    grilla.sorpresas.put(Posicion.getPosicion(5, 0), new SorpresaDesfavorable());
+    Vehiculo auto = new Vehiculo(new Auto());
+    // act
+    for (int i = 0; i < 5; i++) {
+      grilla.avanzar(auto, 'd');
+    }
+    // assert
+    assertEquals(6, auto.movimientos());
+  }
+
+  @Test
+  public void test11AutoPasaPorSorpresaCambioDeVehiculoCambiaA4x4YAlPasarPorPozoNoEsPenalizado() {
+    // arrange
+    Grilla grilla = new Grilla();
+    grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
+    grilla.obstaculos.put(Posicion.getPosicion(2, 0), new Pozo());
+    Vehiculo auto = new Vehiculo(new Auto());
+    // act
+    grilla.avanzar(auto, 'd');
+    grilla.avanzar(auto, 'd');
+    // assert
+    assertEquals(2, auto.movimientos());
+  }
+
+  @Test
+  public void test12Auto4x4PasaPorSorpresaCambioDeVehiculoCambiaAMotoYAlPasarPorPozoEsPenalizado() {
+    // arrange
+    Grilla grilla = new Grilla();
+    grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
+    grilla.obstaculos.put(Posicion.getPosicion(2, 0), new Pozo());
+    Vehiculo auto = new Vehiculo(new Auto4x4());
+    // act
+    grilla.avanzar(auto, 'd');
+    grilla.avanzar(auto, 'd');
+    // assert
+    assertEquals(5, auto.movimientos());
+  }
+
+  @Test
+  public void
+      test13MotoPasaPorSorpresaCambioDeVehiculoCambiaAAutoYAlPasarPorPozoNoPuedePasarPorPiquete() {
+    // arrange
+    Grilla grilla = new Grilla();
+    grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
+    grilla.obstaculos.put(Posicion.getPosicion(2, 0), new Piquete());
+    Vehiculo auto = new Vehiculo(new Moto());
+    // act
+    grilla.avanzar(auto, 'd');
+    Assertions.assertThrows(
+        RuntimeException.class,
+        () -> {
+          grilla.avanzar(auto, 'd');
+        });
   }
 }

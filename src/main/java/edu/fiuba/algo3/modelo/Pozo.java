@@ -2,8 +2,12 @@ package edu.fiuba.algo3.modelo;
 
 public class Pozo implements IVisitor {
 
-  private int contadorPozos = 0;
+  private int contadorPozos;
   private static final int LIMITE_POZOS_ATRAVESADOS = 2;
+
+  public Pozo() {
+    this.contadorPozos = 0;
+  }
 
   public int visit(Moto moto) {
     return 3;

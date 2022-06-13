@@ -13,17 +13,18 @@ public class Vehiculo {
   }
 
   public void pasarPor(IVisitor visitor) {
+    if (visitor == null) return;
     this.movimientos += this.tipo.pasarPor(visitor);
   }
 
   public void abrirSopresa(Sorpresa sorpresa) {
     if (sorpresa == null) return;
-    this.movimientos *= sorpresa.activar();
+    this.movimientos *= sorpresa.activar(this);
   }
 
   public void moverse(Posicion posicion) {
     this.movimientos += 1;
-    this.posicion.trasladar(posicion);
+    this.posicion = this.posicion.trasladar(posicion);
   }
 
   Posicion getPosicion() {
@@ -32,5 +33,13 @@ public class Vehiculo {
 
   public int movimientos() {
     return this.movimientos;
+  }
+
+  public TipoVehiculo getTipo() {
+    return this.tipo;
+  }
+
+  public void recibirSorpresa(SorpresaCambioVehiculo sorpresaCambioVehiculo) {
+    this.tipo = this.tipo.recibirSorpresa(sorpresaCambioVehiculo);
   }
 }
