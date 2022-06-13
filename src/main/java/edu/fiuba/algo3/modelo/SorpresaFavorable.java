@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 public class SorpresaFavorable implements Sorpresa {
+  private static final double VALOR_SORPRESA = 0.8;
+
   @Override
-  public int activar(Vehiculo vehiculo,int movimientos) {
-    return (int)(movimientos * 0.8);
+  public void activar(Vehiculo vehiculo) {
+    vehiculo.recibirSorpresa(VALOR_SORPRESA);
   }
 }
