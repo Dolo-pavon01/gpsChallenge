@@ -22,12 +22,22 @@ public class Grilla {
   private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion)
   {
     IVisitor obstaculo = obstaculos.get(posicion);
-    vehiculo.pasarPor(obstaculo);
+    try{
+      vehiculo.pasarPor(obstaculo);
+    }
+    catch(ObstaculoEsNulo e)
+    {
+    }
   }
 
   private void abrirSorpresas(Vehiculo vehiculo, Posicion posicion)
   {
     Sorpresa sorpresa = sorpresas.get(posicion);
-    vehiculo.abrirSopresa(sorpresa);
+    try{
+      vehiculo.abrirSopresa(sorpresa);
+    }
+    catch(SorpresaEsNula e)
+    {
+    }
   }
 }
