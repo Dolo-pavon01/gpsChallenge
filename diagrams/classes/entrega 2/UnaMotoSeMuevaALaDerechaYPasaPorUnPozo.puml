@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Gameplay -> Grilla: avanzar(Vehiculo moto, char unaDireccion: 'd')
+Grilla-> Vehiculo:posicion = getPosicionSiguiente(unaDireccion)
+Vehiculo ->Posicion: posicionSiguiente = siguiente(unaDireccion)
+Posicion -> Direccion:posicionSiguiente = moverA(posicion,unaDireccion)
+Direccion-> Direccion.comandos: derecha = get(unaDireccion)
+Direcccion <-- Direcccion.comandos:Derecha
+Direccion -> Derecha :ejecutar(posicion)
+Direccion <-- Derecha: nuevaPosicion
+Posicion <-- Direccion: nuevaPosicion
+Vehiculo <-- Posicion: nuevaPosicion
+Grilla <-- Vehiculo: nuevaPosicion
+Grilla -> Grilla: pasarPorObstaculo(moto,posicion)
+Grilla -> Grilla.obstaculos: pozo = get(posicion)
+Grilla <-- Grilla.obstaculos: pozo
+Grilla-> Vehiculo: pasarPor(pozo)
+Vehiculo -> Moto: movimientos += pasarPor(pozo)
+Moto-> Pozo: visit(moto)
+Moto <--Pozo: multaMoto
+Moto --> Vehiculo: multaMoto
+Grilla -> Grilla: abrirSorpresas(moto,posicion)
+Grilla-> Grilla.sorpresas: sorpresaNula = get(posicion)
+Grilla <-- Grilla.sorpresas:sorpresaNula
+Grilla->Vehiculo:abrirSorpresas(sorpresaNula)
+Grilla <-- Vehiculo: sorpresaEsNula
+Grilla-> Vehiculo:moverse(posicion)
+Vehiculo->Vehiculo: movimientos+=1
+Vehiculo->Posicion: posicion = transladar(posicion)
+Vehiculo<--Posicion: nuevaPosicion
+@enduml
