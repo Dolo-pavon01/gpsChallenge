@@ -1,13 +1,13 @@
 @startuml
 
+title Auto4x4 pasa por sorpresa cambio de vehiculo cambia a moto pasa por Pozo es penalizado
 actor Gameplay
 participant "grilla : Grilla" as Grilla
 participant "sorpresa : SorpresaCambioVehiculo" as SorpresaCambioVehiculo
-participant "pozo : Pozo" as Pozo
+participant "auto: Vehiculo" as Vehiculo
 participant "auto4x4 : Auto4x4" as Auto4x4
 participant "moto : Moto" as Moto
-participant "auto: Vehiculo" as Vehiculo
-participant "posicion : Posicion" as Posicion
+participant "pozo : Pozo" as Pozo
 
 activate Gameplay
 
@@ -19,7 +19,9 @@ Grilla -> Vehiculo: abrirSorpresa(sorpresa)
 Vehiculo -> SorpresaCambioVehiculo: activar(vehiculo)
 SorpresaCambioVehiculo -> Vehiculo: cambiarTipo()
 Vehiculo -> Auto4x4: cambiarTipo()
-Vehiculo --> Auto4x4: moto
+Auto4x4 -> Moto: new
+Moto --> Auto4x4: moto
+Auto4x4 --> Vehiculo: moto
 
 Gameplay -> Grilla: avanzar(auto, 'd')
 Grilla -> Vehiculo: getPosicionSiguiente('d')
@@ -29,9 +31,8 @@ Grilla -> Grilla: pasarPorObstaculos(vehiculo, 'd')
 Grilla -> Auto4x4: pasarPor(pozo)
 Auto4x4 -> Moto: pasarPor(pozo)
 Moto -> Pozo: visit(moto)
-Moto --> Pozo: 3
-Pozo --> SorpresaCambioVehiculo: 3
-SorpresaCambioVehiculo --> Vehiculo: 3
+Pozo --> Moto: 3
+Moto --> Vehiculo: 3
 
 Gameplay -> Vehiculo: movimientos()
 return 5
