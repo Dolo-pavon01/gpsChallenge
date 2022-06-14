@@ -20,4 +20,5 @@ abstract class Vehiculo {
     + serPenalizadoCon(puntosPenalizacion: int)
 }
 
+
 @enduml
