@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Sentido{
+    + {abstract} ejecutar(Posicion posicion):Posicion
+}
+
+class Adelante{
+    + ejecutar(Posicion posicion):Posicion
+}
+
+class Atras{
+    + ejecutar(Posicion posicion):Posicion
+}
+
+class Derecha{
+    + ejecutar(Posicion posicion):Posicion
+}
+
+class Izquierda{
+    + ejecutar(Posicion posicion):Posicion
+}
+
+Adelante ..|> Sentido
+Atras ..|> Sentido
+Derecha ..|> Sentido
+Izquierda ..|> Sentido
+
+@enduml
