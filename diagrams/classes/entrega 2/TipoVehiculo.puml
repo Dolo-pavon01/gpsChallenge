@@ -1,34 +1,34 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class Vehiculo{
-    - movimientos : int
-    - posicion : Posicion
-    + pasarPor(visitor : IVisitor):void
-    + recibirSorpresa(valorSorpresa : double):void
-    + abrirSorpresa(sorpresa : Sorpresa):void
-    + moverse(posicion : Posicion):void
-    + getPosicionSiguiente(unaDireccion : char):Posicion
+class Vehiculo {
+    - movimientos: int
+    - posicion: Posicion
+    + pasarPor(visitor: IVisitor)
+    + recibirSorpresa(valorSorpresa: double)
+    + abrirSorpresa(sorpresa: Sorpresa)
+    + moverse(posicion: Posicion)
+    + getPosicionSiguiente(unaDireccion: char): Posicion
 }
 
-interface TipoVehiculo{
-    + {abstract} pasarPor(visitor : IVisitor):int
-    + {abstract} recibirSorpresa(sorpresaCambioVehiculo : SorpresaCambioVehiculo):TipoVehiculo
+interface TipoVehiculo {
+    + {abstract} pasarPor(visitor: IVisitor): int
+    + {abstract} recibirSorpresa(sorpresaCambioVehiculo : SorpresaCambioVehiculo): TipoVehiculo
 }
 
 class Auto{
-    + pasarPor(visitor : IVisitor):int
-    + recibirSorpresa(sorpresaCambioVehiculo : SorpresaCambioVehiculo):TipoVehiculo
+    + pasarPor(visitor: IVisitor): int
+    + recibirSorpresa(sorpresaCambioVehiculo: SorpresaCambioVehiculo): TipoVehiculo
 }
 
 class Auto4x4{
-    + pasarPor(visitor : IVisitor):int
-    + recibirSorpresa(sorpresaCambioVehiculo : SorpresaCambioVehiculo):TipoVehiculo
+    + pasarPor(visitor: IVisitor): int
+    + recibirSorpresa(sorpresaCambioVehiculo: SorpresaCambioVehiculo): TipoVehiculo
 }
 
 class Moto{
-    + pasarPor(visitor : IVisitor):int
-    + recibirSorpresa(sorpresaCambioVehiculo : SorpresaCambioVehiculo):TipoVehiculo
+    + pasarPor(visitor: IVisitor): int
+    + recibirSorpresa(sorpresaCambioVehiculo: SorpresaCambioVehiculo): TipoVehiculo
 }
 
 Vehiculo --> TipoVehiculo

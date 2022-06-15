@@ -19,43 +19,39 @@ abstract class Vehiculo {
 
 class Moto {
     + pasarPor(obstaculo: Obstaculo)
-    + penalizar(piquete:Piquete)
-    + penalizar(pozo:Pozo)
-    + penalizar(controlPolicial:controlPolicial)
+    + penalizar(piquete: Piquete)
+    + penalizar(pozo: Pozo)
+    + penalizar(controlPolicial: ControlPolicial)
 }
 
 class Auto {
     + pasarPor(obstaculo: Obstaculo)
-    + penalizar(piquete:Piquete)
-    + penalizar(pozo:Pozo)
-    + penalizar(controlPolicial:controlPolicial)
+    + penalizar(piquete: Piquete)
+    + penalizar(pozo: Pozo)
+    + penalizar(controlPolicial: ControlPolicial)
 }
 
 class Auto4x4 {
     - contadorPozos: int
     + pasarPor(obstaculo: Obstaculo)
-    + penalizar(piquete:Piquete)
-    + penalizar(pozo:Pozo)
-    + penalizar(controlPolicial:controlPolicial)
+    + penalizar(piquete: Piquete)
+    + penalizar(pozo: Pozo)
+    + penalizar(controlPolicial: ControlPolicial)
 }
 
 abstract class Obstaculo {
     # posicion: Posicion
-    + tieneLaMismaPosicion(posicion:int)
+    + tieneLaMismaPosicion(posicion: int)
 }
 
-class Pozo {
-}
+class Pozo {}
 
-class Piquete {
+class Piquete {}
 
-}
-interface Penalizable
-{
-
-    + {abstract}penalizar(piquete:Piquete)
-    + {abstract} penalizar(pozo:Pozo)
-    +{abstract} penalizar(controlPolicial:controlPolicial)
+interface Penalizable {
+    + {abstract} penalizar(piquete: Piquete)
+    + {abstract} penalizar(pozo: Pozo)
+    + {abstract} penalizar(controlPolicial: controlPolicial)
 }
 
 Gameplay --> Grilla

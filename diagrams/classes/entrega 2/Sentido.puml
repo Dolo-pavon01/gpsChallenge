@@ -1,29 +1,29 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-interface Sentido{
-    + {abstract} ejecutar(Posicion posicion):Posicion
+interface Sentido {
+    + {abstract} ejecutar(posicion: Posicion): Posicion
 }
 
-class Adelante{
-    + ejecutar(Posicion posicion):Posicion
+class Adelante {
+    + ejecutar(posicion: Posicion): Posicion
 }
 
-class Atras{
-    + ejecutar(Posicion posicion):Posicion
+class Atras {
+    + ejecutar(posicion: Posicion): Posicion
 }
 
 class Derecha{
-    + ejecutar(Posicion posicion):Posicion
+    + ejecutar(posicion: Posicion): Posicion
 }
 
 class Izquierda{
-    + ejecutar(Posicion posicion):Posicion
+    + ejecutar(posicion: Posicion): Posicion
 }
 
-Adelante ..|> Sentido
-Atras ..|> Sentido
-Derecha ..|> Sentido
-Izquierda ..|> Sentido
+Sentido <|.. Adelante
+Sentido <|.. Atras
+Sentido <|.. Derecha
+Sentido <|.. Izquierda
 
 @enduml
