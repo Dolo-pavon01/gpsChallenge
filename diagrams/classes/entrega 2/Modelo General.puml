@@ -1,24 +1,65 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class Gameplay {}
+class Vehiculo
+{
+    +pasarPor()
+    +abrirSorpresa()
+    +moverse()
+    +getPosicionSiguiente()
+    +recibirSorpresa()
+}
 
-class Grilla {
-    + avanzar(vehiculo: Vehiculo, direccion: String)
+interface Sentido
+{
+    +ejecutar(Posicion posicion):Posicion
 }
-abstract class Obstaculo {
-    # posicion: Posicion
-    + tieneLaMismaPosicion(posicion:int)
+interface TipoVehiculo
+{
+    + pasarPor(IVisitor visitor):int
+    + recibirSorpresa(SorpresaCambioVehiculo unaSorpresaCambioVehiculo):TipoVehiculo
+}
+class Direccion
+{
+    -HashMap<char,Sentido> comandos
+    +moverA(Posicion posicion,char unaDireccion): Posicion
+}
+class Posicion
+{
+    + int x
+    + int y
+    - Lista Posicion instances
+    +transladar(Posicion nueva):Posicion
+    +siguiente(char unaDireccion): Posicion
+
+}
+interface Sorpresa
+{
+    +activar(Vehiculo vehiculo):double
+}
+interface IVisitor
+{
+    +visit(Auto:auto):int
+    +visit(Moto:moto):int
+    +visit(Auto4x4:auto4x4):int
+}
+class Grilla
+{
+- HashMap <Posicion,IVisitor> obstaculos
+- HashMap <Posicion,Sorpresa> sorpresas
++ avanzar(Vehiculo vehiculo,char direccion)
+- pasarPorObstaculos(Vehiculo vehiculo,Posicion posicion)
+- abrirSorpresas(Vehiculo vehiculo,Posicion posicion)
 }
 
-abstract class Vehiculo {
-    # posicion: int
-    # movimientos: int
-    + posicion(): int
-    + mover(): void
-    + {abstract} pasarPor(obstaculo: Obstaculo)
-    + serPenalizadoCon(puntosPenalizacion: int)
-}
+Vehiculo -> Posicion
+Vehiculo --> TipoVehiculo
+Grilla ..>Vehiculo
+Posicion *- Direccion
+Direccion *- Sentido
+TipoVehiculo ..> IVisitor
+Sorpresa ..> Vehiculo
+
 
 
 @enduml

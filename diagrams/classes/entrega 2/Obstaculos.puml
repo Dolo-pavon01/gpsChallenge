@@ -1,6 +1,7 @@
 @startuml
 class Grilla{}
-class Vehiculo{
+class Vehiculo
+{
 -movimientos : Integer
 -posicion: Posicion
 +moverse(Posicion posicion)
@@ -15,8 +16,9 @@ interface Ivisitor{
 +visit(Auto4x4 auto4x4)
 +visit(Moto moto)
 }
-interface Tipo{
-+accept(Ivisitor visitor))
+interface Tipo
+{
+    +accept(Ivisitor visitor))
 }
 
 
@@ -61,6 +63,9 @@ Ivisitor <|.. Piquete
 Ivisitor <|.. ControlPolicial
 Ivisitor <|.. Pozo
 
+Ivisitor ..Auto
+Ivisitor ..Auto4x4
+Ivisitor ..Moto
 
 
 @enduml

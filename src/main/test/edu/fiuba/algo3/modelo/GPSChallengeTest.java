@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+
 import edu.fiuba.algo3.modelo.Grilla;
 import edu.fiuba.algo3.modelo.IVisitor;
 import edu.fiuba.algo3.modelo.TipoVehiculo;
@@ -126,7 +126,7 @@ public class GPSChallengeTest {
   public void test09AutoAtraviesaCiudadYSeEncuentraConSorpresaFavorable() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.sorpresas.put(Posicion.getPosicion(5, 0), new SorpresaFavorable());
+    grilla.sorpresas.put(Posicion.getPosicion(5, 0), SorpresaFavorable.getSorpresaFavorable());
     Vehiculo auto = new Vehiculo(new Auto());
     // act
     for (int i = 0; i < 5; i++) {
@@ -140,7 +140,7 @@ public class GPSChallengeTest {
   public void test10AutoAtraviesaCiudadYSeEncuentraConSorpresaDesfavorable() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.sorpresas.put(Posicion.getPosicion(5, 0), new SorpresaDesfavorable());
+    grilla.sorpresas.put(Posicion.getPosicion(5, 0), SorpresaDesfavorable.getSorpresaDesfavorable());
     Vehiculo auto = new Vehiculo(new Auto());
     // act
     for (int i = 0; i < 5; i++) {
@@ -154,7 +154,7 @@ public class GPSChallengeTest {
   public void test11AutoPasaPorSorpresaCambioDeVehiculoCambiaA4x4YAlPasarPorPozoNoEsPenalizado() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
+    grilla.sorpresas.put(Posicion.getPosicion(1, 0), SorpresaCambioVehiculo.getSorpresaCambioVehiculo());
     grilla.obstaculos.put(Posicion.getPosicion(2, 0), Pozo.getInstance());
     grilla.obstaculos.put(Posicion.getPosicion(3, 0), Pozo.getInstance());
     Vehiculo auto = new Vehiculo(new Auto());
@@ -170,7 +170,7 @@ public class GPSChallengeTest {
   public void test12Auto4x4PasaPorSorpresaCambioDeVehiculoCambiaAMotoYAlPasarPorPozoEsPenalizado() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
+    grilla.sorpresas.put(Posicion.getPosicion(1, 0), SorpresaCambioVehiculo.getSorpresaCambioVehiculo());
     grilla.obstaculos.put(Posicion.getPosicion(2, 0), Pozo.getInstance());
     Vehiculo auto = new Vehiculo(new Auto4x4());
     // act
@@ -186,7 +186,7 @@ public class GPSChallengeTest {
       test13MotoPasaPorSorpresaCambioDeVehiculoCambiaAAutoYAlPasarPorPozoNoPuedePasarPorPiquete() {
     // arrange
     Grilla grilla = new Grilla();
-    grilla.sorpresas.put(Posicion.getPosicion(1, 0), new SorpresaCambioVehiculo());
+    grilla.sorpresas.put(Posicion.getPosicion(1, 0), SorpresaCambioVehiculo.getSorpresaCambioVehiculo());
     grilla.obstaculos.put(Posicion.getPosicion(2, 0), Piquete.getInstance());
     Vehiculo moto = new Vehiculo(new Moto());
     // act
@@ -198,24 +198,8 @@ public class GPSChallengeTest {
         });
   }
 
-  @Test
-  public void test14MotoPasaPorControlYEsMultadoPorLaYuta() {
-    // arrange
-    Moto tipoMoto = new Moto();
-    IVisitor controlMock = mock(IVisitor.class);
-    Moto tipoMock = mock(Moto.class);
-    when(controlMock.visit(tipoMock)).thenReturn(3);
 
-    Grilla grilla = new Grilla();
-    grilla.obstaculos.put(Posicion.getPosicion(1, 0), controlMock);
-    Vehiculo moto = new Vehiculo(tipoMoto);
-    // act
-    grilla.avanzar(moto, 'd');
-    // assert
-    assertEquals(4, moto.movimientos());
-  }
 
-  /*
    @Test
    public void test14AutoPasaPorControlYEsMultadoPorLaYuta() {
      // arrange
@@ -228,8 +212,7 @@ public class GPSChallengeTest {
      // act
      grilla.avanzar(auto, 'd');
      // assert
-     assertEquals(4, auto.movimientos());
+     verify(controlMock,times(1)).visit(tipoAuto);
    }
 
-  */
 }
