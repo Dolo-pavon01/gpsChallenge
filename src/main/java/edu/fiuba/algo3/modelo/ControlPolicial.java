@@ -8,10 +8,23 @@ public class ControlPolicial implements IVisitor {
   private static final int probabilidadAuto4x4 = 3;
   private static final int limite = 10;
   private static final int multa = 3;
+  private Random randomizador;
+
+  public ControlPolicial() {
+    this.randomizador = new Random();
+  }
+
+  public ControlPolicial(Random randomizador) {
+    this.randomizador = randomizador;
+  }
 
   public int multar(int probabilidad) {
-    Random rand = new Random();
+    /* Random rand = new Random();
     int parado = rand.nextInt(limite); // va entre 0 y 9
+    if (parado < probabilidad) return multa;
+    return 0;
+     */
+    int parado = this.randomizador.nextInt(limite);
     if (parado < probabilidad) return multa;
     return 0;
   }

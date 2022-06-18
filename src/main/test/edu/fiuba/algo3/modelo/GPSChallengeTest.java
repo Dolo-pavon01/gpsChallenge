@@ -200,9 +200,7 @@ public class GPSChallengeTest {
     // arrange
     Moto tipoMoto = new Moto();
     IVisitor controlMock = mock(IVisitor.class);
-    Moto tipoMock = mock(Moto.class);
-    when(controlMock.visit(tipoMock)).thenReturn(3);
-
+    when(controlMock.visit(tipoMoto)).thenReturn(3);
     Grilla grilla = new Grilla();
     grilla.obstaculos.put(Posicion.getPosicion(1, 0), controlMock);
     Vehiculo moto = new Vehiculo(tipoMoto);
@@ -212,21 +210,18 @@ public class GPSChallengeTest {
     assertEquals(4, moto.movimientos());
   }
 
-  /*
-   @Test
-   public void test14AutoPasaPorControlYEsMultadoPorLaYuta() {
-     // arrange
-     ControlPolicial controlMock = mock(ControlPolicial.class);
-     Auto tipoAuto = new Auto();
-     when(controlMock.visit(tipoAuto)).thenReturn(3);
-     Grilla grilla = new Grilla();
-     grilla.obstaculos.put(Posicion.getPosicion(1, 0), controlMock);
-     Vehiculo auto = new Vehiculo(tipoAuto);
-     // act
-     grilla.avanzar(auto, 'd');
-     // assert
-     assertEquals(4, auto.movimientos());
-   }
-
-  */
+  @Test
+  public void test15AutoPasaPorControlYEsMultadoPorLaYuta() {
+    // arrange
+    ControlPolicial controlMock = mock(ControlPolicial.class);
+    Auto tipoAuto = new Auto();
+    when(controlMock.visit(tipoAuto)).thenReturn(3);
+    Grilla grilla = new Grilla();
+    grilla.obstaculos.put(Posicion.getPosicion(1, 0), controlMock);
+    Vehiculo auto = new Vehiculo(tipoAuto);
+    // act
+    grilla.avanzar(auto, 'd');
+    // assert
+    assertEquals(4, auto.movimientos());
+  }
 }
