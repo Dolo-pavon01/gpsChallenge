@@ -25,7 +25,7 @@ public class Posicion {
   }
 
   public Posicion siguiente(char unaDireccion) {
-    Direccion direccion =  new Direccion();
+    Direccion direccion = new Direccion();
     return direccion.moverA(this, unaDireccion);
   }
 }
