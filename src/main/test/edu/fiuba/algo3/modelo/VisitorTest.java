@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-// TODO: Faltan agregar pruebas de Pozo con Auto4x4
 public class VisitorTest {
   @Test
   public void test01PozoEsVisitadoPorMotoRetornaMulta3() {
@@ -133,5 +132,34 @@ public class VisitorTest {
     int multa = controlPolicial.visit(autoMock);
     // assert
     assertEquals(0, multa);
+  }
+
+  @Test
+  public void test11PozoEsVisitadoPorAuto4x4YAuto4x4NoEsMultado() {
+    // arrange
+    Auto4x4 autoMock = mock(Auto4x4.class);
+    Pozo pozo = new Pozo();
+    // act
+    int multa = pozo.visit(autoMock);
+    // assert
+    assertEquals(0, multa);
+  }
+  @Test
+  public void test12PozoEsVisitadoTresVecesPorAuto4x4YAuto4x4EsMultado() {
+    // arrange
+    Auto4x4 autoMock = mock(Auto4x4.class);
+    Pozo unPozo = new Pozo();
+    Pozo otroPozo = new Pozo();
+    Pozo unTercerPozo = new Pozo();
+
+    // act
+    int primeraMulta = unPozo.visit(autoMock);
+    int segundaMulta= otroPozo.visit(autoMock);
+    int terceraMulta = unTercerPozo.visit(autoMock);
+    // assert
+    assertEquals(0, primeraMulta);
+    assertEquals(0, segundaMulta);
+    assertEquals(2, terceraMulta);
+
   }
 }
