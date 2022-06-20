@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,6 +44,16 @@ public class PosicionTest {
     // act & assert
     origen = origen.trasladar(origen.siguiente('s'));
     assertEquals(Posicion.getPosicion(0, 0), origen);
+  }
+
+  @Test
+  public void test04SeIngresaCaracterDesconocidoPorFueraDeWASDYElSistemaArrojaExcepcion() {
+    // arrange
+    Posicion origen = Posicion.getPosicion(0,0);
+    // act & assert
+    Assertions.assertThrows(RuntimeException.class, () -> {
+      origen.siguiente('f');
+    });
   }
 
 }

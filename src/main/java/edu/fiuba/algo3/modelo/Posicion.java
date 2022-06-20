@@ -1,11 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Posicion {
+  private static List<Posicion> instances = new ArrayList<Posicion>();
   private int x;
   private int y;
-  private static List<Posicion> instances = new ArrayList<Posicion>();
 
   public Posicion trasladar(Posicion nueva) {
     return getPosicion(nueva.x, nueva.y);
@@ -33,9 +34,13 @@ public class Posicion {
     instances.add(this);
   }
 
+  private boolean tieneMismasCoordenadas(int x, int y) {
+    return this.x == x && this.y == y;
+  }
+
   public static Posicion getPosicion(int x, int y) {
-    for (Posicion i : instances) {
-      if (i.x == x && i.y == y) return i;
+    for (Posicion posicion : instances) {
+      if (posicion.tieneMismasCoordenadas(x, y)) return posicion;
     }
     return new Posicion(x, y);
   }
