@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-// TODO: Faltan agregar pruebas de Pozo con Auto4x4
 public class VisitorTest {
   @Test
   public void test01PozoEsVisitadoPorMotoRetornaMulta3() {

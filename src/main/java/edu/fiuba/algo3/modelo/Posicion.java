@@ -3,28 +3,30 @@ package edu.fiuba.algo3.modelo;
 import java.util.*;
 
 public class Posicion {
-  public int x;
-  public int y;
+  private int x;
+  private int y;
   private static List<Posicion> instances = new ArrayList<Posicion>();
 
   public Posicion trasladar(Posicion nueva) {
     return getPosicion(nueva.x, nueva.y);
   }
 
-  public Posicion moverHaciaArriba()
-  {
-    return getPosicion(this.x,this.y +1);
+  public Posicion moverHaciaArriba() {
+    return getPosicion(this.x, this.y + 1);
   }
-  public Posicion moverHaciaDerecha()
-  {
-    return getPosicion(this.x +1,this.y );
-  }  public Posicion moverHaciaIzquierda()
-  {
-    return getPosicion(this.x-1,this.y );
-  }  public Posicion moverHaciaAbajo()
-  {
-    return getPosicion(this.x,this.y -1);
+
+  public Posicion moverHaciaDerecha() {
+    return getPosicion(this.x + 1, this.y);
   }
+
+  public Posicion moverHaciaIzquierda() {
+    return getPosicion(this.x - 1, this.y);
+  }
+
+  public Posicion moverHaciaAbajo() {
+    return getPosicion(this.x, this.y - 1);
+  }
+
   private Posicion(int x, int y) {
     this.x = x;
     this.y = y;
@@ -43,7 +45,5 @@ public class Posicion {
     return direccion.moverA(this, unaDireccion);
   }
 
-  public void pertenceADominio(int tamanio) {
-
-  }
+  public void pertenceADominio(int tamanio) {}
 }
