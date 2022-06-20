@@ -8,20 +8,17 @@ public class Mapa {
   HashMap<Posicion, Sorpresa> sorpresas;
   private int tamanio;
 
+  // TODO: Esta hardcodeado el valor del tamanio; hay que ver como pasarle el valor
   public Mapa() {
     this.obstaculos = new HashMap<Posicion, IVisitor>(10, 70);
     this.sorpresas = new HashMap<Posicion, Sorpresa>(10, 70);
-  }
-
-  private boolean perteneceADominio(Posicion posicion) {
-    return posicion.pertenceADominio(this.tamanio);
+    this.tamanio = 20;
   }
 
   public void avanzar(Vehiculo vehiculo, char direccion) {
     Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
-    if (this.perteneceADominio(posicion)) {
-      return;
-    }
+    if (!posicion.estaDentroDeDominio(this.tamanio)) return;
+
     this.pasarPorObstaculos(vehiculo, posicion);
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);

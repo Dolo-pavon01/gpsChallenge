@@ -50,8 +50,7 @@ public class Posicion {
     return direccion.moverA(this, unaDireccion);
   }
 
-  // TODO: Corregir hardcodeo de metodo para que evalue
-  public boolean pertenceADominio(int tamanio) {
-    return false;
+  public boolean estaDentroDeDominio(int tamanio) {
+    return tamanio > this.x && tamanio > this.y;
   }
 }
