@@ -9,7 +9,7 @@ public class Direccion
 
     public Direccion()
     {
-        this.comandos = new HashMap<Character,Sentido>(4,10);
+        this.comandos = new HashMap<>(4,10);
         this.comandos.put('w',new Adelante());
         this.comandos.put('s',new Atras());
         this.comandos.put('a',new Izquierda());

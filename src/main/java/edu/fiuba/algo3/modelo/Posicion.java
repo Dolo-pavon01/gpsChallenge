@@ -11,6 +11,20 @@ public class Posicion {
     return getPosicion(nueva.x, nueva.y);
   }
 
+  public Posicion moverHaciaArriba()
+  {
+    return getPosicion(this.x,this.y +1);
+  }
+  public Posicion moverHaciaDerecha()
+  {
+    return getPosicion(this.x +1,this.y );
+  }  public Posicion moverHaciaIzquierda()
+  {
+    return getPosicion(this.x-1,this.y );
+  }  public Posicion moverHaciaAbajo()
+  {
+    return getPosicion(this.x,this.y -1);
+  }
   private Posicion(int x, int y) {
     this.x = x;
     this.y = y;
@@ -27,5 +41,9 @@ public class Posicion {
   public Posicion siguiente(char unaDireccion) {
     Direccion direccion = new Direccion();
     return direccion.moverA(this, unaDireccion);
+  }
+
+  public void pertenceADominio(int tamanio) {
+
   }
 }

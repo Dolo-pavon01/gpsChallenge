@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GrillaTest {
+public class MapaTest {
     @Test
     public void seCreaUnaGrillaValida()
     {
@@ -18,4 +18,6 @@ public class GrillaTest {
         //assert
         assertEquals(4,gameplay.puntaje()); // hay un pozo y es un auto
     }
+
+
 }

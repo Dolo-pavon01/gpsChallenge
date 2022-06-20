@@ -4,6 +4,6 @@ public class Adelante implements Sentido {
 
   @Override
   public Posicion ejecutar(Posicion posicion) {
-    return Posicion.getPosicion(posicion.x, posicion.y + 1);
+    return posicion.moverHaciaArriba();
   }
 }
