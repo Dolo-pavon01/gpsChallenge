@@ -12,9 +12,10 @@ public class Pozo implements IVisitor {
 
   // TODO: Acá se está rompiendo el encapsulamiento en auto4x4
   public int visit(Auto4x4 auto4x4) {
-    auto4x4.contadorPozos += 1;
-    if (auto4x4.contadorPozos > LIMITE_POZOS_ATRAVESADOS) {
-      auto4x4.contadorPozos = 0;
+    auto4x4.aumentarContadorPozos();
+    if (auto4x4.esMultadoPorPozo(LIMITE_POZOS_ATRAVESADOS))
+    {
+      auto4x4.resetearContadorPozo();
       return MULTA_AUTO4x4;
     }
     return 0;

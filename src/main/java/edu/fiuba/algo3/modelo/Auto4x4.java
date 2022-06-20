@@ -15,4 +15,16 @@ public class Auto4x4 implements TipoVehiculo {
   public TipoVehiculo cambiarTipo() {
     return new Moto();
   }
+
+  public void aumentarContadorPozos() {
+    this.contadorPozos+=1;
+  }
+  public void resetearContadorPozo()
+  {
+    this.contadorPozos =0;
+  }
+
+  public boolean esMultadoPorPozo(int limitePozosAtravesados) {
+    return(this.contadorPozos > limitePozosAtravesados);}
+
 }

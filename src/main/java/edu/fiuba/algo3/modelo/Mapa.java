@@ -2,11 +2,12 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.HashMap;
 
-public class Grilla {
+public class Mapa {
   HashMap<Posicion, IVisitor> obstaculos;
   HashMap<Posicion, Sorpresa> sorpresas;
+  int tamanio;
 
-  public Grilla() {
+  public Mapa() {
     this.obstaculos = new HashMap<Posicion, IVisitor>(10, 70);
     this.sorpresas = new HashMap<Posicion, Sorpresa>(10, 70);
   }
@@ -14,6 +15,7 @@ public class Grilla {
   public void avanzar(Vehiculo vehiculo, char direccion)
   {
     Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
+    posicion.pertenceADominio(tamanio);
     this.pasarPorObstaculos(vehiculo, posicion);
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
