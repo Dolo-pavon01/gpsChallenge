@@ -45,5 +45,8 @@ public class Posicion {
     return direccion.moverA(this, unaDireccion);
   }
 
-  public void pertenceADominio(int tamanio) {}
+  // TODO: Corregir hardcodeo de metodo para que evalue
+  public boolean pertenceADominio(int tamanio) {
+    return false;
+  }
 }

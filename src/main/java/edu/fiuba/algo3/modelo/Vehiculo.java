@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo;
 public class Vehiculo {
   private TipoVehiculo tipo;
   private Posicion posicion;
-
   private int movimientos;
 
   public Vehiculo(TipoVehiculo tipoVehiculo) {
@@ -28,7 +27,6 @@ public class Vehiculo {
   }
 
   Posicion getPosicionSiguiente(char unaDireccion) {
-
     return this.posicion.siguiente(unaDireccion);
   }
 
