@@ -8,7 +8,7 @@ public class Vehiculo {
   public Vehiculo(TipoVehiculo tipoVehiculo) {
     this.tipo = tipoVehiculo;
     this.movimientos = 0;
-    this.posicion = Posicion.getPosicion(0, 0);
+    this.posicion = Posicion.getPosicion(1, 1);
   }
 
   public void pasarPor(IVisitor visitor) {
