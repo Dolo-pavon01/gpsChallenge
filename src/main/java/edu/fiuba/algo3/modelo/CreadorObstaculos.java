@@ -2,11 +2,19 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.HashMap;
 
-public class CreadorObstaculos implements Creador{
+public class CreadorObstaculos implements Creador {
 
     public HashMap crear(int tamanioMapa)
     {
         HashMap obstaculos = new HashMap<>(10,70);
+        for(int i=0;i< tamanioMapa;i++)
+        {
+            for(int j=0;j<tamanioMapa;j++)
+            {
+                Posicion p = Posicion.getPosicion(i,j);
+                obstaculos.put(p,new ObstaculoNulo());
+            }
+        }
         for(int i = 1;i< tamanioMapa/3;i++)
         {
             Posicion p = Posicion.getPosicion(0,i);
@@ -22,6 +30,7 @@ public class CreadorObstaculos implements Creador{
             Posicion p = Posicion.getPosicion(i+1,i);
             obstaculos.put(p,new Pozo());
         }
+
         return obstaculos;
     }
 }

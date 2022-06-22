@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Translate;
@@ -30,6 +30,10 @@ public class AppCami extends Application {
         img.setPreserveRatio(true);
         img.setFitHeight(50);
         img.setY(100);
+
+        FileInputStream input2=new FileInputStream("C:\\Users\\camil\\Documents\\GitHub\\gpsChallenge\\docs\\imagenFondo.png");
+        Image image1 = new Image(input2);
+        ImageView fondo=new ImageView(image1);
 
         Rectangle rect=new Rectangle(); //instantiating Rectangle
         rect.setX(0); //setting the X coordinate of upper left //corner of rectangle
@@ -62,7 +66,7 @@ public class AppCami extends Application {
 
         Group group = new Group(); //creating Group
 
-
+        group.getChildren().addAll(fondo);
         group.getChildren().addAll(img);
         group.getChildren().addAll(mover);
         group.getChildren().addAll(rect,rect1,rect2,rect3);
@@ -75,6 +79,8 @@ public class AppCami extends Application {
 
 
 
+
+
         mover.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -84,7 +90,6 @@ public class AppCami extends Application {
         });
 
         Scene scene = new Scene(group,500,500, Color.BLACK);
-
         primaryStage.setTitle("Aplicacion Cami");
         primaryStage.setScene(scene);
         primaryStage.show();
