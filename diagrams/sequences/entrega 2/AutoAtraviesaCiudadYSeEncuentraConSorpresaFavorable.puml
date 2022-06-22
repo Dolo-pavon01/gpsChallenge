@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor Gameplay
+participant ":Grilla" as Grilla
+participant ":Piquete" as Piquete
+participant ":Vehiculo" as Auto
+
+activate Gameplay
+Gameplay -> Grilla: avanzar(auto,'D')
+Grilla -> Auto: mover()
+Grilla -> Auto:  posicion()
+Grilla <-- Auto: posicionAuto
+
+
+
+
+
+@enduml

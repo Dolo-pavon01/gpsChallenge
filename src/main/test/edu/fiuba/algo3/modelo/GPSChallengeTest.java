@@ -203,8 +203,7 @@ public class GPSChallengeTest {
     // arrange
     Moto tipoMoto = new Moto();
     IVisitor controlMock = mock(IVisitor.class);
-    Moto tipoMock = mock(Moto.class);
-    when(controlMock.visit(tipoMock)).thenReturn(3);
+    when(controlMock.visit(tipoMoto)).thenReturn(3);
 
     Grilla grilla = new Grilla();
     grilla.obstaculos.put(Posicion.getPosicion(1, 0), controlMock);
