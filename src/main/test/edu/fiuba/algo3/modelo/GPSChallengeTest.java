@@ -28,6 +28,7 @@ public class GPSChallengeTest {
   @Test
   public void
       test02AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
+
     // arrange
     Grilla grilla = new Grilla();
     grilla.obstaculos.put(Posicion.getPosicion(1, 0), Pozo.getInstance());
