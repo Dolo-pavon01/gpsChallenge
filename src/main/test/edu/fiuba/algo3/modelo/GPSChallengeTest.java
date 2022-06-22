@@ -24,6 +24,7 @@ public class GPSChallengeTest {
   @Test
   public void
       test02AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
+
     // arrange
     Mapa mapa = new Mapa();
     mapa.obstaculos.put(Posicion.getPosicion(1, 0), new Pozo());
