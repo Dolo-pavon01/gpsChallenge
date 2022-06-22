@@ -1,66 +1,64 @@
 @startuml
 class Grilla{}
-class Vehiculo{
--movimientos : Integer
--posicion: Posicion
-+moverse(Posicion posicion)
-+getPosicionSiguiente(char unaDireccion)
-+accept(Ivisitor visitor)
-+abrirSopresa(Sorpresa sorpresa)
-+PasarPor(Ivisitor visitor)
-+RecibirSorpresa(CambioVehiculo cambioVehiculo)
+
+class Vehiculo {
+    - movimientos: Integer
+    - posicion: Posicion
+    + moverse(posicion: Posicion)
+    + getPosicionSiguiente(unaDireccion: char)
+    + accept(visitor: IVisitor)
+    + abrirSopresa(sorpresa: Sorpresa)
+    + pasarPor(visitor: IVisitor)
+    + recibirSorpresa(cambioVehiculo: CambioVehiculo)
 }
-interface Ivisitor{
-+visit(Auto auto)
-+visit(Auto4x4 auto4x4)
-+visit(Moto moto)
-}
-interface Tipo{
-+accept(Ivisitor visitor))
+interface Ivisitor {
+    + visit(auto: Auto)
+    + visit(auto4x4: Auto4x4)
+    + visit(moto: Moto)
 }
 
-
-class Moto{
-accept(Ivisitor visitor))
-}
-class Auto{
-accept(Ivisitor visitor))
+interface Tipo {
+    + accept(visitor: IVisitor)
 }
 
-class Auto4x4{
-accept(Ivisitor visitor))
+class Moto {
+    + accept(visitor: IVisitor)
 }
 
-class Piquete{
-+visit(Auto auto)
-+visit(Auto4x4 auto4x4)
-+visit(Moto moto)
+class Auto {
+    + accept(visitor: IVisitor)
 }
-class ControlPolicial{
-+visit(Auto auto)
-+visit(Auto4x4 auto4x4)
-+visit(Moto moto)
+
+class Auto4x4 {
+    + accept(visitor: IVisitor)
 }
-class Pozo{
-+visit(Auto auto)
-+visit(Auto4x4 auto4x4)
-+visit(Moto moto)
+
+class Piquete {
+    + visit(auto: Auto)
+    + visit(auto4x4: Auto4x4)
+    + visit(moto: Moto)
+}
+
+class ControlPolicial {
+    + visit(auto: Auto)
+    + visit(auto4x4: Auto4x4)
+    + visit(moto: Moto)
+}
+
+class Pozo {
+    + visit(auto: Auto)
+    + visit(auto4x4: Auto4x4)
+    + visit(moto: Moto)
 }
 
 Grilla --> Vehiculo
-
 Grilla ..> Ivisitor
 Vehiculo --> Tipo
 Tipo <|.. Moto
 Tipo <|.. Auto
 Tipo <|.. Auto4x4
-
-
-
 Ivisitor <|.. Piquete
 Ivisitor <|.. ControlPolicial
 Ivisitor <|.. Pozo
-
-
 
 @enduml

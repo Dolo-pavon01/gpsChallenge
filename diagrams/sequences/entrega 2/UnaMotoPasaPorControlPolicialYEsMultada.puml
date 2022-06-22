@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+title Moto se mueve hacia la derecha, pasa por un control policial y es multado 3 movimientos
+actor Gameplay
+participant ":Grilla" as Grilla
+participant ":Moto" as Moto
+participant ":Posicion" as Posicion
+participant ":Direccion" as Direccion
+participant ":Derecha" as Derecha
+participant ":ControlPolicial" as ControlPolicial
+
+activate Gameplay
+Gameplay -> Grilla: avanzar(moto, D)
+activate Grilla
+Grilla -> Moto: getPosicionSiguiente(D)
+activate Moto
+Moto -> Posicion: siguiente(D)
+activate Posicion
+Posicion -> Direccion: moverA(posicion, D)
+activate Direccion
+Direccion -> Derecha: ejecutar(posicion)
+activate Derecha
+Derecha --> Grilla: posicionSig
+Grilla -> Grilla: pasarPorObstaculo(moto, posicionSig)
+Grilla -> Moto: pasarPor(controlPolicial)
+activate ControlPolicial
+Moto -> ControlPolicial: visit(moto)
+ControlPolicial --> Moto: multa = 3
+Grilla -> Moto: moverse(posicionSig)
+
+
+@enduml
