@@ -7,7 +7,7 @@ public class Mapa {
   HashMap<Posicion, Sorpresa> sorpresas;
 
   HashMap<Posicion,Pared> paredes;
-  int tamanio
+  int tamanio;
 
   public Mapa() {
     this.obstaculos = new HashMap<Posicion, IVisitor>(10, 70);

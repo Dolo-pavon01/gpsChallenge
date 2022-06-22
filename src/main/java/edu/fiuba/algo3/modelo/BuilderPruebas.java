@@ -20,6 +20,4 @@ public class BuilderPruebas {
         mapa.paredes = creadorParedes.crear(tamanio);
         return mapa;
     }
-    return mapa;
   }
-}

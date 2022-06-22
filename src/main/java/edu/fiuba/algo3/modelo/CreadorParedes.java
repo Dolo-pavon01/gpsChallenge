@@ -9,12 +9,12 @@ public class CreadorParedes implements Creador{
         HashMap paredes = new HashMap<>(10,70);
         for(int i = 0;i< tamanioMapa;i++)
         {
-            Posicion p = Posicion.getPosicion(0,i);
+            Posicion p = Posicion.getPosicion(-1,i);
             paredes.put(p,new Pared());
         }
         for(int i = 0;i< tamanioMapa;i++)
         {
-            Posicion p = Posicion.getPosicion(i,0);
+            Posicion p = Posicion.getPosicion(i,-1);
             paredes.put(p,new Pared());
         }
         for(int i = 0;i< tamanioMapa;i++)
