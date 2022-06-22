@@ -33,6 +33,11 @@ public class MapaTest {
         //assert
         assertEquals(4,gameplay.puntaje()); // hay un pozo y es un auto
     }
+  
+    // act
+    gameplay.jugar('d');
 
-
+    // assert
+    assertEquals(4, gameplay.puntaje()); // hay un pozo y es un auto
+  }
 }

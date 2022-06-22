@@ -7,7 +7,7 @@ public class Mapa {
   HashMap<Posicion, Sorpresa> sorpresas;
 
   HashMap<Posicion,Pared> paredes;
-  int tamanio;
+  int tamanio
 
   public Mapa() {
     this.obstaculos = new HashMap<Posicion, IVisitor>(10, 70);
@@ -15,8 +15,7 @@ public class Mapa {
     this.paredes = new HashMap<>(10,70);
   }
 
-  public void avanzar(Vehiculo vehiculo, char direccion)
-  {
+  public void avanzar(Vehiculo vehiculo, char direccion) {
     Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
     if(paredes.get(posicion) != null)
       return;
@@ -25,15 +24,11 @@ public class Mapa {
     vehiculo.moverse(posicion);
   }
 
-  private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion)
-  {
-    IVisitor obstaculo = obstaculos.get(posicion);
-    vehiculo.pasarPor(obstaculo);
+  private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion) {
+    vehiculo.pasarPor(this.obstaculos.get(posicion));
   }
 
-  private void abrirSorpresas(Vehiculo vehiculo, Posicion posicion)
-  {
-    Sorpresa sorpresa = sorpresas.get(posicion);
-    vehiculo.abrirSopresa(sorpresa);
+  private void abrirSorpresas(Vehiculo vehiculo, Posicion posicion) {
+    vehiculo.abrirSopresa(this.sorpresas.get(posicion));
   }
 }
