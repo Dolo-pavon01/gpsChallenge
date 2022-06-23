@@ -124,55 +124,29 @@ public class AppCami extends Application {
             }
         });
 
-        Translate arriba = new Translate();
-        arriba.setX(20);
-
-        Translate abajo = new Translate();
-        abajo.setX(-20);
-
-        Translate derecha = new Translate();
-        derecha.setX(20);
-
-        Translate izquierda = new Translate();
-        izquierda.setX(20);
-
-        Rotate haciaArriba = new Rotate();
-        haciaArriba.setAngle(90);
-
-        Rotate haciaAbajo = new Rotate();
-        haciaAbajo.setAngle(90);
-        haciaAbajo.setPivotX(20);
-        haciaAbajo.setPivotY(20);
-
-        juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if(key.getCode()== KeyCode.D) {
-                dibujoVehiculo.setRotate(dibujoVehiculo.getRotate()+90);
-                dibujoVehiculo.getTransforms().addAll(derecha);
-                gameplay.jugar('D');
-            }
-        });
-
-        juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if(key.getCode()== KeyCode.A) {
-                dibujoVehiculo.getTransforms().addAll(haciaAbajo);
-                dibujoVehiculo.getTransforms().addAll(izquierda);
-                gameplay.jugar('A');
-            }
-        });
-
-        juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if(key.getCode()== KeyCode.W) {
-
-                dibujoVehiculo.getTransforms().addAll(arriba);
-                gameplay.jugar('W');
-            }
-        });
-
-        juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            if(key.getCode()== KeyCode.S) {
-
-                dibujoVehiculo.getTransforms().addAll(abajo);
-                gameplay.jugar('S');
+        juego.setOnKeyPressed(event -> {
+            dibujoVehiculo.setRotationAxis(Rotate.Z_AXIS);
+            switch (event.getCode()){
+                case D:
+                    dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
+                    dibujoVehiculo.setX(dibujoVehiculo.getX()+10);
+                    dibujoVehiculo.setRotate(0);
+                    gameplay.jugar('D');
+                case A:
+                    dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
+                    dibujoVehiculo.setX(dibujoVehiculo.getX()-10);
+                    dibujoVehiculo.setRotate(180);
+                    gameplay.jugar('A');
+                case W:
+                    dibujoVehiculo.setY(dibujoVehiculo.getY()-10);
+                    dibujoVehiculo.setRotate(270);
+                    gameplay.jugar('W');
+                case S:
+                    dibujoVehiculo.setY(dibujoVehiculo.getY()+10);
+                    dibujoVehiculo.setRotate(90);
+                    gameplay.jugar('S');
+                default:
+                    break;
             }
         });
 
