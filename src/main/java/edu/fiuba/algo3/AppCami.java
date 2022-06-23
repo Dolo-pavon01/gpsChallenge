@@ -24,14 +24,14 @@ public class AppCami extends Application {
         mover.setLayoutX(50);
         mover.setLayoutY(300);
 
-        FileInputStream input=new FileInputStream("C:\\Users\\camil\\Documents\\GitHub\\gpsChallenge\\docs\\auto.png");
+        FileInputStream input=new FileInputStream("docs/auto.png");
         Image image = new Image(input);
         ImageView img=new ImageView(image);
         img.setPreserveRatio(true);
         img.setFitHeight(50);
         img.setY(100);
 
-        FileInputStream input2=new FileInputStream("C:\\Users\\camil\\Documents\\GitHub\\gpsChallenge\\docs\\imagenFondo.png");
+        FileInputStream input2=new FileInputStream("docs/imagenFondo.png");
         Image image1 = new Image(input2);
         ImageView fondo=new ImageView(image1);
 
