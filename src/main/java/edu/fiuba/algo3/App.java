@@ -46,9 +46,6 @@ public class App extends Application {
         group.getChildren().addAll(fondo);
         group.getChildren().addAll(dibujoVehiculo);
 
-
-
-
         TextField nombreInput = new TextField();
         nombreInput.setPromptText("Ingresar nombre del jugador");
 
