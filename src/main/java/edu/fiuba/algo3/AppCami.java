@@ -31,10 +31,11 @@ public class AppCami extends Application {
 
         FileInputStream input=new FileInputStream("C:\\Users\\camil\\Documents\\GitHub\\gpsChallenge\\docs\\auto.png");
         Image image = new Image(input);
-        ImageView img=new ImageView(image);
-        img.setPreserveRatio(true);
-        img.setFitHeight(50);
-        img.setY(100);
+        ImageView dibujoVehiculo=new ImageView(image);
+        dibujoVehiculo.setPreserveRatio(true);
+        dibujoVehiculo.setFitHeight(50);
+        dibujoVehiculo.setY(100);
+
 
         FileInputStream input2=new FileInputStream("C:\\Users\\camil\\Documents\\GitHub\\gpsChallenge\\docs\\imagenFondo.png");
         Image image1 = new Image(input2);
@@ -43,28 +44,10 @@ public class AppCami extends Application {
         Group group = new Group(); //creating Group
 
         group.getChildren().addAll(fondo);
-        group.getChildren().addAll(img);
+        group.getChildren().addAll(dibujoVehiculo);
 
 
-        Translate arriba = new Translate();
-        arriba.setX(20);
 
-        Translate abajo = new Translate();
-        abajo.setX(-20);
-
-        Translate derecha = new Translate();
-        derecha.setX(20);
-
-        Translate izquierda = new Translate();
-        izquierda.setX(20);
-
-        Rotate haciaArriba = new Rotate();
-        haciaArriba.setAngle(90);
-
-        Rotate haciaAbajo = new Rotate();
-        haciaAbajo.setAngle(90);
-        haciaAbajo.setPivotX(20);
-        haciaAbajo.setPivotY(20);
 
         TextField nombreInput = new TextField();
         nombreInput.setPromptText("Ingresar nombre del jugador");
@@ -129,41 +112,67 @@ public class AppCami extends Application {
             }
         });
         Scene juego = new Scene(group,500,500, Color.BLACK);
-        comenzar.setOnAction(new EventHandler<ActionEvent>() {
+        Gameplay gameplay = new Gameplay(new BuilderPruebas(20));
+        comenzar.setOnAction(new EventHandler<ActionEvent>()
+        {
 
             @Override
             public void handle(ActionEvent arg0) {
-                Gameplay gameplay = new Gameplay(new BuilderPruebas(20));
+
                 gameplay.iniciarJuego(vehiculo);
                 primaryStage.setScene(juego);
             }
         });
 
+        Translate arriba = new Translate();
+        arriba.setX(20);
+
+        Translate abajo = new Translate();
+        abajo.setX(-20);
+
+        Translate derecha = new Translate();
+        derecha.setX(20);
+
+        Translate izquierda = new Translate();
+        izquierda.setX(20);
+
+        Rotate haciaArriba = new Rotate();
+        haciaArriba.setAngle(90);
+
+        Rotate haciaAbajo = new Rotate();
+        haciaAbajo.setAngle(90);
+        haciaAbajo.setPivotX(20);
+        haciaAbajo.setPivotY(20);
+
         juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if(key.getCode()== KeyCode.D) {
-                img.getTransforms().addAll(haciaArriba);
-                img.getTransforms().addAll(derecha);
+                dibujoVehiculo.setRotate(dibujoVehiculo.getRotate()+90);
+                dibujoVehiculo.getTransforms().addAll(derecha);
+                gameplay.jugar('D');
             }
         });
 
         juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if(key.getCode()== KeyCode.A) {
-                img.getTransforms().addAll(haciaAbajo);
-                img.getTransforms().addAll(izquierda);
+                dibujoVehiculo.getTransforms().addAll(haciaAbajo);
+                dibujoVehiculo.getTransforms().addAll(izquierda);
+                gameplay.jugar('A');
             }
         });
 
         juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if(key.getCode()== KeyCode.W) {
 
-                img.getTransforms().addAll(arriba);
+                dibujoVehiculo.getTransforms().addAll(arriba);
+                gameplay.jugar('W');
             }
         });
 
         juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if(key.getCode()== KeyCode.S) {
 
-                img.getTransforms().addAll(abajo);
+                dibujoVehiculo.getTransforms().addAll(abajo);
+                gameplay.jugar('S');
             }
         });
 
