@@ -23,18 +23,20 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 
+import static javafx.scene.input.KeyCode.*;
+
 public class AppCami extends Application {
     private Vehiculo vehiculo;
-
     public void start(Stage primaryStage) throws Exception {
 
-
+        vehiculo = new Vehiculo();
         FileInputStream input=new FileInputStream("docs/auto.png");
         Image image = new Image(input);
         ImageView dibujoVehiculo=new ImageView(image);
         dibujoVehiculo.setPreserveRatio(true);
         dibujoVehiculo.setFitHeight(50);
-        dibujoVehiculo.setY(100);
+        dibujoVehiculo.setX(300);
+        dibujoVehiculo.setY(300);
 
 
         FileInputStream input2=new FileInputStream("docs/imagenFondo.png");
@@ -48,12 +50,26 @@ public class AppCami extends Application {
 
 
 
-
         TextField nombreInput = new TextField();
         nombreInput.setPromptText("Ingresar nombre del jugador");
+       // String nombreUsuario = nombreInput.getText();
 
         Label etiquetaVehiculos = new Label();
         etiquetaVehiculos.setText("Elija su vehículo");
+
+        Label displayPuntaje = new Label();
+        displayPuntaje.setText("0");
+        displayPuntaje.setLayoutX(200);
+        displayPuntaje.setLayoutY(300);
+        displayPuntaje.setTextFill(Color.BLACK);
+        group.getChildren().addAll(displayPuntaje);
+
+        Label displayPosicion = new Label();
+        displayPosicion.setText("10,10");
+        displayPosicion.setLayoutX(200);
+        displayPosicion.setLayoutY(400);
+        displayPosicion.setTextFill(Color.BLACK);
+        group.getChildren().addAll(displayPosicion);
 
         Button motoBtn = new Button();
         motoBtn.setText("Moto");
@@ -89,12 +105,12 @@ public class AppCami extends Application {
         primaryStage.setTitle("");
         primaryStage.setScene(inicio);
         primaryStage.show();
-
         autoBtn.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent arg0) {
-                 vehiculo = new Vehiculo(new Auto());
+                    vehiculo = new Vehiculo(new Auto());
+
             }
         });
         motoBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -111,6 +127,8 @@ public class AppCami extends Application {
                 vehiculo = new Vehiculo(new Auto4x4());
             }
         });
+
+
         Scene juego = new Scene(group,500,500, Color.BLACK);
         Gameplay gameplay = new Gameplay(new BuilderPruebas(20));
         comenzar.setOnAction(new EventHandler<ActionEvent>()
@@ -118,37 +136,52 @@ public class AppCami extends Application {
 
             @Override
             public void handle(ActionEvent arg0) {
-
                 gameplay.iniciarJuego(vehiculo);
                 primaryStage.setScene(juego);
             }
         });
 
-        juego.setOnKeyPressed(event -> {
+       gameplay.iniciarJuego(vehiculo);
+        juego.setOnKeyPressed(KeyEvent-> {
             dibujoVehiculo.setRotationAxis(Rotate.Z_AXIS);
-            switch (event.getCode()){
+            switch (KeyEvent.getCode()){
                 case D:
-                    dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
-                    dibujoVehiculo.setX(dibujoVehiculo.getX()+10);
-                    dibujoVehiculo.setRotate(0);
-                    gameplay.jugar('D');
+                    if(gameplay.jugar('d'))
+                    {
+                        dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
+                        dibujoVehiculo.setX(dibujoVehiculo.getX()+10);
+                        dibujoVehiculo.setRotate(0);
+                    }
+                    break;
                 case A:
-                    dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
-                    dibujoVehiculo.setX(dibujoVehiculo.getX()-10);
-                    dibujoVehiculo.setRotate(180);
-                    gameplay.jugar('A');
+                    if(gameplay.jugar('a'))
+                    {
+                        dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
+                        dibujoVehiculo.setX(dibujoVehiculo.getX()-10);
+                        dibujoVehiculo.setRotate(180);
+                    }
+                    break;
                 case W:
-                    dibujoVehiculo.setY(dibujoVehiculo.getY()-10);
-                    dibujoVehiculo.setRotate(270);
-                    gameplay.jugar('W');
+                    if(gameplay.jugar('w'))
+                    {
+                        dibujoVehiculo.setY(dibujoVehiculo.getY()-10);
+                        dibujoVehiculo.setRotate(270);
+                    }
+                    break;
                 case S:
-                    dibujoVehiculo.setY(dibujoVehiculo.getY()+10);
-                    dibujoVehiculo.setRotate(90);
-                    gameplay.jugar('S');
+                    if(gameplay.jugar('s'))
+                    {
+                        dibujoVehiculo.setY(dibujoVehiculo.getY()+10);
+                        dibujoVehiculo.setRotate(90);
+                    }
+                    break;
                 default:
                     break;
             }
+            displayPuntaje.setText(Integer.toString(gameplay.puntaje()));
+            displayPosicion.setText(gameplay.posicionJugador());
         });
+
 
     }
     public static void main (String[] args)

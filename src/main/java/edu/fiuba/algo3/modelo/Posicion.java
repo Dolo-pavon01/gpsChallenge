@@ -12,6 +12,11 @@ public class Posicion {
     return getPosicion(nueva.x, nueva.y);
   }
 
+  public String posicionAString()
+  {
+    return (Integer.toString(this.x) +"," + Integer.toString(this.y));
+  }
+
   public Posicion moverHaciaArriba() {
     return getPosicion(this.x, this.y + 1);
   }
@@ -50,7 +55,4 @@ public class Posicion {
     return direccion.moverA(this, unaDireccion);
   }
 
-  public boolean estaDentroDeDominio(int tamanio) {
-    return tamanio > this.x && tamanio > this.y;
-  }
 }

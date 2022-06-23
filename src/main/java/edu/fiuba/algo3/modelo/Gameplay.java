@@ -9,13 +9,21 @@ public class Gameplay {
     this.builder = unBuilder;
   }
 
-  public void iniciarJuego(Vehiculo unVehiculo) {
-    this.vehiculoEnJuego = unVehiculo;
+  public void iniciarJuego(Vehiculo vehiculo) {
+    this.vehiculoEnJuego = vehiculo;
     this.mapa = this.builder.crearGameplay();
   }
 
-  public void jugar(char input) {
+
+  public boolean jugar(char input) {
+    int puntaje = this.vehiculoEnJuego.movimientos();
     this.mapa.avanzar(vehiculoEnJuego, input);
+    return(this.vehiculoEnJuego.movimientos() != puntaje);
+  }
+
+  public String posicionJugador()
+  {
+    return( this.vehiculoEnJuego.getPosicion().posicionAString());
   }
 
   public int puntaje() {
