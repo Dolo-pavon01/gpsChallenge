@@ -29,7 +29,7 @@ public class AppCami extends Application {
     public void start(Stage primaryStage) throws Exception {
 
 
-        FileInputStream input=new FileInputStream("C:\\Users\\camil\\Documents\\GitHub\\gpsChallenge\\docs\\auto.png");
+        FileInputStream input=new FileInputStream("docs/auto.png");
         Image image = new Image(input);
         ImageView dibujoVehiculo=new ImageView(image);
         dibujoVehiculo.setPreserveRatio(true);
@@ -37,7 +37,7 @@ public class AppCami extends Application {
         dibujoVehiculo.setY(100);
 
 
-        FileInputStream input2=new FileInputStream("C:\\Users\\camil\\Documents\\GitHub\\gpsChallenge\\docs\\imagenFondo.png");
+        FileInputStream input2=new FileInputStream("docs/imagenFondo.png");
         Image image1 = new Image(input2);
         ImageView fondo=new ImageView(image1);
 

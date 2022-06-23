@@ -5,9 +5,7 @@ import java.util.HashMap;
 public class Mapa {
   HashMap<Posicion, IVisitor> obstaculos;
   HashMap<Posicion, Sorpresa> sorpresas;
-
   HashMap<Posicion,Pared> paredes;
-  int tamanio;
 
   public Mapa() {
     this.obstaculos = new HashMap<Posicion, IVisitor>(10, 70);

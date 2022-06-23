@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import edu.fiuba.algo3.modelo.Mapa;
+import edu.fiuba.algo3.modelo.IVisitor;
+import edu.fiuba.algo3.modelo.TipoVehiculo;
+import edu.fiuba.algo3.modelo.Moto;
 
 public class GPSChallengeTest {
 
@@ -24,6 +28,7 @@ public class GPSChallengeTest {
   @Test
   public void
       test02AutoAtraviesaCiudadConUnMovimientoAtraviesaPozoYTiene3MovimientosDePenalizacion() {
+
     // arrange
     Mapa mapa = new Mapa();
     mapa.obstaculos.put(Posicion.getPosicion(1, 0), new Pozo());
@@ -197,6 +202,7 @@ public class GPSChallengeTest {
     Moto tipoMoto = new Moto();
     IVisitor controlMock = mock(IVisitor.class);
     when(controlMock.visit(tipoMoto)).thenReturn(3);
+
     Mapa mapa = new Mapa();
     mapa.obstaculos.put(Posicion.getPosicion(1, 0), controlMock);
     Vehiculo moto = new Vehiculo(tipoMoto);
@@ -206,18 +212,21 @@ public class GPSChallengeTest {
     assertEquals(4, moto.movimientos());
   }
 
-  @Test
-  public void test15AutoPasaPorControlYEsMultadoPorLaYuta() {
-    // arrange
-    ControlPolicial controlMock = mock(ControlPolicial.class);
-    Auto tipoAuto = new Auto();
-    when(controlMock.visit(tipoAuto)).thenReturn(3);
-    Mapa mapa = new Mapa();
-    mapa.obstaculos.put(Posicion.getPosicion(1, 0), controlMock);
-    Vehiculo auto = new Vehiculo(tipoAuto);
-    // act
-    mapa.avanzar(auto, 'd');
-    // assert
-    assertEquals(4, auto.movimientos());
-  }
+  /*
+   @Test
+   public void test14AutoPasaPorControlYEsMultadoPorLaYuta() {
+     // arrange
+     ControlPolicial controlMock = mock(ControlPolicial.class);
+     Auto tipoAuto = new Auto();
+     when(controlMock.visit(tipoAuto)).thenReturn(3);
+     Mapa mapa = new Mapa();
+     mapa.obstaculos.put(Posicion.getPosicion(1, 0), controlMock);
+     Vehiculo auto = new Vehiculo(tipoAuto);
+     // act
+     mapa.avanzar(auto, 'd');
+     // assert
+     assertEquals(4, auto.movimientos());
+   }
+
+  */
 }
