@@ -13,13 +13,13 @@ public class Vehiculo {
 
   public void pasarPor(IVisitor visitor) {
     if (visitor == null)
-      throw new ObstaculoEsNulo();
+      return;
     this.movimientos += this.tipo.pasarPor(visitor);
   }
 
   public void abrirSopresa(Sorpresa sorpresa) {
     if (sorpresa == null)
-      throw new SorpresaEsNula();
+      return;
     sorpresa.activar(this);
   }
 

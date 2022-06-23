@@ -146,33 +146,38 @@ public class AppCami extends Application {
 
         juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if(key.getCode()== KeyCode.D) {
-                dibujoVehiculo.setRotate(dibujoVehiculo.getRotate()+90);
-                dibujoVehiculo.getTransforms().addAll(derecha);
-                gameplay.jugar('D');
+                int p = gameplay.puntaje();
+                gameplay.jugar('d');
+                if (p != gameplay.puntaje())
+                    dibujoVehiculo.getTransforms().addAll(derecha,haciaArriba);
             }
-        });
+            });
 
         juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if(key.getCode()== KeyCode.A) {
-                dibujoVehiculo.getTransforms().addAll(haciaAbajo);
-                dibujoVehiculo.getTransforms().addAll(izquierda);
-                gameplay.jugar('A');
+                int p = gameplay.puntaje();
+                gameplay.jugar('a');
+                if(p != gameplay.puntaje())
+                    dibujoVehiculo.getTransforms().addAll(izquierda,haciaAbajo);
             }
         });
 
         juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if(key.getCode()== KeyCode.W) {
-
-                dibujoVehiculo.getTransforms().addAll(arriba);
-                gameplay.jugar('W');
+                int p = gameplay.puntaje();
+                gameplay.jugar('w');
+                if(p != gameplay.puntaje())
+                    dibujoVehiculo.getTransforms().addAll(arriba);
             }
         });
 
         juego.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if(key.getCode()== KeyCode.S) {
+                int p = gameplay.puntaje();
+                gameplay.jugar('s');
+                if(p != gameplay.puntaje())
+                    dibujoVehiculo.getTransforms().addAll(abajo);
 
-                dibujoVehiculo.getTransforms().addAll(abajo);
-                gameplay.jugar('S');
             }
         });
 
