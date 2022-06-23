@@ -133,33 +133,4 @@ public class VisitorTest {
     // assert
     assertEquals(0, multa);
   }
-
-  @Test
-  public void test11PozoEsVisitadoPorAuto4x4YAuto4x4NoEsMultado() {
-    // arrange
-    Auto4x4 autoMock = mock(Auto4x4.class);
-    Pozo pozo = new Pozo();
-    // act
-    int multa = pozo.visit(autoMock);
-    // assert
-    assertEquals(0, multa);
-  }
-  @Test
-  public void test12PozoEsVisitadoTresVecesPorAuto4x4YAuto4x4EsMultado() {
-    // arrange
-    Auto4x4 autoMock = mock(Auto4x4.class);
-    Pozo unPozo = new Pozo();
-    Pozo otroPozo = new Pozo();
-    Pozo unTercerPozo = new Pozo();
-
-    // act
-    int primeraMulta = unPozo.visit(autoMock);
-    int segundaMulta= otroPozo.visit(autoMock);
-    int terceraMulta = unTercerPozo.visit(autoMock);
-    // assert
-    assertEquals(0, primeraMulta);
-    assertEquals(0, segundaMulta);
-    assertEquals(2, terceraMulta);
-
-  }
 }

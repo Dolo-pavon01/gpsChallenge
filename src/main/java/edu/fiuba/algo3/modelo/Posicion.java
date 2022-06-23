@@ -1,14 +1,31 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Posicion {
-  public int x;
-  public int y;
   private static List<Posicion> instances = new ArrayList<Posicion>();
+  private int x;
+  private int y;
 
   public Posicion trasladar(Posicion nueva) {
     return getPosicion(nueva.x, nueva.y);
+  }
+
+  public Posicion moverHaciaArriba() {
+    return getPosicion(this.x, this.y + 1);
+  }
+
+  public Posicion moverHaciaDerecha() {
+    return getPosicion(this.x + 1, this.y);
+  }
+
+  public Posicion moverHaciaIzquierda() {
+    return getPosicion(this.x - 1, this.y);
+  }
+
+  public Posicion moverHaciaAbajo() {
+    return getPosicion(this.x, this.y - 1);
   }
 
   private Posicion(int x, int y) {
@@ -17,9 +34,13 @@ public class Posicion {
     instances.add(this);
   }
 
+  private boolean tieneMismasCoordenadas(int x, int y) {
+    return this.x == x && this.y == y;
+  }
+
   public static Posicion getPosicion(int x, int y) {
-    for (Posicion i : instances) {
-      if (i.x == x && i.y == y) return i;
+    for (Posicion posicion : instances) {
+      if (posicion.tieneMismasCoordenadas(x, y)) return posicion;
     }
     return new Posicion(x, y);
   }
@@ -27,5 +48,9 @@ public class Posicion {
   public Posicion siguiente(char unaDireccion) {
     Direccion direccion = new Direccion();
     return direccion.moverA(this, unaDireccion);
+  }
+
+  public boolean estaDentroDeDominio(int tamanio) {
+    return tamanio > this.x && tamanio > this.y;
   }
 }

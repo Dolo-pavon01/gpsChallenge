@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Builder
+{
+    +crearGameplay(unVehiculo):Grilla
+}
+class BuilderRandom
+{
+    +crearGameplay(unVehiculo):Grilla
+}
+class BuilderPruebas
+{
+    -int tamanio
+    -int porcentajePozos
+    -int porcentajeControlPolicial
+    -int porcentajePiquete
+    +crearGameplay(unVehiculo):Grilla
+}
+
+class Gameplay
+{
+    -Grilla laGrilla
+    -Vehiculo vehiculoEnJuego
+    +iniciarJuego(unVehiculo)
+    +jugar(char input):int movimientos
+
+}
+Gameplay -> Builder
+BuilderPruebas ..|> Builder
+BuilderRandom ..|> Builder
+Usuario ..> Gameplay
+class Usuario
+{
+    + elegirVehiculo():Vehiculo
+    + input():char
+}
+
+@enduml
