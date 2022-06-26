@@ -5,24 +5,30 @@ import java.util.HashMap;
 public class Mapa {
   HashMap<Posicion, IVisitor> obstaculos;
   HashMap<Posicion, Sorpresa> sorpresas;
- // HashMap<Posicion,Pared> paredes;
+  // HashMap<Posicion,Pared> paredes;
 
   public Mapa() {
     this.obstaculos = new HashMap<Posicion, IVisitor>(10, 70);
     this.sorpresas = new HashMap<Posicion, Sorpresa>(10, 70);
-   // this.paredes = new HashMap<>(10,70);
+    // this.paredes = new HashMap<>(10,70);
+  }
+
+  public Mapa(IVisitor... obstaculos) {
   }
 
   public void avanzar(Vehiculo vehiculo, char direccion) {
     Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
-    try
-    {    this.pasarPorObstaculos(vehiculo, posicion);} catch(HayPiqueteException e){return;}
+    try {
+      this.pasarPorObstaculos(vehiculo, posicion);
+    } catch (HayPiqueteException e) {
+      return;
+    }
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
   }
 
   private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion) {
-      vehiculo.pasarPor(this.obstaculos.get(posicion));
+    vehiculo.pasarPor(this.obstaculos.get(posicion));
   }
 
   private void abrirSorpresas(Vehiculo vehiculo, Posicion posicion) {

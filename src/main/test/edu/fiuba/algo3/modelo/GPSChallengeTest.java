@@ -1,15 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import edu.fiuba.algo3.modelo.Mapa;
-import edu.fiuba.algo3.modelo.IVisitor;
-import edu.fiuba.algo3.modelo.TipoVehiculo;
-import edu.fiuba.algo3.modelo.Moto;
 
 public class GPSChallengeTest {
 
@@ -188,7 +183,7 @@ public class GPSChallengeTest {
     mapa.avanzar(moto, 'd');
     mapa.avanzar(moto, 'd');
 
-    //assert
+    // assert
 
     assertEquals(1, moto.movimientos());
   }

@@ -3,57 +3,11 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 public class DireccionTest {
 
   @Test
-  public void test01DireccionWMueveHaciaArriba() {
-    // arrange
-    Posicion posicionMock = mock(Posicion.class);
-    Direccion direccion = new Direccion();
-    // act
-    direccion.moverA(posicionMock, 'w');
-    // assert
-    verify(posicionMock).moverHaciaArriba();
-  }
-
-  @Test
-  public void test02DireccionSMueveHaciaAbajo() {
-    // arrange
-    Posicion posicionMock = mock(Posicion.class);
-    Direccion direccion = new Direccion();
-    // act
-    direccion.moverA(posicionMock, 's');
-    // assert
-    verify(posicionMock).moverHaciaAbajo();
-  }
-
-  @Test
-  public void test03DireccionAMueveHaciaIzquierda() {
-    // arrange
-    Posicion posicionMock = mock(Posicion.class);
-    Direccion direccion = new Direccion();
-    // act
-    direccion.moverA(posicionMock, 'a');
-    // assert
-    verify(posicionMock).moverHaciaIzquierda();
-  }
-
-  @Test
-  public void test04DireccionDMueveHaciaDerecha() {
-    // arrange
-    Posicion posicionMock = mock(Posicion.class);
-    Direccion direccion = new Direccion();
-    // act
-    direccion.moverA(posicionMock, 'd');
-    // assert
-    verify(posicionMock).moverHaciaDerecha();
-  }
-
-  @Test
-  public void test05TrasladarConDireccionWCambiaPosicion() {
+  public void test01TrasladarConDireccionWCambiaPosicion() {
     // arrange
     Posicion posicion = Posicion.getPosicion(0, 0);
     Direccion direccion = new Direccion();
@@ -64,7 +18,7 @@ public class DireccionTest {
   }
 
   @Test
-  public void test06TrasladarConDireccionSCambiaPosicion() {
+  public void test02TrasladarConDireccionSCambiaPosicion() {
     // arrange
     Posicion posicion = Posicion.getPosicion(0, 0);
     Direccion direccion = new Direccion();
@@ -75,7 +29,7 @@ public class DireccionTest {
   }
 
   @Test
-  public void test07TrasladarConDireccionACambiaPosicion() {
+  public void test03TrasladarConDireccionACambiaPosicion() {
     // arrange
     Posicion posicion = Posicion.getPosicion(0, 0);
     Direccion direccion = new Direccion();
@@ -86,7 +40,7 @@ public class DireccionTest {
   }
 
   @Test
-  public void test08TrasladarConDireccionDCambiaPosicion() {
+  public void test04TrasladarConDireccionDCambiaPosicion() {
     // arrange
     Posicion posicion = Posicion.getPosicion(0, 0);
     Direccion direccion = new Direccion();
