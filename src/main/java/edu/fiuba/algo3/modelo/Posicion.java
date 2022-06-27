@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Posicion {
-  private static List<> instances = new ArrayList<Posicion>();
+  private static List<Posicion> instances = new ArrayList<Posicion>();
   private int x;
   private int y;
 
