@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Visitor
+{
++visit(e:ElementA)
++visit(e:ElementB)
++visit(e:ElementC)
+}
+class ConcreteVisitor
+{
+- un atributo
++visit(e:ElementA)
++visit(e:ElementB)
+}
+class Client
+{
++element.accept(new.ConcreteVisitor())
+}
+
+interface Element
+{
++accept(v:Visitor)
+}
+class ElementB
+{
+-un atributo
++accept(v:Visitor)
+}
+class ElementC
+{
+-un atributo
++accept(v:Visitor)
+}
+class ElementA
+{
+-un atributo
++featureA();
++accept(v:Visitor) (v.visit(this)
+}
+
+Element <|.. ElementA
+Element <|.. ElementC
+Element <|.. ElementB
+
+Visitor <|.. ConcreteVisitor
+Element ..> Visitor
+Visitor ..> ElementA
+Visitor ..> ElementB
+Visitor ..> ElementC
+
+ConcreteVisitor <.. Client
+ConcreteVisitor <.. Client
+
+
+
+
+
+
+@enduml

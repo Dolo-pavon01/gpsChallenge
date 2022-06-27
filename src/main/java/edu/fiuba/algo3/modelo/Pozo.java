@@ -1,22 +1,26 @@
 package edu.fiuba.algo3.modelo;
 
-public class Pozo extends Obstaculo {
-  public Pozo(int posicion) {
-    this.posicion = posicion;
+public class Pozo implements IVisitor {
+  private static final int MULTA_AUTO = 3;
+  private static final int MULTA_MOTO = 3;
+  private static final int MULTA_AUTO4x4 = 2;
+  private static final int LIMITE_POZOS = 2;
+  private static final int MULTA_CERO = 0;
+
+  public int visit(Moto moto) {
+    return MULTA_MOTO;
   }
 
-  @Override
-  public void penalizar(Auto auto) {
-    auto.serPenalizadoCon(3);
+  public int visit(Auto4x4 auto4x4) {
+    auto4x4.recibirImpacto();
+    if (auto4x4.esPenalizado(LIMITE_POZOS)) {
+      auto4x4.reiniciarImpactosRecibidos();
+      return MULTA_AUTO4x4;
+    }
+    return MULTA_CERO;
   }
 
-  @Override
-  public void penalizar(Moto moto) {
-    moto.serPenalizadoCon(3);
-  }
-
-  @Override
-  public void penalizar(Auto4x4 auto4x4) {
-    auto4x4.serPenalizadoCon(2);
+  public int visit(Auto auto) {
+    return MULTA_AUTO;
   }
 }

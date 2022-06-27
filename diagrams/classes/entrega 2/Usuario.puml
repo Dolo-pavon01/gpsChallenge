@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Gameplay {}
+
+class Grilla {
+    + avanzar(vehiculo: Vehiculo, direccion: String)
+}
+
+class Usuario {}
+
+interface Penalizador{
+    + penalizar(auto: Auto)
+    + penalizar(moto: Moto)
+    + penalizar(auto4x4: Auto4x4)
+}
+
+Gameplay --> Grilla
+Gameplay --> "1..*" Usuario
+Usuario --> Vehiculo
+Grilla ..> Vehiculo
+Grilla *-- "0..*" Obstaculo
+Vehiculo <|-- Moto
+Vehiculo <|-- Auto
+Vehiculo <|-- Auto4x4
+Obstaculo <|-- Pozo
+Obstaculo <|-- Piquete
+Penalizador <|.. Pozo
+Penalizador <|.. Piquete
+
+@enduml

@@ -1,28 +1,54 @@
 package edu.fiuba.algo3.modelo;
 
-public abstract class Vehiculo {
-  protected int posicion;
-  protected int movimientos;
+public class Vehiculo {
+  private TipoVehiculo tipo;
+  private Posicion posicion;
+  private int movimientos;
+
+  public Vehiculo(TipoVehiculo tipoVehiculo) {
+    this.tipo = tipoVehiculo;
+    this.movimientos = 0;
+    this.posicion = Posicion.getPosicion(10, 10);
+  }
 
   public Vehiculo() {
-    this.posicion = 0;
     this.movimientos = 0;
+    this.posicion = Posicion.getPosicion(10, 10);
   }
-  public int posicion()
-  {return this.posicion;}
+  public void pasarPor(IVisitor visitor) {
+    if (visitor == null)
+      return;
+    this.movimientos += this.tipo.pasarPor(visitor);
+  }
+
+  public void abrirSopresa(Sorpresa sorpresa) {
+    if (sorpresa == null)
+      return;
+    sorpresa.activar(this);
+  }
+
+  public Posicion getPosicion()
+  {
+    return this.posicion;
+  }
+  public void moverse(Posicion posicion) {
+    this.movimientos += 1;
+    this.posicion = this.posicion.trasladar(posicion);
+  }
+
+  Posicion getPosicionSiguiente(char unaDireccion) {
+    return this.posicion.siguiente(unaDireccion);
+  }
 
   public int movimientos() {
     return this.movimientos;
   }
 
-  public void mover() {
-    this.posicion += 1;
-    this.movimientos += 1;
+  public void cambiarTipo() {
+    this.tipo = this.tipo.cambiarTipo();
   }
 
-  public abstract void pasarPor(Obstaculo obstaculo);
-
-  public void serPenalizadoCon(int puntosPenalizacion) {
-    this.movimientos += puntosPenalizacion;
+  public void recibirSorpresa(double valorSorpresa) {
+    this.movimientos *= valorSorpresa;
   }
 }

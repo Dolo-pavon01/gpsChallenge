@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor Gameplay
+participant ":Grilla" as Grilla
+participant ":Piquete" as Piquete
+participant ":Auto" as Auto
+
+activate Gameplay
+Gameplay -> Grilla: avanzar(auto)
+Grilla -> Auto: mover()
+Grilla -> Auto:  posicion()
+Grilla <-- Auto: posicionAuto
+
+
+
+    loop : por cada Obstaculo
+
+    alt
+    Grilla ->Obstaculo: tieneMismaPosicion(posicion_vehiculo)
+    Grilla <-- Piquete: true
+    Grilla -> Auto: pasarPor(Piquete)
+    Auto -> Piquete: penalizar(auto)
+    Piquete --> Auto: Excepcion HayPiquete
+
+end
+end
+Grilla <-- Auto : Excepcion HayPiquete
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Vehiculo {}
+
+class Movimiento {
+    + calcularPosSiguiente(): Posicion
+}
+
+class Direccion {
+    + desplazarPos(posicion: int): Posicion
+}
+
+class Posicion {
+    + estaAdentro();
+    + distanciaHasta(unaPosicion: Posicion): float
+}
+
+class Grilla {}
+
+Grilla *-- Vehiculo
+Vehiculo *-- Posicion
+Vehiculo *-- Movimiento
+Movimiento *- Direccion
+
+Movimiento <|-- Moverse
+Movimiento <|-- ChocarObstaculo
+Movimiento <|-- PasarPorSopresa
+Movimiento <|-- LlegarALaMeta
+
+Direccion <|-- Avanzar
+Direccion <|-- Retrocer
+Direccion <|-- GirarIzquierda
+Direccion <|-- GirarDerecha
+
+@enduml

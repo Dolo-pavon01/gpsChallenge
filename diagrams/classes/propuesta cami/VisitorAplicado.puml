@@ -1,0 +1,118 @@
+@startuml
+
+interface IVehiculo {
+    + pasarPor(e:Piquete)
+    + pasarPor(e:Pozo)
+    + pasarPor(e:ControlPolicial)
+}
+
+class Auto {
+    - Posicion posicion
+    + pasarPor(e:Piquete)
+    + pasarPor(e:Pozo)
+    + pasarPor(e:ControlPolicial)
+}
+class Moto {
+    - Posicion posicion
+    + pasarPor(e:Piquete)
+    + pasarPor(e:Pozo)
+    + pasarPor(e:ControlPolicial)
+}
+
+class Auto4x4 {
+    - Posicion posicion
+    + pasarPor(e:Piquete)
+    + pasarPor(e:Pozo)
+    + pasarPor(e:ControlPolicial)
+}
+
+class Grilla {
+    - HashMap<Posicion, Obstaculo> obstaculos
+    - int movimientos
+    + getMovimientos()
+    + avanzar(IVehiculo vehiculo,char direccion)
+}
+
+class Posicion {
+    - int x
+    - int y
+    - List instances
+    + transladar(nuevaPosicion: Posicion
+    + getPosicion(int x, int y)
+    + siguiente(char direccion)
+}
+
+interface Penalizador {
+    + penalizarA(v:IVehiculo)
+}
+class Piquete {
+    + penalizarA(v:IVehiculo)
+}
+class ControlPolicial
+{
++penalizarA(v:IVehiculo)
+}
+class Pozo
+{
++penalizarA(v:IVehiculo) (v.visit(this)
+}
+
+interface Movimiento {
+    + {abstract} mover(posicion: Posicion): Posicion
+}
+
+class Arriba {
+    + mover(posicion: Posicion): Posicion
+}
+
+class Izquierda {
+    + mover(posicion: Posicion): Posicion
+}
+
+class Abajo {
+    + mover(posicion: Posicion): Posicion
+}
+
+class Derecha {
+    + mover(posicion: Posicion): Posicion
+}
+
+class SorpresaFavorable {}
+class SorpresaDesfavorable{}
+class SorpresaCambioVehiculo{}
+
+Moto <.. Grilla
+Auto <.. Grilla
+Auto4x4 <.. Grilla
+
+IVehiculo ..> SorpresaFavorable
+Penalizador <|.. SorpresaDesfavorable
+
+Penalizador <|.. Pozo
+Penalizador <|.. ControlPolicial
+Penalizador <|.. Piquete
+
+IVehiculo <|.. Auto
+IVehiculo <|.. Moto
+IVehiculo <|.. Auto4x4
+IVehiculo ..> Pozo
+IVehiculo ..> Piquete
+IVehiculo ..> ControlPolicial
+
+Moto --> Posicion
+Auto --> Posicion
+Auto4x4 --> Posicion
+
+Moto *-- Movimiento
+Auto *-- Movimiento
+Auto4x4 *-- Movimiento
+
+Movimiento <|.. Arriba
+Movimiento <|.. Izquierda
+Movimiento <|.. Abajo
+Movimiento <|.. Derecha
+
+IVehiculo ..> SorpresaDesfavorable
+IVehiculo ..> SorpresaCambioVehiculo
+
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+
+class Grilla {
+    - obstaculos: HashMap<Posicion,IVisitor>
+    - sorpresas: HashMap<Posicion,Sorpresa>
+    - pasarPorObstaculos(vehiculo: Vehiculo, posicion: Posicion)
+    - abrirSorpresas(vehiculo: Vehiculo, posicion: Posicion)
+    + avanzar(vehiculo: Vehiculo, direccion: char)
+}
+
+class Vehiculo {
+    - movimientos: Integer
+    - posicion: Posicion
+    + moverse(posicion: Posicion)
+    + getPosicionSiguiente(unaDireccion: char)
+    + accept(visitor: IVisitor)
+    + abrirSopresa(sorpresa: Sorpresa)
+    + PasarPor(visitor: IVisitor)
+    + cambiarTipo()
+    + recibirSorpresa(valorSorpresa: double)
+}
+
+interface Sorpresa {
+    + activar(vehiculo: Vehiculo)
+
+}
+class SorpresaFavorable {
+    + activar(vehiculo: Vehiculo)
+}
+
+class SorpresaDesfavorable {
+    + activar(vehiculo: Vehiculo)
+}
+
+class SorpresaCambioVehiculo {
+    + activar(vehiculo: Vehiculo)
+}
+
+Grilla --> Vehiculo
+Grilla --> Sorpresa
+Sorpresa <|..  SorpresaFavorable
+Sorpresa <|..  SorpresaDesfavorable
+Sorpresa <|.. SorpresaCambioVehiculo
+
+@enduml

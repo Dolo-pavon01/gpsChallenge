@@ -1,0 +1,50 @@
+@startuml
+
+title Un auto 4x4 atraviesa la ciudad se encuentra con 3 pozos es penalizado
+
+actor Gameplay
+participant "grilla : Grilla" as Grilla
+participant "auto4x4 : Auto4x4" as Auto4x4
+participant "pozo : Pozo" as Pozo
+
+activate Gameplay
+
+loop 3 times
+
+Gameplay -> Grilla: avanzar(auto4x4)
+activate Grilla
+Grilla -> Auto4x4: mover()
+activate Auto4x4
+deactivate Auto4x4
+Grilla -> Auto4x4: posicion()
+activate Auto4x4
+Auto4x4 --> Grilla: posicion
+deactivate Auto4x4
+
+loop : por cada obstaculo
+
+Grilla -> Pozo: tieneMismaPosicion(posicion)
+activate Pozo
+deactivate Pozo
+alt : tieneMismaPosicion(posicion): true
+
+Grilla -> Auto4x4: pasarPor(pozo)
+alt : contadorPozos > LIMITE_POZOS_ATRAVESADOS
+
+activate Auto4x4
+Pozo -> Auto4x4: penalizar(auto4x4)
+Auto4x4 -> Auto4x4: serPenalizadoCon(2)
+end
+deactivate Auto4x4
+
+end
+
+end
+
+end
+
+Gameplay -> Auto4x4: movimientos()
+activate Auto4x4
+return 5
+
+@enduml

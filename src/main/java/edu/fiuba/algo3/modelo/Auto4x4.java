@@ -1,21 +1,31 @@
 package edu.fiuba.algo3.modelo;
 
-public class Auto4x4 extends Vehiculo {
+public class Auto4x4 implements TipoVehiculo {
   private int contadorPozos;
-  private static final int LIMITE_POZOS_ATRAVESADOS = 2;
 
   public Auto4x4() {
-    super();
     this.contadorPozos = 0;
   }
 
   @Override
-  public void pasarPor(Obstaculo obstaculo) {
-    if (this.contadorPozos < LIMITE_POZOS_ATRAVESADOS) {
-      this.contadorPozos += 1;
-      return;
-    }
-    obstaculo.penalizar(this);
+  public int pasarPor(IVisitor visitor) {
+    return visitor.visit(this);
+  }
+
+  @Override
+  public TipoVehiculo cambiarTipo() {
+    return new Moto();
+  }
+
+  public void recibirImpacto() {
+    this.contadorPozos += 1;
+  }
+
+  public void reiniciarImpactosRecibidos() {
     this.contadorPozos = 0;
+  }
+
+  public boolean esPenalizado(int limitePozosAtravesados) {
+    return this.contadorPozos > limitePozosAtravesados;
   }
 }
