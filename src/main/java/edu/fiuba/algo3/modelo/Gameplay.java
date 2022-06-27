@@ -5,17 +5,40 @@ public class Gameplay {
   private Mapa mapa;
   private BuilderPruebas builder;
 
+  private boolean llegoAMeta;
+
   public Gameplay(BuilderPruebas unBuilder) {
     this.builder = unBuilder;
+    this.llegoAMeta = false;
   }
 
-  public void iniciarJuego(Vehiculo unVehiculo) {
-    this.vehiculoEnJuego = unVehiculo;
+  public void iniciarJuego(Vehiculo vehiculo) {
+    this.vehiculoEnJuego = vehiculo;
     this.mapa = this.builder.crearGameplay();
   }
 
-  public void jugar(char input) {
-    this.mapa.avanzar(vehiculoEnJuego, input);
+
+  public boolean jugar(String input) {
+    int puntaje = this.vehiculoEnJuego.movimientos();
+    char direccion = (input.toLowerCase()).charAt(0);
+    try{
+      this.mapa.avanzar(vehiculoEnJuego, direccion);
+    }
+    catch (LlegoAMetaException e)
+    {
+      this.llegoAMeta = true;
+    }
+    return(this.vehiculoEnJuego.movimientos() != puntaje);
+  }
+
+  public String posicionJugador()
+  {
+    return( this.vehiculoEnJuego.getPosicion().posicionAString());
+  }
+
+  public boolean llegoAMeta()
+  {
+    return this.llegoAMeta;
   }
 
   public int puntaje() {

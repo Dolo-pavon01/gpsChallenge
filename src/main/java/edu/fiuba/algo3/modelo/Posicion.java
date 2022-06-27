@@ -8,24 +8,11 @@ public class Posicion {
   private int x;
   private int y;
 
-  public Posicion trasladar(Posicion nueva) {
-    return getPosicion(nueva.x, nueva.y);
-  }
-
-  public Posicion moverHaciaArriba() {
-    return getPosicion(this.x, this.y + 1);
-  }
-
-  public Posicion moverHaciaDerecha() {
-    return getPosicion(this.x + 1, this.y);
-  }
-
-  public Posicion moverHaciaIzquierda() {
-    return getPosicion(this.x - 1, this.y);
-  }
-
-  public Posicion moverHaciaAbajo() {
-    return getPosicion(this.x, this.y - 1);
+  public static Posicion getPosicion(int x, int y) {
+    for (Posicion posicion : instances) {
+      if (posicion.tieneMismasCoordenadas(x, y)) return posicion;
+    }
+    return new Posicion(x, y);
   }
 
   private Posicion(int x, int y) {
@@ -34,23 +21,28 @@ public class Posicion {
     instances.add(this);
   }
 
-  private boolean tieneMismasCoordenadas(int x, int y) {
-    return this.x == x && this.y == y;
+  public Posicion trasladar(Posicion nueva) {
+    return getPosicion(nueva.x, nueva.y);
   }
 
-  public static Posicion getPosicion(int x, int y) {
-    for (Posicion posicion : instances) {
-      if (posicion.tieneMismasCoordenadas(x, y)) return posicion;
-    }
-    return new Posicion(x, y);
+  public String posicionAString() {
+    return (this.x + "," + this.y);
+  }
+
+  public Posicion mover(int x, int y) {
+    return getPosicion(this.x + x, this.y + y);
+  }
+
+  public boolean equals(Posicion otra)
+  {
+    return(tieneMismasCoordenadas(otra.x,otra.y));
+  }
+  private boolean tieneMismasCoordenadas(int x, int y) {
+    return this.x == x && this.y == y;
   }
 
   public Posicion siguiente(char unaDireccion) {
     Direccion direccion = new Direccion();
     return direccion.moverA(this, unaDireccion);
-  }
-
-  public boolean estaDentroDeDominio(int tamanio) {
-    return tamanio > this.x && tamanio > this.y;
   }
 }

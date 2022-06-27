@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Sentido
+{
+    +ejecutar(Posicion posicion):Posicion
+}
+
+class Derecha{
++ejecutar(Posicion posicion):Posicion
+}
+class Izquierda
+{
++ejecutar(Posicion posicion):Posicion
+}
+class Atras{
++ejecutar(Posicion posicion):Posicion
+}
+class Adelante{
++ejecutar(Posicion posicion):Posicion
+}
+
+class Direccion
+{
+    -HashMap <Character,Sentido> comandos
+    -moverA(Posicion posicion, char unaDireccion)
+}
+
+class Posicion
+{
+    +int x
+    +int y
+    -Lista instances
+    +transladar(Posicion nueva)
+    +siguiente(char unaDireccion)
+    + getPosicion(x,y):Posicion
+}
+
+
+Posicion *- Direccion
+Direccion *- Sentido
+
+
+Sentido <|.. Atras
+Sentido <|.. Adelante
+Sentido <|.. Izquierda
+Sentido <|.. Derecha
+
+
+@enduml

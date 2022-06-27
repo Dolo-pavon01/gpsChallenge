@@ -6,22 +6,55 @@ public class Mapa {
   HashMap<Posicion, IVisitor> obstaculos;
   HashMap<Posicion, Sorpresa> sorpresas;
   HashMap<Posicion,Pared> paredes;
+  Posicion meta;
 
-  public Mapa() {
-    this.obstaculos = new HashMap<Posicion, IVisitor>(10, 70);
-    this.sorpresas = new HashMap<Posicion, Sorpresa>(10, 70);
-    this.paredes = new HashMap<>(10,70);
+  public Mapa()
+  {
+    this.obstaculos = new HashMap <>();
+    this.sorpresas = new HashMap<>();
+    this.paredes = new HashMap<>();
+    this.meta = Posicion.getPosicion(20,0);
+  }
+  public Mapa(HashMap paredes, HashMap obstaculos, HashMap sorpresas,Posicion meta) {
+
+    this.obstaculos = obstaculos;
+    this.sorpresas = sorpresas;
+    this.paredes = paredes;
+    this.meta = meta;
   }
 
   public void avanzar(Vehiculo vehiculo, char direccion) {
     Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
-    if(paredes.get(posicion) != null)
+    try {
+      this.pasarPorObstaculos(vehiculo, posicion);
+    } catch (HayPiqueteException e) {
       return;
-    this.pasarPorObstaculos(vehiculo, posicion);
+    }
+    try{
+      this.pasarPorPared(posicion);
+    } catch(HayParedException e)
+    {
+      return;
+    }
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
+    this.llegoAMeta(posicion);
+  }
+  private void llegoAMeta(Posicion posicion)
+  {
+    if(meta.equals(posicion))
+    {
+      throw new LlegoAMetaException();
+    }
+
   }
 
+  private void pasarPorPared(Posicion posicion)
+  {
+   if(this.paredes.get(posicion) != null)
+     throw new HayParedException();
+
+  }
   private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion) {
     vehiculo.pasarPor(this.obstaculos.get(posicion));
   }

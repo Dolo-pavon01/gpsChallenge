@@ -12,7 +12,8 @@ public class CreadorObstaculos implements Creador {
         obstaculos.put(p, new ObstaculoNulo());
       }
     }
-    obstaculos.put(Posicion.getPosicion(1, 0), new Pozo());
+
+    obstaculos.put(Posicion.getPosicion(10,11),new Piquete());
     return obstaculos;
   }
 }

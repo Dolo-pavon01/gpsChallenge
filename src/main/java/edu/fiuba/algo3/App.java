@@ -58,9 +58,6 @@ public class App extends Application{
         }
 
 
-
-
-
         group.getChildren().addAll(this.elements);
 
         Scene scene = new Scene(group,this.x,this.y);

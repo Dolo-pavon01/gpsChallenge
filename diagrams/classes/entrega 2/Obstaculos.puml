@@ -1,64 +1,71 @@
 @startuml
 class Grilla{}
-
-class Vehiculo {
-    - movimientos: Integer
-    - posicion: Posicion
-    + moverse(posicion: Posicion)
-    + getPosicionSiguiente(unaDireccion: char)
-    + accept(visitor: IVisitor)
-    + abrirSopresa(sorpresa: Sorpresa)
-    + pasarPor(visitor: IVisitor)
-    + recibirSorpresa(cambioVehiculo: CambioVehiculo)
+class Vehiculo
+{
+-movimientos : Integer
+-posicion: Posicion
++moverse(Posicion posicion)
++getPosicionSiguiente(char unaDireccion)
++accept(Ivisitor visitor)
++abrirSopresa(Sorpresa sorpresa)
++PasarPor(Ivisitor visitor)
++RecibirSorpresa(CambioVehiculo cambioVehiculo)
 }
-interface Ivisitor {
-    + visit(auto: Auto)
-    + visit(auto4x4: Auto4x4)
-    + visit(moto: Moto)
+interface Ivisitor{
++visit(Auto auto)
++visit(Auto4x4 auto4x4)
++visit(Moto moto)
 }
-
-interface Tipo {
-    + accept(visitor: IVisitor)
-}
-
-class Moto {
-    + accept(visitor: IVisitor)
+interface Tipo
+{
+    +accept(Ivisitor visitor))
 }
 
-class Auto {
-    + accept(visitor: IVisitor)
+
+class Moto{
+accept(Ivisitor visitor))
+}
+class Auto{
+accept(Ivisitor visitor))
 }
 
-class Auto4x4 {
-    + accept(visitor: IVisitor)
+class Auto4x4{
+accept(Ivisitor visitor))
 }
 
-class Piquete {
-    + visit(auto: Auto)
-    + visit(auto4x4: Auto4x4)
-    + visit(moto: Moto)
+class Piquete{
++visit(Auto auto)
++visit(Auto4x4 auto4x4)
++visit(Moto moto)
 }
-
-class ControlPolicial {
-    + visit(auto: Auto)
-    + visit(auto4x4: Auto4x4)
-    + visit(moto: Moto)
+class ControlPolicial{
++visit(Auto auto)
++visit(Auto4x4 auto4x4)
++visit(Moto moto)
 }
-
-class Pozo {
-    + visit(auto: Auto)
-    + visit(auto4x4: Auto4x4)
-    + visit(moto: Moto)
+class Pozo{
++visit(Auto auto)
++visit(Auto4x4 auto4x4)
++visit(Moto moto)
 }
 
 Grilla --> Vehiculo
+
 Grilla ..> Ivisitor
 Vehiculo --> Tipo
 Tipo <|.. Moto
 Tipo <|.. Auto
 Tipo <|.. Auto4x4
+
+
+
 Ivisitor <|.. Piquete
 Ivisitor <|.. ControlPolicial
 Ivisitor <|.. Pozo
+
+Ivisitor ..Auto
+Ivisitor ..Auto4x4
+Ivisitor ..Moto
+
 
 @enduml
