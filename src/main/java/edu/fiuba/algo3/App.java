@@ -61,8 +61,6 @@ public class App extends Application{
 
 
 
-
-
         group.getChildren().addAll(this.elements);
 
         Scene scene = new Scene(group,this.x,this.y);
@@ -130,7 +128,8 @@ public class App extends Application{
     }
 
     public  void imagen(FileInputStream input2, double startX,double startY,double t) throws Exception{
-        FileInputStream input =new FileInputStream("docs/ED16.png");
+        int indexPhoto = this.randoNumber.nextInt(17)+2;
+        FileInputStream input =new FileInputStream("docs/ED"+ indexPhoto +".png");
         Image image1 = new Image(input);
         ImageView imageView1 = new ImageView();
         imageView1.setImage(image1);
@@ -139,6 +138,7 @@ public class App extends Application{
         imageView1.setFitWidth(t);
         imageView1.setFitHeight(t);
         this.elements.add(imageView1);
+        
     }
 
     public static void main (String[] args)
