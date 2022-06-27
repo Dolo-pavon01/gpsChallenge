@@ -28,7 +28,6 @@ public class AppCami extends Application {
 
     public void start(Stage primaryStage) throws Exception {
 
-
         FileInputStream input=new FileInputStream("docs/auto.png");
         Image image = new Image(input);
         ImageView dibujoVehiculo=new ImageView(image);
@@ -45,8 +44,6 @@ public class AppCami extends Application {
 
         group.getChildren().addAll(fondo);
         group.getChildren().addAll(dibujoVehiculo);
-
-
 
 
         TextField nombreInput = new TextField();
@@ -124,31 +121,37 @@ public class AppCami extends Application {
             }
         });
 
-        juego.setOnKeyPressed(event -> {
+        juego.setOnKeyPressed(keyEvent -> {
             dibujoVehiculo.setRotationAxis(Rotate.Z_AXIS);
-            switch (event.getCode()){
+            switch (keyEvent.getCode()){
                 case D:
                     dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
-                    dibujoVehiculo.setX(dibujoVehiculo.getX()+10);
+                    dibujoVehiculo.setX(dibujoVehiculo.getX()+40);
                     dibujoVehiculo.setRotate(0);
                     gameplay.jugar('D');
+                    break;
                 case A:
                     dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
-                    dibujoVehiculo.setX(dibujoVehiculo.getX()-10);
+                    dibujoVehiculo.setX(dibujoVehiculo.getX()-40);
                     dibujoVehiculo.setRotate(180);
                     gameplay.jugar('A');
+                    break;
                 case W:
-                    dibujoVehiculo.setY(dibujoVehiculo.getY()-10);
+                    dibujoVehiculo.setY(dibujoVehiculo.getY()-40);
                     dibujoVehiculo.setRotate(270);
                     gameplay.jugar('W');
+                    break;
                 case S:
-                    dibujoVehiculo.setY(dibujoVehiculo.getY()+10);
+                    dibujoVehiculo.setY(dibujoVehiculo.getY()+40);
                     dibujoVehiculo.setRotate(90);
                     gameplay.jugar('S');
+                    break;
                 default:
                     break;
             }
         });
+
+
 
     }
     public static void main (String[] args)
