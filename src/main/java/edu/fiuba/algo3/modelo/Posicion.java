@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Posicion {
-  private static List<Posicion> instances = new ArrayList<Posicion>();
+  private static List<> instances = new ArrayList<Posicion>();
   private int x;
   private int y;
 
@@ -26,13 +26,17 @@ public class Posicion {
   }
 
   public String posicionAString() {
-    return (Integer.toString(this.x) + "," + Integer.toString(this.y));
+    return (this.x + "," + this.y);
   }
 
   public Posicion mover(int x, int y) {
     return getPosicion(this.x + x, this.y + y);
   }
 
+  public boolean equals(Posicion otra)
+  {
+    return(tieneMismasCoordenadas(otra.x,otra.y));
+  }
   private boolean tieneMismasCoordenadas(int x, int y) {
     return this.x == x && this.y == y;
   }

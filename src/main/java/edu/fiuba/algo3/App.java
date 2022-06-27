@@ -128,23 +128,23 @@ public class App extends Application {
                     dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
                     dibujoVehiculo.setX(dibujoVehiculo.getX()+10);
                     dibujoVehiculo.setRotate(0);
-                    gameplay.jugar('d');
+                    gameplay.jugar("d");
 
                 case LEFT:
                     dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
                     dibujoVehiculo.setX(dibujoVehiculo.getX()-10);
                     dibujoVehiculo.setRotate(180);
-                    gameplay.jugar('a');
+                    gameplay.jugar("a");
 
                 case UP:
                     dibujoVehiculo.setY(dibujoVehiculo.getY()-10);
                     dibujoVehiculo.setRotate(270);
-                    gameplay.jugar('w');
+                    gameplay.jugar("w");
 
                 case DOWN:
                     dibujoVehiculo.setY(dibujoVehiculo.getY()+10);
                     dibujoVehiculo.setRotate(90);
-                    gameplay.jugar('s');
+                    gameplay.jugar("s");
 
                 default:
                     break;
