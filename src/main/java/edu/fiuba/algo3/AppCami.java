@@ -75,40 +75,54 @@ public class AppCami extends Application {
         primaryStage.setTitle("");
         primaryStage.setScene(inicio);
         primaryStage.show();
-
+        ImageView dibujoVehiculo=new ImageView();
 
 
         autoBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
-                    vehiculo = new Vehiculo(new Auto());
-
+                vehiculo = new Vehiculo(new Auto());
+                try {
+                    dibujoVehiculo.setImage(new Image(new FileInputStream("docs/Vehiculo_Auto.png")));
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
+
+
         motoBtn.setOnAction(new EventHandler<ActionEvent>() {
+
+
             @Override
             public void handle(ActionEvent arg0) {
                 vehiculo = new Vehiculo(new Moto());
+                try {
+                    dibujoVehiculo.setImage(new Image(new FileInputStream("docs/Vehiculo_Moto.png")));
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
 
             }
         });
-        auto4x4Btn.setOnAction(new EventHandler<ActionEvent>() {
-
+          auto4x4Btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
                 vehiculo = new Vehiculo(new Auto4x4());
+                try {
+                    dibujoVehiculo.setImage(new Image(new FileInputStream("docs/Vehiculo_Auto4x4.png")));
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
         );
-
         ImageView fondo=new ImageView(new Image(new FileInputStream("docs/fondo.jpg")));
 
-        ImageView dibujoVehiculo=new ImageView(new Image(new FileInputStream("docs/Vehiculo_Auto.png")));
         dibujoVehiculo.setPreserveRatio(true);
         dibujoVehiculo.setFitHeight(50);
         dibujoVehiculo.setY(150);
         dibujoVehiculo.setX(100);
-
 
         ImageView piquete =new ImageView(new Image(new FileInputStream("docs/piquete.png")));
         piquete.setPreserveRatio(true);
