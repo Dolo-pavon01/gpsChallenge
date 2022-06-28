@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -48,5 +49,18 @@ public class DireccionTest {
     Posicion siguientePosicion = direccion.moverA(posicion, 'd');
     // assert
     assertEquals(Posicion.getPosicion(1, 0), siguientePosicion);
+  }
+
+  @Test
+  public void test05TrasladarDireccionConCaracterDesconocidoLanzaExcepcion() {
+    // arrange
+    Posicion posicion = Posicion.getPosicion(0, 0);
+    Direccion direccion = new Direccion();
+    // act & assert
+    Assertions.assertThrows(
+        RuntimeException.class,
+        () -> {
+          direccion.moverA(posicion, 't');
+        });
   }
 }
