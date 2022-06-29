@@ -15,6 +15,9 @@ public class MapaFactory {
   public MapaFactory(int tamanio) {
     this.tamanio = tamanio;
     this.cantElementos = tamanio / 8;
+    this.obstaculos = new HashMap<>();
+    this.sorpresas = new HashMap<>();
+    this.paredes = new HashMap<>();
   }
 
   public Mapa crearGameplay() {
