@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Usuario -> App: apreta boton auto
+
+Usuario->App: apreta boton comenzar juego
+App->Gameplay: new con mapaFactory
+App->Gameplay: iniciarJuego(auto)
+Gameplay->MapaBuilder: creaMapa
+MapaBuilder--> Gameplay: mapa
+Gameplay -->App:mapa
+App->VistaMapa: crear(mapa)
+VistaMapa->AppDeDolo:crearElFondo
+AppDeDolo-->VistaMapa: group con el fondo y el tamanio creado aleatorio
+VistaMapa->Mapa:por cada cuadradito de la grilla le pregunta si hay un obstaculo y/o sorpresa
+Mapa--> VistaMapa: Piquete
+
+@enduml

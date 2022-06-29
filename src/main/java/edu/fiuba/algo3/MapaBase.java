@@ -19,51 +19,52 @@ import java.util.Random;
 
 import java.io.FileInputStream;
 
-public class App extends Application{
+public class MapaBase {
 
     public  Random randoNumber = new Random(); ;
 
     public double x = 1000;
     public double y = 680;
-    public double startMapX = 50 ;
+    public double startMapX = 0 ;
     public double startMapY = 50 ;
-    public double widthMap = 900;
+    public double widthMap = 1300;
     public double heightMap = 600 ;
 
+    private double m;
+
     public  List elements = new ArrayList();
-    public void start(Stage primaryStage) throws Exception {
+    public List crearMapaBase() throws Exception {
 
-
-        primaryStage.setTitle("Rectangle Example");
         Group group = new Group(); //creating Group
         Rectangle rect= this.rectangule(this.startMapX,this.startMapY,this.widthMap,this.heightMap);
         rect.setFill(Color.GREY);
 
         this.elements.add(rect);
 
-        int random = (this.randoNumber.nextInt(4) + 1) *2;
+
+        int random = (this.randoNumber.nextInt(2) + 1) *2; // cantidad de matrices a lo alto
         //randoms del 2 al 10 solo pares.
-        double m = this.heightMap /random;
-        double t = m / 3 ;
-        double p = t/2;
+        double m = this.heightMap /random; // ancho en pixeles de manzana y calle
+        double t = m / 3 ; // ancho de manzana
+        double p = t/2; // ancho calle
         FileInputStream input=new FileInputStream("docs/ED16.png");
 
+        this.m = m;
 
-
-        for (double i  = this.startMapX; i < (this.widthMap + this.startMapX); i+=m){
+        for (double i  = this.startMapX; i < (this.widthMap + this.startMapX); i+=m) // dibuja en eje x
+            //contador de cuantas calles paralelas
+        {
             this.calle(i,this.startMapY,m,t,p,new FileInputStream("docs/ED16.png"));
             for (double y = this.startMapY; y < (this.heightMap ); y+=m){
                 this.calle(i,y,m,t,p,new FileInputStream("docs/ED16.png"));
             }
         }
+        return (this.elements);
+    }
 
-
-        group.getChildren().addAll(this.elements);
-
-        Scene scene = new Scene(group,this.x,this.y);
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    public double getTamanio()
+    {
+        return this.m;
     }
 
     public Rectangle rectangule(double x, double y, double w, double h ){
@@ -72,7 +73,6 @@ public class App extends Application{
         rect.setY(y);
         rect.setWidth(w);
         rect.setHeight(h);
-
         return  rect;
 
     }
@@ -138,8 +138,4 @@ public class App extends Application{
         
     }
 
-    public static void main (String[] args)
-    {
-        launch(args);
-    }
 }

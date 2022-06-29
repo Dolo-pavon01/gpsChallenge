@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.visuales.VistaMapa;
+
 public class Gameplay {
   private Vehiculo vehiculoEnJuego;
   private Mapa mapa;
@@ -12,18 +14,22 @@ public class Gameplay {
     this.llegoAMeta = false;
   }
 
+  public VistaMapa crearVistaMapa(Vehiculo vehiculo) throws Exception {
+    return new VistaMapa(this.mapa);
+  }
+
   public void iniciarJuego(Vehiculo vehiculo) {
     this.vehiculoEnJuego = vehiculo;
     this.mapa = this.builder.crearGameplay();
   }
 
 
-  public boolean jugar(String input) {
+  public boolean jugar(char input) {
     int puntaje = this.vehiculoEnJuego.movimientos();
-    char direccion = (input.toLowerCase()).charAt(0);
     try{
-      this.mapa.avanzar(vehiculoEnJuego, direccion);
+      this.mapa.avanzar(vehiculoEnJuego, input);
     }
+
     catch (LlegoAMetaException e)
     {
       this.llegoAMeta = true;

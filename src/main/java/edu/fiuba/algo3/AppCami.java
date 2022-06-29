@@ -18,28 +18,25 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class AppCami extends Application {
     private Vehiculo vehiculo;
+    private ImageView dibujoVehiculo;
+
     public void start(Stage primaryStage) throws Exception {
 
         vehiculo = new Vehiculo();
 
-        TextField nombreInput = new TextField();
-        nombreInput.setPromptText("Ingresar nombre del jugador");
+        TextField nombreInput = new TextField("Ingresar nombre del jugador");
         Label nombreJugador = new Label();
+        Label etiquetaVehiculos = new Label("Elija su vehículo");
 
-        Label etiquetaVehiculos = new Label();
-        etiquetaVehiculos.setText("Elija su vehículo");
+        Button motoBtn = new Button("Moto");
 
-        Button motoBtn = new Button();
-        motoBtn.setText("Moto");
+        Button autoBtn = new Button("Auto");
 
-        Button autoBtn = new Button();
-        autoBtn.setText("Auto");
-
-        Button auto4x4Btn = new Button();
-        auto4x4Btn.setText("Auto 4x4");
+        Button auto4x4Btn = new Button("Auto 4x4");
 
         HBox contenedorVehiculos = new HBox(motoBtn, autoBtn, auto4x4Btn);
         contenedorVehiculos.setSpacing(10);
@@ -67,6 +64,7 @@ public class AppCami extends Application {
         ImageView dibujoVehiculo=new ImageView();
 
 
+
         autoBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
@@ -81,8 +79,6 @@ public class AppCami extends Application {
 
 
         motoBtn.setOnAction(new EventHandler<ActionEvent>() {
-
-
             @Override
             public void handle(ActionEvent arg0) {
                 vehiculo = new Vehiculo(new Moto());
@@ -162,7 +158,7 @@ public class AppCami extends Application {
 
         juego.setOnKeyPressed(KeyEvent-> {
             dibujoVehiculo.setRotationAxis(Rotate.Z_AXIS);
-            if(gameplay.jugar(KeyEvent.getCode().toString()))
+            if(gameplay.jugar(KeyEvent.getCode().toString().charAt(0)))
             {
             switch (KeyEvent.getCode()){
                 case D:
