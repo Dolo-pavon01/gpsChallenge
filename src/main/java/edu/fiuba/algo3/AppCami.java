@@ -6,29 +6,18 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import static javafx.scene.input.KeyCode.*;
 
 public class AppCami extends Application {
     private Vehiculo vehiculo;
@@ -156,7 +145,7 @@ public class AppCami extends Application {
         group.getChildren().addAll(nombreJugador,displayPuntaje,displayPosicion);
 
         Scene juego = new Scene(group,500,500, Color.BLACK);
-        Gameplay gameplay = new Gameplay(new BuilderPruebas(20));
+        Gameplay gameplay = new Gameplay(new MapaFactory(20));
         Label finDeJuego = new Label();
         finDeJuego.setTextFill(Color.WHITESMOKE);
         Group fin = new Group(finDeJuego);

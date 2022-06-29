@@ -3,11 +3,11 @@ package edu.fiuba.algo3.modelo;
 public class Gameplay {
   private Vehiculo vehiculoEnJuego;
   private Mapa mapa;
-  private BuilderPruebas builder;
+  private MapaFactory builder;
 
   private boolean llegoAMeta;
 
-  public Gameplay(BuilderPruebas unBuilder) {
+  public Gameplay(MapaFactory unBuilder) {
     this.builder = unBuilder;
     this.llegoAMeta = false;
   }
