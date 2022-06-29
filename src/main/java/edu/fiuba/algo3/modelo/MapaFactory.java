@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.HashMap;
 import java.util.Random;
 
-public class BuilderPruebas {
+public class MapaFactory {
   private int tamanio;
   private int cantElementos;
   private HashMap<Posicion, IVisitor> obstaculos;
@@ -12,7 +12,7 @@ public class BuilderPruebas {
 
   private Posicion meta;
 
-  public BuilderPruebas(int tamanio) {
+  public MapaFactory(int tamanio) {
     this.tamanio = tamanio;
     this.cantElementos = tamanio / 8;
   }
@@ -69,6 +69,7 @@ public class BuilderPruebas {
     return new Mapa(paredes, obstaculos, sorpresas, meta);
   }
 
+  // TODO: Sacar hardcodeo de randomizador para que funcione
   public Mapa crearMapa() {
     this.obstaculos = new CreadorObstaculos().crear(tamanio);
     this.sorpresas = new CreadorSorpresas().crear(tamanio);
