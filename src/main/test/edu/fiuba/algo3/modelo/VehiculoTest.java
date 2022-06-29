@@ -3,11 +3,13 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class VehiculoTest {
+  public final int LIMITE_POZOS_ATRAVEZADOS = 2;
+
   @Test
   public void test01TipoAutoPasaPorPozoYEsPenalizadoCon3() {
     // arrange
@@ -149,5 +151,27 @@ public class VehiculoTest {
         () -> {
           auto4x4.pasarPor(piquete);
         });
+  }
+
+  @Test
+  public void test15RecibirUnImpactoNoPenalizaAuto4x4() {
+    // arrange
+    Auto4x4 auto4x4 = new Auto4x4();
+    // act
+    auto4x4.recibirImpacto();
+    // assert
+    assertFalse(auto4x4.esPenalizado(LIMITE_POZOS_ATRAVEZADOS));
+  }
+
+  @Test
+  public void test16Recibir3ImpactoEsPenalizaAuto4x4() {
+    // arrange
+    Auto4x4 auto4x4 = new Auto4x4();
+    // act
+    auto4x4.recibirImpacto();
+    auto4x4.recibirImpacto();
+    auto4x4.recibirImpacto();
+    // assert
+    assertTrue(auto4x4.esPenalizado(LIMITE_POZOS_ATRAVEZADOS));
   }
 }
