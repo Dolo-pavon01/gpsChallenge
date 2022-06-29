@@ -15,6 +15,12 @@ public class Vehiculo {
     this.movimientos = 0;
     this.posicion = Posicion.getPosicion(10, 10);
   }
+
+  public Vehiculo(TipoVehiculo tipo,Posicion posicion) {
+    this.movimientos = 0;
+    this.tipo = tipo;
+    this.posicion = posicion;
+  }
   public void pasarPor(IVisitor visitor) {
     if (visitor == null)
       return;
