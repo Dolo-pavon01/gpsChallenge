@@ -15,12 +15,13 @@ public class Gameplay {
   }
 
   public VistaMapa crearVistaMapa(Vehiculo vehiculo) throws Exception {
-    return new VistaMapa(this.mapa);
+    return new VistaMapa();
   }
 
-  public void iniciarJuego(Vehiculo vehiculo) {
+  public Mapa iniciarJuego(Vehiculo vehiculo) {
     this.vehiculoEnJuego = vehiculo;
     this.mapa = this.builder.crearGameplay();
+    return this.mapa;
   }
 
 

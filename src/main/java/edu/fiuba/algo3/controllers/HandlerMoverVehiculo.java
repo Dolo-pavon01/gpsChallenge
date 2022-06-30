@@ -30,23 +30,23 @@ public class HandlerMoverVehiculo implements EventHandler<ActionEvent> {
             switch (this.direccion) {
                 case 'd':
                     this.dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
-                    this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() + 10);
+                    this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() + 50);
                     this.dibujoVehiculo.setRotate(0);
                     break;
                 case 'a':
 
                     this.dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
-                    this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() - 10);
+                    this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() - 50);
                     this.dibujoVehiculo.setRotate(180);
                     break;
                 case 'w':
 
-                    this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() - 10);
+                    this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() - 50);
                     this.dibujoVehiculo.setRotate(270);
                     break;
                 case 's':
 
-                    this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() + 10);
+                    this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() + 50);
                     this.dibujoVehiculo.setRotate(90);
                     break;
                 default:

@@ -12,12 +12,13 @@ import java.util.List;
 public class VistaMapa extends Group {
 
     public double tamanio;
-    public VistaMapa(Mapa mapa) throws Exception {
+    public VistaMapa() throws Exception {
 
         MapaBase base = new MapaBase();
         List calles = base.crearMapaBase();
 
         this.getChildren().addAll(calles);
+
     }
 
 
