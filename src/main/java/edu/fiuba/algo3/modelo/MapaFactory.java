@@ -6,15 +6,15 @@ import java.util.Random;
 public class MapaFactory {
   private int tamanio;
   private int cantElementos;
-  private HashMap<Posicion, IVisitor> obstaculos;
-  private HashMap<Posicion, Sorpresa> sorpresas;
-  private HashMap<Posicion, Pared> paredes;
+  private HashMap obstaculos;
+  private HashMap sorpresas;
+  private HashMap paredes;
 
   private Posicion meta;
 
   public MapaFactory(int tamanio) {
     this.tamanio = tamanio;
-    this.cantElementos = tamanio / 8;
+    this.cantElementos = tamanio * tamanio/ 8;
     this.obstaculos = new HashMap<>();
     this.sorpresas = new HashMap<>();
     this.paredes = new HashMap<>();

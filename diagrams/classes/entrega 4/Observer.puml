@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Observer
+{
++update(o:Observable,arg:Object):void
+}
+
+class Observable
+{
++addObserver(o:Observer):void
++notifyObservers(Object arg):void
++setChanged():void
+}
+class ModeloObservable
+{
+- modeloDato
++setDatos(posicion,dato):void
++inicializar(posicion):void
+}
+
+class VistaModeloDato
+{
++VistaModeloDato(Posicion: posicion,modelo: ModeloObservable): VistaModeloDato
++update(Observable: o,Object: arg):void
+}
+Observer <|.. VistaModeloDato
+Observable <|-- ModeloObservable
+Observer -o Observable
+
+@enduml

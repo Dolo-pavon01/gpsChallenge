@@ -65,6 +65,6 @@ public class Mapa {
 
   public IVisitor obstaculoEnPosicion(Posicion posicion)
   {
-    return.this.sorpresas.get(posicion);
+    return this.obstaculos.get(posicion);
   }
 }
