@@ -14,11 +14,14 @@ public class HandlerMoverVehiculo implements EventHandler<ActionEvent> {
     private ImageView dibujoVehiculo;
     private char direccion;
 
+    private double longitudMovimiento;
 
-    public HandlerMoverVehiculo(Gameplay gameplay, ImageView dibujoVehiculo, KeyCode code) {
+
+    public HandlerMoverVehiculo(Gameplay gameplay, ImageView dibujoVehiculo, KeyCode code,double longitudMovimiento) {
         this.dibujoVehiculo = dibujoVehiculo;
         this.gameplay = gameplay;
         this.direccion = (code.toString()).toLowerCase().charAt(0);
+        this.longitudMovimiento = longitudMovimiento;
         this.handle(new ActionEvent());
 
     }
@@ -30,23 +33,23 @@ public class HandlerMoverVehiculo implements EventHandler<ActionEvent> {
             switch (this.direccion) {
                 case 'd':
                     this.dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
-                    this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() + 50);
+                    this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() + this.longitudMovimiento);
                     this.dibujoVehiculo.setRotate(0);
                     break;
                 case 'a':
 
                     this.dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
-                    this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() - 50);
+                    this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() - this.longitudMovimiento);
                     this.dibujoVehiculo.setRotate(180);
                     break;
                 case 'w':
 
-                    this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() - 50);
+                    this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() - this.longitudMovimiento);
                     this.dibujoVehiculo.setRotate(270);
                     break;
                 case 's':
 
-                    this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() + 50);
+                    this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() + this.longitudMovimiento);
                     this.dibujoVehiculo.setRotate(90);
                     break;
                 default:

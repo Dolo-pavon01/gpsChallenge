@@ -25,6 +25,15 @@ public class Posicion {
     return getPosicion(nueva.x, nueva.y);
   }
 
+  public int getX()
+  {
+    return this.x;
+  }
+
+  public int getY()
+  {
+    return this.y;
+  }
   public String posicionAString() {
     return (this.x + "," + this.y);
   }
