@@ -51,13 +51,11 @@ public class Mapa {
     vehiculo.abrirSopresa(this.sorpresas.get(posicion));
   }
 
-  public Sorpresa sorpresaEnPosicion(Posicion posicion)
-  {
+  public Sorpresa sorpresaEnPosicion(Posicion posicion) {
     return this.sorpresas.get(posicion);
   }
 
-  public IVisitor obstaculoEnPosicion(Posicion posicion)
-  {
+  public IVisitor obstaculoEnPosicion(Posicion posicion) {
     return this.obstaculos.get(posicion);
   }
 }
