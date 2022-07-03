@@ -14,16 +14,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.transform.Rotate;
+
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.File;
 
 public class AppCami extends Application {
     private Vehiculo vehiculo;
@@ -55,7 +53,7 @@ public class AppCami extends Application {
         this.dibujoVehiculo = new ImageView();
         this.dibujoVehiculo.setY(300);
         this.dibujoVehiculo.setPreserveRatio(true);
-        this.dibujoVehiculo.setFitHeight(50);
+        this.dibujoVehiculo.setFitHeight(10);
 
         autoBtn.setOnAction(new HandlerBotonVehiculo(this.vehiculo,this.dibujoVehiculo,new Auto(),"Auto"));
         motoBtn.setOnAction(new HandlerBotonVehiculo(this.vehiculo,this.dibujoVehiculo,new Moto(),"Moto"));
@@ -103,6 +101,9 @@ public class AppCami extends Application {
                 primaryStage.setScene(pantallaFinal);
             }
         });
+
+
+
     }
     public static void main (String[] args)
     {

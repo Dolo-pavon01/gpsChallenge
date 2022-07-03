@@ -30,7 +30,7 @@ public class ControlPolicial implements IVisitor {
 
   @Override
   public String dibujar()  {
-      return("docs/controlPolicial.png");
+      return("docs/dibujo_ControlPolicial.png");
   }
 
   @Override

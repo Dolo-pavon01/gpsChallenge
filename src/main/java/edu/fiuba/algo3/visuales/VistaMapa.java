@@ -88,5 +88,32 @@ public class VistaMapa extends Group {
         System.out.print( x + " " + y + "\n");
         return dibujoSorpresa;
     }
+    private ImageView dibujar(Piquete piquete,double x, double y) throws FileNotFoundException {
+        ImageView dibujoPiquete = new ImageView(new Image(new FileInputStream("docs/piquete.png")));
+        dibujoPiquete.setPreserveRatio(true);
+        dibujoPiquete.setFitHeight(50);
+        dibujoPiquete.setX(x);
+        dibujoPiquete.setY(y);
+        System.out.print( x + " " + y + "\n");
+        return dibujoPiquete;
+    }
+    private ImageView dibujar(Pozo pozo,double x, double y) throws FileNotFoundException {
+        ImageView dibujoPozo = new ImageView(new Image(new FileInputStream("docs/pozo.png")));
+        dibujoPozo.setPreserveRatio(true);
+        dibujoPozo.setFitHeight(50);
+        dibujoPozo.setX(x);
+        dibujoPozo.setY(y);
+        System.out.print( x + " " + y + "\n");
+        return dibujoPozo;
+    }
+    private ImageView dibujar(ControlPolicial controlPolicial,double x, double y) throws FileNotFoundException {
+        ImageView ControlPolicial = new ImageView(new Image(new FileInputStream("docs/dibujo_ControlPolicial.png")));
+        ControlPolicial.setPreserveRatio(true);
+        ControlPolicial.setFitHeight(50);
+        ControlPolicial.setX(x);
+        ControlPolicial.setY(y);
+        System.out.print( x + " " + y + "\n");
+        return ControlPolicial;
+    }
 
     }
