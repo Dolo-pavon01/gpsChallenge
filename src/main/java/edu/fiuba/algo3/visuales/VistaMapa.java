@@ -11,6 +11,7 @@ import javafx.scene.layout.*;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -18,77 +19,40 @@ public class VistaMapa extends Group {
 
     public double x = 1000;
     public double y = 680;
-    public double startMapX = 50 ;
-    public double startMapY = 50 ;
+    public double startMapX = 50;
+    public double startMapY = 50;
     public double widthMap = 900;
-    public double heightMap = 600 ;
+    public double heightMap = 600;
     public double callesEnY;
     public double callesEnX;
     public double largoMovimiento;
+
+    private MapaBase base = new MapaBase();
+    ;
+
     public VistaMapa() throws Exception {
+
         Random randoNumber = new Random();
-
-        MapaBase base = new MapaBase();
-
-
-
-        this.callesEnY = randoNumber.nextInt(2) * 6 + 12;
-        Group calles = base.crearMapaBase((int) (3));
-        this.callesEnY = base.getMaxCallesY();
-        this.largoMovimiento = heightMap/callesEnY * 2;
-        this.callesEnX = base.getMaxCallesX();
-
-        MapaFactory mapaFactory = new MapaFactory((int)callesEnY,(int)callesEnX);
-        Mapa mapa = mapaFactory.crearMapa();
-
-        for(int i = 1; i < this.callesEnY;i ++)
-            {
-                for(int j = 1; j < this.callesEnX;j++)
-                {
-                    IVisitor obstaculo = mapa.obstaculoEnPosicion(Posicion.getPosicion(i,j));
-                    if(obstaculo.dibujar() != null)
-                    {
-                      base.obtaculoEn(i,j,new ImageView(new Image(new FileInputStream(obstaculo.dibujar()))));
-                    }
-                }
-            }
-
-
-
-
+        Group calles = this.base.crearMapaBase(randoNumber.nextInt(4)  + 2);
+        this.callesEnY = this.base.getMaxCallesY();
+        this.largoMovimiento = heightMap / callesEnY * 2;
+        this.callesEnX = this.base.getMaxCallesX();
         System.out.print("calles en X:" + this.callesEnX + "  calles en Y:" + this.callesEnY + "\n");
         this.getChildren().addAll(calles);
     }
 
-    private double getXEnPixeles(int x)
-    {
-        return(x* widthMap/callesEnY);
-    }
-    private double getYEnPixeles(int y)
-    {
-        return (y * heightMap/callesEnX);
-    }
+    public Group crearMapa(Mapa mapa) throws Exception {
+        for (int i = 1; i < this.callesEnX; i++) {
+            for (int j = 1; j < this.callesEnY; j++) {
+                IVisitor obstaculo = mapa.obstaculoEnPosicion(Posicion.getPosicion(i, j));
+                if (obstaculo.dibujar() != null) {
+                    this.base.obtaculoEn(i, j, new ImageView(new Image(new FileInputStream(obstaculo.dibujar()))));
+                }
+            }
+        }
 
-
-
-    private ImageView dibujar(IVisitor obstaculo,double x, double y) throws FileNotFoundException {
-
-            ImageView dibujo = new ImageView(new Image(new FileInputStream(obstaculo.dibujar())));
-            dibujo.setPreserveRatio(true);
-            dibujo.setFitHeight(50);
-            dibujo.setX(x);
-            dibujo.setY(y);
-            System.out.print( x + " " + y + "\n");
-            return dibujo;
-    }
-    private ImageView dibujar(Sorpresa sorpresa,double x, double y) throws FileNotFoundException {
-        ImageView dibujoSorpresa = new ImageView(new Image(new FileInputStream("docs/sorpresa.png")));
-        dibujoSorpresa.setPreserveRatio(true);
-        dibujoSorpresa.setFitHeight(50);
-        dibujoSorpresa.setX(x);
-        dibujoSorpresa.setY(y);
-        System.out.print( x + " " + y + "\n");
-        return dibujoSorpresa;
-    }
+        this.getChildren().addAll(this.base.elements);
+        return this;
 
     }
+}

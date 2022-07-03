@@ -75,8 +75,7 @@ public class AppCami extends Application {
         VistaMapa vistaMapa = new VistaMapa();
         Gameplay gameplay = new Gameplay(new MapaFactory((int) vistaMapa.callesEnY, (int) vistaMapa.callesEnX));
         gameplay.iniciarJuego(vehiculo);
-        Mapa mapa = gameplay.getMapa();
-        Group group = new Group(vistaMapa.crearMapa(mapa),nombreJugador,displayPuntaje,displayPosicion,this.dibujoVehiculo);
+        Group group = new Group(vistaMapa.crearMapa(gameplay.getMapa()),nombreJugador,displayPuntaje,displayPosicion,this.dibujoVehiculo);
         Scene juego = new Scene(group,500,500, Color.BLACK);
 
         Label finDeJuego = new Label();

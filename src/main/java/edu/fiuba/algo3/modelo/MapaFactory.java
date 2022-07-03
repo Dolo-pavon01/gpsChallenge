@@ -16,7 +16,7 @@ public class MapaFactory {
   public MapaFactory(int largo, int ancho) {
     this.largo = largo;
     this.ancho = ancho;
-    this.cantElementos = largo*3;
+    this.cantElementos = 5;
     this.obstaculos = new HashMap<>();
     this.sorpresas = new HashMap<>();
     this.paredes = new HashMap<>();
