@@ -1,16 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-public class ObstaculoNulo implements IVisitor {
+public class ObstaculoNulo implements Obstaculo {
 
 
     @Override
-    public String dibujar()  {
+    public String nombreObstaculo() {
         return null;
     }
 

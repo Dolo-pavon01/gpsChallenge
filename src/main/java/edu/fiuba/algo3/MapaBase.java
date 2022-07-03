@@ -60,10 +60,8 @@ public class MapaBase {
                 this.calle(i, y, m, t, p);
             }
         }
-        
-        this.obtaculoEn();
+
         group.getChildren().addAll(this.elements);
-        
         
 
         return group;
@@ -72,6 +70,7 @@ public class MapaBase {
     {
         return this.m  / 2;
     }
+
     
     public int getMaxCallesY() {return this.callesEnY * 2;}
     public int getMaxCallesX() {return this.callesEnX * 2;}
@@ -86,9 +85,9 @@ public class MapaBase {
 
     }
     
-    public void  obtaculoEn()  throws Exception {
-    	int coordenadaY= 4;
-    	int coordenadaX = 6;
+    public void  obtaculoEn(int x,int y , ImageView imageView1)  throws Exception {
+    	int coordenadaY= y;
+    	int coordenadaX = x;
     	
     	int cantidadCallesY = this.callesEnY * 2 ;
     	int cantidadCallesX = this.callesEnX * 2 ; 
@@ -111,13 +110,7 @@ public class MapaBase {
     	}else if (coordenadaX > 0) {
     		startX += ((this.p + this.t )/ 2);
     	}
-    	
-    	
-    
-    	FileInputStream input = new FileInputStream("docs/sorpresa.png");
-        Image image1 = new Image(input);
-        ImageView imageView1 = new ImageView();
-        imageView1.setImage(image1);
+
         imageView1.setX(startX);
         imageView1.setY(startY);
         imageView1.setFitWidth(this.p);

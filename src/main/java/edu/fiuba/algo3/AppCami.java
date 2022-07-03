@@ -14,16 +14,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.transform.Rotate;
+
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class AppCami extends Application {
     private Vehiculo vehiculo;
@@ -75,8 +71,7 @@ public class AppCami extends Application {
         VistaMapa vistaMapa = new VistaMapa();
         Gameplay gameplay = new Gameplay(new MapaFactory((int) vistaMapa.callesEnY, (int) vistaMapa.callesEnX));
         gameplay.iniciarJuego(vehiculo);
-        Mapa mapa = gameplay.getMapa();
-        Group group = new Group(vistaMapa.crearMapa(mapa),nombreJugador,displayPuntaje,displayPosicion,this.dibujoVehiculo);
+        Group group = new Group(vistaMapa.crearMapa(gameplay.getMapa()),nombreJugador,displayPuntaje,displayPosicion,this.dibujoVehiculo);
         Scene juego = new Scene(group,500,500, Color.BLACK);
 
         Label finDeJuego = new Label();
