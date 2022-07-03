@@ -8,13 +8,6 @@ public class Mapa {
   private HashMap<Posicion, Pared> paredes;
   private Posicion meta;
 
-  public Mapa() {
-    this.obstaculos = new HashMap<>();
-    this.sorpresas = new HashMap<>();
-    this.paredes = new HashMap<>();
-    this.meta = Posicion.getPosicion(20, 0);
-  }
-
   public Mapa(HashMap paredes, HashMap obstaculos, HashMap sorpresas, Posicion meta) {
     this.obstaculos = obstaculos;
     this.sorpresas = sorpresas;
