@@ -25,7 +25,7 @@ public class Vehiculo {
     this.tipo = tipo;
     this.posicion = posicion;
   }
-  public void pasarPor(IVisitor visitor) {
+  public void pasarPor(Obstaculo visitor) {
     if (visitor == null)
       return;
     this.movimientos += this.tipo.pasarPor(visitor);

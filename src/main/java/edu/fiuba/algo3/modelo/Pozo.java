@@ -1,12 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-public class Pozo implements IVisitor {
+public class Pozo implements Obstaculo {
   private static final int MULTA_AUTO = 3;
   private static final int MULTA_MOTO = 3;
   private static final int MULTA_AUTO4x4 = 2;
@@ -14,8 +8,8 @@ public class Pozo implements IVisitor {
   private static final int MULTA_CERO = 0;
 
   @Override
-    public String dibujar()  {
-      return "docs/pozo.png";
+    public String nombreObstaculo()  {
+      return "pozo";
     }
 
 
