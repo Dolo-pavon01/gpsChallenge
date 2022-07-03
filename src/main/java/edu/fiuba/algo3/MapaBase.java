@@ -26,14 +26,16 @@ public class MapaBase {
 
     public double x = 1000;
     public double y = 680;
-    public double startMapX = 50;
+    public double startMapX = 0;
     public double startMapY = 50;
     public double widthMap = 900;
     public double heightMap = 600;
 
     private double m;
-    private double callesEnY;
-
+    private int callesEnY;
+    private double p;
+    private double t;
+    public int callesEnX = 0;
     public List elements = new ArrayList();
 
     public Group crearMapaBase(int random) throws Exception {
@@ -46,27 +48,33 @@ public class MapaBase {
         double t = m / 3; //
         double p = t / 2;
         this.m = m;
+        this.p = p;
+        this.callesEnY = random;
+        this.t = t;
 
-
-        FileInputStream input = new FileInputStream("docs/ED16.png");
-
-
+ 
         for (double i = this.startMapX; i < (this.widthMap + this.startMapX); i += m) {
-            this.calle(i, this.startMapY, m, t, p, new FileInputStream("docs/ED16.png"));
+        	this.callesEnX += 1;
+            this.calle(i, this.startMapY, m, t, p);
             for (double y = this.startMapY; y < (this.heightMap); y += m) {
-                this.calle(i, y, m, t, p, new FileInputStream("docs/ED16.png"));
+                this.calle(i, y, m, t, p);
             }
         }
+        
+        this.obtaculoEn();
         group.getChildren().addAll(this.elements);
+        
+        
 
         return group;
     }
     public double getLargoMovimiento()
     {
-        return this.m / 2;
+        return this.m  / 2;
     }
-
-
+    
+    public int getMaxCallesY() {return this.callesEnY * 2;}
+    public int getMaxCallesX() {return this.callesEnX * 2;}
     public Rectangle rectangule(double x, double y, double w, double h) {
         Rectangle rect = new Rectangle();
         rect.setX(x);
@@ -77,8 +85,47 @@ public class MapaBase {
         return rect;
 
     }
+    
+    public void  obtaculoEn()  throws Exception {
+    	int coordenadaY= 4;
+    	int coordenadaX = 6;
+    	
+    	int cantidadCallesY = this.callesEnY * 2 ;
+    	int cantidadCallesX = this.callesEnX * 2 ; 
+    	
+    	double techo = (Math.round((cantidadCallesY - coordenadaY )/2) * this.m) + this.startMapY;
+    	
+    	double startY =  techo ;
+    	if(coordenadaY % 2 == 0) {
+    		startY +=  0;
+    	} else {
+    		startY += this.p + this.t ;
+    	}
+    	
+    	
+    	double costado = (Math.round((cantidadCallesX - (cantidadCallesX - coordenadaX ) )/2)*this.m) ;
+    	double startX  = costado + this.startMapX;
+    	
+    	if(coordenadaX % 2 == 0 & coordenadaX > 0) {
+    		startX -=  ((this.p + this.t) / 2);
+    	}else if (coordenadaX > 0) {
+    		startX += ((this.p + this.t )/ 2);
+    	}
+    	
+    	
+    
+    	FileInputStream input = new FileInputStream("docs/sorpresa.png");
+        Image image1 = new Image(input);
+        ImageView imageView1 = new ImageView();
+        imageView1.setImage(image1);
+        imageView1.setX(startX);
+        imageView1.setY(startY);
+        imageView1.setFitWidth(this.p);
+        imageView1.setFitHeight(this.p);
+        this.elements.add(imageView1);
+    }
 
-    public void calle(double startX, double startY, double m, double t, double p, FileInputStream input) throws Exception {
+    public void calle(double startX, double startY, double m, double t, double p) throws Exception {
         Integer counter = 0;
         Rectangle calle1 = this.rectangule(startX, startY, m, p);
         calle1.setFill(Color.WHITE);
@@ -123,10 +170,10 @@ public class MapaBase {
         this.elements.add(Manzana3);
         this.elements.add(Manzana4);
 
-        this.imagen(input, startX + p, startY + p, t);
-        this.imagen(input, startX + p + t + p, startY + p, t);
-        this.imagen(input, startX + p, startY + p + t + p, t);
-        this.imagen(input, startX + p + t + p, startY + p + t + p, t);
+        this.imagen(startX + p, startY + p, t);
+        this.imagen(startX + p + t + p, startY + p, t);
+        this.imagen(startX + p, startY + p + t + p, t);
+        this.imagen(startX + p + t + p, startY + p + t + p, t);
 
         this.calleImagen(startX, startY, m, p, "docs/calle.png");
         this.calleImagen(startX, startY, p, m, "docs/calle2.png");
@@ -148,7 +195,7 @@ public class MapaBase {
         this.elements.add(imageView1);
     }
 
-    public void imagen(FileInputStream input2, double startX, double startY, double t) throws Exception {
+    public void imagen(double startX, double startY, double t) throws Exception {
         int indexPhoto = this.randoNumber.nextInt(17) + 2;
         FileInputStream input = new FileInputStream("docs/ED" + indexPhoto + ".png");
         Image image1 = new Image(input);
