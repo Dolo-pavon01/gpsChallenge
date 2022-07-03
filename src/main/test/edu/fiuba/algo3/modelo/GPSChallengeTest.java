@@ -14,9 +14,9 @@ public class GPSChallengeTest {
     MapaFactory fabrica = new MapaFactory(10,10);
 
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(1,0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(1, 0));
 
-    Vehiculo moto = new Vehiculo(new Moto(),Posicion.getPosicion(0,0));
+    Vehiculo moto = new Vehiculo(new Moto(), Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(moto, 'd');
     // assert
@@ -30,8 +30,8 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(1,0));
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(1, 0));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(auto, 'd');
     // assert
@@ -43,8 +43,8 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(1,0));
-    Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(1, 0));
+    Vehiculo auto4x4 = new Vehiculo(new Auto4x4(), Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(auto4x4, 'd');
     // assert
@@ -56,9 +56,9 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(1,0));
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(2,0));
-    Vehiculo moto = new Vehiculo(new Moto(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(1, 0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(2, 0));
+    Vehiculo moto = new Vehiculo(new Moto(), Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(moto, 'd');
     mapa.avanzar(moto, 'd');
@@ -71,8 +71,8 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new Piquete(),Posicion.getPosicion(1,0));
-    Vehiculo moto = new Vehiculo(new Moto(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new Piquete(), Posicion.getPosicion(1, 0));
+    Vehiculo moto = new Vehiculo(new Moto(), Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(moto, 'd');
     // assert
@@ -85,8 +85,8 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(1,0));
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(1, 0));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(auto, 'd');
     // assert
@@ -98,10 +98,10 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(1,0));
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(2,0));
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(3,0));
-    Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(1, 0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(2, 0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(3, 0));
+    Vehiculo auto4x4 = new Vehiculo(new Auto4x4(), Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(auto4x4, 'd');
     mapa.avanzar(auto4x4, 'd');
@@ -115,8 +115,8 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new Piquete(),Posicion.getPosicion(1,0));
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new Piquete(), Posicion.getPosicion(1, 0));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(0, 0));
     // act & assert
 
     mapa.avanzar(auto, 'd');
@@ -128,8 +128,8 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new SorpresaFavorable(),Posicion.getPosicion(5,0));
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new SorpresaFavorable(), Posicion.getPosicion(5, 0));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(0, 0));
     // act
     for (int i = 0; i < 5; i++) {
       mapa.avanzar(auto, 'd');
@@ -143,8 +143,8 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new SorpresaDesfavorable(),Posicion.getPosicion(5,0));
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new SorpresaDesfavorable(), Posicion.getPosicion(5, 0));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(0, 0));
     // act
     for (int i = 0; i < 5; i++) {
       mapa.avanzar(auto, 'd');
@@ -158,9 +158,9 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new SorpresaCambioVehiculo(),Posicion.getPosicion(1,0));
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(2,0));
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new SorpresaCambioVehiculo(), Posicion.getPosicion(1, 0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(2, 0));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(auto, 'd');
     mapa.avanzar(auto, 'd');
@@ -174,9 +174,9 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new SorpresaCambioVehiculo(),Posicion.getPosicion(1,0));
-    fabrica.agregar(new Pozo(),Posicion.getPosicion(2,0));
-    Vehiculo auto = new Vehiculo(new Auto4x4(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new SorpresaCambioVehiculo(), Posicion.getPosicion(1, 0));
+    fabrica.agregar(new Pozo(), Posicion.getPosicion(2, 0));
+    Vehiculo auto = new Vehiculo(new Auto4x4(), Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(auto, 'd');
     mapa.avanzar(auto, 'd');
@@ -190,9 +190,9 @@ public class GPSChallengeTest {
     // arrange
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new SorpresaCambioVehiculo(),Posicion.getPosicion(1,0));
-    fabrica.agregar(new Piquete(),Posicion.getPosicion(2,0));
-    Vehiculo moto = new Vehiculo(new Moto(),Posicion.getPosicion(0,0));
+    fabrica.agregar(new SorpresaCambioVehiculo(), Posicion.getPosicion(1, 0));
+    fabrica.agregar(new Piquete(), Posicion.getPosicion(2, 0));
+    Vehiculo moto = new Vehiculo(new Moto(), Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(moto, 'd');
     mapa.avanzar(moto, 'd');
@@ -211,8 +211,8 @@ public class GPSChallengeTest {
 
     MapaFactory fabrica = new MapaFactory(10,10);
     Mapa mapa = fabrica.crearMapa();
-    fabrica.agregar(new ControlPolicial(),Posicion.getPosicion(1,0));
-    Vehiculo moto = new Vehiculo(tipoMoto,Posicion.getPosicion(0,0));
+    fabrica.agregar(new ControlPolicial(), Posicion.getPosicion(1, 0));
+    Vehiculo moto = new Vehiculo(tipoMoto, Posicion.getPosicion(0, 0));
     // act
     mapa.avanzar(moto, 'd');
     // assert

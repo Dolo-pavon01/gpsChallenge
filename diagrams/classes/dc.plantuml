@@ -1,0 +1,11 @@
+@startuml
+
+class Gameplay {}
+class Mapa {}
+class MapaVista {}
+
+Gameplay --> Mapa
+Gameplay --> MapaVista
+MapaVista ..> Mapa
+
+@enduml
