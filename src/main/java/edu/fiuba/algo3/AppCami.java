@@ -14,14 +14,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class AppCami extends Application {
     private Vehiculo vehiculo;
@@ -51,9 +53,10 @@ public class AppCami extends Application {
         primaryStage.show();
 
         this.dibujoVehiculo = new ImageView();
-        this.dibujoVehiculo.setY(300);
         this.dibujoVehiculo.setPreserveRatio(true);
-        this.dibujoVehiculo.setFitHeight(10);
+        this.dibujoVehiculo.setFitHeight(50);
+        this.dibujoVehiculo.setY(150);
+        this.dibujoVehiculo.setX(100);
 
         autoBtn.setOnAction(new HandlerBotonVehiculo(this.vehiculo,this.dibujoVehiculo,new Auto(),"Auto"));
         motoBtn.setOnAction(new HandlerBotonVehiculo(this.vehiculo,this.dibujoVehiculo,new Moto(),"Moto"));
@@ -68,13 +71,12 @@ public class AppCami extends Application {
 
         Label displayPuntaje = new Etiqueta().crearEtiqueta("Puntaje : 0",200,300);
 
-        Label displayPosicion = new Etiqueta().crearEtiqueta("Posicion Actual: 0,1",200,400);
+        Label displayPosicion = new Etiqueta().crearEtiqueta("Posicion Actual: 10,10",200,400);
 
+        Gameplay gameplay = new Gameplay(new MapaFactory(20));
         VistaMapa vistaMapa = new VistaMapa();
-        Gameplay gameplay = new Gameplay(new MapaFactory((int) vistaMapa.callesEnY, (int) vistaMapa.callesEnX));
-        gameplay.iniciarJuego(vehiculo);
-        Mapa mapa = gameplay.getMapa();
-        Group group = new Group(vistaMapa.crearMapa(mapa),nombreJugador,displayPuntaje,displayPosicion,this.dibujoVehiculo);
+        Group group = new Group(vistaMapa,nombreJugador,displayPuntaje,displayPosicion,this.dibujoVehiculo);
+
         Scene juego = new Scene(group,500,500, Color.BLACK);
 
         Label finDeJuego = new Label();
@@ -86,13 +88,14 @@ public class AppCami extends Application {
             @Override
             public void handle(ActionEvent arg0) {
                 nombreJugador.setText("Jugador: " + nombreInput.getText());
+                gameplay.iniciarJuego(vehiculo);
                 primaryStage.setScene(juego);
             }
         });
 
         juego.setOnKeyPressed(KeyEvent->
         {
-            new HandlerMoverVehiculo(gameplay,dibujoVehiculo, KeyEvent.getCode(),vistaMapa.largoMovimiento);
+            new HandlerMoverVehiculo(gameplay,dibujoVehiculo, KeyEvent.getCode());
             displayPuntaje.setText("Puntaje: " + gameplay.puntaje());
             displayPosicion.setText("Posicion Actual: " + gameplay.posicionJugador());
             if(gameplay.llegoAMeta())
@@ -101,9 +104,6 @@ public class AppCami extends Application {
                 primaryStage.setScene(pantallaFinal);
             }
         });
-
-
-
     }
     public static void main (String[] args)
     {

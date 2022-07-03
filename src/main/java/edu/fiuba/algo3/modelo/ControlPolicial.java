@@ -1,10 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Random;
 
 public class ControlPolicial implements IVisitor {
@@ -26,11 +21,6 @@ public class ControlPolicial implements IVisitor {
   private int multar(int probabilidad) {
     if (this.randomizador.nextInt(LIMITE) > probabilidad) return 0;
     return MULTA;
-  }
-
-  @Override
-  public String dibujar()  {
-      return("docs/dibujo_ControlPolicial.png");
   }
 
   @Override

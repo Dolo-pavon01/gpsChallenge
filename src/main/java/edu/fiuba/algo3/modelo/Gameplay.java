@@ -14,9 +14,8 @@ public class Gameplay {
     this.llegoAMeta = false;
   }
 
-  public Mapa getMapa()
-  {
-    return this.mapa;
+  public VistaMapa crearVistaMapa(Vehiculo vehiculo) throws Exception {
+    return new VistaMapa();
   }
 
   public Mapa iniciarJuego(Vehiculo vehiculo) {

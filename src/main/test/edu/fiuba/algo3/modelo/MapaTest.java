@@ -12,7 +12,7 @@ public class MapaTest {
   @Test
   public void test01MotoSeMuevePorMapaPasaPorPozoEsPenalizado() {
     // arrange
-    MapaFactory fabrica = new MapaFactory(10,10);
+    MapaFactory fabrica = new MapaFactory(10);
     Mapa mapa = fabrica.crearMapa();
     fabrica.agregar(new Pozo(),Posicion.getPosicion(1,0));
     Vehiculo moto = new Vehiculo(new Moto(),Posicion.getPosicion(0,0));
@@ -25,7 +25,7 @@ public class MapaTest {
   @Test
   public void test02MotoSeMueveEnMapaPasaPorPiqueteEsPenalizado() {
     // arrange
-    MapaFactory fabrica = new MapaFactory(10,10);
+    MapaFactory fabrica = new MapaFactory(10);
     Mapa mapa = fabrica.crearMapa();
     fabrica.agregar(new Piquete(),Posicion.getPosicion(1,0));
     Vehiculo moto = new Vehiculo(new Moto(),Posicion.getPosicion(0,0));
@@ -38,7 +38,7 @@ public class MapaTest {
   @Test
   public void test03AutoSeMueveEnMapaPasaPorPozoEsPenalizado() {
     // arrange
-    MapaFactory fabrica = new MapaFactory(10,10);
+    MapaFactory fabrica = new MapaFactory(10);
     Mapa mapa = fabrica.crearMapa();
     fabrica.agregar(new Pozo(),Posicion.getPosicion(1,0));
     Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(0,0));
@@ -51,7 +51,7 @@ public class MapaTest {
   @Test
   public void test04AutoSeMueveEnMapaPasaPorPiqueteNoPuedePasar() {
     // arrange
-    MapaFactory fabrica = new MapaFactory(10,10);
+    MapaFactory fabrica = new MapaFactory(10);
     Mapa mapa = fabrica.crearMapa();
     fabrica.agregar(new Piquete(),Posicion.getPosicion(1,0));
     Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(0,0));
@@ -65,7 +65,7 @@ public class MapaTest {
   @Test
   public void test05Auto4x4SeMueveEnMapaPasaPorPozoNoEsPenalizado() {
     // arrange
-    MapaFactory fabrica = new MapaFactory(10,10);
+    MapaFactory fabrica = new MapaFactory(10);
     Mapa mapa = fabrica.crearMapa();
     fabrica.agregar(new Pozo(),Posicion.getPosicion(1,0));
     Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(0,0));
@@ -79,7 +79,7 @@ public class MapaTest {
   @Test
   public void test06Auto4x4SeMueveEnMapaPasaPorPozo3VecesEsPenalizado() {
     // arrange
-    MapaFactory fabrica = new MapaFactory(10,10);
+    MapaFactory fabrica = new MapaFactory(10);
     Mapa mapa = fabrica.crearMapa();
     fabrica.agregar(new Pozo(),Posicion.getPosicion(1,0));
     fabrica.agregar(new Pozo(),Posicion.getPosicion(2,0));
@@ -96,7 +96,7 @@ public class MapaTest {
   @Test
   public void test07Auto4x4SeMueveEnMapaPasaPorPiqueteNoPuedePasar() {
     // arrange
-    MapaFactory fabrica = new MapaFactory(10,10);
+    MapaFactory fabrica = new MapaFactory(10);
     Mapa mapa = fabrica.crearMapa();
     fabrica.agregar(new Piquete(),Posicion.getPosicion(1,0));
     Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(0,0));

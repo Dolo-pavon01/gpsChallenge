@@ -29,7 +29,7 @@ public class AppConObserver extends Application {
         theStage.setTitle("Juego con observer");
         Mapa mapa = new Mapa();
         VistaMapa vistaMapa = new VistaMapa();
-        Scene ciudad = new Scene(vistaMapa,1200,600, Color.WHITE);
+        Scene ciudad = new Scene(vistaMapa,1200,600, Color.BLACK);
         theStage.setScene(ciudad);
         theStage.show();
     }

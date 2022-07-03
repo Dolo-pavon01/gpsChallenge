@@ -8,7 +8,7 @@ public class Vehiculo {
   public Vehiculo(TipoVehiculo tipoVehiculo) {
     this.tipo = tipoVehiculo;
     this.movimientos = 0;
-    this.posicion = Posicion.getPosicion(0, 1);
+    this.posicion = Posicion.getPosicion(10, 10);
   }
   public void setTipo(TipoVehiculo tipoVehiculo)
   {
@@ -17,7 +17,7 @@ public class Vehiculo {
 
   public Vehiculo() {
     this.movimientos = 0;
-    this.posicion = Posicion.getPosicion(0, 1);
+    this.posicion = Posicion.getPosicion(10, 10);
   }
 
   public Vehiculo(TipoVehiculo tipo,Posicion posicion) {
