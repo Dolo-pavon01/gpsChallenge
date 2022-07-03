@@ -4,5 +4,5 @@ import java.util.HashMap;
 
 public interface Creador {
 
-    HashMap crear(int tamanio);
+    HashMap crear(int largo,int ancho);
 }
