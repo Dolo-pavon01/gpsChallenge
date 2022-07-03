@@ -31,10 +31,31 @@ public class VistaMapa extends Group {
         MapaBase base = new MapaBase();
 
 
+
         this.callesEnY = randoNumber.nextInt(2) * 6 + 12;
-        Group calles = base.crearMapaBase((int) (this.callesEnY/3));
+        Group calles = base.crearMapaBase((int) (3));
+        this.callesEnY = base.getMaxCallesY();
         this.largoMovimiento = heightMap/callesEnY * 2;
-        this.callesEnX = this.callesEnY * 2/3;
+        this.callesEnX = base.getMaxCallesX();
+
+        MapaFactory mapaFactory = new MapaFactory((int)callesEnY,(int)callesEnX);
+        Mapa mapa = mapaFactory.crearMapa();
+
+        for(int i = 1; i < this.callesEnY;i ++)
+            {
+                for(int j = 1; j < this.callesEnX;j++)
+                {
+                    IVisitor obstaculo = mapa.obstaculoEnPosicion(Posicion.getPosicion(i,j));
+                    if(obstaculo.dibujar() != null)
+                    {
+                      base.obtaculoEn(i,j,new ImageView(new Image(new FileInputStream(obstaculo.dibujar()))));
+                    }
+                }
+            }
+
+
+
+
         System.out.print("calles en X:" + this.callesEnX + "  calles en Y:" + this.callesEnY + "\n");
         this.getChildren().addAll(calles);
     }
@@ -49,25 +70,6 @@ public class VistaMapa extends Group {
     }
 
 
-    public Group crearMapa(Mapa mapa) throws FileNotFoundException
-    {
-        for(int i = 0; i < this.callesEnY;i ++)
-        {
-            for(int j = 0; j < this.callesEnX;j++)
-            {
-                double x = getXEnPixeles(i);
-                double y = getYEnPixeles(j);
-                IVisitor obstaculo = mapa.obstaculoEnPosicion(Posicion.getPosicion(i,j));
-                if(obstaculo.dibujar() != null)
-                {
-                    ImageView dibujoObstaculo = this.dibujar(obstaculo,x,y);
-                    //ImageView dibujoSorpresa = dibujar(mapa.sorpresaEnPosicion(Posicion.getPosicion(i,j)),x,y);
-                    this.getChildren().addAll(dibujoObstaculo);
-                }
-            }
-        }
-        return this;
-    }
 
     private ImageView dibujar(IVisitor obstaculo,double x, double y) throws FileNotFoundException {
 
