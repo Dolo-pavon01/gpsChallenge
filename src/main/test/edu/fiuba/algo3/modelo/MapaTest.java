@@ -105,4 +105,30 @@ public class MapaTest {
     assertEquals(0, auto4x4.movimientos());
     assertEquals(Posicion.getPosicion(0, 0), auto4x4.getPosicion());
   }
+
+  @Test
+  public void test08SorpresaEnPosicionEsLaCorrecta() {
+    // arrange
+    SorpresaFavorable sorpresaFavorable = new SorpresaFavorable();
+    SorpresaFavorable sorpresaEsperada = sorpresaFavorable;
+    Posicion posicionSorpresa = Posicion.getPosicion(1, 0);
+    MapaFactory fabrica = new MapaFactory(LARGO, ANCHO);
+    Mapa mapa = fabrica.crearMapa();
+    fabrica.agregar(sorpresaFavorable, posicionSorpresa);
+    // act & assert
+    assertEquals(sorpresaEsperada, mapa.sorpresaEnPosicion(Posicion.getPosicion(1, 0)));
+  }
+
+  @Test
+  public void test09ObstaculoEnPosicionEsLaCorrecta() {
+    // arrange
+    IVisitor obstaculo = new Piquete();
+    IVisitor obstaculoEsperado = obstaculo;
+    Posicion posicionObstaculo = Posicion.getPosicion(1, 0);
+    MapaFactory fabrica = new MapaFactory(LARGO, ANCHO);
+    Mapa mapa = fabrica.crearMapa();
+    fabrica.agregar(obstaculo, posicionObstaculo);
+    // act & assert
+    assertEquals(obstaculoEsperado, mapa.obstaculoEnPosicion(Posicion.getPosicion(1, 0)));
+  }
 }

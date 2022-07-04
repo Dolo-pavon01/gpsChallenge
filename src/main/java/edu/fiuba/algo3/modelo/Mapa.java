@@ -32,6 +32,8 @@ public class Mapa {
     this.llegoAMeta(posicion);
   }
 
+  // TODO: ver cómo reemplazar esa excepción porque no tiene sentido lanzarla para terminar el juego
+  // (además está mal)
   private void llegoAMeta(Posicion posicion) {
     if (meta.equals(posicion)) {
       throw new LlegoAMetaException();
