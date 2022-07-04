@@ -18,34 +18,68 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.net.MalformedURLException;
 
-public class AppCami extends Application {
+
+public class Juego extends Application {
     private Vehiculo vehiculo;
     private ImageView dibujoVehiculo;
-
+    public String fileToStylesheetString (File stylesheetFile) {
+        try {
+            return stylesheetFile.toURI().toURL().toString();
+        } catch ( MalformedURLException e ) {
+            return null;
+        }
+    }
     public void start(Stage primaryStage) throws Exception {
 
         this.vehiculo = new Vehiculo();
 
-        TextField nombreInput = new TextField("Ingresar nombre del jugador");
-        Label etiquetaVehiculos = new Label("Elija su vehículo");
-        Button motoBtn = new Button("Moto");
-        Button autoBtn = new Button("Auto");
-        Button auto4x4Btn = new Button("Auto 4x4");
-        Button comenzar = new Button("COMIENZA A JUGAR!!");
-        HBox contenedorVehiculos = new HBox(motoBtn, autoBtn, auto4x4Btn);
-        contenedorVehiculos.setSpacing(10);
-        Label espacioVacio = new Label();
+        String stylesheet = fileToStylesheetString( new File("src/main/java/edu/fiuba/algo3/estilos.css") );
 
-        VBox contenedorPrincipal = new VBox(nombreInput, etiquetaVehiculos, contenedorVehiculos, espacioVacio,comenzar);
-        contenedorPrincipal.setSpacing(10);
-        contenedorPrincipal.setPadding(new Insets(20));
+        Text titulo = new Text("¡Bienvenido a GPS Challenge!");
+        titulo.setId("titulo");
 
-        Scene inicio = new Scene(contenedorPrincipal, 300, 250);
-        primaryStage.setTitle("Inicio GPS Challenge");
-        primaryStage.setScene(inicio);
+        Text elija = new Text("Elija su vehículo");
+        elija.setId("elija");
+
+        Button btnJugar = new Button();
+        btnJugar.setText("JUGAR");
+        btnJugar.setId("btnJugar");
+
+        TextField nombreInput = new TextField();
+        nombreInput.setPromptText("NOMBRE DEL JUGADOR");
+        nombreInput.setId("nombreInput");
+
+        Button motoBtn = new Button();
+        motoBtn.setText("Moto");
+        motoBtn.getStyleClass().add("botones");
+
+        Button autoBtn = new Button();
+        autoBtn.setText("Auto");
+        autoBtn.getStyleClass().add("botones");
+
+        Button auto4x4Btn = new Button();
+        auto4x4Btn.setText("Auto 4x4");
+        auto4x4Btn.getStyleClass().add("botones");
+
+        HBox divBotones = new HBox(motoBtn, autoBtn, auto4x4Btn);
+        divBotones.setId("divBotones");
+
+        VBox divContenedor = new VBox(nombreInput, divBotones);
+        divContenedor.setId("divContenedor");
+
+        Group grupo = new Group (titulo, elija, btnJugar, divContenedor);
+
+        Scene escena = new Scene(grupo, 700, 500);
+        escena.getStylesheets().add(stylesheet);
+
+        primaryStage.setTitle("Menú Inicial");
+        primaryStage.setScene(escena);
         primaryStage.show();
 
         this.dibujoVehiculo = new ImageView();
@@ -57,15 +91,12 @@ public class AppCami extends Application {
         motoBtn.setOnAction(new HandlerBotonVehiculo(this.vehiculo,this.dibujoVehiculo,new Moto(),"Moto"));
         auto4x4Btn.setOnAction(new HandlerBotonVehiculo(this.vehiculo,this.dibujoVehiculo,new Auto4x4(),"Auto4x4"));
 
-
         Label nombreJugador = new Label();
         nombreJugador.setLayoutX(200);
-        nombreJugador.setLayoutY(300);
+        nombreJugador.setLayoutY(200);
         new Etiqueta().aplicarDefault(nombreJugador);
 
-
         Label displayPuntaje = new Etiqueta().crearEtiqueta("Puntaje : 0",200,300);
-
         Label displayPosicion = new Etiqueta().crearEtiqueta("Posicion Actual: 0,1",200,400);
 
         VistaMapa vistaMapa = new VistaMapa();
@@ -78,7 +109,7 @@ public class AppCami extends Application {
         finDeJuego.setTextFill(Color.WHITESMOKE);
         Group fin = new Group(finDeJuego);
         Scene pantallaFinal = new Scene(fin,500,500, Color.BLACK);
-        comenzar.setOnAction(new EventHandler<ActionEvent>()
+        btnJugar.setOnAction(new EventHandler<ActionEvent>()
         {
             @Override
             public void handle(ActionEvent arg0) {
