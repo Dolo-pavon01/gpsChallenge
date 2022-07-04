@@ -64,7 +64,7 @@ public class MapaFactory {
     return mapa;
   }
 
-  public Mapa agregar(IVisitor obstaculo, Posicion posicion) {
+  public Mapa agregar(Obstaculo obstaculo, Posicion posicion) {
     this.obstaculos.put(posicion, obstaculo);
     return new Mapa(paredes, obstaculos, sorpresas, meta);
   }

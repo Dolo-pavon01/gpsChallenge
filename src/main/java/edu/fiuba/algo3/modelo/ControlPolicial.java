@@ -1,13 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Random;
 
-public class ControlPolicial implements IVisitor {
+public class ControlPolicial implements Obstaculo {
   private static final int PROBABILIDAD_MOTO = 8;
   private static final int PROBABILIDAD_AUTO = 5;
   private static final int PROBABILIDAD_AUTO4x4 = 3;
@@ -29,8 +24,8 @@ public class ControlPolicial implements IVisitor {
   }
 
   @Override
-  public String dibujar()  {
-      return("docs/controlPolicial.png");
+  public String nombreObstaculo()  {
+    return "controlPolicial";
   }
 
   @Override

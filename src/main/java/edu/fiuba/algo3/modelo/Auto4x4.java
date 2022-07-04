@@ -8,7 +8,7 @@ public class Auto4x4 implements TipoVehiculo {
   }
 
   @Override
-  public int pasarPor(IVisitor visitor) {
+  public int pasarPor(Obstaculo visitor) {
     return visitor.visit(this);
   }
 

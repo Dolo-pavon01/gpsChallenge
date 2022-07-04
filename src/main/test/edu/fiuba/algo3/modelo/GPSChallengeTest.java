@@ -206,7 +206,7 @@ public class GPSChallengeTest {
   public void test14MotoPasaPorControlYEsMultadoPorLaYuta() {
     // arrange
     Moto tipoMoto = new Moto();
-    IVisitor controlMock = mock(IVisitor.class);
+    Obstaculo controlMock = mock(Obstaculo.class);
     when(controlMock.visit(tipoMoto)).thenReturn(3);
 
     MapaFactory fabrica = new MapaFactory(10,10);

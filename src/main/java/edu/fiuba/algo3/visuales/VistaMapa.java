@@ -3,16 +3,10 @@ package edu.fiuba.algo3.visuales;
 import edu.fiuba.algo3.MapaBase;
 import edu.fiuba.algo3.modelo.*;
 import javafx.scene.Group;
-import javafx.scene.ImageCursor;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.Collection;
-import java.util.List;
 import java.util.Random;
 
 public class VistaMapa extends Group {
@@ -28,25 +22,27 @@ public class VistaMapa extends Group {
     public double largoMovimiento;
 
     private MapaBase base = new MapaBase();
-    ;
 
     public VistaMapa() throws Exception {
 
         Random randoNumber = new Random();
         Group calles = this.base.crearMapaBase(randoNumber.nextInt(4)  + 2);
         this.callesEnY = this.base.getMaxCallesY();
-        this.largoMovimiento = heightMap / callesEnY * 2;
+        this.largoMovimiento = heightMap / callesEnY ;
         this.callesEnX = this.base.getMaxCallesX();
         System.out.print("calles en X:" + this.callesEnX + "  calles en Y:" + this.callesEnY + "\n");
         this.getChildren().addAll(calles);
     }
 
     public Group crearMapa(Mapa mapa) throws Exception {
-        for (int i = 1; i < this.callesEnX; i++) {
-            for (int j = 1; j < this.callesEnY; j++) {
-                IVisitor obstaculo = mapa.obstaculoEnPosicion(Posicion.getPosicion(i, j));
-                if (obstaculo.dibujar() != null) {
-                    this.base.obtaculoEn(i, j, new ImageView(new Image(new FileInputStream(obstaculo.dibujar()))));
+        for (int i = 1; i < this.callesEnX; i++)
+        {
+            for (int j = 1; j < this.callesEnY; j++)
+            {
+                Obstaculo obstaculo = mapa.obstaculoEnPosicion(Posicion.getPosicion(i, j));
+                if (obstaculo.nombreObstaculo() != null)
+                {
+                    this.base.obtaculoEn(i, j, new ImageView(new Image(new FileInputStream("docs/" + obstaculo.nombreObstaculo()+ ".png") )));
                 }
             }
         }

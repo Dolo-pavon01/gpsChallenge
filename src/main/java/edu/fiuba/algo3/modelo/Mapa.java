@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.HashMap;
 
 public class Mapa {
-  private HashMap<Posicion, IVisitor> obstaculos;
+  private HashMap<Posicion, Obstaculo> obstaculos;
   private HashMap<Posicion, Sorpresa> sorpresas;
   private HashMap<Posicion, Pared> paredes;
   private Posicion meta;
@@ -63,7 +63,7 @@ public class Mapa {
     return this.sorpresas.get(posicion);
   }
 
-  public IVisitor obstaculoEnPosicion(Posicion posicion)
+  public Obstaculo obstaculoEnPosicion(Posicion posicion)
   {
     return this.obstaculos.get(posicion);
   }
