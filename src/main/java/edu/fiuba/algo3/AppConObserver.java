@@ -27,7 +27,6 @@ public class AppConObserver extends Application {
     public void start(Stage theStage) throws Exception {
 
         theStage.setTitle("Juego con observer");
-        Mapa mapa = new Mapa();
         VistaMapa vistaMapa = new VistaMapa();
         Scene ciudad = new Scene(vistaMapa,1200,600, Color.BLACK);
         theStage.setScene(ciudad);

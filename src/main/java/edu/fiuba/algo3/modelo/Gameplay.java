@@ -1,55 +1,45 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.visuales.VistaMapa;
-
 public class Gameplay {
-  private Vehiculo vehiculoEnJuego;
+  private Vehiculo vehiculo;
+  private MapaFactory mapaFactory;
   private Mapa mapa;
-  private MapaFactory builder;
-
   private boolean llegoAMeta;
 
-  public Gameplay(MapaFactory unBuilder) {
-    this.builder = unBuilder;
+  public Gameplay(MapaFactory mapaFactory) {
+    this.mapaFactory = mapaFactory;
     this.llegoAMeta = false;
   }
 
-  public Mapa getMapa()
-  {
+  public Mapa getMapa() {
     return this.mapa;
   }
 
   public Mapa iniciarJuego(Vehiculo vehiculo) {
-    this.vehiculoEnJuego = vehiculo;
-    this.mapa = this.builder.crearGameplay();
+    this.vehiculo = vehiculo;
+    this.mapa = this.mapaFactory.crearGameplay();
     return this.mapa;
   }
 
-
-  public boolean jugar(char input) {
-    int puntaje = this.vehiculoEnJuego.movimientos();
-    try{
-      this.mapa.avanzar(vehiculoEnJuego, input);
-    }
-
-    catch (LlegoAMetaException e)
-    {
+  public boolean jugar(char direccion) {
+    int puntaje = this.vehiculo.movimientos();
+    try {
+      this.mapa.avanzar(this.vehiculo, direccion);
+    } catch (LlegoAMetaException e) {
       this.llegoAMeta = true;
     }
-    return(this.vehiculoEnJuego.movimientos() != puntaje);
+    return (this.vehiculo.movimientos() != puntaje);
   }
 
-  public String posicionJugador()
-  {
-    return( this.vehiculoEnJuego.getPosicion().posicionAString());
+  public String posicionJugador() {
+    return (this.vehiculo.getPosicion().posicionAString());
   }
 
-  public boolean llegoAMeta()
-  {
+  public boolean llegoAMeta() {
     return this.llegoAMeta;
   }
 
   public int puntaje() {
-    return this.vehiculoEnJuego.movimientos();
+    return this.vehiculo.movimientos();
   }
 }

@@ -8,13 +8,6 @@ public class Mapa {
   private HashMap<Posicion, Pared> paredes;
   private Posicion meta;
 
-  public Mapa() {
-    this.obstaculos = new HashMap<>();
-    this.sorpresas = new HashMap<>();
-    this.paredes = new HashMap<>();
-    this.meta = Posicion.getPosicion(20, 0);
-  }
-
   public Mapa(HashMap paredes, HashMap obstaculos, HashMap sorpresas, Posicion meta) {
     this.obstaculos = obstaculos;
     this.sorpresas = sorpresas;
@@ -39,6 +32,8 @@ public class Mapa {
     this.llegoAMeta(posicion);
   }
 
+  // TODO: ver cómo reemplazar esa excepción porque no tiene sentido lanzarla para terminar el juego
+  // (además está mal)
   private void llegoAMeta(Posicion posicion) {
     if (meta.equals(posicion)) {
       throw new LlegoAMetaException();
@@ -58,13 +53,11 @@ public class Mapa {
     vehiculo.abrirSopresa(this.sorpresas.get(posicion));
   }
 
-  public Sorpresa sorpresaEnPosicion(Posicion posicion)
-  {
+  public Sorpresa sorpresaEnPosicion(Posicion posicion) {
     return this.sorpresas.get(posicion);
   }
 
-  public IVisitor obstaculoEnPosicion(Posicion posicion)
-  {
+  public IVisitor obstaculoEnPosicion(Posicion posicion) {
     return this.obstaculos.get(posicion);
   }
 }
