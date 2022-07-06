@@ -1,12 +1,7 @@
 package edu.fiuba.algo3.Vista;
 
-import edu.fiuba.algo3.Controlador.HandlerBotonVehiculo;
-import edu.fiuba.algo3.Controlador.HandlerMoverVehiculo;
 import edu.fiuba.algo3.Modelo.*;
-import edu.fiuba.algo3.Vista.MapaBase;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,7 +17,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.util.Locale;
 
 
 public class Juego extends Application {
