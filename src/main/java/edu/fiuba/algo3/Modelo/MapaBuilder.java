@@ -3,7 +3,7 @@ package edu.fiuba.algo3.Modelo;
 import java.util.HashMap;
 import java.util.Random;
 
-public class MapaFactory {
+public class MapaBuilder {
   private int largo;
   private int ancho;
   private int cantElementos;
@@ -12,10 +12,14 @@ public class MapaFactory {
 
   private Posicion meta;
 
-  public MapaFactory() {
+  public MapaBuilder() {
     this.cantElementos = 5;
     this.paredes = new HashMap<>();
   }
+  /*
+   Para VistaMapa necesita tener las dimensiones del Mapa Ancho,Alto
+   y el Random()
+   */
   public int procesar(HashMap<> obstaculos,HashMap<> sorpresas){
     Random random = new Random();
     this.ancho = random.nextInt(3)+1;

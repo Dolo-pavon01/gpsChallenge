@@ -25,7 +25,7 @@ public class ControladorMovimientos {
         return "asd";
     }
 
-    public void evento(Character direccion){
+    public boolean evento(Character direccion){
         //Gameplay.getInstance().jugar(this.direccion);
         // G
 

@@ -22,7 +22,6 @@ public class Gameplay {
     return this.mapa.getDimension();
 
   }
-
   public Mapa iniciarJuego(Vehiculo vehiculo) {
     this.vehiculoEnJuego = vehiculo;
     this.mapa.generarMapa(this.vehiculoEnJuego);
@@ -48,7 +47,6 @@ public class Gameplay {
     try{
       this.mapa.avanzar(this.vehiculoEnJuego, input);
     }
-
     catch (LlegoAMetaException e)
     {
       this.llegoAMeta = true;

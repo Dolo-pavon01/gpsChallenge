@@ -12,8 +12,9 @@ public class AppGpsChallenge {
         ejecuta todo el juego
      */
 
-    @Override
-    public void  {
+    public void comenzar()  {
+
+        Stage primaryStage = new Stage();
 
         VistaInicial vistaInicial = new VistaInicial(primaryStage);
         vistaInicial.mostrarVistaInicial();
