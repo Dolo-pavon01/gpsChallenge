@@ -24,11 +24,17 @@ public class ControladorMovimientos implements EventHandler<ActionEvent> {
         return  true;
     }
 
+    public String vehiculo(){
+       // Gameplay.getInstance().vehiculoEnJuego();
+
+        return "asd";
+    }
+
     @Override
     public void handle(ActionEvent event) {
 
         //Gameplay.getInstance().jugar(this.direccion);
-
+        // G
 
     }
 
