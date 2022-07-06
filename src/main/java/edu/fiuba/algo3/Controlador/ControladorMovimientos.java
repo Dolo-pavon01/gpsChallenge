@@ -29,6 +29,7 @@ public class ControladorMovimientos implements EventHandler<ActionEvent> {
 
         //Gameplay.getInstance().jugar(this.direccion);
 
+
     }
 
 

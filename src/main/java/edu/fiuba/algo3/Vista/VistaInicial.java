@@ -4,15 +4,21 @@ import edu.fiuba.algo3.Controlador.ControladorOpciones;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class VistaInicial extends Application {
+public class VistaInicial  {
     /*
         implementa la vista inicial del juego,
         se gestionan las acciones mediante su controlador
     */
     private String nickName;
     private String tipoVehiculo;
+    private Stage stage;
 
-    public void start(Stage primaryStage) throws Exception {
+    public VistaInicial(Stage stage){
+
+        this.stage = stage;
+
+    }
+    public void mostrarVistaInicial()  {
         /*
             inicializa la vista principal, se muestra al usuario las
             opciones disponibles, se guarda el nombre del usuario

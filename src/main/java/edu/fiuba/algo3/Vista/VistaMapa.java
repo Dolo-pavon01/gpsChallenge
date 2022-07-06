@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 
-public class VistaMapa extends Application {
+public class VistaMapa {
     /*
     Implementa la vista del mapa con:
         -Obstaculos
@@ -18,17 +18,15 @@ public class VistaMapa extends Application {
      utiliza el controlador de interacciones entre el usuario
      y el mapa.
      */
-
-
-
-
-    public void start(Stage primaryStage) throws Exception {
-
-
-
+    private  Stage stage;
+    public VistaMapa(Stage stage){
+        this.stage = stage;
 
     }
 
+    public void mostrarVistaMapa(){
+
+    }
 
 
 }

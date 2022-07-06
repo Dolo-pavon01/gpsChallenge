@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class VistaFinal extends Application {
+public class VistaFinal  {
     /*
        Encargada de mostrar la vista final con:
             -Ranking
@@ -16,14 +16,23 @@ public class VistaFinal extends Application {
      */
 
     public ArrayList<String> informacion = new ArrayList<String>();
-    public void start(Stage primaryStage) throws Exception {
+    private Stage stage;
 
 
+    public VistaFinal(Stage stage){
+
+        this.stage = stage;
+
+    }
+    public void mostrarVistaFinal(){
 
         /*
         Cuando llega a la meta se puede poner una opcion que diga
         "Click Aqui para ver los datos del juego"
         ButtonShowStatus.setOnAction(new ControladorVistaFinal(this.informacion));
+
+        codigo para mostrar informacion
+
          */
     }
 }
