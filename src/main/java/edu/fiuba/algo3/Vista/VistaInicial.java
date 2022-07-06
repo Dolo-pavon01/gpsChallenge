@@ -15,7 +15,12 @@ public class VistaInicial extends Application {
     public void start(Stage primaryStage) throws Exception {
         /*
             inicializa la vista principal, se muestra al usuario las
-            opciones disponibles
+            opciones disponibles, se guarda el nombre del usuario
+
+            IMPORTANTE:
+                Como se cuando el usuario lleno el campo del nombre???
+                habria alguna forma de validar a la hora de apretar el boton de jugar
+                y impedir que el usaurio continue y mostrar un mensaje si el campo nombre está vacio?
          */
 
 
@@ -30,7 +35,7 @@ public class VistaInicial extends Application {
         ButtonAuto4x4.setOnAction(()->{
             this.tipoVehiculo = "Auto4x4";
         });
-        ButtonIniciar.setOnAction(new ControladorOpciones(this.nickname,this.tipoVehiculo));
+        ButtonJugar.setOnAction(new ControladorOpciones(this.nickname,this.tipoVehiculo));
 
          */
     }
