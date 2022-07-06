@@ -3,7 +3,7 @@ package edu.fiuba.algo3.Controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class ControladorMovimientos implements EventHandler<ActionEvent> {
+public class ControladorMovimientos {
 
     /*
 
@@ -13,11 +13,6 @@ public class ControladorMovimientos implements EventHandler<ActionEvent> {
 
      */
 
-    private Character direccion;
-    public ControladorMovimientos(Character direccion){
-        this.direccion = direccion;
-    }
-
     public  boolean partidaAbierta(){
 
         //return  Gameplay.getInstance().llegoaMeta()};
@@ -25,14 +20,12 @@ public class ControladorMovimientos implements EventHandler<ActionEvent> {
     }
 
     public String vehiculo(){
-       // Gameplay.getInstance().vehiculoEnJuego();
+       // return Gameplay.getInstance().vehiculoEnJuego();
 
         return "asd";
     }
 
-    @Override
-    public void handle(ActionEvent event) {
-
+    public void evento(Character direccion){
         //Gameplay.getInstance().jugar(this.direccion);
         // G
 

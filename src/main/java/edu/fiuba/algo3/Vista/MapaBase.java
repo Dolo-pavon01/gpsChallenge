@@ -17,19 +17,19 @@ public class MapaBase {
     public Random randoNumber = new Random();
     ;
 
-    public double x = 1000;
-    public double y = 680;
-    public double startMapX = 0;
-    public double startMapY = 50;
-    public double widthMap = 900;
-    public double heightMap = 600;
+    private double x = 1000;
+    private double y = 680;
+    private double startMapX = 0;
+    private double startMapY = 50;
+    private double widthMap = 900;
+    private double heightMap = 600;
 
     private double m;
     private int callesEnY;
     private double p;
     private double t;
-    public int callesEnX = 0;
-    public List elements = new ArrayList();
+    private int callesEnX = 0;
+    private List elements = new ArrayList();
 
     public Group crearMapaBase(int random) throws Exception {
         Group group = new Group();

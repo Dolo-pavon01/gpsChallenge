@@ -6,14 +6,14 @@ import edu.fiuba.algo3.Vista.VistaMapa;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class AppGpsChallenge extends Application {
+public class AppGpsChallenge {
 
     /*
         ejecuta todo el juego
      */
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void  {
 
         VistaInicial vistaInicial = new VistaInicial(primaryStage);
         vistaInicial.mostrarVistaInicial();
