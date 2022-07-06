@@ -46,7 +46,7 @@ public class Gameplay {
   public boolean jugar(char input) {
     int puntaje = this.vehiculoEnJuego.movimientos();
     try{
-      this.mapa.avanzar(vehiculoEnJuego, input);
+      this.mapa.avanzar(this.vehiculoEnJuego, input);
     }
 
     catch (LlegoAMetaException e)
