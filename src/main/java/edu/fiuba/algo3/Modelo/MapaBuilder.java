@@ -18,7 +18,8 @@ public class MapaBuilder {
   }
   /*
    Para VistaMapa necesita tener las dimensiones del Mapa Ancho,Alto
-   y el Random()
+   y el Random() Entre 2 y 10 de a pares.
+   El ramdom por dos siempre sera las calles Y.
 
    */
   public int procesar(HashMap<> obstaculos,HashMap<> sorpresas){
