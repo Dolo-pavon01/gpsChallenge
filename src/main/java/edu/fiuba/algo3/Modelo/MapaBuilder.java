@@ -19,6 +19,7 @@ public class MapaBuilder {
   /*
    Para VistaMapa necesita tener las dimensiones del Mapa Ancho,Alto
    y el Random()
+
    */
   public int procesar(HashMap<> obstaculos,HashMap<> sorpresas){
     Random random = new Random();
@@ -38,6 +39,17 @@ public class MapaBuilder {
      */
     Random randomizador = new Random();
     Mapa mapa = crearMapa();
+    /*
+    generarElementosEnElMapa(Posicion posicionDelElemento){
+      double generar = Math.random();
+
+      if(generar < 0.1)
+        return new Pozo(posicionDelElemento)
+
+      if(generar < 0.2)
+        return new Piquete(posicionDelElemento)
+    }
+     */
     for (int i = 0; i < this.cantElementos; i++) {
       int x = randomizador.nextInt(ancho)+1;
       int y = randomizador.nextInt(largo)+1;
