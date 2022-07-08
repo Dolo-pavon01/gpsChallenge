@@ -11,6 +11,8 @@ public class Mapa {
   private int alto;
   private int ancho;
 
+  private boolean llegoAMeta;
+
   public Mapa()
   {
     this.obstaculos = new HashMap<>();
@@ -45,6 +47,11 @@ public class Mapa {
     return this.alto;
   }
 
+  public boolean llegoAMeta()
+  {
+    return this.llegoAMeta;
+  }
+
   public void avanzar(Vehiculo vehiculo, char direccion)
   {
     Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
@@ -54,37 +61,21 @@ public class Mapa {
       System.out.print("bb");
       return;
     }
-       //
-
-
     try {
       this.pasarPorObstaculos(vehiculo, posicion);
     } catch (HayPiqueteException e) {
       return;
     }
-    try {
-      //this.pasarPorPared(posicion);
-    } catch (HayParedException e) {
-      return;
-    }
+
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
-    //this.llegoAMeta(posicion);
-  }
-
-  private void llegoAMeta(Posicion posicion)
-  {
     if (meta.equals(posicion))
     {
-      throw new LlegoAMetaException();
+      this.llegoAMeta = true;
     }
   }
 
-  // TODO: Revisar implementación de posicion y paredes
-  private void pasarPorPared(Posicion posicion)
-  {
-    if (this.paredes.get(posicion) != null) throw new HayParedException();
-  }
+
 
   private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion) {
     vehiculo.pasarPor(this.obstaculos.get(posicion));

@@ -11,7 +11,6 @@ public class Gameplay {
 
   public Gameplay() {
 
-    this.llegoAMeta = false;
   }
 
   public Mapa getMapa()
@@ -59,14 +58,7 @@ public class Gameplay {
   }
   public boolean jugar(char input) {
     int puntaje = this.vehiculoEnJuego.movimientos();
-    try{
-      this.mapa.avanzar(this.vehiculoEnJuego, input);
-    }
-    catch (LlegoAMetaException e)
-    {
-      this.llegoAMeta = true;
-    }
-    //cambiar por booleano la excepcion
+    this.mapa.avanzar(this.vehiculoEnJuego, input);
     return(this.vehiculoEnJuego.movimientos() != puntaje);
   }
 
@@ -77,7 +69,7 @@ public class Gameplay {
 
   public boolean llegoAMeta()
   {
-    return this.llegoAMeta;
+    return this.mapa.llegoAMeta();
   }
 
   public int puntaje()
