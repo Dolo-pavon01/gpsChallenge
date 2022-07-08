@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 
 import java.util.ArrayList;
 
-public class ControladorVistaFinal implements EventHandler<ActionEvent> {
+public class ControladorVistaFinal {
 
     /*
     Controla las opciones de la vista final
@@ -15,12 +15,11 @@ public class ControladorVistaFinal implements EventHandler<ActionEvent> {
             -Nombre de Usuario Actual, sus movimientos generados y
             su posicion en el ranking.
      */
-    private ArrayList<String> informacion;
-    public ControladorVistaFinal(ArrayList<String> informacion){
-        this.informacion = informacion;
-    }
-    @Override
-    public void handle(ActionEvent event) {
+
+
+    public ArrayList<String> getRankings(){
+
+        ArrayList<String> rankings = new ArrayList<>();
 
         /*
         Le envia el arrayList a Gamplay quien lo llena con informacion de los rankings
@@ -34,7 +33,14 @@ public class ControladorVistaFinal implements EventHandler<ActionEvent> {
              ]
 
          */
-        //Gameplay.getInstance().infoRankings(this.informacion);
+    //return Gameplay.getInstance().infoRankings();
+        rankings.add("Jugador:  Matias    Movimientos: 80  Puesto Nro: 1");
+        rankings.add("Jugador:  Marcos    Movimientos: 20  Puesto Nro: 2");
+        rankings.add("Jugador:  Dolores   Movimientos: 10  Puesto Nro: 3");
+
+    return rankings;
+
     }
+
 
 }

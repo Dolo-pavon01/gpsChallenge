@@ -6,20 +6,21 @@ import edu.fiuba.algo3.Vista.VistaMapa;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class AppGpsChallenge {
+public class AppGpsChallenge extends Application {
 
     /*
         ejecuta todo el juego
      */
 
-    public void comenzar()  {
 
-        Stage primaryStage = new Stage();
+    public void start(Stage primaryStage) throws Exception {
 
-        VistaInicial vistaInicial = new VistaInicial(primaryStage);
-        vistaInicial.mostrarVistaInicial();
-        VistaMapa vistaMapa = new VistaMapa(primaryStage);
-        vistaMapa.mostrarVistaMapa();
+        //Stage primaryStage = new Stage();
+
+        //VistaInicial vistaInicial = new VistaInicial(primaryStage);
+        //vistaInicial.mostrarVistaInicial();
+        //VistaMapa vistaMapa = new VistaMapa(primaryStage);
+        //vistaMapa.mostrarVistaMapa();
         VistaFinal vistaFinal  = new VistaFinal(primaryStage);
         vistaFinal.mostrarVistaFinal();
 

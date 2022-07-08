@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.Modelo;
 
 import java.util.HashMap;
-
+/*
 public class CreadorParedes implements Creador {
 
   public HashMap crear(int largo,int ancho) {
@@ -9,7 +9,7 @@ public class CreadorParedes implements Creador {
 
     this.generador(largo,-1,paredes);
 
-    this.generador(ancho,);
+    this.generador(ancho,1);
     for (int i = 0; i < ancho; i++) {
       Posicion p = Posicion.getPosicion(i, -1);
       paredes.put(p, new Pared());
@@ -33,4 +33,4 @@ public class CreadorParedes implements Creador {
 
 
   }
-}
+}*/

@@ -22,6 +22,7 @@ public class MapaBuilder {
    El ramdom por dos siempre sera las calles Y.
 
    */
+  /*
   public int procesar(HashMap<> obstaculos,HashMap<> sorpresas){
     Random random = new Random();
     this.ancho = random.nextInt(3)+1;
