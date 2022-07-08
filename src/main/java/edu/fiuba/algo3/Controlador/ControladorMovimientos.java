@@ -28,7 +28,7 @@ public class ControladorMovimientos {
     public boolean evento(Character direccion){
         //Gameplay.getInstance().jugar(this.direccion);
         // G
-
+        return true;
     }
 
 

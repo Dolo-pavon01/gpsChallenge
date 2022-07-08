@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.net.MalformedURLException;
 
+/*
 
 public class Juego extends Application {
     private  TextField nombreInput = new TextField();
@@ -146,3 +147,5 @@ public class Juego extends Application {
         launch(args);
     }
 }
+
+ */

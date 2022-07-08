@@ -8,57 +8,81 @@ public class Mapa {
   private HashMap<Posicion, Pared> paredes;
   private Posicion meta;
   private Vehiculo vehiculoEnElMapa;
-  private Integer dimension;
+  private int alto;
+  private int ancho;
 
-  public Mapa() {
+  public Mapa()
+  {
     this.obstaculos = new HashMap<>();
     this.sorpresas = new HashMap<>();
     this.paredes = new HashMap<>();
+    //randomizar
     this.meta = Posicion.getPosicion(20, 0);
   }
 
-  public Mapa(HashMap paredes, HashMap obstaculos, HashMap sorpresas, Posicion meta) {
+  public Mapa(HashMap paredes, HashMap obstaculos, HashMap sorpresas, Posicion meta,int alto,int ancho)
+  {
     this.obstaculos = obstaculos;
     this.sorpresas = sorpresas;
     this.paredes = paredes;
     this.meta = meta;
+    this.alto = alto;
+    this.ancho = ancho;
   }
 
-  public void generarMapa(Vehiculo vehiculo){
+//preguntar
+  /*
+  public void generarMapa(Vehiculo vehiculo)
+  {
    this.vehiculoEnElMapa = vehiculo;
    this.dimension = new MapaBuilder().procesar(this.obstaculos,this.sorpresas);
-
-  }
-  public int getDimension(){
-    return this.dimension;
-
   }
 
-  public void avanzar(Vehiculo vehiculo, char direccion) {
+   */
+
+  public int getDimension()
+  {
+    return this.alto;
+  }
+
+  public void avanzar(Vehiculo vehiculo, char direccion)
+  {
     Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
+    if (posicion.estaFueraDeLimites(this.ancho,this.alto))
+    {
+
+      System.out.print("bb");
+      return;
+    }
+       //
+
+
     try {
       this.pasarPorObstaculos(vehiculo, posicion);
     } catch (HayPiqueteException e) {
       return;
     }
     try {
-      this.pasarPorPared(posicion);
+      //this.pasarPorPared(posicion);
     } catch (HayParedException e) {
       return;
     }
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
-    this.llegoAMeta(posicion);
+    //this.llegoAMeta(posicion);
   }
 
-  private void llegoAMeta(Posicion posicion) {
-    if (meta.equals(posicion)) {
+  private void llegoAMeta(Posicion posicion)
+  {
+    if (meta.equals(posicion))
+    {
       throw new LlegoAMetaException();
     }
   }
 
   // TODO: Revisar implementación de posicion y paredes
-  private void pasarPorPared(Posicion posicion) {
+  private void pasarPorPared(Posicion posicion)
+  {
     if (this.paredes.get(posicion) != null) throw new HayParedException();
   }
 
@@ -66,8 +90,10 @@ public class Mapa {
     vehiculo.pasarPor(this.obstaculos.get(posicion));
   }
 
-  private void abrirSorpresas(Vehiculo vehiculo, Posicion posicion) {
+  private void abrirSorpresas(Vehiculo vehiculo, Posicion posicion)
+  {
     vehiculo.abrirSopresa(this.sorpresas.get(posicion));
+    //this.sorpresas.put(posicion,new SorpresaNula()); si quisiesemos que desaparezcan :/
   }
 
   public Sorpresa sorpresaEnPosicion(Posicion posicion)

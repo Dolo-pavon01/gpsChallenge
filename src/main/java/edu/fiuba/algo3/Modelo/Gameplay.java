@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class Gameplay {
@@ -17,6 +18,23 @@ public class Gameplay {
   {
     return this.mapa;
   }
+/*
+  public HashMap getObstaculos()
+  {
+    //clave :"0;1" valor: "ControlPolicial"
+  }
+  public HashMap getSorpresas()
+  {
+
+  }
+
+  /*
+  public String getVehiculo()
+  {
+    // ejemplo: "0;1;Moto"
+  }
+   */
+
 
   public int getDimension(){
     return this.mapa.getDimension();
@@ -24,7 +42,7 @@ public class Gameplay {
   }
   public Mapa iniciarJuego(Vehiculo vehiculo) {
     this.vehiculoEnJuego = vehiculo;
-    this.mapa.generarMapa(this.vehiculoEnJuego);
+   // this.mapa.generarMapa(this.vehiculoEnJuego);
     return this.mapa;
   }
   public void registrarUsuario(String usuario, String vehiculoElegido){
@@ -38,10 +56,7 @@ public class Gameplay {
     if(vehiculoElegido == "Auto4x4"){
       this.vehiculoEnJuego = new Vehiculo(new Auto4x4());
     }
-
   }
-
-
   public boolean jugar(char input) {
     int puntaje = this.vehiculoEnJuego.movimientos();
     try{
@@ -51,6 +66,7 @@ public class Gameplay {
     {
       this.llegoAMeta = true;
     }
+    //cambiar por booleano la excepcion
     return(this.vehiculoEnJuego.movimientos() != puntaje);
   }
 
@@ -64,7 +80,8 @@ public class Gameplay {
     return this.llegoAMeta;
   }
 
-  public int puntaje() {
+  public int puntaje()
+  {
     return this.vehiculoEnJuego.movimientos();
   }
 }

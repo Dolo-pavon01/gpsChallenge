@@ -4,30 +4,41 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class MapaBuilder {
-  private int largo;
+  private int alto;
   private int ancho;
   private int cantElementos;
 
   private HashMap paredes;
+  private HashMap obstaculos;
+  private HashMap sorpresas;
 
   private Posicion meta;
 
-  public MapaBuilder() {
+  public MapaBuilder(int alto, int ancho) {
     this.cantElementos = 5;
-    this.paredes = new HashMap<>();
+    this.alto = alto;
+    this.ancho = ancho;
   }
   /*
    Para VistaMapa necesita tener las dimensiones del Mapa Ancho,Alto
    y el Random() Entre 2 y 10 de a pares.
    El ramdom por dos siempre sera las calles Y.
 
+   (nextInt(5) + 1 )* 2
+
+
    */
+
+
+  //preguntar a mel??
+  /*
   public int procesar(HashMap<> obstaculos,HashMap<> sorpresas){
     Random random = new Random();
     this.ancho = random.nextInt(3)+1;
-
     return this.ancho;
   }
+
+   */
 
   public Mapa crearGameplay() {
     /*
@@ -53,62 +64,60 @@ public class MapaBuilder {
      */
     for (int i = 0; i < this.cantElementos; i++) {
       int x = randomizador.nextInt(ancho)+1;
-      int y = randomizador.nextInt(largo)+1;
-      mapa = this.agregar(new SorpresaFavorable(), Posicion.getPosicion(x, y));
+      int y = randomizador.nextInt(alto)+1;
+      this.agregar(new SorpresaFavorable(), Posicion.getPosicion(x, y));
       //System.out.print(" puse una sorpresa favorable en " + x + "," + y + " ");
     }
     for (int i = 0; i < this.cantElementos; i++) {
       int x = randomizador.nextInt(ancho)+1;
-      int y = randomizador.nextInt(largo)+1;
-      mapa = this.agregar(new Pozo(), Posicion.getPosicion(x, y));
+      int y = randomizador.nextInt(alto)+1;
+      this.agregar(new Pozo(), Posicion.getPosicion(x, y));
       System.out.print(" puse un pozo en " + x + "," + y + " ");
     }
     for (int i = 0; i < this.cantElementos; i++) {
       int x = randomizador.nextInt(ancho)+1;
-      int y = randomizador.nextInt(largo)+1;
-      mapa = this.agregar(new SorpresaCambioVehiculo(), Posicion.getPosicion(x, y));
+      int y = randomizador.nextInt(alto)+1;
+      this.agregar(new SorpresaCambioVehiculo(), Posicion.getPosicion(x, y));
       //System.out.print(" puse una sorpresa cambio de vehiculo en " + x + "," + y + " ");
     }
     for (int i = 0; i < this.cantElementos; i++) {
       int x = randomizador.nextInt(ancho)+1;
-      int y = randomizador.nextInt(largo)+1;
-      mapa = this.agregar(new ControlPolicial(), Posicion.getPosicion(x, y));
+      int y = randomizador.nextInt(alto)+1;
+      this.agregar(new ControlPolicial(), Posicion.getPosicion(x, y));
       System.out.print(" puse un control policial en " + x + "," + y + " ");
     }
     for (int i = 0; i < this.cantElementos; i++) {
-      int x = randomizador.nextInt(largo)+1;
+      int x = randomizador.nextInt(alto)+1;
       int y = randomizador.nextInt(ancho)+1;
-      mapa = this.agregar(new Piquete(), Posicion.getPosicion(x, y));
+      this.agregar(new Piquete(), Posicion.getPosicion(x, y));
       System.out.print(" puse un piquete en " + x + "," + y + " ");
     }
     for (int i = 0; i < this.cantElementos; i++) {
-      int x = randomizador.nextInt(largo)+1;
+      int x = randomizador.nextInt(alto)+1;
       int y = randomizador.nextInt(ancho)+1;
-      mapa = this.agregar(new SorpresaDesfavorable(), Posicion.getPosicion(x, y));
+      this.agregar(new SorpresaDesfavorable(), Posicion.getPosicion(x, y));
       //System.out.print(" puse una sorpresa desfavorable en " + x + "," + y + " ");
     }
     return mapa;
   }
 
-  public Mapa agregar(Obstaculo obstaculo, Posicion posicion) {
+  public void agregar(Obstaculo obstaculo, Posicion posicion) {
     this.obstaculos.put(posicion, obstaculo);
-    return new Mapa(paredes, obstaculos, sorpresas, meta);
   }
 
-  public Mapa agregar(Sorpresa sorpresa, Posicion posicion) {
+  public void agregar(Sorpresa sorpresa, Posicion posicion) {
     this.sorpresas.put(posicion, sorpresa);
-    return new Mapa(paredes, obstaculos, sorpresas, meta);
   }
 
   // TODO: Sacar hardcodeo de randomizador para que funcione
   public Mapa crearMapa() {
     Random randomizador = new Random();
-    this.obstaculos = new CreadorObstaculos().crear(largo, ancho);
-    this.sorpresas = new CreadorSorpresas().crear(largo,ancho);
-    this.paredes = new CreadorParedes().crear(largo,ancho);
+    this.obstaculos = new CreadorObstaculos().crear(alto, ancho);
+    this.sorpresas = new CreadorSorpresas().crear(alto,ancho);
+   // this.paredes = new CreadorParedes().crear(alto,ancho);
     int xDeMeta = this.ancho;
-    int yDeMeta = randomizador.nextInt(largo);
+    int yDeMeta = randomizador.nextInt(alto);
     this.meta = Posicion.getPosicion(xDeMeta, yDeMeta);
-    return new Mapa(paredes, obstaculos, sorpresas, meta);
+    return new Mapa(paredes, obstaculos, sorpresas, meta,this.alto,this.ancho);
   }
 }

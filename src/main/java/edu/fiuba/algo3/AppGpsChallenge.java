@@ -6,11 +6,12 @@ import edu.fiuba.algo3.Vista.VistaMapa;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/*
 public class AppGpsChallenge {
 
-    /*
+
         ejecuta todo el juego
-     */
+
 
     public void comenzar()  {
 
@@ -30,3 +31,4 @@ public class AppGpsChallenge {
         launch(args);
     }
 }
+*/

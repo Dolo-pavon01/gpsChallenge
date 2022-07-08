@@ -3,8 +3,7 @@ package edu.fiuba.algo3.Modelo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PosicionTest {
   @Test
@@ -88,4 +87,26 @@ public class PosicionTest {
     // assert
     assertTrue(posicionSiguiente.equals(posicionEsperada));
   }
+
+  @Test
+  public void test08EstaDentroDeLimiteDeUnaPosicionEnYMaximoDevuelveFalso()
+  {
+    // arrange
+    Posicion posicion = Posicion.getPosicion(1, 1);
+    // act
+    Posicion posicionSiguiente = posicion.siguiente('d');
+    // assert
+    assertFalse(posicionSiguiente.estaFueraDeLimites(2,2));
+  }
+
+  @Test
+  public void test09EstaDentroDeLimiteDeUnaPosicionEn0DevuelveFalso() {
+    // arrange
+    Posicion posicion = Posicion.getPosicion(1, 1);
+    // act
+    Posicion posicionSiguiente = posicion.siguiente('a');
+    // assert
+    assertFalse(posicionSiguiente.estaFueraDeLimites(2,2));
+  }
+
 }
