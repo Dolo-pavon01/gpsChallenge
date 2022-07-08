@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.Modelo;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Gameplay {
@@ -7,6 +9,7 @@ public class Gameplay {
   private Mapa mapa;
   private boolean llegoAMeta;
   private String nickname;
+  //private ArrayList<String> rankingsJugadores = new ArrayList();
 
   public Gameplay() {
 
@@ -67,4 +70,14 @@ public class Gameplay {
   public int puntaje() {
     return this.vehiculoEnJuego.movimientos();
   }
+
+  /*public void infoRankings(ArrayList<String> rankingsJugadores){
+
+      for (int i=1; i<=10; i++){
+          rankingsJugadores.add(i,nickname);
+
+      }
+
+
+  }*/
 }

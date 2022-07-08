@@ -34,7 +34,7 @@ public class ControladorVistaFinal implements EventHandler<ActionEvent> {
              ]
 
          */
-        //Gameplay.getInstance().infoRankings(this.information);
+        //Gameplay.getInstance().infoRankings(this.informacion);
     }
 
 }
