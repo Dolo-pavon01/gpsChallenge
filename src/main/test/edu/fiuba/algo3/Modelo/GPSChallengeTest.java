@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.Modelo;
+/*package edu.fiuba.algo3.Modelo;
 
 import org.junit.jupiter.api.Test;
 
@@ -235,5 +235,7 @@ public class GPSChallengeTest {
      assertEquals(4, auto.movimientos());
    }
 
-  */
+
 }
+
+ */

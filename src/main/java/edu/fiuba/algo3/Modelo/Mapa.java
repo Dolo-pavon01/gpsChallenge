@@ -26,7 +26,7 @@ public class Mapa {
 
   public void generarMapa(Vehiculo vehiculo){
    this.vehiculoEnElMapa = vehiculo;
-   this.dimension = new MapaBuilder().procesar(this.obstaculos,this.sorpresas);
+   //this.dimension = new MapaBuilder().procesar(this.obstaculos,this.sorpresas);
 
   }
   public int getDimension(){

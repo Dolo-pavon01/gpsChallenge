@@ -1,3 +1,4 @@
+/*
 package edu.fiuba.algo3.Vista;
 
 import edu.fiuba.algo3.Modelo.*;
@@ -146,3 +147,4 @@ public class Juego extends Application {
         launch(args);
     }
 }
+*/

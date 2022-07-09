@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -47,12 +48,20 @@ public class VistaFinal  {
 
 
         for(int i =0;i< infoRankings.size();i++){
-            Text nombre = new Text(200,200*(20+i),infoRankings.get(i));
+            Text nombre = new Text(infoRankings.get(i));
+            nombre.setX(200);
+            nombre.setY(100+(i*25));
             this.elements.add(nombre);
+            System.out.println(infoRankings.get(i));
         }
+
+        //Text nombre = new Text(("hola se ve hola se ve xddddd"));
+
+        //nombre.setFill(Color.GREEN);
+        //this.group.getChildren().add(nombre);
+
+        Scene scene = new Scene(this.group,1000,600, Color.AQUAMARINE);
         this.group.getChildren().addAll(this.elements);
-        Scene scene = new Scene(this.group,1000,600);
-        scene =this.stage.getScene();
 
         this.stage.setScene(scene);
         this.stage.show();

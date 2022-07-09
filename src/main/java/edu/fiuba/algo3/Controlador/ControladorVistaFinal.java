@@ -2,6 +2,7 @@ package edu.fiuba.algo3.Controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import edu.fiuba.algo3.Modelo.Partida;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class ControladorVistaFinal {
 
     public ArrayList<String> getRankings(){
 
-        ArrayList<String> rankings = new ArrayList<>();
+        ArrayList<String> rankings;
 
         /*
         Le envia el arrayList a Gamplay quien lo llena con informacion de los rankings
@@ -34,9 +35,13 @@ public class ControladorVistaFinal {
 
          */
     //return Gameplay.getInstance().infoRankings();
-        rankings.add("Jugador:  Matias    Movimientos: 80  Puesto Nro: 1");
-        rankings.add("Jugador:  Marcos    Movimientos: 20  Puesto Nro: 2");
-        rankings.add("Jugador:  Dolores   Movimientos: 10  Puesto Nro: 3");
+        //rankings.add("Jugador:  Matias    Movimientos: 80  Puesto Nro: 1");
+        //rankings.add("Jugador:  Marcos    Movimientos: 20  Puesto Nro: 2");
+        //rankings.add("Jugador:  Dolores   Movimientos: 10  Puesto Nro: 3");
+        Partida partida = new Partida();
+        rankings = partida.actualizarPodio("Markitos",20);
+       // rankings = (partida.actualizarPodio("Juli",30));
+
 
     return rankings;
 

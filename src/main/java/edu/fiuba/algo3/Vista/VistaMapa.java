@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.Vista;
-
+/*
 import edu.fiuba.algo3.Controlador.ControladorMovimientos;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -16,7 +16,7 @@ import java.util.Random;
 
 
 public class VistaMapa {
-    /*
+
     Implementa la vista del mapa con:
         -Obstaculos
         -Vehiculo
@@ -25,7 +25,7 @@ public class VistaMapa {
         -Calles
      utiliza el controlador de interacciones entre el usuario
      y el mapa.
-     */
+
     private Stage stage;
     public Random randoNumber = new Random();
     private double startMapX = 0;
@@ -196,3 +196,4 @@ public class VistaMapa {
 
 
 }
+*/

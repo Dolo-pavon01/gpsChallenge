@@ -11,6 +11,7 @@ public class Gameplay {
   private String nickname;
   //private ArrayList<String> rankingsJugadores = new ArrayList();
 
+
   public Gameplay() {
 
     this.llegoAMeta = false;
@@ -73,11 +74,8 @@ public class Gameplay {
 
   /*public void infoRankings(ArrayList<String> rankingsJugadores){
 
-      for (int i=1; i<=10; i++){
-          rankingsJugadores.add(i,nickname);
-
+      this.Partida.actualizarPodio(this.nickname,this.puntaje());
       }
-
 
   }*/
 }

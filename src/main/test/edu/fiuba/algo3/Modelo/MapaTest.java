@@ -1,3 +1,4 @@
+/*
 package edu.fiuba.algo3.Modelo;
 
 import org.junit.jupiter.api.Test;
@@ -103,3 +104,4 @@ public class MapaTest {
     assertEquals(Posicion.getPosicion(0,0),auto4x4.getPosicion());
   }
 }
+*/

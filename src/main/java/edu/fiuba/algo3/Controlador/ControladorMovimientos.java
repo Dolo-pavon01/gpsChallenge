@@ -1,17 +1,18 @@
-package edu.fiuba.algo3.Controlador;
+
+/*package edu.fiuba.algo3.Controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class ControladorMovimientos {
 
-    /*
+  public class ControladorMovimientos {
+
 
     Controla las opciones de la vista del Mapa,
     dispara acciones a Gameplay de acuerdo a los
     movimientos elegidos por el usuario
 
-     */
+
 
     public  boolean partidaAbierta(){
 
@@ -32,5 +33,4 @@ public class ControladorMovimientos {
     }
 
 
-
-}
+}*/
