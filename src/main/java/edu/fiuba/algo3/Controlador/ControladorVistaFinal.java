@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.Controlador;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import edu.fiuba.algo3.Modelo.Partida;
 
 import java.util.ArrayList;
@@ -43,9 +41,14 @@ public class ControladorVistaFinal {
        // rankings = (partida.actualizarPodio("Juli",30));
 
 
-    return rankings;
+     return rankings;
 
     }
+
+
+
+
+
 
 
 }
