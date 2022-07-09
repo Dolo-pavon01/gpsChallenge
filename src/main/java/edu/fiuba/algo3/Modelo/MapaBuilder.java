@@ -4,17 +4,16 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class MapaBuilder {
-  private int alto;
-  private int ancho;
+  protected int alto;
+  protected int ancho;
   private int cantElementos;
 
-  private HashMap paredes;
-  private HashMap obstaculos;
-  private HashMap sorpresas;
+  protected HashMap obstaculos;
+  protected HashMap sorpresas;
 
-  private Mapa mapa;
+  protected Mapa mapa;
 
-  private Posicion meta;
+  protected Posicion meta;
 
   public MapaBuilder(int alto, int ancho) {
     this.cantElementos = 5;
@@ -103,13 +102,14 @@ public class MapaBuilder {
     for (int i = 0; i < this.cantElementos; i++) {
       int x = randomizador.nextInt(alto)+1;
       int y = randomizador.nextInt(ancho)+1;
-      this.agregar(new SorpresaDesfavorable(), Posicion.getPosicion(x, y));
+      this.sorpresas.put(Posicion.getPosicion(x, y),new SorpresaDesfavorable());
       //System.out.print(" puse una sorpresa desfavorable en " + x + "," + y + " ");
     }
     return mapa;
   }
 
-  public void agregar(Obstaculo obstaculo, Posicion posicion) {
+  public void agregar(Obstaculo obstaculo, Posicion posicion)
+  {
     this.obstaculos.put(posicion, obstaculo);
     this.mapa = new Mapa(this.obstaculos,this.sorpresas,meta,this.alto,this.ancho);
   }
@@ -124,8 +124,8 @@ public class MapaBuilder {
     this.obstaculos = new CreadorObstaculos().crear(alto, ancho);
     this.sorpresas = new CreadorSorpresas().crear(alto,ancho);
     int xDeMeta = this.ancho;
-    int yDeMeta = randomizador.nextInt(alto);
+    int yDeMeta = randomizador.nextInt(this.alto);
     this.meta = Posicion.getPosicion(xDeMeta, yDeMeta);
-    return new Mapa(this.obstaculos, this.sorpresas, meta,this.alto,this.ancho);
+    return new Mapa(this.obstaculos, this.sorpresas, this.meta,this.alto,this.ancho);
   }
 }
