@@ -2,7 +2,8 @@ package edu.fiuba.algo3.Modelo;
 
 public class SorpresaNula  implements  Sorpresa{
 
-    public String getNombre()
+    @Override
+    public String nombreSorpresa()
     {
         return "sopresaNula";
     }

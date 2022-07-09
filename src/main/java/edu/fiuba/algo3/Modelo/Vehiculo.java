@@ -12,6 +12,17 @@ public class Vehiculo {
     this.posicion = Posicion.getPosicion(0, 1);
   }
 
+  public String datosVehiculo()
+  {
+    String datos = this.posicionComoString() + ";";
+    datos = datos + this.tipo.getNombre();
+    return datos;
+  }
+  public String posicionComoString()
+  {
+    return this.posicion.posicionAString();
+  }
+
 
   public Vehiculo() {
     this.movimientos = 0;

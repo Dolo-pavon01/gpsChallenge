@@ -5,7 +5,7 @@ public class ObstaculoNulo implements Obstaculo {
 
     @Override
     public String nombreObstaculo() {
-        return null;
+        return "obstacucloNulo";
     }
 
     @Override

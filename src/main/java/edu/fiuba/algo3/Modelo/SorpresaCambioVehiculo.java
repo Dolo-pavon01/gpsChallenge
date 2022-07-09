@@ -6,4 +6,10 @@ public class SorpresaCambioVehiculo implements Sorpresa {
   public void activar(Vehiculo vehiculo) {
     vehiculo.cambiarTipo();
   }
+
+  @Override
+  public String nombreSorpresa()
+  {
+    return "sorpresa";
+  }
 }

@@ -3,6 +3,8 @@ package edu.fiuba.algo3.Modelo;
 import edu.fiuba.algo3.Modelo.mocks.BuilderMock;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -11,7 +13,7 @@ public class GameplayTest {
   @Test
   public void test01SeCreaUnaGrillaValida() {
     // arrange
-    MapaBuilder builder = new MapaBuilder(10,10);
+    BuilderMock builder = new BuilderMock(10,10);
     builder.agregar(new Pozo(),Posicion.getPosicion(2,1));
     Gameplay gameplay = new Gameplay(builder);
     gameplay.iniciarJuego(new Vehiculo(new Auto(),Posicion.getPosicion(1,1)));
@@ -26,7 +28,7 @@ public class GameplayTest {
   @Test
   public void test02NoPuedeAvanzarSiHayPared() {
     // arrange
-    MapaBuilder builder = new MapaBuilder(10,10);
+    BuilderMock builder = new BuilderMock(10,10);
     Gameplay gameplay = new Gameplay(builder);
     Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(1,1));
     gameplay.iniciarJuego(auto);
@@ -43,7 +45,7 @@ public class GameplayTest {
   @Test
   public void test03NoPuedeAvanzarSiHayPared() {
     // arrange
-    MapaBuilder builder = new MapaBuilder(10,10);
+    BuilderMock builder = new BuilderMock(10,10);
     Gameplay gameplay = new Gameplay(builder);
     Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(9,9));
     gameplay.iniciarJuego(auto);
@@ -61,7 +63,7 @@ public class GameplayTest {
   public void test04NoPuedeAvanzarSiHayPared()
   {
     // arrange
-    MapaBuilder builder = new MapaBuilder(10,10);
+    BuilderMock builder = new BuilderMock(10,10);
     Gameplay gameplay = new Gameplay(builder);
     Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(1,9));
     gameplay.iniciarJuego(auto);
@@ -95,7 +97,7 @@ public class GameplayTest {
   @Test
   public void test06ChocaParedPasePorUnPozoYLlegueAMeta()
   {
-    MapaBuilder builder = new BuilderMock(10,10);
+    BuilderMock builder = new BuilderMock(10,10);
     builder.agregar(new Pozo(),Posicion.getPosicion(9,4));
     Gameplay gameplay = new Gameplay(builder);
     Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(9,3));
@@ -116,7 +118,7 @@ public class GameplayTest {
   @Test
   public void test07PasaPorSorpresaCambioVehiculo() {
     // arrange
-    MapaBuilder builder = new MapaBuilder(10,10);
+    BuilderMock builder = new BuilderMock(10,10);
     builder.agregar(new SorpresaCambioVehiculo(),Posicion.getPosicion(2,1));
     builder.agregar(new Pozo(),Posicion.getPosicion(3,1));
     Gameplay gameplay = new Gameplay(builder);
@@ -129,6 +131,63 @@ public class GameplayTest {
     // assert
     assertEquals(2, gameplay.puntaje());
   }
+
+  @Test
+  public void test08SeObtieneObstaculoComoString()
+  {
+    // arrange
+    BuilderMock builder = new BuilderMock(10,10);
+    builder.agregar(new Pozo(),Posicion.getPosicion(3,1));
+    Gameplay gameplay = new Gameplay(builder);
+    gameplay.iniciarJuego(new Vehiculo(new Auto(),Posicion.getPosicion(1,1)));
+
+    //act
+    HashMap obtenido = gameplay.getObstaculos();
+
+
+    //assert
+    assertTrue(obtenido.containsKey("3;1"));
+    assertEquals("pozo",obtenido.get("3;1"));
+
+  }
+
+  @Test
+  public void test09SeObtieneSorpresaComoString()
+  {
+    // arrange
+    BuilderMock builder = new BuilderMock(10,10);
+    builder.agregar(new SorpresaCambioVehiculo(),Posicion.getPosicion(2,1));
+    Gameplay gameplay = new Gameplay(builder);
+    gameplay.iniciarJuego(new Vehiculo(new Auto(),Posicion.getPosicion(1,1)));
+
+    //act
+    HashMap obtenido = gameplay.getSorpresas();
+
+
+    //assert
+    assertTrue(obtenido.containsKey("2;1"));
+    assertEquals("sorpresa",obtenido.get("2;1"));
+
+  }
+
+  @Test
+  public void test10SeObtieneDatosDelVehiculo()
+  {
+    // arrange
+    BuilderMock builder = new BuilderMock(10,10);
+    Gameplay gameplay = new Gameplay(builder);
+    gameplay.iniciarJuego(new Vehiculo(new Auto(),Posicion.getPosicion(1,1)));
+
+    //act
+    String datos = gameplay.getVehiculo();
+
+    //assert
+
+    assertEquals("1;1;Auto",datos);
+  }
+
+
+
 
 
 }

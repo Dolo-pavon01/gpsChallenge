@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.mocks.BuilderMock;
+import javafx.geometry.Pos;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,9 +11,9 @@ public class MapaTest {
   @Test
   public void test01MotoSeMuevePorMapaPasaPorPozoEsPenalizado() {
     // arrange
-    MapaBuilder fabrica = new MapaBuilder(10,10);
-    Mapa mapa = fabrica.crearMapa();
+    BuilderMock fabrica = new BuilderMock(10,10);
     fabrica.agregar(new Pozo(),Posicion.getPosicion(2,1));
+    Mapa mapa = fabrica.getMapa();
     Vehiculo moto = new Vehiculo(new Moto(),Posicion.getPosicion(1,1));
     // act
     mapa.avanzar(moto, 'd');
@@ -22,9 +24,9 @@ public class MapaTest {
   @Test
   public void test02MotoSeMueveEnMapaPasaPorPiqueteEsPenalizado() {
     // arrange
-    MapaBuilder fabrica = new MapaBuilder(10,10);
-    Mapa mapa = fabrica.crearMapa();
+    BuilderMock fabrica = new BuilderMock(10,10);
     fabrica.agregar(new Piquete(),Posicion.getPosicion(2,1));
+    Mapa mapa = fabrica.getMapa();
     Vehiculo moto = new Vehiculo(new Moto(),Posicion.getPosicion(1,1));
     // act
     mapa.avanzar(moto, 'd');
@@ -35,9 +37,9 @@ public class MapaTest {
   @Test
   public void test03AutoSeMueveEnMapaPasaPorPozoEsPenalizado() {
     // arrange
-    MapaBuilder fabrica = new MapaBuilder(10,10);
-    Mapa mapa = fabrica.crearMapa();
+    BuilderMock fabrica = new BuilderMock(10,10);
     fabrica.agregar(new Pozo(),Posicion.getPosicion(2,1));
+    Mapa mapa = fabrica.getMapa();
     Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(1,1));
     // act
     mapa.avanzar(auto, 'd');
@@ -48,9 +50,9 @@ public class MapaTest {
   @Test
   public void test04AutoSeMueveEnMapaPasaPorPiqueteNoPuedePasar() {
     // arrange
-    MapaBuilder fabrica = new MapaBuilder(10,10);
-    Mapa mapa = fabrica.crearMapa();
+    BuilderMock fabrica = new BuilderMock(10,10);
     fabrica.agregar(new Piquete(),Posicion.getPosicion(2,1));
+    Mapa mapa = fabrica.getMapa();
     Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(1,1));
     // act
     mapa.avanzar(auto, 'd');
@@ -62,9 +64,9 @@ public class MapaTest {
   @Test
   public void test05Auto4x4SeMueveEnMapaPasaPorPozoNoEsPenalizado() {
     // arrange
-    MapaBuilder fabrica = new MapaBuilder(10,10);
-    Mapa mapa = fabrica.crearMapa();
+    BuilderMock fabrica = new BuilderMock(10,10);
     fabrica.agregar(new Pozo(),Posicion.getPosicion(2,1));
+    Mapa mapa = fabrica.getMapa();
     Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(1,1));
     // act
     mapa.avanzar(auto4x4, 'd');
@@ -76,11 +78,11 @@ public class MapaTest {
   @Test
   public void test06Auto4x4SeMueveEnMapaPasaPorPozo3VecesEsPenalizado() {
     // arrange
-    MapaBuilder fabrica = new MapaBuilder(10,10);
-    Mapa mapa = fabrica.crearMapa();
+    BuilderMock fabrica = new BuilderMock(10,10);
     fabrica.agregar(new Pozo(),Posicion.getPosicion(2,1));
     fabrica.agregar(new Pozo(),Posicion.getPosicion(3,1));
     fabrica.agregar(new Pozo(),Posicion.getPosicion(4,1));
+    Mapa mapa = fabrica.getMapa();
     Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(1,1));
     // act
     for (int i = 0; i < 3; i++) {
@@ -93,10 +95,10 @@ public class MapaTest {
   @Test
   public void test07Auto4x4SeMueveEnMapaPasaPorPiqueteNoPuedePasar() {
     // arrange
-    MapaBuilder fabrica = new MapaBuilder(10,10);
-    Mapa mapa = fabrica.crearMapa();
+    BuilderMock fabrica = new BuilderMock(10,10);
     fabrica.agregar(new Piquete(),Posicion.getPosicion(2,1));
     Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(1,1));
+    Mapa mapa = fabrica.getMapa();
     // act
     mapa.avanzar(auto4x4, 'd');
     //assert
@@ -107,8 +109,8 @@ public class MapaTest {
     @Test
     public void test08Auto4x4SeMueveEnMapaChocaParedDeDerechaYNoSeMueve() {
         // arrange
-        MapaBuilder fabrica = new MapaBuilder(2,2);
-        Mapa mapa = fabrica.crearMapa();
+      BuilderMock fabrica = new BuilderMock(2,2);
+      Mapa mapa = fabrica.getMapa();
         Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(1,1));
         // act
         mapa.avanzar(auto4x4, 'd');
@@ -120,14 +122,64 @@ public class MapaTest {
   @Test
   public void test09Auto4x4SeMueveEnMapaChocaParedDeAbajoYNoSeMueve() {
     // arrange
-    MapaBuilder fabrica = new MapaBuilder(2,2);
-    Mapa mapa = fabrica.crearMapa();
+    BuilderMock fabrica = new BuilderMock(2,2);
+    Mapa mapa = fabrica.getMapa();
     Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(1,1));
     // act
     mapa.avanzar(auto4x4, 's');
     //assert
     assertEquals(0,auto4x4.movimientos());
     assertEquals(Posicion.getPosicion(1,1),auto4x4.getPosicion());
+  }
+
+  @Test
+  public void test10Auto4x4SeMueveEnMapaPasaPorSorpresaFavorable() {
+    // arrange
+    BuilderMock fabrica = new BuilderMock(10,10);
+    Mapa mapa = fabrica.getMapa();
+    fabrica.agregar(new SorpresaFavorable(),Posicion.getPosicion(6,1));
+    Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(1,1));
+    // act
+    mapa.avanzar(auto4x4, 'd');
+    mapa.avanzar(auto4x4, 'd');
+    mapa.avanzar(auto4x4, 'd');
+    mapa.avanzar(auto4x4, 'd');
+    mapa.avanzar(auto4x4, 'd');
+    //assert
+    assertEquals(4,auto4x4.movimientos());
+    assertEquals(Posicion.getPosicion(6,1),auto4x4.getPosicion());
+  }
+  @Test
+  public void test11Auto4x4SeMueveEnMapaPasaPorSorpresaDesfavorable() {
+    // arrange
+    BuilderMock fabrica = new BuilderMock(10,10);
+    Mapa mapa = fabrica.getMapa();
+    fabrica.agregar(new SorpresaDesfavorable(),Posicion.getPosicion(6,1));
+    Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(1,1));
+    // act
+    mapa.avanzar(auto4x4, 'd');
+    mapa.avanzar(auto4x4, 'd');
+    mapa.avanzar(auto4x4, 'd');
+    mapa.avanzar(auto4x4, 'd');
+    mapa.avanzar(auto4x4, 'd');
+    //assert
+    assertEquals(6,auto4x4.movimientos());
+    assertEquals(Posicion.getPosicion(6,1),auto4x4.getPosicion());
+  }
+  @Test
+  public void test12Auto4x4SeMueveEnMapaPasaPorSorpresaCambioVehiculoYPiqueteNoPuedePasar() {
+    // arrange
+    BuilderMock fabrica = new BuilderMock(10,10);
+    Mapa mapa = fabrica.getMapa();
+    fabrica.agregar(new SorpresaCambioVehiculo(), Posicion.getPosicion(2,1));
+    fabrica.agregar(new Piquete(),Posicion.getPosicion(3,1));
+    Vehiculo auto4x4 = new Vehiculo(new Auto4x4(),Posicion.getPosicion(1,1));
+    // act
+    mapa.avanzar(auto4x4, 'd');
+    mapa.avanzar(auto4x4, 'd');
+    //assert
+    assertEquals(4,auto4x4.movimientos());
+    assertEquals(Posicion.getPosicion(3,1),auto4x4.getPosicion());
   }
 }
 
