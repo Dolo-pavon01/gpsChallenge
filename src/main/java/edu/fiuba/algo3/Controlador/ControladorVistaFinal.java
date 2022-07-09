@@ -37,7 +37,7 @@ public class ControladorVistaFinal {
         //rankings.add("Jugador:  Marcos    Movimientos: 20  Puesto Nro: 2");
         //rankings.add("Jugador:  Dolores   Movimientos: 10  Puesto Nro: 3");
         Partida partida = new Partida();
-        rankings = partida.actualizarPodio("Markitos",20);
+        rankings = partida.actualizarPodio("PANDOLFO TE AMO",20);
        // rankings = (partida.actualizarPodio("Juli",30));
 
 

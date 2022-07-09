@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.awt.font.ImageGraphicAttribute;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -109,7 +110,14 @@ public class VistaMapa {
             if(this.controladorMovimientos.partidaCerrada())
             {
                 System.out.println("hola");
-                new VistaFinal(this.stage).mostrarVistaFinal();
+                //new VistaFinal(this.stage).mostrarVistaFinal();
+                Image vehiculo2 = null;
+                try {
+                    vehiculo2 = new Image(new FileInputStream("docs/Vehiculo_Auto4x4.png"));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                this.dibujoVehiculo.setImage(vehiculo2);
             }
             this.dibujarVehiculo(direccion);
         });
