@@ -5,6 +5,7 @@ public class Vehiculo {
   private Posicion posicion;
   private int movimientos;
 
+  //TODO eliminar duplicados
   public Vehiculo(TipoVehiculo tipoVehiculo) {
     this.tipo = tipoVehiculo;
     this.movimientos = 0;

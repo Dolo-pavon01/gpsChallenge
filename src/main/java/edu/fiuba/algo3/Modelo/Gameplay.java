@@ -8,9 +8,15 @@ public class Gameplay {
   private Mapa mapa;
   private boolean llegoAMeta;
   private String nickname;
+  private MapaBuilder builder;
 
   public Gameplay() {
 
+  }
+  public Gameplay(MapaBuilder builder)
+  {
+    this.builder = builder;
+    this.mapa = this.builder.crearMapa();
   }
 
   public Mapa getMapa()
@@ -41,7 +47,7 @@ public class Gameplay {
   }
   public Mapa iniciarJuego(Vehiculo vehiculo) {
     this.vehiculoEnJuego = vehiculo;
-   // this.mapa.generarMapa(this.vehiculoEnJuego);
+    this.mapa = this.builder.getMapa();
     return this.mapa;
   }
   public void registrarUsuario(String usuario, String vehiculoElegido){

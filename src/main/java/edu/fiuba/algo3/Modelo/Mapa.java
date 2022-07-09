@@ -53,11 +53,7 @@ public class Mapa {
   {
     Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
     if (posicion.estaFueraDeLimites(this.ancho,this.alto))
-    {
-
-      System.out.print("bb");
       return;
-    }
     try {
       this.pasarPorObstaculos(vehiculo, posicion);
     } catch (HayPiqueteException e) {

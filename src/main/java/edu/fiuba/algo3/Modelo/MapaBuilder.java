@@ -12,12 +12,20 @@ public class MapaBuilder {
   private HashMap obstaculos;
   private HashMap sorpresas;
 
+  private Mapa mapa;
+
   private Posicion meta;
 
   public MapaBuilder(int alto, int ancho) {
     this.cantElementos = 5;
     this.alto = alto;
     this.ancho = ancho;
+    this.mapa = this.crearMapa();
+  }
+
+  public Mapa getMapa()
+  {
+    return this.mapa;
   }
   /*
    Para VistaMapa necesita tener las dimensiones del Mapa Ancho,Alto
@@ -103,6 +111,7 @@ public class MapaBuilder {
 
   public void agregar(Obstaculo obstaculo, Posicion posicion) {
     this.obstaculos.put(posicion, obstaculo);
+    this.mapa = new Mapa(this.obstaculos,this.sorpresas,meta,this.alto,this.ancho);
   }
 
   public void agregar(Sorpresa sorpresa, Posicion posicion) {
@@ -117,6 +126,6 @@ public class MapaBuilder {
     int xDeMeta = this.ancho;
     int yDeMeta = randomizador.nextInt(alto);
     this.meta = Posicion.getPosicion(xDeMeta, yDeMeta);
-    return new Mapa(obstaculos, sorpresas, meta,this.alto,this.ancho);
+    return new Mapa(this.obstaculos, this.sorpresas, meta,this.alto,this.ancho);
   }
 }
