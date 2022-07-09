@@ -56,7 +56,8 @@ public class Gameplay {
       this.vehiculoEnJuego = new Vehiculo(new Auto4x4());
     }
   }
-  public boolean jugar(char input) {
+  public boolean jugar(char input)
+  {
     int puntaje = this.vehiculoEnJuego.movimientos();
     this.mapa.avanzar(this.vehiculoEnJuego, input);
     return(this.vehiculoEnJuego.movimientos() != puntaje);
@@ -64,7 +65,7 @@ public class Gameplay {
 
   public String posicionJugador()
   {
-    return( this.vehiculoEnJuego.getPosicion().posicionAString());
+    return(this.vehiculoEnJuego.getPosicion().posicionAString());
   }
 
   public boolean llegoAMeta()

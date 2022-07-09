@@ -5,7 +5,6 @@ import java.util.HashMap;
 public class Mapa {
   private HashMap<Posicion, Obstaculo> obstaculos;
   private HashMap<Posicion, Sorpresa> sorpresas;
-  private HashMap<Posicion, Pared> paredes;
   private Posicion meta;
   private Vehiculo vehiculoEnElMapa;
   private int alto;
@@ -17,16 +16,14 @@ public class Mapa {
   {
     this.obstaculos = new HashMap<>();
     this.sorpresas = new HashMap<>();
-    this.paredes = new HashMap<>();
     //randomizar
     this.meta = Posicion.getPosicion(20, 0);
   }
 
-  public Mapa(HashMap paredes, HashMap obstaculos, HashMap sorpresas, Posicion meta,int alto,int ancho)
+  public Mapa( HashMap obstaculos, HashMap sorpresas, Posicion meta,int alto,int ancho)
   {
     this.obstaculos = obstaculos;
     this.sorpresas = sorpresas;
-    this.paredes = paredes;
     this.meta = meta;
     this.alto = alto;
     this.ancho = ancho;

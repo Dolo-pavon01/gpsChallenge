@@ -114,10 +114,9 @@ public class MapaBuilder {
     Random randomizador = new Random();
     this.obstaculos = new CreadorObstaculos().crear(alto, ancho);
     this.sorpresas = new CreadorSorpresas().crear(alto,ancho);
-   // this.paredes = new CreadorParedes().crear(alto,ancho);
     int xDeMeta = this.ancho;
     int yDeMeta = randomizador.nextInt(alto);
     this.meta = Posicion.getPosicion(xDeMeta, yDeMeta);
-    return new Mapa(paredes, obstaculos, sorpresas, meta,this.alto,this.ancho);
+    return new Mapa(obstaculos, sorpresas, meta,this.alto,this.ancho);
   }
 }
