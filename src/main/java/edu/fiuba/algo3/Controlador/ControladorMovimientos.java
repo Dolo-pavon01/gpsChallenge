@@ -21,7 +21,7 @@ public class ControladorMovimientos {
     public  boolean partidaCerrada(){
 
         this.counter +=1;
-        if(this.counter < 10){
+        if(this.counter < 100){
 
             return  false;
         }

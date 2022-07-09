@@ -9,8 +9,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
+import java.awt.font.ImageGraphicAttribute;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,7 @@ public class VistaMapa {
     private double startMapY = 50;
     private double widthMap = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width-200;
     private double heightMap = this.widthMap /2;
+    private ImageView dibujoVehiculo;
 
     private String vehiculo;
 
@@ -73,9 +76,15 @@ public class VistaMapa {
 
         this.dibujarObstaculos();
         this.dibujarSorpresas();
+        Image vehiculo = new Image(new FileInputStream("docs/Vehiculo_Auto.png"));
+        this.dibujoVehiculo = new ImageView(vehiculo);
+        this.dibujoVehiculo.setX(this.startMapX);
+        this.dibujoVehiculo.setY(this.AnchoAltoMatriz + this.startMapY);
+        this.dibujoVehiculo.setFitHeight(this.altoCalle);
+        this.dibujoVehiculo.setFitWidth(this.altoCalle);
 
         //this.dibujarEntidad("pozo",0,2);
-
+        this.elements.add(dibujoVehiculo);
         this.group.getChildren().addAll(this.elements);
 
 
@@ -94,13 +103,15 @@ public class VistaMapa {
         scene.setOnKeyPressed(KeyEvent->
         {
             KeyCode code = KeyEvent.getCode();
-            this.controladorMovimientos.evento((code.toString()).toLowerCase().charAt(0));
+            char direccion = (code.toString()).toLowerCase().charAt(0);
+            this.controladorMovimientos.evento(direccion);
 
             if(this.controladorMovimientos.partidaCerrada())
             {
                 System.out.println("hola");
                 new VistaFinal(this.stage).mostrarVistaFinal();
             }
+            this.dibujarVehiculo(direccion);
         });
 
 
@@ -280,14 +291,40 @@ public class VistaMapa {
     }
 
 
-    public void dibujarVehiculo(int x, int y){
+    public void dibujarVehiculo(char direccion){
+        this.dibujoVehiculo.setRotationAxis(Rotate.Z_AXIS);
+        double movimiento = this.altoAnchoCuadra + this.altoCalle;
+            switch (direccion) {
+                case 'd':
+                    this.dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
+                    this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() + movimiento);
+                    this.dibujoVehiculo.setRotate(0);
+                    break;
+                case 'a':
 
+                    this.dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
+                    this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() - movimiento);
+                    this.dibujoVehiculo.setRotate(180);
+                    break;
+                case 'w':
 
+                    this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() - movimiento);
+                    this.dibujoVehiculo.setRotate(270);
+                    break;
+                case 's':
+
+                    this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() + movimiento);
+                    this.dibujoVehiculo.setRotate(90);
+                    break;
+                default:
+                    break;
+
+            }
+
+        }
 
     }
 
 
 
 
-
-}
