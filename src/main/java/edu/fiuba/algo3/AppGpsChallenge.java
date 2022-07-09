@@ -19,6 +19,15 @@ public class AppGpsChallenge extends Application {
         //vistaInicial.mostrarVistaInicial();
         VistaMapa vistaMapa = new VistaMapa(primaryStage);
         vistaMapa.mostrarVistaMapa(3);
+
+        /*
+        * Hasta que no encuentre solucion a las vistas de cambio de
+        * pantalla, cada una de las vistas llamara a la siguiente
+        * es decir :
+        * Vista Inicial cuando termine su funcionalidad, llamara a
+        * Vista Mapa, quien hara lo mismo llamando a Vista Final
+        *
+        * */
         //VistaFinal vistaFinal  = new VistaFinal(primaryStage);
         //vistaFinal.mostrarVistaFinal();
 
