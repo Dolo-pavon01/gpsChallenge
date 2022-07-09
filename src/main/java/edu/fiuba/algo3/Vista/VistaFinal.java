@@ -63,9 +63,8 @@ public class VistaFinal  {
         Scene scene = new Scene(this.group,800,800, Color.AQUAMARINE);
         this.group.getChildren().addAll(this.elements);
         this.stage.setScene(scene);
+        this.stage.setMaximized(true);
         this.stage.show();
-
-
 
 
     }

@@ -36,7 +36,7 @@ public class VistaInicial  {
     public VistaInicial(Stage stage){
         this.stage = stage;
     }
-    public void mostrarVistaInicial()  {
+    public void mostrarVistaInicial() throws Exception  {
         /*
             inicializa la vista principal, se muestra al usuario las
             opciones disponibles, se guarda el nombre del usuario
@@ -100,6 +100,12 @@ public class VistaInicial  {
         this.btnJugar.setOnAction(evento->{
             this.nickname = this.nombreInput.getText();
             new ControladorOpciones(this.nickname,this.vehiculoElegido);
+            System.out.println("hola");
+            try {
+                new VistaMapa(this.stage).mostrarVistaMapa(2);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
 }

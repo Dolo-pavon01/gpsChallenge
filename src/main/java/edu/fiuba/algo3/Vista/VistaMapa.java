@@ -32,7 +32,7 @@ public class VistaMapa {
     public Random randoNumber = new Random();
     private double startMapX = 0;
     private double startMapY = 50;
-    private double widthMap = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;;
+    private double widthMap = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width-200;
     private double heightMap = this.widthMap /2;
 
     private String vehiculo;
