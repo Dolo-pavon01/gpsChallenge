@@ -10,18 +10,20 @@ public class ControladorOpciones  implements EventHandler<ActionEvent> {
     elegidas por el usuario
      */
 
-    private String nickName;
+    private String nickname;
     private String tipoVehiculo;
 
     public ControladorOpciones(String nickName,String tipoVehiculo ){
-        this.nickName = nickName;
+        this.nickname = nickName;
         this.tipoVehiculo = tipoVehiculo;
+        System.out.println(this.nickname);
+        System.out.println(this.tipoVehiculo);
     }
 
     @Override
     public void handle(ActionEvent event) {
 
-        //Gameplay.getInstance().nuevoUsuario(this.nickname, this.tipoVehiculo);
+        //Gameplay.getInstance().registrarUsuario(this.nickname, this.tipoVehiculo);
 
     }
 
