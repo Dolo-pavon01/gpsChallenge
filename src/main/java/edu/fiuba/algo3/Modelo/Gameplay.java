@@ -63,9 +63,9 @@ public class Gameplay {
 
   }
 
-  public int getDimension(){
+  public int getDimension()
+  {
     return this.mapa.getDimension();
-
   }
   public Mapa iniciarJuego(Vehiculo vehiculo) {
     this.vehiculoEnJuego = vehiculo;

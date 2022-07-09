@@ -7,18 +7,14 @@ public class MapaBuilder {
   protected int alto;
   protected int ancho;
   private int cantElementos;
-
   protected HashMap obstaculos;
   protected HashMap sorpresas;
-
   protected Mapa mapa;
-
   protected Posicion meta;
 
   public MapaBuilder() {
     Random randomizador = new Random();
     this.cantElementos = 5;
-
     this.alto = (randomizador.nextInt(5) + 1 )* 2;
     this.ancho = this.alto*2;
     this.mapa = this.crearMapa(this.alto,this.ancho);
@@ -28,26 +24,6 @@ public class MapaBuilder {
   {
     return this.mapa;
   }
-  /*
-   Para VistaMapa necesita tener las dimensiones del Mapa Ancho,Alto
-   y el Random() Entre 2 y 10 de a pares.
-   El ramdom por dos siempre sera las calles Y.
-
-   (nextInt(5) + 1 )* 2
-
-
-   */
-
-
-  //preguntar a mel??
-  /*
-  public int procesar(HashMap<> obstaculos,HashMap<> sorpresas){
-    Random random = new Random();
-    this.ancho = random.nextInt(3)+1;
-    return this.ancho;
-  }
-
-   */
 
   public Mapa crearGameplay() {
     Random randomizador = new Random();
@@ -95,13 +71,19 @@ public class MapaBuilder {
     this.sorpresas = new CreadorSorpresas().crear(alto,ancho);
   }
 
-  // TODO: Sacar hardcodeo de randomizador para que funcione
-  public Mapa crearMapa(int alto,int ancho) {
-    mapaVacio(alto,ancho);
+  protected void definirMeta(int alto,int ancho)
+  {
     Random randomizador = new Random();
     int xDeMeta = ancho;
     int yDeMeta = randomizador.nextInt(alto);
     this.meta = Posicion.getPosicion(xDeMeta, yDeMeta);
+  }
+
+  // TODO: Sacar hardcodeo de randomizador para que funcione
+  public Mapa crearMapa(int alto,int ancho)
+  {
+    this.mapaVacio(alto,ancho);
+    this.definirMeta(alto,ancho);
     return new Mapa(this.obstaculos, this.sorpresas, this.meta,alto,ancho);
   }
 }

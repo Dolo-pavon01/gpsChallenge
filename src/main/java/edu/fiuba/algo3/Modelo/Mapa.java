@@ -6,19 +6,11 @@ public class Mapa {
   private  HashMap<Posicion, Obstaculo> obstaculos;
   private HashMap<Posicion, Sorpresa> sorpresas;
   private Posicion meta;
-  private Vehiculo vehiculoEnElMapa;
   private int alto;
   private int ancho;
 
   private boolean llegoAMeta;
 
-  public Mapa()
-  {
-    this.obstaculos = new HashMap<>();
-    this.sorpresas = new HashMap<>();
-    //randomizar
-    this.meta = Posicion.getPosicion(20, 0);
-  }
 
   public Mapa( HashMap obstaculos, HashMap sorpresas, Posicion meta,int alto,int ancho)
   {
@@ -29,21 +21,10 @@ public class Mapa {
     this.ancho = ancho;
   }
 
-//preguntar
-  /*
-  public void generarMapa(Vehiculo vehiculo)
-  {
-   this.vehiculoEnElMapa = vehiculo;
-   this.dimension = new MapaBuilder().procesar(this.obstaculos,this.sorpresas);
-  }
-
-   */
-
   public int getDimension()
   {
     return this.alto;
   }
-
   public int getAlto()
   {
     return this.alto;
