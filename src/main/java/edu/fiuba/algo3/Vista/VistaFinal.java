@@ -60,11 +60,12 @@ public class VistaFinal  {
         //nombre.setFill(Color.GREEN);
         //this.group.getChildren().add(nombre);
 
-        Scene scene = new Scene(this.group,1000,600, Color.AQUAMARINE);
+        Scene scene = new Scene(this.group,1440,900, Color.AQUAMARINE);
         this.group.getChildren().addAll(this.elements);
-
         this.stage.setScene(scene);
         this.stage.show();
+
+
 
     }
 
