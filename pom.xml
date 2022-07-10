@@ -54,11 +54,6 @@
             <artifactId>javafx-fxml</artifactId>
             <version>11.0.2</version>
         </dependency>
-        <dependency>
-            <groupId>edu.fiuba.algo3</groupId>
-            <artifactId>tp2</artifactId>
-            <version>0.0.1</version>
-        </dependency>
     </dependencies>
     <profiles>
         <profile>
@@ -116,7 +111,8 @@
                         </goals>
                         <configuration>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>${main-class}</mainClass>
                                 </transformer>
                             </transformers>
