@@ -4,6 +4,7 @@ import edu.fiuba.algo3.Controlador.ControladorMovimientos;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -19,7 +20,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 public class VistaMapa {
 /*
@@ -122,7 +126,6 @@ public class VistaMapa {
             }
             this.dibujarVehiculo(direccion);
         });
-
 
 
     }
