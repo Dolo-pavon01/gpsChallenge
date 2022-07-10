@@ -49,21 +49,22 @@ public class Gameplay {
     return this.mapa;
   }
 
-  private Vehiculo crearVehiculoEnJuego(TipoVehiculo tipoVehiculo) {
-    return new Vehiculo(
-        tipoVehiculo, Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
+  private void crearVehiculoEnJuego(TipoVehiculo tipoVehiculo) {
+    this.vehiculoEnJuego =
+        new Vehiculo(
+            tipoVehiculo, Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
   }
 
   public void registrarUsuario(String usuario, String vehiculoElegido) {
     this.nombreUsuario = usuario;
     if (vehiculoElegido == AUTO) {
-      this.vehiculoEnJuego = this.crearVehiculoEnJuego(new Auto());
+      this.crearVehiculoEnJuego(new Auto());
     }
     if (vehiculoElegido == MOTO) {
-      this.vehiculoEnJuego = this.crearVehiculoEnJuego(new Moto());
+      this.crearVehiculoEnJuego(new Moto());
     }
     if (vehiculoElegido == AUTO4x4) {
-      this.vehiculoEnJuego = this.crearVehiculoEnJuego(new Auto4x4());
+      this.crearVehiculoEnJuego(new Auto4x4());
     }
   }
 
