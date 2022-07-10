@@ -10,8 +10,6 @@ public class Vehiculo {
   private Posicion posicion;
   private int movimientos;
 
-  // TODO: Hacer que vehiculo reciba posicion de builder
-  // La posicion tiene que ser (0, alto / 2)
   public Vehiculo(TipoVehiculo tipoVehiculo) {
     this.tipo = tipoVehiculo;
     this.movimientos = 0;
