@@ -3,7 +3,6 @@ package edu.fiuba.algo3.Modelo.Obstaculos;
 import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
 import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
 import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
-import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
 import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 
 import java.util.Random;
