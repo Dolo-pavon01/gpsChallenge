@@ -1,10 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
-import edu.fiuba.algo3.Modelo.Vehiculo.Mapa;
-import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
-import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
-import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
-import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
+import edu.fiuba.algo3.Modelo.Vehiculo.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,10 +9,9 @@ import java.util.List;
 public class Gameplay {
   private Vehiculo vehiculoEnJuego;
   private Mapa mapa;
+  private final int POSICION_INICIAL_X = 0;
   private String nickname;
   private MapaBuilder builder;
-
-  public Gameplay() {}
 
   public Gameplay(MapaBuilder builder) {
     this.builder = builder;
@@ -28,20 +23,6 @@ public class Gameplay {
   }
 
   public List getObstaculos() {
-
-    /*
-    HashMap obstaculosComoString = new HashMap(10, 70);
-    for (int i = 0; i < this.mapa.getAlto(); i++) {
-      for (int j = 0; j < this.mapa.getAncho(); j++) {
-        Posicion p = Posicion.getPosicion(i, j);
-        String nombreObstaculo = this.mapa.obstaculoEnPosicion(p).nombreObstaculo();
-        String posicion = p.posicionAString();
-        obstaculosComoString.put(posicion, nombreObstaculo);
-      }
-    }
-    return obstaculosComoString;
-     */
-    // return new ArrayList(Arrays.asList("3;1;pozo"));
     return this.mapa.getObstaculos();
   }
 
@@ -61,13 +42,19 @@ public class Gameplay {
   public void registrarUsuario(String usuario, String vehiculoElegido) {
     this.nickname = usuario;
     if (vehiculoElegido == "Auto") {
-      this.vehiculoEnJuego = new Vehiculo(new Auto());
+      this.vehiculoEnJuego =
+          new Vehiculo(
+              new Auto(), Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
     }
     if (vehiculoElegido == "Moto") {
-      this.vehiculoEnJuego = new Vehiculo(new Moto());
+      this.vehiculoEnJuego =
+          new Vehiculo(
+              new Moto(), Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
     }
     if (vehiculoElegido == "Auto4x4") {
-      this.vehiculoEnJuego = new Vehiculo(new Auto4x4());
+      this.vehiculoEnJuego =
+          new Vehiculo(
+              new Auto4x4(), Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
     }
   }
 

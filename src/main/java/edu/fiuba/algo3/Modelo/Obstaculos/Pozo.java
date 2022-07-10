@@ -12,15 +12,16 @@ public class Pozo implements Obstaculo {
   private static final int LIMITE_POZOS = 2;
   private static final int MULTA_CERO = 0;
   private static String NOMBRE = "pozo";
+  private static String SEPARADOR = ";";
 
   @Override
   public String nombreObstaculo() {
-    return "pozo";
+    return NOMBRE;
   }
 
   @Override
   public String obtenerNombreEnPosicion(Posicion posicion) {
-    return posicion.posicionAString() + ";" + NOMBRE;
+    return posicion.posicionAString() + SEPARADOR + NOMBRE;
   }
 
   public int visit(Moto moto) {
