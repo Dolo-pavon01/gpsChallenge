@@ -13,10 +13,10 @@ public class GameplayTest {
   @Test
   public void test01SeCreaUnaGrillaValida() {
     // arrange
-    BuilderMock builder = new BuilderMock(10,10);
-    builder.agregar(new Pozo(),Posicion.getPosicion(2,1));
+    BuilderMock builder = new BuilderMock(10, 10);
+    builder.agregar(new Pozo(), Posicion.getPosicion(2, 1));
     Gameplay gameplay = new Gameplay(builder);
-    gameplay.iniciarJuego(new Vehiculo(new Auto(),Posicion.getPosicion(1,1)));
+    gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act
     gameplay.jugar('d');
@@ -28,9 +28,9 @@ public class GameplayTest {
   @Test
   public void test02NoPuedeAvanzarSiHayPared() {
     // arrange
-    BuilderMock builder = new BuilderMock(10,10);
+    BuilderMock builder = new BuilderMock(10, 10);
     Gameplay gameplay = new Gameplay(builder);
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(1,1));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(1, 1));
     gameplay.iniciarJuego(auto);
 
     // act
@@ -39,15 +39,15 @@ public class GameplayTest {
 
     // assert
     assertEquals(0, gameplay.puntaje());
-    assertEquals(Posicion.getPosicion(1,1),auto.getPosicion());
+    assertEquals(Posicion.getPosicion(1, 1), auto.getPosicion());
   }
 
   @Test
   public void test03NoPuedeAvanzarSiHayPared() {
     // arrange
-    BuilderMock builder = new BuilderMock(10,10);
+    BuilderMock builder = new BuilderMock(10, 10);
     Gameplay gameplay = new Gameplay(builder);
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(9,9));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(9, 9));
     gameplay.iniciarJuego(auto);
 
     // act
@@ -56,16 +56,15 @@ public class GameplayTest {
 
     // assert
     assertEquals(0, gameplay.puntaje());
-    assertEquals(Posicion.getPosicion(9,9),auto.getPosicion());
+    assertEquals(Posicion.getPosicion(9, 9), auto.getPosicion());
   }
 
   @Test
-  public void test04NoPuedeAvanzarSiHayPared()
-  {
+  public void test04NoPuedeAvanzarSiHayPared() {
     // arrange
-    BuilderMock builder = new BuilderMock(10,10);
+    BuilderMock builder = new BuilderMock(10, 10);
     Gameplay gameplay = new Gameplay(builder);
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(1,9));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(1, 9));
     gameplay.iniciarJuego(auto);
 
     // act
@@ -74,55 +73,51 @@ public class GameplayTest {
 
     // assert
     assertEquals(0, gameplay.puntaje());
-    assertEquals(Posicion.getPosicion(1,9),auto.getPosicion());
+    assertEquals(Posicion.getPosicion(1, 9), auto.getPosicion());
   }
 
   @Test
-  public void test05LLegaAMeta()
-  {
-    //arrange
-    MapaBuilder builder = new BuilderMock(10,10);
+  public void test05LLegaAMeta() {
+    // arrange
+    MapaBuilder builder = new BuilderMock(10, 10);
     Gameplay gameplay = new Gameplay(builder);
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(8,5));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(8, 5));
     gameplay.iniciarJuego(auto);
 
-    //act
+    // act
     gameplay.jugar('d');
-    //assert
-    assertEquals(Posicion.getPosicion(9,5),auto.getPosicion());
+    // assert
+    assertEquals(Posicion.getPosicion(9, 5), auto.getPosicion());
     assertTrue(gameplay.llegoAMeta());
-
   }
 
   @Test
-  public void test06ChocaParedPasePorUnPozoYLlegueAMeta()
-  {
-    BuilderMock builder = new BuilderMock(10,10);
-    builder.agregar(new Pozo(),Posicion.getPosicion(9,4));
+  public void test06ChocaParedPasePorUnPozoYLlegueAMeta() {
+    BuilderMock builder = new BuilderMock(10, 10);
+    builder.agregar(new Pozo(), Posicion.getPosicion(9, 4));
     Gameplay gameplay = new Gameplay(builder);
-    Vehiculo auto = new Vehiculo(new Auto(),Posicion.getPosicion(9,3));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(9, 3));
     gameplay.iniciarJuego(auto);
 
-    //act
+    // act
     gameplay.jugar('d');
     gameplay.jugar('w');
     gameplay.jugar('w');
 
-    //assert
-    assertEquals(5,gameplay.puntaje());
-    assertEquals(Posicion.getPosicion(9,5),auto.getPosicion());
+    // assert
+    assertEquals(5, gameplay.puntaje());
+    assertEquals(Posicion.getPosicion(9, 5), auto.getPosicion());
     assertTrue(gameplay.llegoAMeta());
-
   }
 
   @Test
   public void test07PasaPorSorpresaCambioVehiculo() {
     // arrange
-    BuilderMock builder = new BuilderMock(10,10);
-    builder.agregar(new SorpresaCambioVehiculo(),Posicion.getPosicion(2,1));
-    builder.agregar(new Pozo(),Posicion.getPosicion(3,1));
+    BuilderMock builder = new BuilderMock(10, 10);
+    builder.agregar(new SorpresaCambioVehiculo(), Posicion.getPosicion(2, 1));
+    builder.agregar(new Pozo(), Posicion.getPosicion(3, 1));
     Gameplay gameplay = new Gameplay(builder);
-    gameplay.iniciarJuego(new Vehiculo(new Auto(),Posicion.getPosicion(1,1)));
+    gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act
     gameplay.jugar('d');
@@ -133,61 +128,51 @@ public class GameplayTest {
   }
 
   @Test
-  public void test08SeObtieneObstaculoComoString()
-  {
+  public void test08SeObtieneObstaculoComoString() {
     // arrange
-    BuilderMock builder = new BuilderMock(10,10);
-    builder.agregar(new Pozo(),Posicion.getPosicion(3,1));
+    BuilderMock builder = new BuilderMock(10, 10);
+    builder.agregar(new Pozo(), Posicion.getPosicion(3, 1));
     Gameplay gameplay = new Gameplay(builder);
-    gameplay.iniciarJuego(new Vehiculo(new Auto(),Posicion.getPosicion(1,1)));
+    gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
-    //act
+    // act
     HashMap obtenido = gameplay.getObstaculos();
 
-
-    //assert
+    // assert
     assertTrue(obtenido.containsKey("3;1"));
-    assertEquals("pozo",obtenido.get("3;1"));
-
+    assertEquals("pozo", obtenido.get("3;1"));
   }
 
+  // TODO: Cambiar lo que devuelve gameplay.sorpresas() (y el resto) para que
+  // en lugar de devolver un HashMap devuelva un Array
   @Test
-  public void test09SeObtieneSorpresaComoString()
-  {
+  public void test09SeObtieneSorpresaComoString() {
     // arrange
-    BuilderMock builder = new BuilderMock(10,10);
-    builder.agregar(new SorpresaCambioVehiculo(),Posicion.getPosicion(2,1));
+    BuilderMock builder = new BuilderMock(10, 10);
+    builder.agregar(new SorpresaCambioVehiculo(), Posicion.getPosicion(2, 1));
     Gameplay gameplay = new Gameplay(builder);
-    gameplay.iniciarJuego(new Vehiculo(new Auto(),Posicion.getPosicion(1,1)));
+    gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
-    //act
+    // act
     HashMap obtenido = gameplay.getSorpresas();
 
-
-    //assert
+    // assert
     assertTrue(obtenido.containsKey("2;1"));
-    assertEquals("sorpresa",obtenido.get("2;1"));
-
+    assertEquals("sorpresa", obtenido.get("2;1"));
   }
 
   @Test
-  public void test10SeObtieneDatosDelVehiculo()
-  {
+  public void test10SeObtieneDatosDelVehiculo() {
     // arrange
-    BuilderMock builder = new BuilderMock(10,10);
+    BuilderMock builder = new BuilderMock(10, 10);
     Gameplay gameplay = new Gameplay(builder);
-    gameplay.iniciarJuego(new Vehiculo(new Auto(),Posicion.getPosicion(1,1)));
+    gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
-    //act
+    // act
     String datos = gameplay.getVehiculo();
 
-    //assert
+    // assert
 
-    assertEquals("1;1;Auto",datos);
+    assertEquals("1;1;Auto", datos);
   }
-
-
-
-
-
 }
