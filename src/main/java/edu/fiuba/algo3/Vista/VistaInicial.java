@@ -102,7 +102,7 @@ public class VistaInicial  {
             new ControladorOpciones(this.nickname,this.vehiculoElegido);
             System.out.println("hola");
             try {
-                new VistaMapa(this.stage).mostrarVistaMapa(2);
+                new VistaMapa(this.stage).mostrarVistaMapa(1);
             } catch (Exception e) {
                 e.printStackTrace();
             }
