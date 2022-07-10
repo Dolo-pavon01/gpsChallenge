@@ -5,6 +5,9 @@ import edu.fiuba.algo3.Vista.VistaFinal;
 import edu.fiuba.algo3.Vista.VistaInicial;
 import edu.fiuba.algo3.Vista.VistaMapa;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class AppGpsChallenge extends Application {
@@ -30,6 +33,7 @@ public class AppGpsChallenge extends Application {
      * */
     // VistaFinal vistaFinal = new VistaFinal(primaryStage);
     // vistaFinal.mostrarVistaFinal();
+
   }
 
   public static void main(String[] args) {

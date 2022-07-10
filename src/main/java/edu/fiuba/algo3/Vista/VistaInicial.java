@@ -12,6 +12,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.File;
 import java.net.MalformedURLException;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 public class VistaInicial  {
     /*
@@ -107,5 +111,6 @@ public class VistaInicial  {
                 e.printStackTrace();
             }
         });
+
     }
 }
