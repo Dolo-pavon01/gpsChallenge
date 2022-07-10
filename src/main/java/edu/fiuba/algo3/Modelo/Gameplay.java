@@ -2,17 +2,18 @@ package edu.fiuba.algo3.Modelo;
 
 import edu.fiuba.algo3.Modelo.Vehiculo.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Gameplay {
+  private static final String MOTO = "Moto";
+  private static final String AUTO = "Auto";
+  private static final String AUTO4x4 = "Auto4x4";
+  private static Gameplay instancia;
   private Vehiculo vehiculoEnJuego;
   private Mapa mapa;
   private final int POSICION_INICIAL_X = 0;
-  private String nickname;
   private MapaBuilder builder;
-  private static Gameplay instancia;
+  private String nombreUsuario;
 
   public static Gameplay getInstance(MapaBuilder mapaBuilder) {
     if (instancia == null) {
@@ -48,22 +49,22 @@ public class Gameplay {
     return this.mapa;
   }
 
+  private void crearVehiculoEnJuego(TipoVehiculo tipoVehiculo) {
+    this.vehiculoEnJuego =
+        new Vehiculo(
+            tipoVehiculo, Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
+  }
+
   public void registrarUsuario(String usuario, String vehiculoElegido) {
-    this.nickname = usuario;
-    if (vehiculoElegido == "Auto") {
-      this.vehiculoEnJuego =
-          new Vehiculo(
-              new Auto(), Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
+    this.nombreUsuario = usuario;
+    if (vehiculoElegido == AUTO) {
+      this.crearVehiculoEnJuego(new Auto());
     }
-    if (vehiculoElegido == "Moto") {
-      this.vehiculoEnJuego =
-          new Vehiculo(
-              new Moto(), Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
+    if (vehiculoElegido == MOTO) {
+      this.crearVehiculoEnJuego(new Moto());
     }
-    if (vehiculoElegido == "Auto4x4") {
-      this.vehiculoEnJuego =
-          new Vehiculo(
-              new Auto4x4(), Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
+    if (vehiculoElegido == AUTO4x4) {
+      this.crearVehiculoEnJuego(new Auto4x4());
     }
   }
 

@@ -42,6 +42,7 @@ public class MapaBuilder {
     this.sorpresas.put(Posicion.getPosicion(x, y), obstaculo);
   }
 
+  // TODO: Revisar si estos comentarios son necesarios para que funcione crearGameplay()
   public Mapa crearGameplay() {
     this.mapaVacio(this.alto, this.ancho);
     for (int i = 0; i < this.cantElementos; i++) {
