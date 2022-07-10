@@ -7,8 +7,10 @@ import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
 import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
 import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
 
-
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class Gameplay {
   private Vehiculo vehiculoEnJuego;
@@ -41,8 +43,9 @@ public class Gameplay {
     return obstaculosComoString;
   }
 
-  public HashMap getSorpresas() {
+  public List getSorpresas() {
 
+    /*
     HashMap sorpresaComoString = new HashMap(10, 70);
     for (int i = 0; i < this.mapa.getAlto(); i++) {
       for (int j = 0; j < this.mapa.getAncho(); j++) {
@@ -52,7 +55,8 @@ public class Gameplay {
         sorpresaComoString.put(posicion, nombreObstaculo);
       }
     }
-    return sorpresaComoString;
+    */
+    return this.mapa.getSorpresas();
   }
 
   public String getVehiculo() {
