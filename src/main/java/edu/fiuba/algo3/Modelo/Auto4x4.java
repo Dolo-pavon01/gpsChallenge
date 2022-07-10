@@ -13,6 +13,11 @@ public class Auto4x4 implements TipoVehiculo {
   }
 
   @Override
+  public String getNombre() {
+    return "Auto4x4";
+  }
+
+  @Override
   public TipoVehiculo cambiarTipo() {
     return new Moto();
   }

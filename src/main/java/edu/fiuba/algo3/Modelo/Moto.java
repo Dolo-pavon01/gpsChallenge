@@ -8,6 +8,11 @@ public class Moto implements TipoVehiculo {
   }
 
   @Override
+  public String getNombre() {
+    return "Moto";
+  }
+
+  @Override
   public TipoVehiculo cambiarTipo() {
     return new Auto();
   }

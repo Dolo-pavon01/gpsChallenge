@@ -5,15 +5,24 @@ public class Vehiculo {
   private Posicion posicion;
   private int movimientos;
 
+  //TODO eliminar duplicados
   public Vehiculo(TipoVehiculo tipoVehiculo) {
     this.tipo = tipoVehiculo;
     this.movimientos = 0;
     this.posicion = Posicion.getPosicion(0, 1);
   }
-  public void setTipo(TipoVehiculo tipoVehiculo)
+
+  public String datosVehiculo()
   {
-    this.tipo = tipoVehiculo;
+    String datos = this.posicionComoString() + ";";
+    datos = datos + this.tipo.getNombre();
+    return datos;
   }
+  public String posicionComoString()
+  {
+    return this.posicion.posicionAString();
+  }
+
 
   public Vehiculo() {
     this.movimientos = 0;

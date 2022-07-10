@@ -7,4 +7,9 @@ public class SorpresaDesfavorable implements Sorpresa {
   public void activar(Vehiculo vehiculo) {
     vehiculo.recibirSorpresa(VALOR_SORPRESA);
   }
+@Override
+  public String nombreSorpresa()
+  {
+    return "sorpresa";
+  }
 }
