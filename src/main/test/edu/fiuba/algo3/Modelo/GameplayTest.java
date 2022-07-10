@@ -219,7 +219,7 @@ public class GameplayTest {
     // act
     String datos = gameplay.getVehiculo();
     // assert
-    assertEquals("1;1;Auto", datos);
+    assertEquals("Auto", datos);
   }
 
   @Test
@@ -231,7 +231,7 @@ public class GameplayTest {
     // act
     String datos = gameplay.getVehiculo();
     // assert
-    assertEquals("1;1;Moto", datos);
+    assertEquals("Moto", datos);
   }
 
   @Test
@@ -243,7 +243,7 @@ public class GameplayTest {
     // act
     String datos = gameplay.getVehiculo();
     // assert
-    assertEquals("1;1;Auto4x4", datos);
+    assertEquals("Auto4x4", datos);
   }
 
   @Test

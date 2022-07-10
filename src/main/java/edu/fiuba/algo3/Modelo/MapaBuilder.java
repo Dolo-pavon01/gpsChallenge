@@ -46,7 +46,6 @@ public class MapaBuilder {
   public Mapa crearGameplay() {
     this.mapaVacio(this.alto, this.ancho);
     for (int i = 0; i < this.cantElementos; i++) {
-
       /*
       int x = this.randomizador.nextInt(this.ancho) + 1;
       int y = this.randomizador.nextInt(this.alto) + 1;

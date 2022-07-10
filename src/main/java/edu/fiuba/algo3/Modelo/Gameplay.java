@@ -2,6 +2,7 @@ package edu.fiuba.algo3.Modelo;
 
 import edu.fiuba.algo3.Modelo.Vehiculo.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Gameplay {
@@ -23,6 +24,17 @@ public class Gameplay {
     return instancia;
   }
 
+  public static Gameplay getInstance() {
+    if (instancia == null) {
+      instancia = new Gameplay();
+    }
+    return instancia;
+  }
+
+  private Gameplay() {
+    this.builder = new MapaBuilder();
+  }
+
   private void setBuilder(MapaBuilder mapaBuilder) {
     this.builder = mapaBuilder;
     this.mapa = this.builder.getMapa();
@@ -32,11 +44,11 @@ public class Gameplay {
     return this.mapa;
   }
 
-  public List getObstaculos() {
+  public ArrayList<String> getObstaculos() {
     return this.mapa.getObstaculos();
   }
 
-  public List getSorpresas() {
+  public ArrayList<String> getSorpresas() {
     return this.mapa.getSorpresas();
   }
 
