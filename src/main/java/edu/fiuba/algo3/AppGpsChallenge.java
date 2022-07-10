@@ -15,8 +15,8 @@ public class AppGpsChallenge extends Application {
 
     this.primaryStage = primaryStage;
 
-    // VistaInicial vistaInicial = new VistaInicial(primaryStage);
-    // vistaInicial.mostrarVistaInicial();
+    VistaInicial vistaInicial = new VistaInicial(primaryStage);
+    vistaInicial.mostrarVistaInicial();
     // VistaMapa vistaMapa = new VistaMapa(primaryStage);
     // vistaMapa.mostrarVistaMapa(3);
 
@@ -28,8 +28,8 @@ public class AppGpsChallenge extends Application {
      * Vista Mapa, quien hara lo mismo llamando a Vista Final
      *
      * */
-    VistaFinal vistaFinal = new VistaFinal(primaryStage);
-    vistaFinal.mostrarVistaFinal();
+    // VistaFinal vistaFinal = new VistaFinal(primaryStage);
+    // vistaFinal.mostrarVistaFinal();
   }
 
   public static void main(String[] args) {
