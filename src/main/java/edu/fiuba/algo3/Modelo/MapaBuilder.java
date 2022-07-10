@@ -39,7 +39,7 @@ public class MapaBuilder {
   private void agregarElemento(Obstaculo obstaculo) {
     int x = this.randomizador.nextInt(this.ancho) + 1;
     int y = this.randomizador.nextInt(this.alto) + 1;
-    this.sorpresas.put(Posicion.getPosicion(x, y), obstaculo);
+    this.obstaculos.put(Posicion.getPosicion(x, y), obstaculo);
   }
 
   // TODO: Revisar si estos comentarios son necesarios para que funcione crearGameplay()
