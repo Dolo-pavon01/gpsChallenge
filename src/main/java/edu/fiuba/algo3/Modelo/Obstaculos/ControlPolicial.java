@@ -16,6 +16,7 @@ public class ControlPolicial implements Obstaculo {
   private static final int MULTA = 3;
   private Random randomizador;
   private final String NOMBRE = "controlPolicial";
+  private final String SEPARADOR = ";";
 
   public ControlPolicial() {
     this.randomizador = new Random();
@@ -32,12 +33,12 @@ public class ControlPolicial implements Obstaculo {
 
   @Override
   public String nombreObstaculo() {
-    return "controlPolicial";
+    return NOMBRE;
   }
 
   @Override
   public String obtenerNombreEnPosicion(Posicion posicion) {
-    return posicion.posicionAString() + ";" + NOMBRE;
+    return posicion.posicionAString() + SEPARADOR + NOMBRE;
   }
 
   @Override
