@@ -71,8 +71,8 @@ public class Mapa {
     return this.sorpresas.get(posicion);
   }
 
-  public List getSorpresas() {
-    List sorpresasObtenidas = new ArrayList();
+  public ArrayList<String> getSorpresas() {
+    ArrayList<String> sorpresasObtenidas = new ArrayList();
     for (int i = 0; i < this.alto; i++) {
       for (int j = 0; j < this.ancho; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
@@ -91,8 +91,8 @@ public class Mapa {
     return this.obstaculos.get(posicion);
   }
 
-  public List getObstaculos() {
-    List obstaculosObtenidos = new ArrayList();
+  public ArrayList<String> getObstaculos() {
+    ArrayList<String> obstaculosObtenidos = new ArrayList();
     for (int i = 0; i < this.alto; i++) {
       for (int j = 0; j < this.ancho; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
