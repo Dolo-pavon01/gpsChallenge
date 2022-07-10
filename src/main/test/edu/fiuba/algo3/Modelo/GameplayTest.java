@@ -2,18 +2,14 @@ package edu.fiuba.algo3.Modelo;
 
 import edu.fiuba.algo3.Modelo.Obstaculos.Pozo;
 import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaCambioVehiculo;
-import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
-import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
-import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
-import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
+import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
 import edu.fiuba.algo3.Modelo.mocks.BuilderMock;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashMap;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.HashMap;
 
 // TODO: Descomentar y agregar nuevas pruebas para Gameplay
 public class GameplayTest {
