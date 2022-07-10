@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.Vista;
 
 import edu.fiuba.algo3.Controlador.ControladorMovimientos;
-import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -11,8 +10,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
-
-import java.awt.font.ImageGraphicAttribute;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

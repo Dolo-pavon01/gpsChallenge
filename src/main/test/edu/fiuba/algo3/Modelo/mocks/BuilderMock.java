@@ -2,6 +2,7 @@ package edu.fiuba.algo3.Modelo.mocks;
 
 import edu.fiuba.algo3.Modelo.*;
 
+
 public class BuilderMock extends MapaBuilder {
     public BuilderMock(int alto, int ancho) {
         this.alto = alto;

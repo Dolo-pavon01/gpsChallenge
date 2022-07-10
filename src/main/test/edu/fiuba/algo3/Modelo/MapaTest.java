@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.Modelo;
 
 import edu.fiuba.algo3.Modelo.mocks.BuilderMock;
-import javafx.geometry.Pos;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
