@@ -1,9 +1,14 @@
 package edu.fiuba.algo3.Modelo.Vehiculo;
 
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
-import edu.fiuba.algo3.Modelo.Vehiculo.TipoVehiculo;
 
 public class Moto implements TipoVehiculo {
+  private final String NOMBRE = "Moto";
+
+  @Override
+  public String obtenerNombreEnPosicion(Posicion posicion) {
+    return posicion.posicionAString() + ";" + NOMBRE;
+  }
 
   @Override
   public int pasarPor(Obstaculo visitor) {
@@ -12,7 +17,7 @@ public class Moto implements TipoVehiculo {
 
   @Override
   public String getNombre() {
-    return "Moto";
+    return NOMBRE;
   }
 
   @Override

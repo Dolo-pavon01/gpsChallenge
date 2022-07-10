@@ -263,4 +263,46 @@ public class GameplayTest {
     // assert
     assertEquals("1;1;Auto4x4", datos);
   }
+
+  @Test
+  public void test16SeRegistraUsuarioConAuto() {
+    // arrange
+    BuilderMock builderMock = new BuilderMock(10, 10);
+    String tipoVehiculo = "Auto";
+    String nombreJugador = "jugador";
+    Gameplay gameplay = Gameplay.getInstance(builderMock);
+    // act
+    gameplay.registrarUsuario(nombreJugador, tipoVehiculo);
+    String posicionVehiculo = gameplay.getVehiculo();
+    // assert
+    assertTrue(posicionVehiculo.contains(tipoVehiculo));
+  }
+
+  @Test
+  public void test17SeRegistraUsuarioConMoto() {
+    // arrange
+    BuilderMock builderMock = new BuilderMock(10, 10);
+    String tipoVehiculo = "Moto";
+    String nombreJugador = "jugador";
+    Gameplay gameplay = Gameplay.getInstance(builderMock);
+    // act
+    gameplay.registrarUsuario(nombreJugador, tipoVehiculo);
+    String posicionVehiculo = gameplay.getVehiculo();
+    // assert
+    assertTrue(posicionVehiculo.contains(tipoVehiculo));
+  }
+
+  @Test
+  public void test18SeRegistraUsuarioConAuto4x4() {
+    // arrange
+    BuilderMock builderMock = new BuilderMock(10, 10);
+    String tipoVehiculo = "Auto4x4";
+    String nombreJugador = "jugador";
+    Gameplay gameplay = Gameplay.getInstance(builderMock);
+    // act
+    gameplay.registrarUsuario(nombreJugador, tipoVehiculo);
+    String posicionVehiculo = gameplay.getVehiculo();
+    // assert
+    assertTrue(posicionVehiculo.contains(tipoVehiculo));
+  }
 }

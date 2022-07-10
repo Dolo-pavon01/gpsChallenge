@@ -2,17 +2,15 @@ package edu.fiuba.algo3.Modelo;
 
 import edu.fiuba.algo3.Modelo.Vehiculo.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Gameplay {
+  private static Gameplay instancia;
   private Vehiculo vehiculoEnJuego;
   private Mapa mapa;
   private final int POSICION_INICIAL_X = 0;
-  private String nickname;
   private MapaBuilder builder;
-  private static Gameplay instancia;
+  private String nombreUsuario;
 
   public static Gameplay getInstance(MapaBuilder mapaBuilder) {
     if (instancia == null) {
@@ -49,7 +47,7 @@ public class Gameplay {
   }
 
   public void registrarUsuario(String usuario, String vehiculoElegido) {
-    this.nickname = usuario;
+    this.nombreUsuario = usuario;
     if (vehiculoElegido == "Auto") {
       this.vehiculoEnJuego =
           new Vehiculo(

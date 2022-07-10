@@ -19,9 +19,7 @@ public class Vehiculo {
   }
 
   public String datosVehiculo() {
-    String datos = this.posicionComoString() + ";";
-    datos = datos + this.tipo.getNombre();
-    return datos;
+    return this.tipo.obtenerNombreEnPosicion(this.posicion);
   }
 
   public String posicionComoString() {
