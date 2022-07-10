@@ -5,13 +5,19 @@ import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
 import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
 import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
 import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
-
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 
 public class Piquete implements Obstaculo {
   private static final int MULTA_MOTO = 2;
+  private final String NOMBRE = "piquete";
 
   public String nombreObstaculo() {
     return "piquete";
+  }
+
+  @Override
+  public String obtenerNombreEnPosicion(Posicion posicion) {
+    return posicion.posicionAString() + ";" + NOMBRE;
   }
 
   public int visit(Moto moto) {

@@ -76,19 +76,29 @@ public class Mapa {
       for (int j = 0; j < this.ancho; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
         Sorpresa sorpresa = this.obtenerSorpresaEn(posicion);
-        sorpresasObtenidas.add(posicion.posicionAString() + ";" + sorpresa.nombreSorpresa());
         sorpresasObtenidas.add(sorpresa.obtenerNombreEnPosicion(posicion));
       }
     }
-    // return new ArrayList(Arrays.asList("2;1;sorpresa"));
     return sorpresasObtenidas;
-  }
-
-  public Sorpresa sorpresaEnPosicion(Posicion posicion) {
-    return this.sorpresas.get(posicion);
   }
 
   public Obstaculo obstaculoEnPosicion(Posicion posicion) {
     return this.obstaculos.get(posicion);
+  }
+
+  private Obstaculo obtenerObstaculoEn(Posicion posicion) {
+    return this.obstaculos.get(posicion);
+  }
+
+  public List getObstaculos() {
+    List obstaculosObtenidos = new ArrayList();
+    for (int i = 0; i < this.alto; i++) {
+      for (int j = 0; j < this.ancho; j++) {
+        Posicion posicion = Posicion.getPosicion(i, j);
+        Obstaculo obstaculo = this.obtenerObstaculoEn(posicion);
+        obstaculosObtenidos.add(obstaculo.obtenerNombreEnPosicion(posicion));
+      }
+    }
+    return obstaculosObtenidos;
   }
 }

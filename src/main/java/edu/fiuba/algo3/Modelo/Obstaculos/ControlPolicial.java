@@ -4,6 +4,7 @@ import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
 import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
 import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 
 import java.util.Random;
 
@@ -14,6 +15,7 @@ public class ControlPolicial implements Obstaculo {
   private static final int LIMITE = 10;
   private static final int MULTA = 3;
   private Random randomizador;
+  private final String NOMBRE = "controlPolicial";
 
   public ControlPolicial() {
     this.randomizador = new Random();
@@ -29,8 +31,13 @@ public class ControlPolicial implements Obstaculo {
   }
 
   @Override
-  public String nombreObstaculo()  {
+  public String nombreObstaculo() {
     return "controlPolicial";
+  }
+
+  @Override
+  public String obtenerNombreEnPosicion(Posicion posicion) {
+    return posicion.posicionAString() + ";" + NOMBRE;
   }
 
   @Override
