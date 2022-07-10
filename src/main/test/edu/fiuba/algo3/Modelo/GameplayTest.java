@@ -87,6 +87,19 @@ public class GameplayTest {
   }
 
   @Test
+  public void test06LaPosicionDeMetaEsLaCorrecta() {
+    // arrange
+    MapaBuilder builderMock = new BuilderMock(10, 10);
+    Gameplay gameplay = Gameplay.getInstance(builderMock);
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(8, 5));
+    gameplay.iniciarJuego(auto);
+    // act
+    String meta = gameplay.getMeta();
+    // assert
+    assertEquals("9;5;meta", meta);
+  }
+
+  @Test
   public void test06ChocaParedPasePorUnPozoYLlegueAMeta() {
     // arrange
     BuilderMock builderMock = new BuilderMock(10, 10);
@@ -206,7 +219,7 @@ public class GameplayTest {
     // act
     String datos = gameplay.getVehiculo();
     // assert
-    assertEquals("1;1;Auto", datos);
+    assertEquals("Auto", datos);
   }
 
   @Test
@@ -218,7 +231,7 @@ public class GameplayTest {
     // act
     String datos = gameplay.getVehiculo();
     // assert
-    assertEquals("1;1;Moto", datos);
+    assertEquals("Moto", datos);
   }
 
   @Test
@@ -230,7 +243,7 @@ public class GameplayTest {
     // act
     String datos = gameplay.getVehiculo();
     // assert
-    assertEquals("1;1;Auto4x4", datos);
+    assertEquals("Auto4x4", datos);
   }
 
   @Test

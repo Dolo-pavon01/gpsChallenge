@@ -16,10 +16,11 @@ public class Mapa {
   private HashMap<Posicion, Obstaculo> obstaculos;
   private HashMap<Posicion, Sorpresa> sorpresas;
   private Posicion meta;
+  private static final String NOMBRE_META = "meta";
+  private static final String SEPARADOR = ";";
+  private boolean llegoAMeta;
   private int alto;
   private int ancho;
-
-  private boolean llegoAMeta;
 
   public Mapa(HashMap obstaculos, HashMap sorpresas, Posicion meta, int alto, int ancho) {
     this.obstaculos = obstaculos;
@@ -70,8 +71,8 @@ public class Mapa {
     return this.sorpresas.get(posicion);
   }
 
-  public List getSorpresas() {
-    List sorpresasObtenidas = new ArrayList();
+  public ArrayList<String> getSorpresas() {
+    ArrayList<String> sorpresasObtenidas = new ArrayList();
     for (int i = 0; i < this.alto; i++) {
       for (int j = 0; j < this.ancho; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
@@ -90,8 +91,8 @@ public class Mapa {
     return this.obstaculos.get(posicion);
   }
 
-  public List getObstaculos() {
-    List obstaculosObtenidos = new ArrayList();
+  public ArrayList<String> getObstaculos() {
+    ArrayList<String> obstaculosObtenidos = new ArrayList();
     for (int i = 0; i < this.alto; i++) {
       for (int j = 0; j < this.ancho; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
@@ -100,5 +101,9 @@ public class Mapa {
       }
     }
     return obstaculosObtenidos;
+  }
+
+  public String getMeta() {
+    return this.meta.posicionAString() + SEPARADOR + NOMBRE_META;
   }
 }

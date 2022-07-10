@@ -19,7 +19,8 @@ public class Vehiculo {
   }
 
   public String datosVehiculo() {
-    return this.tipo.obtenerNombreEnPosicion(this.posicion);
+    // return this.tipo.obtenerNombreEnPosicion(this.posicion);
+    return this.tipo.getNombre();
   }
 
   public String posicionComoString() {
