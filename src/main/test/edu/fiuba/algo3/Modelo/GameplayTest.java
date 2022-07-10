@@ -8,7 +8,6 @@ import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaDesfavorable;
 import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaFavorable;
 import edu.fiuba.algo3.Modelo.Vehiculo.*;
 import edu.fiuba.algo3.Modelo.mocks.BuilderMock;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
