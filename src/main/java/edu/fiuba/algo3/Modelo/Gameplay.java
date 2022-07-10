@@ -5,6 +5,9 @@ import edu.fiuba.algo3.Modelo.Vehiculo.*;
 import java.util.List;
 
 public class Gameplay {
+  private static final String MOTO = "Moto";
+  private static final String AUTO = "Auto";
+  private static final String AUTO4x4 = "Auto4x4";
   private static Gameplay instancia;
   private Vehiculo vehiculoEnJuego;
   private Mapa mapa;
@@ -46,22 +49,21 @@ public class Gameplay {
     return this.mapa;
   }
 
+  private Vehiculo crearVehiculoEnJuego(TipoVehiculo tipoVehiculo) {
+    return new Vehiculo(
+        tipoVehiculo, Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
+  }
+
   public void registrarUsuario(String usuario, String vehiculoElegido) {
     this.nombreUsuario = usuario;
-    if (vehiculoElegido == "Auto") {
-      this.vehiculoEnJuego =
-          new Vehiculo(
-              new Auto(), Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
+    if (vehiculoElegido == AUTO) {
+      this.vehiculoEnJuego = this.crearVehiculoEnJuego(new Auto());
     }
-    if (vehiculoElegido == "Moto") {
-      this.vehiculoEnJuego =
-          new Vehiculo(
-              new Moto(), Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
+    if (vehiculoElegido == MOTO) {
+      this.vehiculoEnJuego = this.crearVehiculoEnJuego(new Moto());
     }
-    if (vehiculoElegido == "Auto4x4") {
-      this.vehiculoEnJuego =
-          new Vehiculo(
-              new Auto4x4(), Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
+    if (vehiculoElegido == AUTO4x4) {
+      this.vehiculoEnJuego = this.crearVehiculoEnJuego(new Auto4x4());
     }
   }
 
