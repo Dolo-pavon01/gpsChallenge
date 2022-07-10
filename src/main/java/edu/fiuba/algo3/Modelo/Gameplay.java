@@ -76,9 +76,9 @@ public class Gameplay {
   }
 
   public boolean jugar(char input) {
-    int puntaje = this.vehiculoEnJuego.movimientos();
+    int movimientosAnteriores = this.vehiculoEnJuego.movimientos();
     this.mapa.avanzar(this.vehiculoEnJuego, input);
-    return (this.vehiculoEnJuego.movimientos() != puntaje);
+    return (this.vehiculoEnJuego.movimientos() != movimientosAnteriores);
   }
 
   public String posicionJugador() {

@@ -5,51 +5,49 @@ public class Vehiculo {
   private Posicion posicion;
   private int movimientos;
 
-  //TODO eliminar duplicados
+  // TODO: Hacer que vehiculo reciba posicion de builder
+  // La posicion tiene que ser (0, alto / 2)
   public Vehiculo(TipoVehiculo tipoVehiculo) {
     this.tipo = tipoVehiculo;
     this.movimientos = 0;
     this.posicion = Posicion.getPosicion(0, 1);
   }
 
-  public String datosVehiculo()
-  {
+  public String datosVehiculo() {
     String datos = this.posicionComoString() + ";";
     datos = datos + this.tipo.getNombre();
     return datos;
   }
-  public String posicionComoString()
-  {
+
+  public String posicionComoString() {
     return this.posicion.posicionAString();
   }
-
 
   public Vehiculo() {
     this.movimientos = 0;
     this.posicion = Posicion.getPosicion(0, 1);
   }
 
-  public Vehiculo(TipoVehiculo tipo,Posicion posicion) {
+  public Vehiculo(TipoVehiculo tipo, Posicion posicion) {
     this.movimientos = 0;
     this.tipo = tipo;
     this.posicion = posicion;
   }
+
   public void pasarPor(Obstaculo visitor) {
-    if (visitor == null)
-      return;
+    if (visitor == null) return;
     this.movimientos += this.tipo.pasarPor(visitor);
   }
 
   public void abrirSopresa(Sorpresa sorpresa) {
-    if (sorpresa == null)
-      return;
+    if (sorpresa == null) return;
     sorpresa.activar(this);
   }
 
-  public Posicion getPosicion()
-  {
+  public Posicion getPosicion() {
     return this.posicion;
   }
+
   public void moverse(Posicion posicion) {
     this.movimientos += 1;
     this.posicion = this.posicion.trasladar(posicion);
