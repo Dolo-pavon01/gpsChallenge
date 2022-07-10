@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.Modelo.Vehiculo;
 
 import edu.fiuba.algo3.Modelo.HayPiqueteException;
+import edu.fiuba.algo3.Modelo.ObstaculoEsNulo;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
 import edu.fiuba.algo3.Modelo.Sorpresas.Sorpresa;
 import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
@@ -38,10 +39,6 @@ public class Mapa {
     return this.alto;
   }
 
-  public int getAncho() {
-    return this.ancho;
-  }
-
   public void avanzar(Vehiculo vehiculo, char direccion) {
     Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
     if (posicion.estaFueraDeLimites(this.ancho, this.alto)) return;
@@ -64,7 +61,6 @@ public class Mapa {
 
   private void abrirSorpresas(Vehiculo vehiculo, Posicion posicion) {
     vehiculo.abrirSopresa(this.sorpresas.get(posicion));
-    // this.sorpresas.put(posicion,new SorpresaNula()); si quisiesemos que desaparezcan :/
   }
 
   public Sorpresa obtenerSorpresaEn(Posicion posicion) {
@@ -73,11 +69,10 @@ public class Mapa {
 
   public ArrayList<String> getSorpresas() {
     ArrayList<String> sorpresasObtenidas = new ArrayList();
-    for (int i = 0; i < this.alto; i++) {
-      for (int j = 0; j < this.ancho; j++) {
+    for (int i = 0; i < this.ancho; i++) {
+      for (int j = 0; j < this.alto; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
         Sorpresa sorpresa = this.obtenerSorpresaEn(posicion);
-        System.out.println(sorpresa.obtenerNombreEnPosicion(posicion));
         if (sorpresa.nombreSorpresa() != "sorpresaNula") {
           sorpresasObtenidas.add(sorpresa.obtenerNombreEnPosicion(posicion));
         }
@@ -86,18 +81,14 @@ public class Mapa {
     return sorpresasObtenidas;
   }
 
-  public Obstaculo obstaculoEnPosicion(Posicion posicion) {
-    return this.obstaculos.get(posicion);
-  }
-
   private Obstaculo obtenerObstaculoEn(Posicion posicion) {
     return this.obstaculos.get(posicion);
   }
 
   public ArrayList<String> getObstaculos() {
     ArrayList<String> obstaculosObtenidos = new ArrayList();
-    for (int i = 0; i < this.alto; i++) {
-      for (int j = 0; j < this.ancho; j++) {
+    for (int i = 0; i < this.ancho; i++) {
+      for (int j = 0; j < this.alto; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
         Obstaculo obstaculo = this.obtenerObstaculoEn(posicion);
         if (obstaculo.nombreObstaculo() != "obstaculoNulo") {
