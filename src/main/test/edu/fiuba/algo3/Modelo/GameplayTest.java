@@ -21,7 +21,7 @@ public class GameplayTest {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
     builder.agregar(new Pozo(), Posicion.getPosicion(2, 1));
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act
@@ -35,7 +35,7 @@ public class GameplayTest {
   public void test02NoPuedeAvanzarSiHayPared() {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(1, 1));
     gameplay.iniciarJuego(auto);
 
@@ -52,7 +52,7 @@ public class GameplayTest {
   public void test03NoPuedeAvanzarSiHayPared() {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(9, 9));
     gameplay.iniciarJuego(auto);
 
@@ -69,7 +69,7 @@ public class GameplayTest {
   public void test04NoPuedeAvanzarSiHayPared() {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(1, 9));
     gameplay.iniciarJuego(auto);
 
@@ -86,7 +86,7 @@ public class GameplayTest {
   public void test05LLegaAMeta() {
     // arrange
     MapaBuilder builder = new BuilderMock(10, 10);
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(8, 5));
     gameplay.iniciarJuego(auto);
 
@@ -101,7 +101,7 @@ public class GameplayTest {
   public void test06ChocaParedPasePorUnPozoYLlegueAMeta() {
     BuilderMock builder = new BuilderMock(10, 10);
     builder.agregar(new Pozo(), Posicion.getPosicion(9, 4));
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(9, 3));
     gameplay.iniciarJuego(auto);
 
@@ -122,7 +122,7 @@ public class GameplayTest {
     BuilderMock builder = new BuilderMock(10, 10);
     builder.agregar(new SorpresaCambioVehiculo(), Posicion.getPosicion(2, 1));
     builder.agregar(new Pozo(), Posicion.getPosicion(3, 1));
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act
@@ -138,7 +138,7 @@ public class GameplayTest {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
     builder.agregar(new Pozo(), Posicion.getPosicion(3, 1));
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act
@@ -153,7 +153,7 @@ public class GameplayTest {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
     builder.agregar(new Piquete(), Posicion.getPosicion(8, 5));
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act
@@ -168,7 +168,7 @@ public class GameplayTest {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
     builder.agregar(new ControlPolicial(), Posicion.getPosicion(5, 8));
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act
@@ -183,7 +183,7 @@ public class GameplayTest {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
     builder.agregar(new SorpresaCambioVehiculo(), Posicion.getPosicion(2, 1));
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act
@@ -198,7 +198,7 @@ public class GameplayTest {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
     builder.agregar(new SorpresaFavorable(), Posicion.getPosicion(3, 2));
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act
@@ -213,7 +213,7 @@ public class GameplayTest {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
     builder.agregar(new SorpresaDesfavorable(), Posicion.getPosicion(5, 4));
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act
@@ -227,7 +227,7 @@ public class GameplayTest {
   public void test13SeObtieneDatosDelVehiculo() {
     // arrange
     BuilderMock builder = new BuilderMock(10, 10);
-    Gameplay gameplay = new Gameplay(builder);
+    Gameplay gameplay = Gameplay.getInstance(builder);
     gameplay.iniciarJuego(new Vehiculo(new Auto(), Posicion.getPosicion(1, 1)));
 
     // act

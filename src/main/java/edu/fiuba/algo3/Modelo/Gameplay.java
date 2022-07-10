@@ -12,10 +12,19 @@ public class Gameplay {
   private final int POSICION_INICIAL_X = 0;
   private String nickname;
   private MapaBuilder builder;
+  private static Gameplay instancia;
 
-  public Gameplay(MapaBuilder builder) {
-    this.builder = builder;
-    this.mapa = builder.getMapa();
+  public static Gameplay getInstance(MapaBuilder mapaBuilder) {
+    if (instancia == null) {
+      instancia = new Gameplay();
+    }
+    instancia.setBuilder(mapaBuilder);
+    return instancia;
+  }
+
+  private void setBuilder(MapaBuilder mapaBuilder) {
+    this.builder = mapaBuilder;
+    this.mapa = this.builder.getMapa();
   }
 
   public Mapa getMapa() {
