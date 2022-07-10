@@ -17,7 +17,7 @@ public class MapaBuilder {
   protected Mapa mapa;
   protected Posicion meta;
   private Random randomizador;
-  private final int FACTOR_DE_CARGA = 4;
+  private final int FACTOR_DE_CARGA = 2;
 
   public MapaBuilder() {
     this.randomizador = new Random();

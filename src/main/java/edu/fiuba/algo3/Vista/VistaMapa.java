@@ -272,7 +272,6 @@ public class VistaMapa {
 
   public void dibujarSorpresas() throws Exception {
     ArrayList<String> obstaculos = this.controladorMovimientos.getSorpresas();
-
     for (int i = 0; i < obstaculos.size(); i++) {
       String[] strings = obstaculos.get(i).split(";");
       int x = Integer.parseInt(strings[0]);

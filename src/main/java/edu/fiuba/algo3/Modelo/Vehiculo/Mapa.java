@@ -77,7 +77,10 @@ public class Mapa {
       for (int j = 0; j < this.ancho; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
         Sorpresa sorpresa = this.obtenerSorpresaEn(posicion);
-        sorpresasObtenidas.add(sorpresa.obtenerNombreEnPosicion(posicion));
+        System.out.println(sorpresa.obtenerNombreEnPosicion(posicion));
+        if (sorpresa.nombreSorpresa() != "sorpresaNula") {
+          sorpresasObtenidas.add(sorpresa.obtenerNombreEnPosicion(posicion));
+        }
       }
     }
     return sorpresasObtenidas;
@@ -97,7 +100,9 @@ public class Mapa {
       for (int j = 0; j < this.ancho; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
         Obstaculo obstaculo = this.obtenerObstaculoEn(posicion);
-        obstaculosObtenidos.add(obstaculo.obtenerNombreEnPosicion(posicion));
+        if (obstaculo.nombreObstaculo() != "obstaculoNulo") {
+          obstaculosObtenidos.add(obstaculo.obtenerNombreEnPosicion(posicion));
+        }
       }
     }
     return obstaculosObtenidos;

@@ -33,6 +33,7 @@ public class Gameplay {
 
   private Gameplay() {
     this.builder = new MapaBuilder();
+    this.mapa = this.builder.crearGameplay();
   }
 
   private void setBuilder(MapaBuilder mapaBuilder) {
