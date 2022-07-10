@@ -234,7 +234,6 @@ public class GameplayTest {
     String datos = gameplay.getVehiculo();
 
     // assert
-
     assertEquals("1;1;Auto", datos);
   }
 }
