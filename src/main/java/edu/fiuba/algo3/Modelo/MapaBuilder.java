@@ -24,7 +24,6 @@ public class MapaBuilder {
     this.alto = (this.randomizador.nextInt(5) + 1) * 2;
     this.ancho = this.alto * 2;
     this.cantElementos = (this.alto * this.ancho) / FACTOR_DE_CARGA;
-    this.mapa = this.crearMapa(this.alto, this.ancho);
   }
 
   public Mapa getMapa() {
@@ -79,8 +78,7 @@ public class MapaBuilder {
       this.agregarElemento(new ControlPolicial());
       this.agregarElemento(new Piquete());
     }
-
-    this.definirMeta(alto, ancho);
+    this.definirMeta();
     return new Mapa(this.obstaculos, this.sorpresas, this.meta, alto, ancho);
   }
 
@@ -89,15 +87,8 @@ public class MapaBuilder {
     this.sorpresas = new CreadorSorpresas().crear(alto, ancho);
   }
 
-  protected void definirMeta(int alto, int ancho) {
-    int xDeMeta = ancho;
-    int yDeMeta = this.randomizador.nextInt(alto);
-    this.meta = Posicion.getPosicion(xDeMeta, yDeMeta);
-  }
-
-  public Mapa crearMapa(int alto, int ancho) {
-    this.mapaVacio(alto, ancho);
-    this.definirMeta(alto, ancho);
-    return new Mapa(this.obstaculos, this.sorpresas, this.meta, alto, ancho);
+  protected void definirMeta() {
+    int yDeMeta = this.randomizador.nextInt(this.alto);
+    this.meta = Posicion.getPosicion(this.ancho, yDeMeta);
   }
 }
