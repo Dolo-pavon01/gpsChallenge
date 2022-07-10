@@ -1,6 +1,16 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Vehiculo;
 
+import edu.fiuba.algo3.Modelo.HayPiqueteException;
+import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
+import edu.fiuba.algo3.Modelo.Sorpresas.Sorpresa;
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
+import edu.fiuba.algo3.Modelo.Vehiculo.Sentido;
+import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class Mapa {
   private HashMap<Posicion, Obstaculo> obstaculos;
@@ -56,11 +66,39 @@ public class Mapa {
     // this.sorpresas.put(posicion,new SorpresaNula()); si quisiesemos que desaparezcan :/
   }
 
-  public Sorpresa sorpresaEnPosicion(Posicion posicion) {
+  public Sorpresa obtenerSorpresaEn(Posicion posicion) {
     return this.sorpresas.get(posicion);
+  }
+
+  public List getSorpresas() {
+    List sorpresasObtenidas = new ArrayList();
+    for (int i = 0; i < this.alto; i++) {
+      for (int j = 0; j < this.ancho; j++) {
+        Posicion posicion = Posicion.getPosicion(i, j);
+        Sorpresa sorpresa = this.obtenerSorpresaEn(posicion);
+        sorpresasObtenidas.add(sorpresa.obtenerNombreEnPosicion(posicion));
+      }
+    }
+    return sorpresasObtenidas;
   }
 
   public Obstaculo obstaculoEnPosicion(Posicion posicion) {
     return this.obstaculos.get(posicion);
+  }
+
+  private Obstaculo obtenerObstaculoEn(Posicion posicion) {
+    return this.obstaculos.get(posicion);
+  }
+
+  public List getObstaculos() {
+    List obstaculosObtenidos = new ArrayList();
+    for (int i = 0; i < this.alto; i++) {
+      for (int j = 0; j < this.ancho; j++) {
+        Posicion posicion = Posicion.getPosicion(i, j);
+        Obstaculo obstaculo = this.obtenerObstaculoEn(posicion);
+        obstaculosObtenidos.add(obstaculo.obtenerNombreEnPosicion(posicion));
+      }
+    }
+    return obstaculosObtenidos;
   }
 }

@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaCambioVehiculo;
+import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaDesfavorable;
+import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaFavorable;
+import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.mock;

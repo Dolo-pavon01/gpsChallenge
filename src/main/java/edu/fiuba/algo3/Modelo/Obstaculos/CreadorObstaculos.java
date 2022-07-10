@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Obstaculos;
+
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 
 import java.util.HashMap;
 

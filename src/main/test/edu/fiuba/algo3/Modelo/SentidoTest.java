@@ -1,4 +1,12 @@
 package edu.fiuba.algo3.Modelo;
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
+import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
+import edu.fiuba.algo3.Modelo.Vehiculo.Adelante;
+import edu.fiuba.algo3.Modelo.Vehiculo.Atras;
+import edu.fiuba.algo3.Modelo.Vehiculo.Izquierda;
+import edu.fiuba.algo3.Modelo.Vehiculo.Derecha;
 
 import org.junit.jupiter.api.Test;
 

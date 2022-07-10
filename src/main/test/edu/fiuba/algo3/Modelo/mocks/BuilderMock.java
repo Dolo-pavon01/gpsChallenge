@@ -1,6 +1,11 @@
 package edu.fiuba.algo3.Modelo.mocks;
 
 import edu.fiuba.algo3.Modelo.*;
+import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
+import edu.fiuba.algo3.Modelo.Sorpresas.Sorpresa;
+import edu.fiuba.algo3.Modelo.Vehiculo.Mapa;
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
+import edu.fiuba.algo3.Modelo.Vehiculo.Sentido;
 
 
 public class BuilderMock extends MapaBuilder {

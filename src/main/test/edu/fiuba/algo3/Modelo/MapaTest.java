@@ -1,5 +1,16 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Obstaculos.Piquete;
+import edu.fiuba.algo3.Modelo.Obstaculos.Pozo;
+import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaCambioVehiculo;
+import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaDesfavorable;
+import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaFavorable;
+import edu.fiuba.algo3.Modelo.Vehiculo.Mapa;
+import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
+import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
 import edu.fiuba.algo3.Modelo.mocks.BuilderMock;
 import org.junit.jupiter.api.Test;
 

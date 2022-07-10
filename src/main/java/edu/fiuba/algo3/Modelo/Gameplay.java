@@ -1,13 +1,19 @@
 package edu.fiuba.algo3.Modelo;
 
-import java.util.HashMap;
+import edu.fiuba.algo3.Modelo.Vehiculo.Mapa;
+import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
+import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Gameplay {
   private Vehiculo vehiculoEnJuego;
   private Mapa mapa;
   private String nickname;
-  // private ArrayList<String> rankingsJugadores = new ArrayList();
-
   private MapaBuilder builder;
 
   public Gameplay() {}
@@ -21,8 +27,9 @@ public class Gameplay {
     return this.mapa;
   }
 
-  public HashMap getObstaculos() {
+  public List getObstaculos() {
 
+    /*
     HashMap obstaculosComoString = new HashMap(10, 70);
     for (int i = 0; i < this.mapa.getAlto(); i++) {
       for (int j = 0; j < this.mapa.getAncho(); j++) {
@@ -33,20 +40,13 @@ public class Gameplay {
       }
     }
     return obstaculosComoString;
+     */
+    // return new ArrayList(Arrays.asList("3;1;pozo"));
+    return this.mapa.getObstaculos();
   }
 
-  public HashMap getSorpresas() {
-
-    HashMap sorpresaComoString = new HashMap(10, 70);
-    for (int i = 0; i < this.mapa.getAlto(); i++) {
-      for (int j = 0; j < this.mapa.getAncho(); j++) {
-        Posicion p = Posicion.getPosicion(i, j);
-        String nombreObstaculo = this.mapa.sorpresaEnPosicion(p).nombreSorpresa();
-        String posicion = p.posicionAString();
-        sorpresaComoString.put(posicion, nombreObstaculo);
-      }
-    }
-    return sorpresaComoString;
+  public List getSorpresas() {
+    return this.mapa.getSorpresas();
   }
 
   public String getVehiculo() {

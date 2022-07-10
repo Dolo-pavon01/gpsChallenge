@@ -1,4 +1,9 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Obstaculos;
+
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
+import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 
 public class Pozo implements Obstaculo {
   private static final int MULTA_AUTO = 3;
@@ -6,12 +11,17 @@ public class Pozo implements Obstaculo {
   private static final int MULTA_AUTO4x4 = 2;
   private static final int LIMITE_POZOS = 2;
   private static final int MULTA_CERO = 0;
+  private static String NOMBRE = "pozo";
 
   @Override
-    public String nombreObstaculo()  {
-      return "pozo";
-    }
+  public String nombreObstaculo() {
+    return "pozo";
+  }
 
+  @Override
+  public String obtenerNombreEnPosicion(Posicion posicion) {
+    return posicion.posicionAString() + ";" + NOMBRE;
+  }
 
   public int visit(Moto moto) {
     return MULTA_MOTO;

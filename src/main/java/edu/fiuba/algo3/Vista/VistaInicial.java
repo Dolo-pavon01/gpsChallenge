@@ -100,9 +100,9 @@ public class VistaInicial  {
         this.btnJugar.setOnAction(evento->{
             this.nickname = this.nombreInput.getText();
             new ControladorOpciones(this.nickname,this.vehiculoElegido);
-            System.out.println("hola");
+            //System.out.println("hola");
             try {
-                new VistaMapa(this.stage).mostrarVistaMapa(2);
+                new VistaMapa(this.stage).mostrarVistaMapa(3);
             } catch (Exception e) {
                 e.printStackTrace();
             }
