@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Vehiculo;
 
 import java.util.ArrayList;
 import java.util.List;

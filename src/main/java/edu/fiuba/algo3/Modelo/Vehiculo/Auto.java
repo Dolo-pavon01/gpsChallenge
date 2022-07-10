@@ -1,4 +1,8 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Vehiculo;
+
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
+import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
+import edu.fiuba.algo3.Modelo.Vehiculo.TipoVehiculo;
 
 public class Auto implements TipoVehiculo {
 
