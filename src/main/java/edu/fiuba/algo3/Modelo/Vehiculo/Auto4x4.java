@@ -1,4 +1,8 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Vehiculo;
+
+import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
+import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
+import edu.fiuba.algo3.Modelo.Vehiculo.TipoVehiculo;
 
 public class Auto4x4 implements TipoVehiculo {
   private int contadorPozos;

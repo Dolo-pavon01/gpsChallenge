@@ -1,4 +1,12 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Vehiculo;
+
+import edu.fiuba.algo3.Modelo.HayPiqueteException;
+import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
+import edu.fiuba.algo3.Modelo.Sorpresas.Sorpresa;
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
+import edu.fiuba.algo3.Modelo.Vehiculo.Sentido;
+import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
+
 
 import java.util.HashMap;
 

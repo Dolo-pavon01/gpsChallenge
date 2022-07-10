@@ -1,4 +1,6 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Sorpresas;
+
+import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
 
 public class SorpresaCambioVehiculo implements Sorpresa {
 

@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Sorpresas;
 
-public class SorpresaNula  implements  Sorpresa{
+import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
+
+public class SorpresaNula  implements Sorpresa {
 
     @Override
     public String nombreSorpresa()

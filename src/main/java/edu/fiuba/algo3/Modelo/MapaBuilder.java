@@ -1,5 +1,13 @@
 package edu.fiuba.algo3.Modelo;
 
+import edu.fiuba.algo3.Modelo.Obstaculos.*;
+import edu.fiuba.algo3.Modelo.Sorpresas.CreadorSorpresas;
+import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaCambioVehiculo;
+import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaDesfavorable;
+import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaFavorable;
+import edu.fiuba.algo3.Modelo.Vehiculo.Mapa;
+import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -23,6 +31,7 @@ public class MapaBuilder {
   public Mapa getMapa() {
     return this.mapa;
   }
+
 
   public Mapa crearGameplay() {
     Random randomizador = new Random();

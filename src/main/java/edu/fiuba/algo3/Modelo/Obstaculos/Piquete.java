@@ -1,4 +1,11 @@
-package edu.fiuba.algo3.Modelo;
+package edu.fiuba.algo3.Modelo.Obstaculos;
+
+import edu.fiuba.algo3.Modelo.HayPiqueteException;
+import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
+import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
+import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
+
 
 public class Piquete implements Obstaculo {
   private static final int MULTA_MOTO = 2;
