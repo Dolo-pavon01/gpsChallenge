@@ -1,0 +1,29 @@
+@startuml
+
+package Vehiculo #Bisque{
+
+class Adelante #Aquamarine/Plum{
+}
+class Atras #Aquamarine/Plum{
+}
+class Auto #Aquamarine/Plum{
+}
+class Auto4x4 #Aquamarine/Plum{
+}
+class Derecha #Aquamarine/Plum{
+}
+class Direccion #Aquamarine/Plum{
+}
+class Izquierda #Aquamarine/Plum{
+}
+class Mapa #Aquamarine/Plum{
+}
+class Moto #Aquamarine/Plum{
+}
+class Posicion #Aquamarine/Plum{
+}
+interface Sentido #Aquamarine/Plum{
+}
+interface TipoVehiculo #Aquamarine/Plum{
+}
+@enduml

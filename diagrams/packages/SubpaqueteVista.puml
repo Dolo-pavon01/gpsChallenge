@@ -1,0 +1,14 @@
+@startuml
+
+package Vista #Bisque{
+
+
+class VistaFinal #Aquamarine/Plum{
+}
+class VistaInicial #Aquamarine/Plum{
+}
+class VistaMapa #Aquamarine/Plum{
+}
+
+
+@enduml

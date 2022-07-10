@@ -1,0 +1,15 @@
+@startuml
+
+package Controlador #Bisque{
+
+
+class ControladorMovimiento #Aquamarine/Plum{
+}
+class ControladorOpciones #Aquamarine/Plum{
+}
+class ControladorSonido #Aquamarine/Plum{
+}
+class ControladorVistaFinal #Aquamarine/Plum{
+}
+
+@enduml
