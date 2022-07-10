@@ -7,15 +7,16 @@ import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 
 public class ObstaculoNulo implements Obstaculo {
   private final String NOMBRE = "obstaculoNulo";
+  private final String SEPARADOR = ";";
 
   @Override
   public String nombreObstaculo() {
-    return "obstaculoNulo";
+    return NOMBRE;
   }
 
   @Override
   public String obtenerNombreEnPosicion(Posicion posicion) {
-    return posicion.posicionAString() + ";" + NOMBRE;
+    return posicion.posicionAString() + SEPARADOR + NOMBRE;
   }
 
   @Override
