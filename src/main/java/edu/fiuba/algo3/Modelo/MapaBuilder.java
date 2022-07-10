@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.Modelo;
 
 import edu.fiuba.algo3.Modelo.Obstaculos.*;
-import edu.fiuba.algo3.Modelo.Sorpresas.CreadorSorpresas;
-import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaCambioVehiculo;
-import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaDesfavorable;
-import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaFavorable;
+import edu.fiuba.algo3.Modelo.Sorpresas.*;
 import edu.fiuba.algo3.Modelo.Vehiculo.Mapa;
 import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 
@@ -19,12 +16,14 @@ public class MapaBuilder {
   protected HashMap sorpresas;
   protected Mapa mapa;
   protected Posicion meta;
+  private Random randomizador;
+  private final int FACTOR_DE_CARGA = 4;
 
   public MapaBuilder() {
-    Random randomizador = new Random();
-    this.cantElementos = 5;
-    this.alto = (randomizador.nextInt(5) + 1) * 2;
+    this.randomizador = new Random();
+    this.alto = (this.randomizador.nextInt(5) + 1) * 2;
     this.ancho = this.alto * 2;
+    this.cantElementos = (this.alto * this.ancho) / FACTOR_DE_CARGA;
     this.mapa = this.crearMapa(this.alto, this.ancho);
   }
 
@@ -32,39 +31,57 @@ public class MapaBuilder {
     return this.mapa;
   }
 
+  private void agregarElemento(Sorpresa sorpresa) {
+    int x = this.randomizador.nextInt(this.ancho) + 1;
+    int y = this.randomizador.nextInt(this.alto) + 1;
+    this.sorpresas.put(Posicion.getPosicion(x, y), sorpresa);
+  }
+
+  private void agregarElemento(Obstaculo obstaculo) {
+    int x = this.randomizador.nextInt(this.ancho) + 1;
+    int y = this.randomizador.nextInt(this.alto) + 1;
+    this.sorpresas.put(Posicion.getPosicion(x, y), obstaculo);
+  }
+
   public Mapa crearGameplay() {
-    Random randomizador = new Random();
+    this.mapaVacio(this.alto, this.ancho);
     for (int i = 0; i < this.cantElementos; i++) {
-      int x = randomizador.nextInt(ancho) + 1;
-      int y = randomizador.nextInt(alto) + 1;
+
+      /*
+      int x = this.randomizador.nextInt(this.ancho) + 1;
+      int y = this.randomizador.nextInt(this.alto) + 1;
       this.sorpresas.put(Posicion.getPosicion(x, y), new SorpresaFavorable());
-    }
-    for (int i = 0; i < this.cantElementos; i++) {
-      int x = randomizador.nextInt(ancho) + 1;
-      int y = randomizador.nextInt(alto) + 1;
-      this.obstaculos.put(Posicion.getPosicion(x, y), new Pozo());
-    }
-    for (int i = 0; i < this.cantElementos; i++) {
-      int x = randomizador.nextInt(ancho) + 1;
-      int y = randomizador.nextInt(alto) + 1;
+
+      x = this.randomizador.nextInt(this.ancho) + 1;
+      y = this.randomizador.nextInt(this.alto) + 1;
       this.sorpresas.put(Posicion.getPosicion(x, y), new SorpresaCambioVehiculo());
-    }
-    for (int i = 0; i < this.cantElementos; i++) {
-      int x = randomizador.nextInt(ancho) + 1;
-      int y = randomizador.nextInt(alto) + 1;
-      this.obstaculos.put(Posicion.getPosicion(x, y), new ControlPolicial());
-    }
-    for (int i = 0; i < this.cantElementos; i++) {
-      int x = randomizador.nextInt(alto) + 1;
-      int y = randomizador.nextInt(ancho) + 1;
-      this.obstaculos.put(Posicion.getPosicion(x, y), new Piquete());
-    }
-    for (int i = 0; i < this.cantElementos; i++) {
-      int x = randomizador.nextInt(alto) + 1;
-      int y = randomizador.nextInt(ancho) + 1;
+
+      x = this.randomizador.nextInt(this.alto) + 1;
+      y = this.randomizador.nextInt(this.ancho) + 1;
       this.sorpresas.put(Posicion.getPosicion(x, y), new SorpresaDesfavorable());
+
+      x = this.randomizador.nextInt(this.ancho) + 1;
+      y = this.randomizador.nextInt(this.alto) + 1;
+      this.obstaculos.put(Posicion.getPosicion(x, y), new Pozo());
+
+      x = this.randomizador.nextInt(this.ancho) + 1;
+      y = this.randomizador.nextInt(this.alto) + 1;
+      this.obstaculos.put(Posicion.getPosicion(x, y), new ControlPolicial());
+
+      x = this.randomizador.nextInt(this.alto) + 1;
+      y = this.randomizador.nextInt(this.ancho) + 1;
+      this.obstaculos.put(Posicion.getPosicion(x, y), new Piquete());
+      */
+      this.agregarElemento(new SorpresaFavorable());
+      this.agregarElemento(new SorpresaDesfavorable());
+      this.agregarElemento(new SorpresaCambioVehiculo());
+      this.agregarElemento(new Pozo());
+      this.agregarElemento(new ControlPolicial());
+      this.agregarElemento(new Piquete());
     }
-    return mapa;
+
+    this.definirMeta(alto, ancho);
+    return new Mapa(this.obstaculos, this.sorpresas, this.meta, alto, ancho);
   }
 
   protected void mapaVacio(int alto, int ancho) {
@@ -73,9 +90,8 @@ public class MapaBuilder {
   }
 
   protected void definirMeta(int alto, int ancho) {
-    Random randomizador = new Random();
     int xDeMeta = ancho;
-    int yDeMeta = randomizador.nextInt(alto);
+    int yDeMeta = this.randomizador.nextInt(alto);
     this.meta = Posicion.getPosicion(xDeMeta, yDeMeta);
   }
 
