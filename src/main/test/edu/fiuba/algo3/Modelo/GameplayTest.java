@@ -87,6 +87,19 @@ public class GameplayTest {
   }
 
   @Test
+  public void test06LaPosicionDeMetaEsLaCorrecta() {
+    // arrange
+    MapaBuilder builderMock = new BuilderMock(10, 10);
+    Gameplay gameplay = Gameplay.getInstance(builderMock);
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(8, 5));
+    gameplay.iniciarJuego(auto);
+    // act
+    String meta = gameplay.getMeta();
+    // assert
+    assertEquals("9;5;meta", meta);
+  }
+
+  @Test
   public void test06ChocaParedPasePorUnPozoYLlegueAMeta() {
     // arrange
     BuilderMock builderMock = new BuilderMock(10, 10);

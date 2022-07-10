@@ -7,5 +7,6 @@ public interface Sorpresa {
   void activar(Vehiculo vehiculo);
 
   String nombreSorpresa();
+
   String obtenerNombreEnPosicion(Posicion posicion);
 }

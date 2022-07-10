@@ -86,6 +86,10 @@ public class Gameplay {
     return this.vehiculoEnJuego.movimientos();
   }
 
+  public String getMeta() {
+    return this.mapa.getMeta();
+  }
+
   /*public void infoRankings(ArrayList<String> rankingsJugadores){
 
       this.Partida.actualizarPodio(this.nickname,this.puntaje());
