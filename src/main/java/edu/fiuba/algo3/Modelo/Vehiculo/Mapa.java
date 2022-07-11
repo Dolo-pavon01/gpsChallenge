@@ -48,12 +48,10 @@ public class Mapa {
     try {
       this.pasarPorObstaculos(vehiculo, posicion);
     } catch (HayPiqueteException e) {
-      System.out.println(posicion.posicionAString()+"Hay piquete");
       return;
     }
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
-    System.out.println((posicion.getX()+";"+posicion.getY()));
   }
 
   private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion) {

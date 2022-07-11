@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Gameplay
+{
+    - Gameplay instancia
+    - Vehiculo vehiculoEnJuego
+    - Mapa mapa
+    - MapaBuilder builder
+    - private String nombreUsuario
+    - private Partida partida
+    + registrarUsuario(String usuario,String vehiculoElegido)
+
+}
+
+@enduml

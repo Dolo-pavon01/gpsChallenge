@@ -6,24 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Gameplay {
-  private static final String MOTO = "Moto";
-  private static final String AUTO = "Auto";
-  private static final String AUTO4x4 = "Auto4x4";
+  protected static final String MOTO = "Moto";
+  protected static final String AUTO = "Auto";
+  protected static final String AUTO4x4 = "Auto4x4";
   private static Gameplay instancia;
-  private Vehiculo vehiculoEnJuego;
-  private Mapa mapa;
-  private final int POSICION_INICIAL_X = 0;
-  private MapaBuilder builder;
-  private String nombreUsuario;
+  protected Vehiculo vehiculoEnJuego;
+  protected Mapa mapa;
+  protected final int POSICION_INICIAL_X = 0;
+  protected String nombreUsuario;
   private Partida partida;
 
-  public static Gameplay getInstance(MapaBuilder mapaBuilder) {
-    if (instancia == null) {
-      instancia = new Gameplay();
-    }
-    instancia.setBuilder(mapaBuilder);
-    return instancia;
-  }
 
   public static Gameplay getInstance() {
     if (instancia == null) {
@@ -32,19 +24,9 @@ public class Gameplay {
     return instancia;
   }
 
-  private Gameplay() {
-    this.builder = new MapaBuilder();
-    this.mapa = this.builder.crearGameplay();
+  protected Gameplay() {
+    this.mapa = new MapaBuilder().crearGameplay();
     this.partida = new Partida();
-  }
-
-  private void setBuilder(MapaBuilder mapaBuilder) {
-    this.builder = mapaBuilder;
-    this.mapa = this.builder.getMapa();
-  }
-
-  public Mapa getMapa() {
-    return this.mapa;
   }
 
   public ArrayList<String> getObstaculos() {
@@ -59,10 +41,6 @@ public class Gameplay {
     return this.vehiculoEnJuego.datosVehiculo();
   }
 
-  public Mapa iniciarJuego(Vehiculo vehiculo) {
-    this.vehiculoEnJuego = vehiculo;
-    return this.mapa;
-  }
 
   private void crearVehiculoEnJuego(TipoVehiculo tipoVehiculo) {
     this.vehiculoEnJuego =
@@ -87,10 +65,6 @@ public class Gameplay {
     int movimientosAnteriores = this.vehiculoEnJuego.movimientos();
     this.mapa.avanzar(this.vehiculoEnJuego, input);
     return (this.vehiculoEnJuego.movimientos() != movimientosAnteriores);
-  }
-
-  public String posicionJugador() {
-    return this.vehiculoEnJuego.posicionComoString();
   }
 
   public boolean llegoAMeta() {

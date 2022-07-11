@@ -16,7 +16,6 @@ public class MapaBuilder {
   protected HashMap sorpresas;
   protected Mapa mapa;
   protected Posicion meta;
-  //protected Posicion posVehiculo;
   private Random randomizador;
   private final int FACTOR_DE_CARGA = 3;
 
@@ -67,7 +66,4 @@ public class MapaBuilder {
     this.meta = Posicion.getPosicion(this.ancho,yDeMeta);
   }
 
-  /*protected void definirPosicionVehiculo(){
-    this.posVehiculo = Posicion.getPosicion(0, this.alto/2);
-  }*/
 }
