@@ -58,13 +58,13 @@ public class VistaFinal  {
             String[] split = informacion.getText().split(";");
             Text nombre  = new Text(split[0]);
             System.out.println("Nombre:"+ split[0] + "Puntaje:" + split[1]);
-            //Text puntaje = new Text(split[1]);
-            nombre.setX(300);
+            Text puntaje = new Text(split[1]);
+            nombre.setX(320);
             nombre.setY(175+(i*35));
-           // puntaje.setX(700);
-            //puntaje.setY(300);
+            puntaje.setX(750);
+            puntaje.setY(175+(i*35));
             this.elements.add(nombre);
-           // this.elements.add(puntaje);
+            this.elements.add(puntaje);
             System.out.println(infoRankings.get(i));
         }
 
