@@ -63,7 +63,7 @@ public class MapaBuilder {
   }
 
   protected void definirMeta() {
-    int yDeMeta = this.randomizador.nextInt(this.alto);
+    int yDeMeta = this.randomizador.nextInt(this.alto)+1;
     this.meta = Posicion.getPosicion(this.ancho, yDeMeta);
   }
 

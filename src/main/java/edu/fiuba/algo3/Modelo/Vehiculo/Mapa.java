@@ -44,10 +44,11 @@ public class Mapa {
     if (meta.equals(posicion)) {
       this.llegoAMeta = true;
     }
-    if (posicion.estaFueraDeLimites(this.ancho, this.alto + 1)) return;
+    if (posicion.estaFueraDeLimites(this.ancho, this.alto )) return;
     try {
       this.pasarPorObstaculos(vehiculo, posicion);
     } catch (HayPiqueteException e) {
+      System.out.println(posicion.posicionAString()+"Hay piquete");
       return;
     }
     this.abrirSorpresas(vehiculo, posicion);
