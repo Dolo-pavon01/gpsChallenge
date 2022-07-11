@@ -37,10 +37,10 @@ public class VistaMapa {
   private Stage stage;
   public Random randoNumber = new Random();
   private double startMapX = 0;
-  private double startMapY = 50;
+  private double startMapY = 0;
   private double widthMap = Toolkit.getDefaultToolkit().getScreenSize().width;
   private double heightMap = this.widthMap / 2;
-  private ImageView dibujoVehiculo;
+  private ImageView dibujoVehiculo = new ImageView();
   private double AnchoAltoMatriz;
   private int callesEnY;
   private double altoCalle;
@@ -88,12 +88,13 @@ public class VistaMapa {
     this.dibujarSorpresas();
 
     this.dibujarVehiculo();
+    this.elements.add(this.dibujoVehiculo);
 
     Scene scene =
         new Scene(this.group, this.widthMap, this.heightMap + this.startMapY, Color.LIGHTPINK);
     this.stage.setMaximized(true);
 
-    this.dibujarMeta("asas");
+    this.dibujarMeta();
     this.dibujarCapa();
     this.group.getChildren().addAll(this.elements);
     this.stage.setScene(scene);
@@ -104,16 +105,16 @@ public class VistaMapa {
           KeyCode code = KeyEvent.getCode();
           char direccion = (code.toString()).toLowerCase().charAt(0);
           if (this.controladorMovimientos.evento(direccion)) {
+            try {
+              this.dibujarVehiculo();
+            } catch (Exception e) {
+              throw new RuntimeException(e);
+            }
             this.dibujarSecuencia(direccion);
           }
           System.out.println(direccion);
           if (this.controladorMovimientos.partidaCerrada()) {
             new VistaFinal(this.stage).mostrarVistaFinal();
-          }
-          try {
-            this.setImage(this.dibujoVehiculo, controladorMovimientos.vehiculo());
-          } catch (Exception e) {
-            throw new RuntimeException(e);
           }
         });
   }
@@ -141,7 +142,7 @@ public class VistaMapa {
     imagen.setImage(new Image(new FileInputStream("docs/" + entidad + ".png")));
   }
 
-  public void dibujarMeta(String meta) throws Exception {
+  public void dibujarMeta() throws Exception {
     String posicion = this.controladorMovimientos.meta();
     String[] coordenadas = posicion.split(";");
     int x = Integer.parseInt(coordenadas[0]);
@@ -171,10 +172,11 @@ public class VistaMapa {
 
   public void dibujarVehiculo() throws Exception {
 
-    String vehiculo = this.controladorMovimientos.vehiculo();
+    String posicion = this.controladorMovimientos.vehiculo();
+    String[] coordenadas = posicion.split(";");
+    int x = Integer.parseInt(coordenadas[0]);
+    int y = Integer.parseInt(coordenadas[1]);
 
-    int x = 0;
-    int y = this.callesEnY / 2;
     double techo = (Math.round((this.callesEnY - y) / 2) * this.AnchoAltoMatriz) + this.startMapY;
 
     double startY = techo;
@@ -184,9 +186,28 @@ public class VistaMapa {
       startY += this.altoCalle + this.altoAnchoCuadra;
     }
 
-    this.dibujoVehiculo =
-        this.imagen(
-            this.startMapX, startY, this.altoCalle, this.altoCalle, "docs/" + vehiculo + ".png");
+    double costado =
+            (Math.round((this.callesEnX- (this.callesEnX- x)) / 2)
+                    * this.AnchoAltoMatriz);
+
+    double startX = costado + this.startMapX;
+
+    if (x % 2 == 0 ) {
+      startX += 0;
+    } else if (x > 0) {
+      startX += this.altoCalle + this.altoAnchoCuadra;
+    }
+
+    FileInputStream vehiculo = new FileInputStream("docs/" + coordenadas[2] + ".png");
+    Image image_calle = new Image(vehiculo);
+
+    this.dibujoVehiculo.setImage(image_calle);
+    this.dibujoVehiculo.setX(startX);
+    this.dibujoVehiculo.setY(startY);
+    this.dibujoVehiculo.setFitHeight(this.altoCalle);
+    this.dibujoVehiculo.setFitWidth(this.altoCalle);
+
+
   }
 
   public void dibujarMatriz(double startX, double startY, double m, double t, double p)
@@ -282,16 +303,18 @@ public class VistaMapa {
       int x = Integer.parseInt(strings[0]);
       int y = Integer.parseInt(strings[1]);
       String entidad = strings[2];
+      System.out.println(obstaculos.get(i));
       this.dibujarObstaculo(entidad, x, y);
     }
   }
 
   public void dibujarSorpresas() throws Exception {
-    ArrayList<String> obstaculos = this.controladorMovimientos.getSorpresas();
-    for (int i = 0; i < obstaculos.size(); i++) {
-      String[] strings = obstaculos.get(i).split(";");
+    ArrayList<String> sorpresas = this.controladorMovimientos.getSorpresas();
+    for (int i = 0; i < sorpresas.size(); i++) {
+      String[] strings = sorpresas.get(i).split(";");
       int x = Integer.parseInt(strings[0]);
       int y = Integer.parseInt(strings[1]);
+      System.out.println(sorpresas.get(i));
       this.dibujarSorpresa(x, y, strings[2]);
     }
   }
@@ -316,15 +339,24 @@ public class VistaMapa {
     double costado =
         (Math.round((cantidadCallesX - (cantidadCallesX - coordenadaX)) / 2)
             * this.AnchoAltoMatriz);
+
+    /*
     double startX = costado + this.startMapX;
 
     if (coordenadaX % 2 == 0 & coordenadaX > 0) {
       startX -= ((this.altoCalle + this.altoAnchoCuadra) / 2);
     } else if (coordenadaX > 0) {
       startX += ((this.altoCalle + this.altoAnchoCuadra) / 2);
-    }
+    }*/
 
-    this.imagen(startX, startY, this.altoCalle, this.altoCalle, "docs/" + entidad + ".png");
+    double startX = costado + this.startMapX;
+
+    if (coordenadaX % 2 == 0 & coordenadaX > 0) {
+      startX += 0;
+    } else if (coordenadaX > 0) {
+      startX += this.altoCalle + this.altoAnchoCuadra;
+    }
+    this.imagen(startX + 10, startY, this.altoCalle /2 , this.altoCalle /2, "docs/" + entidad + ".png");
   }
 
   public void dibujarObstaculo(String entidad, int x, int y) throws Exception {
@@ -362,29 +394,32 @@ public class VistaMapa {
 
     this.dibujoVehiculo.setRotationAxis(Rotate.Z_AXIS);
     this.group.getChildren().remove(this.filtro);
-    double movimiento = this.altoAnchoCuadra + this.altoCalle;
+
+    //double movimiento = this.altoAnchoCuadra + this.altoCalle;
     switch (direccion) {
       case 'd': // r en mac d window
         this.dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
-        this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() + movimiento);
+        this.dibujoVehiculo.setX(this.dibujoVehiculo.getX());
         this.dibujoVehiculo.setRotate(0);
         break;
       case 'a': // l en mac a W
         this.dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
-        this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() - movimiento);
+        this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() );
         this.dibujoVehiculo.setRotate(180);
         break;
       case 'w': // u en mac w W
-        this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() - movimiento);
+        this.dibujoVehiculo.setY(this.dibujoVehiculo.getY());
         this.dibujoVehiculo.setRotate(270);
         break;
       case 's': // d en mac s W
-        this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() + movimiento);
+        this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() );
         this.dibujoVehiculo.setRotate(90);
         break;
       default:
         break;
     }
+
+    //this.group.getChildren().add(this.dibujoVehiculo);
 
     this.circle.setCenterY(this.dibujoVehiculo.getY());
     this.circle.setCenterX(this.dibujoVehiculo.getX());
@@ -392,5 +427,9 @@ public class VistaMapa {
     this.filtro = Shape.subtract(this.capa, this.circle);
     this.filtro = Shape.subtract(this.filtro, this.meta);
     this.group.getChildren().add(this.filtro);
+
+
+
+
   }
 }

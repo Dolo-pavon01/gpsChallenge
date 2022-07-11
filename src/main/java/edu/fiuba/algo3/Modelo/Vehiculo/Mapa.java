@@ -44,14 +44,16 @@ public class Mapa {
     if (meta.equals(posicion)) {
       this.llegoAMeta = true;
     }
-    if (posicion.estaFueraDeLimites(this.ancho, this.alto + 1)) return;
+    if (posicion.estaFueraDeLimites(this.ancho, this.alto )) return;
     try {
       this.pasarPorObstaculos(vehiculo, posicion);
     } catch (HayPiqueteException e) {
+      System.out.println(posicion.posicionAString()+"Hay piquete");
       return;
     }
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
+    System.out.println((posicion.getX()+";"+posicion.getY()));
   }
 
   private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion) {
@@ -69,7 +71,7 @@ public class Mapa {
   public ArrayList<String> getSorpresas() {
     ArrayList<String> sorpresasObtenidas = new ArrayList();
     for (int i = 0; i < this.ancho; i++) {
-      for (int j = 0; j < this.alto; j++) {
+      for (int j = 0; j <= this.alto; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
         Sorpresa sorpresa = this.obtenerSorpresaEn(posicion);
         if (sorpresa.nombreSorpresa() != "sorpresaNula") {
@@ -77,6 +79,7 @@ public class Mapa {
         }
       }
     }
+
     return sorpresasObtenidas;
   }
 
@@ -87,7 +90,7 @@ public class Mapa {
   public ArrayList<String> getObstaculos() {
     ArrayList<String> obstaculosObtenidos = new ArrayList();
     for (int i = 0; i < this.ancho; i++) {
-      for (int j = 0; j < this.alto; j++) {
+      for (int j = 0; j <= this.alto; j++) {
         Posicion posicion = Posicion.getPosicion(i, j);
         Obstaculo obstaculo = this.obtenerObstaculoEn(posicion);
         if (obstaculo.nombreObstaculo() != "obstaculoNulo") {
@@ -101,4 +104,5 @@ public class Mapa {
   public String getMeta() {
     return this.meta.posicionAString() + SEPARADOR + NOMBRE_META;
   }
+
 }

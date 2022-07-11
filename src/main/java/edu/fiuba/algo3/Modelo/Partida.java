@@ -43,7 +43,7 @@ public class Partida {
     try {
       FileWriter myWriter = new FileWriter("src/main/java/edu/fiuba/algo3/rankings.txt");
       for (int i = 0; i < this.podio_viejo.size(); i++) {
-        myWriter.write(i + this.podio_viejo.get(this.podio_viejo.size() - 1 - i) + "\n");
+        myWriter.write( this.podio_viejo.get(this.podio_viejo.size() - 1 - i) + "\n");
         System.out.println("Se abrió con Exito el archivo.");
       }
       myWriter.close();

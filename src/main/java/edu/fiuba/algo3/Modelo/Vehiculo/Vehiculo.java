@@ -15,12 +15,13 @@ public class Vehiculo {
   public Vehiculo(TipoVehiculo tipoVehiculo) {
     this.tipo = tipoVehiculo;
     this.movimientos = 0;
-    this.posicion = Posicion.getPosicion(0, 1);
+    //this.posicion = Posicion.getPosicion(0, 1);
   }
 
   public String datosVehiculo() {
     // return this.tipo.obtenerNombreEnPosicion(this.posicion);
-    return this.tipo.getNombre();
+
+    return this.posicion.posicionAString()+";"+this.tipo.getNombre();
   }
 
   public String posicionComoString() {

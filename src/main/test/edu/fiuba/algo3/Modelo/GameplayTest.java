@@ -34,14 +34,14 @@ public class GameplayTest {
     // arrange
     BuilderMock builderMock = new BuilderMock(10, 10);
     Gameplay gameplay = Gameplay.getInstance(builderMock);
-    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(1, 1));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(0, 1));
     gameplay.iniciarJuego(auto);
     // act
     gameplay.jugar('a');
-    gameplay.jugar('s');
+    gameplay.jugar('a');
     // assert
     assertEquals(0, gameplay.puntaje());
-    assertEquals(Posicion.getPosicion(1, 1), auto.getPosicion());
+    assertEquals(Posicion.getPosicion(0, 1), auto.getPosicion());
   }
 
   @Test
@@ -49,14 +49,14 @@ public class GameplayTest {
     // arrange
     BuilderMock builderMock = new BuilderMock(10, 10);
     Gameplay gameplay = Gameplay.getInstance(builderMock);
-    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(9, 9));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(9, 10));
     gameplay.iniciarJuego(auto);
     // act
     gameplay.jugar('w');
-    gameplay.jugar('d');
+    gameplay.jugar('w');
     // assert
     assertEquals(0, gameplay.puntaje());
-    assertEquals(Posicion.getPosicion(9, 9), auto.getPosicion());
+    assertEquals(Posicion.getPosicion(9, 10), auto.getPosicion());
   }
 
   @Test
@@ -64,14 +64,14 @@ public class GameplayTest {
     // arrange
     BuilderMock builderMock = new BuilderMock(10, 10);
     Gameplay gameplay = Gameplay.getInstance(builderMock);
-    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(1, 9));
+    Vehiculo auto = new Vehiculo(new Auto(), Posicion.getPosicion(0, 0));
     gameplay.iniciarJuego(auto);
     // act
-    gameplay.jugar('w');
-    gameplay.jugar('a');
+    gameplay.jugar('s');
+    gameplay.jugar('s');
     // assert
     assertEquals(0, gameplay.puntaje());
-    assertEquals(Posicion.getPosicion(1, 9), auto.getPosicion());
+    assertEquals(Posicion.getPosicion(0, 0), auto.getPosicion());
   }
 
   @Test
@@ -221,7 +221,7 @@ public class GameplayTest {
     // act
     String datos = gameplay.getVehiculo();
     // assert
-    assertEquals("Auto", datos);
+    assertEquals("1;1;Auto", datos);
   }
 
   @Test
@@ -233,7 +233,7 @@ public class GameplayTest {
     // act
     String datos = gameplay.getVehiculo();
     // assert
-    assertEquals("Moto", datos);
+    assertEquals("1;1;Moto", datos);
   }
 
   @Test
@@ -245,7 +245,7 @@ public class GameplayTest {
     // act
     String datos = gameplay.getVehiculo();
     // assert
-    assertEquals("Auto4x4", datos);
+    assertEquals("1;1;Auto4x4", datos);
   }
 
   @Test
@@ -304,7 +304,7 @@ public class GameplayTest {
     // assert
     assertEquals(posicionEsperada, posicionJugador);
   }
-
+/*
   @Test
   public void test20SeCreaUnMapaValidoConSorpresas() {
     // act
@@ -320,4 +320,7 @@ public class GameplayTest {
     // assert
     assertFalse(listaObstaculos.isEmpty());
   }
+
+  */
+
 }

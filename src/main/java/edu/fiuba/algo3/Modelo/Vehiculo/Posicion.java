@@ -55,6 +55,6 @@ public class Posicion {
   }
 
   public boolean estaFueraDeLimites(int xLimite, int yLimite) {
-    return (this.x >= xLimite || this.y >= yLimite || this.x <= 0 || this.y <= 0);
+    return (this.x >= xLimite || this.y > yLimite || this.x < 0 || this.y <= 0);
   }
 }
