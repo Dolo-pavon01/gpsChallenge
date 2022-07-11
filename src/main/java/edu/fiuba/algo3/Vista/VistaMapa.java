@@ -52,6 +52,10 @@ public class VistaMapa {
   private Circle circle;
   private Shape filtro;
 
+  private double metaX;
+  private double metaY;
+  private Circle meta;
+
   private ControladorMovimientos controladorMovimientos = new ControladorMovimientos();
 
   public VistaMapa(Stage stage) throws Exception {
@@ -122,6 +126,14 @@ public class VistaMapa {
     this.circle.setCenterX(this.dibujoVehiculo.getX());
     this.circle.setRadius(this.AnchoAltoMatriz);
     this.filtro = Shape.subtract(this.capa, this.circle);
+
+
+    Circle  meta = new Circle();
+    meta.setCenterX(this.metaX);
+    meta.setCenterY(this.metaY);
+    meta.setRadius(this.altoAnchoCuadra /2);
+    this.meta = meta;
+    this.filtro = Shape.subtract(this.filtro, meta);
     this.elements.add(filtro);
   }
 
@@ -135,6 +147,7 @@ public class VistaMapa {
     int x = Integer.parseInt(coordenadas[0]);
     int y = Integer.parseInt(coordenadas[1]);
 
+
     /* int x = 0;
     int y = this.callesEnY / 2;
      */
@@ -146,7 +159,8 @@ public class VistaMapa {
     } else {
       startY += this.altoCalle + this.altoAnchoCuadra;
     }
-
+    this.metaX= (this.widthMap - this.altoCalle)  ;
+    this.metaY= startY + 10;
     this.imagen(
         this.widthMap - this.altoCalle,
         startY,
@@ -376,6 +390,7 @@ public class VistaMapa {
     this.circle.setCenterX(this.dibujoVehiculo.getX());
 
     this.filtro = Shape.subtract(this.capa, this.circle);
+    this.filtro = Shape.subtract(this.filtro, this.meta);
     this.group.getChildren().add(this.filtro);
   }
 }
