@@ -89,13 +89,15 @@ public class VistaMapa {
 
     Scene scene =
         new Scene(this.group, this.widthMap, this.heightMap + this.startMapY, Color.LIGHTPINK);
-    // this.stage.setMaximized(true);
 
     this.dibujarMeta();
     this.dibujarCapa();
     this.group.getChildren().addAll(this.elements);
     this.stage.setScene(scene);
+    scene.getWindow().centerOnScreen();
     this.stage.show();
+    this.stage.setResizable(false);
+
 
     scene.setOnKeyPressed(
         KeyEvent -> {
@@ -215,7 +217,7 @@ public class VistaMapa {
 
   private void dibujarMatriz(double startX, double startY, double m, double t, double p)
       throws Exception {
-    Integer counter = 0;
+
     Rectangle calle1 = this.rectangule(startX, startY, m, p);
     calle1.setFill(Color.WHITE);
 

@@ -85,6 +85,8 @@ public class VistaInicial {
 
     this.stage.setTitle("Menú Inicial");
     this.stage.setScene(escena);
+    this.stage.setResizable(false);
+    escena.getWindow().centerOnScreen();
     this.stage.show();
 
     this.autoBtn.setOnAction(
