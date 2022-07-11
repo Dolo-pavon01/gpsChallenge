@@ -13,7 +13,7 @@ public class Partida {
   public ArrayList<String> actualizarPodio(String nickname, Integer puntaje) {
     // Leer el archivo
     this.leer_archivo();
-    this.podio_viejo.add(nickname + "                                                                                                                                       " + puntaje);
+    this.podio_viejo.add(nickname + ";" + puntaje);
     // Escribo el archivo
     this.escribir_archivo();
     // Leer
