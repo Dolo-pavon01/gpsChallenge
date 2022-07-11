@@ -4,6 +4,7 @@ import edu.fiuba.algo3.Controlador.ControladorOpciones;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -29,6 +30,8 @@ public class VistaInicial {
   private Button motoBtn = new Button();
   private Button auto4x4Btn = new Button();
   private Button btnJugar = new Button();
+  private Alert alerta;
+
   private Stage stage;
 
   public String fileToString(File stylesheetFile) {
@@ -44,15 +47,6 @@ public class VistaInicial {
   }
 
   public void mostrarVistaInicial() throws Exception {
-    /*
-       inicializa la vista principal, se muestra al usuario las
-       opciones disponibles, se guarda el nombre del usuario
-
-       IMPORTANTE:
-           Como se cuando el usuario lleno el campo del nombre???
-           habria alguna forma de validar a la hora de apretar el boton de jugar
-           y impedir que el usaurio continue y mostrar un mensaje si el campo nombre está vacio?
-    */
 
     String stylesheet = fileToString(new File("src/main/java/edu/fiuba/algo3/Vista/estilos.css"));
 
@@ -76,6 +70,7 @@ public class VistaInicial {
 
     this.auto4x4Btn.setText("Auto 4x4");
     this.auto4x4Btn.getStyleClass().add("botones");
+
 
     HBox divBotones = new HBox(motoBtn, autoBtn, auto4x4Btn);
     divBotones.setId("divBotones");
@@ -107,15 +102,31 @@ public class VistaInicial {
           this.vehiculoElegido = "Auto4x4";
         });
 
+
     this.btnJugar.setOnAction(
         evento -> {
-          this.nickname = this.nombreInput.getText();
-          new ControladorOpciones(this.nickname, this.vehiculoElegido);
-          // System.out.println("hola");
-          try {
-            new VistaMapa(this.stage).mostrarVistaMapa();
-          } catch (Exception e) {
-            e.printStackTrace();
+          String mensaje = "Debes ingresar un NOMBRE VALIDO";
+          if(this.nombreInput.getText() == "" || this.nombreInput.getText().length() > 15){
+            this.alerta = new Alert(Alert.AlertType.WARNING);
+            if(this.vehiculoElegido == null){
+              mensaje += " y un VEHICULO";
+            }
+            this.alerta.setContentText(mensaje);
+            this.alerta.showAndWait();
+          }
+          else if(this.vehiculoElegido == null){
+            this.alerta = new Alert(Alert.AlertType.WARNING);
+            this.alerta.setContentText("Debes elegir un VEHICULO");
+            this.alerta.showAndWait();
+          }
+          else {
+            this.nickname = this.nombreInput.getText();
+            new ControladorOpciones(this.nickname, this.vehiculoElegido);
+            try {
+              new VistaMapa(this.stage).mostrarVistaMapa();
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
           }
         });
   }

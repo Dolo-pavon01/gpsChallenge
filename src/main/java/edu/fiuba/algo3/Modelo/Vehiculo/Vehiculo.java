@@ -12,8 +12,13 @@ public class Vehiculo {
   private Posicion posicion;
   private int movimientos;
 
-  public String datosVehiculo() {
+  public Vehiculo(TipoVehiculo tipoVehiculo) {
+    this.tipo = tipoVehiculo;
+    this.movimientos = 0;
 
+  }
+
+  public String datosVehiculo() {
     return this.posicion.posicionAString()+";"+this.tipo.getNombre();
   }
 

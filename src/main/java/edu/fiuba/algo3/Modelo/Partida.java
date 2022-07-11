@@ -11,26 +11,24 @@ public class Partida {
   private ArrayList<String> podio = new ArrayList<String>();
 
   public ArrayList<String> actualizarPodio(String nickname, Integer puntaje) {
-    // Leer el archivo
+
     this.leer_archivo();
-    this.podio.add("Jugador: " + nickname + " Puntaje: " + puntaje);
-    // Escribo el archivo
+    this.podio_viejo.add(nickname + ";" + puntaje);
     this.escribir_archivo();
-    // Leer
-    this.podio = new ArrayList<String>();
+    this.podio_viejo = new ArrayList<String>();
     this.leer_archivo();
     return this.podio;
   }
 
-  private void leer_archivo() {
-    System.out.println("Voy a comenzar a leer el archivo 'Rankings.txt'");
+  public void leer_archivo() {
     try {
       File myObj = new File("src/main/java/edu/fiuba/algo3/rankings.txt");
       Scanner myReader = new Scanner(myObj);
-      while (myReader.hasNextLine()) {
+      int i =0;
+      while (myReader.hasNextLine() && i <= 6) {
         String data = myReader.nextLine();
-        // this.podio_viejo.add(data);
-        this.podio.add(data.replaceAll("\\n", ""));
+        this.podio_viejo.add(data.replaceAll("\\n", ""));
+        i++;
       }
       myReader.close();
     } catch (FileNotFoundException e) {
@@ -40,11 +38,12 @@ public class Partida {
   private void escribir_archivo() {
     try {
       FileWriter myWriter = new FileWriter("src/main/java/edu/fiuba/algo3/rankings.txt");
-      for (int i = 0; i < this.podio.size(); i++) {
-        myWriter.write( this.podio.get(this.podio.size() - 1 - i) + "\n");
+      for (int i = 0; i < this.podio_viejo.size(); i++) {
+        myWriter.write( this.podio_viejo.get(this.podio_viejo.size() - 1 - i) + "\n");
       }
       myWriter.close();
     } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 }

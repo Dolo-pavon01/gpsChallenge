@@ -1,11 +1,1 @@
-Jugador: cami Puntaje: 43
-Jugador: cami Puntaje: 28
-Jugador: adasd Puntaje: 57
-Jugador: asdasd Puntaje: 68
-Jugador: cg Puntaje: 23
-Jugador: adadsasdasd Puntaje: 20
-Jugador: FFFFFFF Puntaje: 18
-Jugador: adadasd Puntaje: 17
-Jugador: asdasd Puntaje: 236
-Jugador: cami Puntaje: 32
-Jugador: cami Puntaje: 38
+
