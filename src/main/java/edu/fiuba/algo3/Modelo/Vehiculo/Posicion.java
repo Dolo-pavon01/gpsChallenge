@@ -8,8 +8,7 @@ public class Posicion {
   private int x;
   private int y;
 
-  public static Posicion getPosicion(int x, int y)
-  {
+  public static Posicion getPosicion(int x, int y) {
     for (Posicion posicion : instances) {
       if (posicion.tieneMismasCoordenadas(x, y)) return posicion;
     }
@@ -26,15 +25,14 @@ public class Posicion {
     return getPosicion(nueva.x, nueva.y);
   }
 
-  public int getX()
-  {
+  public int getX() {
     return this.x;
   }
 
-  public int getY()
-  {
+  public int getY() {
     return this.y;
   }
+
   public String posicionAString() {
     return (this.x + ";" + this.y);
   }
@@ -56,8 +54,7 @@ public class Posicion {
     return direccion.moverA(this, unaDireccion);
   }
 
-  public boolean estaFueraDeLimites(int xLimite, int yLimite)
-  {
-    return (this.x >= xLimite || this.y >= yLimite || this.x <= 0 || this.y <= 0);
+  public boolean estaFueraDeLimites(int xLimite, int yLimite) {
+    return (this.x >= xLimite || this.y > yLimite || this.x < 0 || this.y <= 0);
   }
 }

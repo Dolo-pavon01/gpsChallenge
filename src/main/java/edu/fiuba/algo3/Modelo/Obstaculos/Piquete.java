@@ -10,14 +10,15 @@ import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 public class Piquete implements Obstaculo {
   private static final int MULTA_MOTO = 2;
   private final String NOMBRE = "piquete";
+  private final String SEPARADOR = ";";
 
   public String nombreObstaculo() {
-    return "piquete";
+    return NOMBRE;
   }
 
   @Override
   public String obtenerNombreEnPosicion(Posicion posicion) {
-    return posicion.posicionAString() + ";" + NOMBRE;
+    return posicion.posicionAString() + SEPARADOR + NOMBRE;
   }
 
   public int visit(Moto moto) {

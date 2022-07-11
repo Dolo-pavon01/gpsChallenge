@@ -5,7 +5,7 @@ import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
 
 public class SorpresaNula implements Sorpresa {
 
-  private final String NOMBRE = "sorpresa";
+  private final String NOMBRE = "sorpresaNula";
   private final String SEPARADOR = ";";
 
   @Override
@@ -15,7 +15,7 @@ public class SorpresaNula implements Sorpresa {
 
   @Override
   public String nombreSorpresa() {
-    return "sopresaNula";
+    return NOMBRE;
   }
 
   @Override

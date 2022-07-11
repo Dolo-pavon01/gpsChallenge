@@ -1,0 +1,20 @@
+@startuml
+
+package Obstaculos #Bisque{
+
+class ControlPolicial #Aquamarine/Plum{
+}
+interface Creador #Aquamarine/Plum{
+}
+class CreadorObstaculos #Aquamarine/Plum{
+}
+interface Obstaculo #Aquamarine/Plum{
+}
+class ObstaculoNulo #Aquamarine/Plum{
+}
+class Piquete #Aquamarine/Plum{
+}
+class Pozo #Aquamarine/Plum{
+}
+
+@enduml

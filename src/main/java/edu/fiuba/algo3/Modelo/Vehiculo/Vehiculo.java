@@ -6,35 +6,30 @@ import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 import edu.fiuba.algo3.Modelo.Vehiculo.Sentido;
 
 public class Vehiculo {
+  private final int CANTIDAD_MOVIMIENTOS_INICIAL = 0;
+
   private TipoVehiculo tipo;
   private Posicion posicion;
   private int movimientos;
 
-  // TODO: Hacer que vehiculo reciba posicion de builder
-  // La posicion tiene que ser (0, alto / 2)
   public Vehiculo(TipoVehiculo tipoVehiculo) {
     this.tipo = tipoVehiculo;
     this.movimientos = 0;
-    this.posicion = Posicion.getPosicion(0, 1);
+    //this.posicion = Posicion.getPosicion(0, 1);
   }
 
   public String datosVehiculo() {
-    String datos = this.posicionComoString() + ";";
-    datos = datos + this.tipo.getNombre();
-    return datos;
+    // return this.tipo.obtenerNombreEnPosicion(this.posicion);
+
+    return this.posicion.posicionAString()+";"+this.tipo.getNombre();
   }
 
   public String posicionComoString() {
     return this.posicion.posicionAString();
   }
 
-  public Vehiculo() {
-    this.movimientos = 0;
-    this.posicion = Posicion.getPosicion(0, 1);
-  }
-
   public Vehiculo(TipoVehiculo tipo, Posicion posicion) {
-    this.movimientos = 0;
+    this.movimientos = CANTIDAD_MOVIMIENTOS_INICIAL;
     this.tipo = tipo;
     this.posicion = posicion;
   }

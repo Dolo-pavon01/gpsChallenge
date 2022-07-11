@@ -4,7 +4,10 @@ import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
 
 public interface TipoVehiculo {
   int pasarPor(Obstaculo visitor);
+
   String getNombre();
+
+  String obtenerNombreEnPosicion(Posicion posicion);
 
   TipoVehiculo cambiarTipo();
 }

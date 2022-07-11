@@ -1,56 +1,62 @@
 package edu.fiuba.algo3.Modelo;
 
-import edu.fiuba.algo3.Modelo.Vehiculo.Mapa;
-import edu.fiuba.algo3.Modelo.Vehiculo.Vehiculo;
-import edu.fiuba.algo3.Modelo.Vehiculo.Auto;
-import edu.fiuba.algo3.Modelo.Vehiculo.Auto4x4;
-import edu.fiuba.algo3.Modelo.Vehiculo.Moto;
+import edu.fiuba.algo3.Modelo.Vehiculo.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Gameplay {
+  private static final String MOTO = "Moto";
+  private static final String AUTO = "Auto";
+  private static final String AUTO4x4 = "Auto4x4";
+  private static Gameplay instancia;
   private Vehiculo vehiculoEnJuego;
   private Mapa mapa;
-  private String nickname;
+  private final int POSICION_INICIAL_X = 0;
   private MapaBuilder builder;
+  private String nombreUsuario;
+  private Partida partida;
 
-  public Gameplay() {}
+  public static Gameplay getInstance(MapaBuilder mapaBuilder) {
+    if (instancia == null) {
+      instancia = new Gameplay();
+    }
+    instancia.setBuilder(mapaBuilder);
+    return instancia;
+  }
 
-  public Gameplay(MapaBuilder builder) {
-    this.builder = builder;
-    this.mapa = builder.getMapa();
+  public static Gameplay getInstance() {
+    if (instancia == null) {
+      instancia = new Gameplay();
+    }
+    return instancia;
+  }
+
+  private Gameplay() {
+    this.builder = new MapaBuilder();
+    this.mapa = this.builder.crearGameplay();
+    this.partida = new Partida();
+  }
+
+  private void setBuilder(MapaBuilder mapaBuilder) {
+    this.builder = mapaBuilder;
+    this.mapa = this.builder.getMapa();
   }
 
   public Mapa getMapa() {
     return this.mapa;
   }
 
-  public List getObstaculos() {
-
-    /*
-    HashMap obstaculosComoString = new HashMap(10, 70);
-    for (int i = 0; i < this.mapa.getAlto(); i++) {
-      for (int j = 0; j < this.mapa.getAncho(); j++) {
-        Posicion p = Posicion.getPosicion(i, j);
-        String nombreObstaculo = this.mapa.obstaculoEnPosicion(p).nombreObstaculo();
-        String posicion = p.posicionAString();
-        obstaculosComoString.put(posicion, nombreObstaculo);
-      }
-    }
-    return obstaculosComoString;
-     */
-    // return new ArrayList(Arrays.asList("3;1;pozo"));
+  public ArrayList<String> getObstaculos() {
     return this.mapa.getObstaculos();
   }
 
-  public List getSorpresas() {
+  public ArrayList<String> getSorpresas() {
     return this.mapa.getSorpresas();
   }
 
   public String getVehiculo() {
-    return vehiculoEnJuego.datosVehiculo();
+    return this.vehiculoEnJuego.datosVehiculo();
   }
 
   public Mapa iniciarJuego(Vehiculo vehiculo) {
@@ -58,16 +64,22 @@ public class Gameplay {
     return this.mapa;
   }
 
+  private void crearVehiculoEnJuego(TipoVehiculo tipoVehiculo) {
+    this.vehiculoEnJuego =
+        new Vehiculo(
+            tipoVehiculo, Posicion.getPosicion(POSICION_INICIAL_X, this.mapa.getAlto() / 2));
+  }
+
   public void registrarUsuario(String usuario, String vehiculoElegido) {
-    this.nickname = usuario;
-    if (vehiculoElegido == "Auto") {
-      this.vehiculoEnJuego = new Vehiculo(new Auto());
+    this.nombreUsuario = usuario;
+    if (vehiculoElegido == AUTO) {
+      this.crearVehiculoEnJuego(new Auto());
     }
-    if (vehiculoElegido == "Moto") {
-      this.vehiculoEnJuego = new Vehiculo(new Moto());
+    if (vehiculoElegido == MOTO) {
+      this.crearVehiculoEnJuego(new Moto());
     }
-    if (vehiculoElegido == "Auto4x4") {
-      this.vehiculoEnJuego = new Vehiculo(new Auto4x4());
+    if (vehiculoElegido == AUTO4x4) {
+      this.crearVehiculoEnJuego(new Auto4x4());
     }
   }
 
@@ -89,10 +101,15 @@ public class Gameplay {
     return this.vehiculoEnJuego.movimientos();
   }
 
-  /*public void infoRankings(ArrayList<String> rankingsJugadores){
+  public String getMeta() {
+    return this.mapa.getMeta();
+  }
 
-      this.Partida.actualizarPodio(this.nickname,this.puntaje());
-      }
+  public int getAlto() {
+    return this.mapa.getAlto();
+  }
 
-  }*/
+  public ArrayList<String> infoRankings() {
+    return this.partida.actualizarPodio(this.nombreUsuario, this.puntaje());
+  }
 }
