@@ -1,28 +1,21 @@
 package edu.fiuba.algo3.Vista;
 
-import edu.fiuba.algo3.Controlador.ControladorMovimientos;
+import edu.fiuba.algo3.Controlador.ControladorVistaMapa;
 import edu.fiuba.algo3.Controlador.ControladorSonido;
-import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Path;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.scene.shape.Shape;
 
 import java.awt.*;
-import java.awt.font.ImageGraphicAttribute;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -60,7 +53,7 @@ public class VistaMapa {
   private Circle meta;
   private ControladorSonido sound;
 
-  private ControladorMovimientos controladorMovimientos = new ControladorMovimientos();
+  private ControladorVistaMapa controladorVistaMapa = new ControladorVistaMapa();
 
   public VistaMapa(Stage stage) throws Exception {
     this.stage = stage;
@@ -69,7 +62,7 @@ public class VistaMapa {
   public void mostrarVistaMapa() throws Exception {
     Rectangle rect = this.rectangule(this.startMapX, this.startMapY, this.widthMap, this.heightMap);
     rect.setFill(Color.RED);
-    int random = this.controladorMovimientos.getDimension();
+    int random = this.controladorVistaMapa.getDimension();
 
     int cantidadMatrices = random / 2;
     this.elements.add(rect);
@@ -96,7 +89,7 @@ public class VistaMapa {
 
     Scene scene =
         new Scene(this.group, this.widthMap, this.heightMap + this.startMapY, Color.LIGHTPINK);
-    this.stage.setMaximized(true);
+    // this.stage.setMaximized(true);
 
     this.dibujarMeta();
     this.dibujarCapa();
@@ -110,7 +103,7 @@ public class VistaMapa {
           char direccion = (code.toString()).toLowerCase().charAt(0);
 
           try {
-            if (this.controladorMovimientos.evento(direccion)) {
+            if (this.controladorVistaMapa.accionar(direccion)) {
               try {
                 this.dibujarVehiculo();
               } catch (Exception e) {
@@ -120,7 +113,7 @@ public class VistaMapa {
             }
           }
           catch (Exception e){}
-          if (this.controladorMovimientos.partidaCerrada()) {
+          if (this.controladorVistaMapa.partidaCerrada()) {
             this.sound = new ControladorSonido();
             sound.playFinish("docs/sonidoMeta.mp3");
             new VistaFinal(this.stage).mostrarVistaFinal();
@@ -148,7 +141,7 @@ public class VistaMapa {
   }
 
   private void dibujarMeta() throws Exception {
-    String posicion = this.controladorMovimientos.meta();
+    String posicion = this.controladorVistaMapa.meta();
     String[] coordenadas = posicion.split(";");
     int x = Integer.parseInt(coordenadas[0]);
     int y = Integer.parseInt(coordenadas[1]);
@@ -174,7 +167,7 @@ public class VistaMapa {
 
   private void dibujarVehiculo() throws Exception {
 
-    String posicion = this.controladorMovimientos.vehiculo();
+    String posicion = this.controladorVistaMapa.vehiculo();
     String[] coordenadas = posicion.split(";");
     int x = Integer.parseInt(coordenadas[0]);
     int y = Integer.parseInt(coordenadas[1]);
@@ -300,7 +293,7 @@ public class VistaMapa {
 
   private void dibujarObstaculos() throws Exception {
 
-    ArrayList<String> obstaculos = this.controladorMovimientos.getObstaculos();
+    ArrayList<String> obstaculos = this.controladorVistaMapa.getObstaculos();
 
     for (int i = 0; i < obstaculos.size(); i++) {
       String[] strings = obstaculos.get(i).split(";");
@@ -312,7 +305,7 @@ public class VistaMapa {
   }
 
   private void dibujarSorpresas() throws Exception {
-    ArrayList<String> sorpresas = this.controladorMovimientos.getSorpresas();
+    ArrayList<String> sorpresas = this.controladorVistaMapa.getSorpresas();
     for (int i = 0; i < sorpresas.size(); i++) {
       String[] strings = sorpresas.get(i).split(";");
       int x = Integer.parseInt(strings[0]);

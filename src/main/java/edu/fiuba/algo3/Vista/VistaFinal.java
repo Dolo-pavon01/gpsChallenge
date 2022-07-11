@@ -80,7 +80,7 @@ public class VistaFinal  {
         this.group.setBackground(bGround);
         this.group.getChildren().addAll(this.elements);
         this.stage.setScene(scene);
-        this.stage.setMaximized(true);
+        // this.stage.setMaximized(true);
         this.stage.show();
 
 

@@ -3,10 +3,9 @@ package edu.fiuba.algo3.Controlador;
 import java.util.ArrayList;
 import edu.fiuba.algo3.Modelo.Gameplay;
 
-public class ControladorMovimientos {
+public class ControladorVistaMapa {
 
   private int counter = 0;
-
 
   public boolean partidaCerrada() {
 
@@ -17,7 +16,7 @@ public class ControladorMovimientos {
     return Gameplay.getInstance().getVehiculo();
   }
 
-  public boolean evento(Character direccion) {
+  public boolean accionar(Character direccion) {
     return Gameplay.getInstance().jugar(direccion);
   }
 
