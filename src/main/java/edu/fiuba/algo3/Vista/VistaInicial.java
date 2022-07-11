@@ -47,15 +47,6 @@ public class VistaInicial {
   }
 
   public void mostrarVistaInicial() throws Exception {
-    /*
-       inicializa la vista principal, se muestra al usuario las
-       opciones disponibles, se guarda el nombre del usuario
-
-       IMPORTANTE:
-           Como se cuando el usuario lleno el campo del nombre???
-           habria alguna forma de validar a la hora de apretar el boton de jugar
-           y impedir que el usaurio continue y mostrar un mensaje si el campo nombre está vacio?
-    */
 
     String stylesheet = fileToString(new File("src/main/java/edu/fiuba/algo3/Vista/estilos.css"));
 

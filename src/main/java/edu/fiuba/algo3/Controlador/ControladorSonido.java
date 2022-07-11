@@ -10,19 +10,24 @@ import java.io.File;
 public class ControladorSonido{
 
     MediaPlayer mediaPlayer;
+    MediaPlayer finish;
 
     public void playHitSound(String path){
 
         Media media = new Media(new File(path).toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
+        this.mediaPlayer = new MediaPlayer(media);
+        this.mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        this.mediaPlayer.setVolume(0.20);
+        this.mediaPlayer.play();
+
     }
     public void playFinish(String path){
 
         Media media = new Media(new File(path).toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
+        this.finish = new MediaPlayer(media);
+        this.finish.setVolume(0.30);
+        this.finish.play();
     }
+
 
 }

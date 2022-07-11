@@ -120,10 +120,7 @@ public class VistaMapa {
           System.out.println(direccion);
           if (this.controladorMovimientos.partidaCerrada()) {
             this.sound = new ControladorSonido();
-
             sound.playFinish("docs/sonidoMeta.mp3");
-
-
             new VistaFinal(this.stage).mostrarVistaFinal();
           }
         });

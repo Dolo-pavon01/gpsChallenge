@@ -8,11 +8,6 @@ import javafx.event.EventHandler;
 
 public class ControladorOpciones implements EventHandler<ActionEvent> {
 
-  /*
-  Controla las opciones de la vista principal,
-  dispara acciones a Gameplay de acuerdo a las opciones
-  elegidas por el usuario
-   */
 
   private String nickname;
   private String tipoVehiculo;

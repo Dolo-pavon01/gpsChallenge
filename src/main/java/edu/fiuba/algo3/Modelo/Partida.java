@@ -11,26 +11,22 @@ public class Partida {
   private ArrayList<String> podio_viejo = new ArrayList<String>();
 
   public ArrayList<String> actualizarPodio(String nickname, Integer puntaje) {
-    // Leer el archivo
+
     this.leer_archivo();
     this.podio_viejo.add(nickname + ";" + puntaje);
-    // Escribo el archivo
     this.escribir_archivo();
-    // Leer
     this.podio_viejo = new ArrayList<String>();
     this.leer_archivo();
     return this.podio_viejo;
   }
 
   public void leer_archivo() {
-    System.out.println("Voy a comenzar a leer el archivo 'Rankings.txt'");
     try {
       File myObj = new File("src/main/java/edu/fiuba/algo3/rankings.txt");
       Scanner myReader = new Scanner(myObj);
       int i =0;
       while (myReader.hasNextLine() && i <= 6) {
         String data = myReader.nextLine();
-        // this.podio_viejo.add(data);
         this.podio_viejo.add(data.replaceAll("\\n", ""));
         i++;
       }
@@ -46,11 +42,9 @@ public class Partida {
       FileWriter myWriter = new FileWriter("src/main/java/edu/fiuba/algo3/rankings.txt");
       for (int i = 0; i < this.podio_viejo.size(); i++) {
         myWriter.write( this.podio_viejo.get(this.podio_viejo.size() - 1 - i) + "\n");
-        System.out.println("Se abrió con Exito el archivo.");
       }
       myWriter.close();
     } catch (IOException e) {
-      System.out.println("Ocurrió un erro al intentar el archivo.");
       e.printStackTrace();
     }
   }
