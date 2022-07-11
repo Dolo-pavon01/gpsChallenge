@@ -20,8 +20,7 @@ public class ControladorOpciones implements EventHandler<ActionEvent> {
   public ControladorOpciones(String nickName, String tipoVehiculo) {
     this.nickname = nickName;
     this.tipoVehiculo = tipoVehiculo;
-    System.out.println(this.nickname);
-    System.out.println(this.tipoVehiculo);
+    handle(new ActionEvent());
   }
 
   @Override
