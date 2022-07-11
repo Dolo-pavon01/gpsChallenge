@@ -37,7 +37,7 @@ public class VistaMapa {
   private Stage stage;
   public Random randoNumber = new Random();
   private double startMapX = 0;
-  private double startMapY = 50;
+  private double startMapY = 0;
   private double widthMap = Toolkit.getDefaultToolkit().getScreenSize().width;
   private double heightMap = this.widthMap / 2;
   private ImageView dibujoVehiculo;
@@ -104,16 +104,16 @@ public class VistaMapa {
           KeyCode code = KeyEvent.getCode();
           char direccion = (code.toString()).toLowerCase().charAt(0);
           if (this.controladorMovimientos.evento(direccion)) {
+            try {
+              this.dibujarVehiculo();
+            } catch (Exception e) {
+              throw new RuntimeException(e);
+            }
             this.dibujarSecuencia(direccion);
           }
           System.out.println(direccion);
           if (this.controladorMovimientos.partidaCerrada()) {
             new VistaFinal(this.stage).mostrarVistaFinal();
-          }
-          try {
-            this.setImage(this.dibujoVehiculo, controladorMovimientos.vehiculo());
-          } catch (Exception e) {
-            throw new RuntimeException(e);
           }
         });
   }
@@ -171,10 +171,11 @@ public class VistaMapa {
 
   public void dibujarVehiculo() throws Exception {
 
-    String vehiculo = this.controladorMovimientos.vehiculo();
+    String posicion = this.controladorMovimientos.vehiculo();
+    String[] coordenadas = posicion.split(";");
+    //int x = Integer.parseInt(coordenadas[0]);
+    int y = Integer.parseInt(coordenadas[1]);
 
-    int x = 0;
-    int y = this.callesEnY / 2;
     double techo = (Math.round((this.callesEnY - y) / 2) * this.AnchoAltoMatriz) + this.startMapY;
 
     double startY = techo;
@@ -186,7 +187,7 @@ public class VistaMapa {
 
     this.dibujoVehiculo =
         this.imagen(
-            this.startMapX, startY, this.altoCalle, this.altoCalle, "docs/" + vehiculo + ".png");
+            this.startMapX, startY, this.altoCalle, this.altoCalle, "docs/" + coordenadas[2] + ".png");
   }
 
   public void dibujarMatriz(double startX, double startY, double m, double t, double p)

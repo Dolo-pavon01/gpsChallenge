@@ -52,6 +52,7 @@ public class Mapa {
     }
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
+    System.out.println((posicion.getX()+";"+posicion.getY()));
   }
 
   private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion) {
@@ -102,4 +103,5 @@ public class Mapa {
   public String getMeta() {
     return this.meta.posicionAString() + SEPARADOR + NOMBRE_META;
   }
+
 }
