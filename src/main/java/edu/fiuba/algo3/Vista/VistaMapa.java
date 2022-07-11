@@ -58,9 +58,10 @@ public class VistaMapa {
     this.stage = stage;
   }
 
-  public void mostrarVistaMapa(int random) throws Exception {
+  public void mostrarVistaMapa() throws Exception {
     Rectangle rect = this.rectangule(this.startMapX, this.startMapY, this.widthMap, this.heightMap);
     rect.setFill(Color.RED);
+    int random = this.controladorMovimientos.getDimension();
 
     int cantidadMatrices = random / 2;
     this.elements.add(rect);
@@ -82,14 +83,14 @@ public class VistaMapa {
     this.dibujarObstaculos();
     this.dibujarSorpresas();
 
-    this.dibujarVehiculo("Vehiculo_Auto");
+    this.dibujarVehiculo("Auto");
 
     Scene scene =
         new Scene(this.group, this.widthMap, this.heightMap + this.startMapY, Color.LIGHTPINK);
     this.stage.setMaximized(true);
 
+    this.dibujarMeta("asas");
     this.dibujarCapa();
-
     this.group.getChildren().addAll(this.elements);
     this.stage.setScene(scene);
     this.stage.show();
@@ -134,6 +135,9 @@ public class VistaMapa {
     int x = Integer.parseInt(coordenadas[0]);
     int y = Integer.parseInt(coordenadas[1]);
 
+    /* int x = 0;
+    int y = this.callesEnY / 2;
+     */
     double techo = (Math.round((this.callesEnY - y) / 2) * this.AnchoAltoMatriz) + this.startMapY;
 
     double startY = techo;
@@ -142,17 +146,13 @@ public class VistaMapa {
     } else {
       startY += this.altoCalle + this.altoAnchoCuadra;
     }
-    double costado =
-        (Math.round((this.callesEnX - (this.callesEnX - x)) / 2) * this.AnchoAltoMatriz);
-    double startX = costado + this.startMapX;
 
-    if (x % 2 == 0 & x > 0) {
-      startX -= ((this.altoCalle + this.altoAnchoCuadra) / 2);
-    } else if (x > 0) {
-      startX += ((this.altoCalle + this.altoAnchoCuadra) / 2);
-    }
-
-    this.imagen(startX, startY, this.altoCalle, this.altoCalle, "docs/ED13.png");
+    this.imagen(
+        this.widthMap - this.altoCalle,
+        startY,
+        this.altoCalle,
+        this.altoCalle,
+        "docs/" + coordenadas[2] + ".png");
   }
 
   public void dibujarVehiculo(String vehiculo) throws Exception {
@@ -272,7 +272,6 @@ public class VistaMapa {
 
   public void dibujarSorpresas() throws Exception {
     ArrayList<String> obstaculos = this.controladorMovimientos.getSorpresas();
-
     for (int i = 0; i < obstaculos.size(); i++) {
       String[] strings = obstaculos.get(i).split(";");
       int x = Integer.parseInt(strings[0]);
@@ -349,21 +348,21 @@ public class VistaMapa {
     this.group.getChildren().remove(this.filtro);
     double movimiento = this.altoAnchoCuadra + this.altoCalle;
     switch (direccion) {
-      case 'd': // r en mac
+      case 'd': // r en mac d window
         this.dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
         this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() + movimiento);
         this.dibujoVehiculo.setRotate(0);
         break;
-      case 'a': // l en mac
+      case 'a': // l en mac a W
         this.dibujoVehiculo.setRotationAxis(Rotate.Y_AXIS);
         this.dibujoVehiculo.setX(this.dibujoVehiculo.getX() - movimiento);
         this.dibujoVehiculo.setRotate(180);
         break;
-      case 'w': // u en mac
+      case 'w': // u en mac w W
         this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() - movimiento);
         this.dibujoVehiculo.setRotate(270);
         break;
-      case 's': // d en mac
+      case 's': // d en mac s W
         this.dibujoVehiculo.setY(this.dibujoVehiculo.getY() + movimiento);
         this.dibujoVehiculo.setRotate(90);
         break;

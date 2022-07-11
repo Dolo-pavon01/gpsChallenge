@@ -20,13 +20,12 @@ public class ControladorOpciones implements EventHandler<ActionEvent> {
   public ControladorOpciones(String nickName, String tipoVehiculo) {
     this.nickname = nickName;
     this.tipoVehiculo = tipoVehiculo;
-    System.out.println(this.nickname);
-    System.out.println(this.tipoVehiculo);
+    handle(new ActionEvent());
   }
 
   @Override
   public void handle(ActionEvent event) {
 
-    Gameplay.getInstance(new MapaBuilder()).registrarUsuario(this.nickname, this.tipoVehiculo);
+    Gameplay.getInstance().registrarUsuario(this.nickname, this.tipoVehiculo);
   }
 }

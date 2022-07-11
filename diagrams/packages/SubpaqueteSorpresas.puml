@@ -1,0 +1,18 @@
+@startuml
+
+package Sorpresas #Bisque{
+
+class CreadorSorpresas #Aquamarine/Plum{
+}
+interface Sorpresa #Aquamarine/Plum{
+}
+class SorpresaCambioVehiculo #Aquamarine/Plum{
+}
+class SorpresaDesfavorable #Aquamarine/Plum{
+}
+class SorpresaFavorable #Aquamarine/Plum{
+}
+class SorpresaNula #Aquamarine/Plum{
+}
+
+@enduml

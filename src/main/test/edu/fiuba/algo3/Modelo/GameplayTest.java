@@ -9,9 +9,11 @@ import edu.fiuba.algo3.Modelo.Sorpresas.SorpresaFavorable;
 import edu.fiuba.algo3.Modelo.Vehiculo.*;
 import edu.fiuba.algo3.Modelo.mocks.BuilderMock;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GameplayTest {
   @Test
@@ -301,5 +303,21 @@ public class GameplayTest {
     String posicionJugador = gameplay.posicionJugador();
     // assert
     assertEquals(posicionEsperada, posicionJugador);
+  }
+
+  @Test
+  public void test20SeCreaUnMapaValidoConSorpresas() {
+    // act
+    ArrayList<String> listaSorpresas = Gameplay.getInstance().getSorpresas();
+    // assert
+    assertFalse(listaSorpresas.isEmpty());
+  }
+
+  @Test
+  public void test21SeCreaUnMapaValidoConObstaculos() {
+    // act
+    ArrayList<String> listaObstaculos = Gameplay.getInstance().getObstaculos();
+    // assert
+    assertFalse(listaObstaculos.isEmpty());
   }
 }

@@ -1,0 +1,12 @@
+@startuml
+
+package edu.fiuba.algo3 #Bisque{
+
+package Controlador #Aquamarine/Plum{
+}
+package Modelo #Aquamarine/Plum{
+}
+package Vista #Aquamarine/Plum{
+}
+
+@enduml

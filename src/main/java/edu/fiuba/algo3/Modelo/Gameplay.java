@@ -15,6 +15,7 @@ public class Gameplay {
   private final int POSICION_INICIAL_X = 0;
   private MapaBuilder builder;
   private String nombreUsuario;
+  private Partida partida;
 
   public static Gameplay getInstance(MapaBuilder mapaBuilder) {
     if (instancia == null) {
@@ -33,6 +34,8 @@ public class Gameplay {
 
   private Gameplay() {
     this.builder = new MapaBuilder();
+    this.mapa = this.builder.crearGameplay();
+    this.partida = new Partida();
   }
 
   private void setBuilder(MapaBuilder mapaBuilder) {
@@ -53,7 +56,7 @@ public class Gameplay {
   }
 
   public String getVehiculo() {
-    return vehiculoEnJuego.datosVehiculo();
+    return this.vehiculoEnJuego.datosVehiculo();
   }
 
   public Mapa iniciarJuego(Vehiculo vehiculo) {
@@ -102,10 +105,11 @@ public class Gameplay {
     return this.mapa.getMeta();
   }
 
-  /*public void infoRankings(ArrayList<String> rankingsJugadores){
+  public int getAlto() {
+    return this.mapa.getAlto();
+  }
 
-      this.Partida.actualizarPodio(this.nickname,this.puntaje());
-      }
-
-  }*/
+  public ArrayList<String> infoRankings() {
+    return this.partida.actualizarPodio(this.nombreUsuario, this.puntaje());
+  }
 }

@@ -1,0 +1,22 @@
+@startuml
+
+package Modelo #Bisque{
+
+package Obstaculos #Aquamarine/Plum{
+}
+package Sorpresas #Aquamarine/Plum{
+}
+package Vehiculo #Aquamarine/Plum{
+}
+class CaracterDesconocido #Aquamarine/Plum{
+}
+class Gameplay #Aquamarine/Plum{
+}
+class HayPiqueteException #Aquamarine/Plum{
+}
+class MapaBuilder #Aquamarine/Plum{
+}
+class Partida #Aquamarine/Plum{
+}
+
+@enduml
