@@ -83,7 +83,7 @@ public class VistaMapa {
     this.dibujarObstaculos();
     this.dibujarSorpresas();
 
-    this.dibujarVehiculo("Auto");
+    this.dibujarVehiculo();
 
     Scene scene =
         new Scene(this.group, this.widthMap, this.heightMap + this.startMapY, Color.LIGHTPINK);
@@ -155,7 +155,9 @@ public class VistaMapa {
         "docs/" + coordenadas[2] + ".png");
   }
 
-  public void dibujarVehiculo(String vehiculo) throws Exception {
+  public void dibujarVehiculo() throws Exception {
+
+    String vehiculo = this.controladorMovimientos.vehiculo();
 
     int x = 0;
     int y = this.callesEnY / 2;
