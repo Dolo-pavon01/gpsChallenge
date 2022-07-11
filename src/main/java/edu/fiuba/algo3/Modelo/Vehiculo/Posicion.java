@@ -25,9 +25,6 @@ public class Posicion {
     return getPosicion(nueva.x, nueva.y);
   }
 
-  public int getX() {
-    return this.x;
-  }
 
   public int getY() {
     return this.y;
@@ -37,9 +34,10 @@ public class Posicion {
     return (this.x + ";" + this.y);
   }
 
-  public Posicion mover(int x, int y) {
-    return getPosicion(this.x + x, this.y + y);
-  }
+ public Posicion mover(int x, int y)
+ {
+   return getPosicion(this.x + x, this.y + y);
+ }
 
   public boolean equals(Posicion otra) {
     return (tieneMismasCoordenadas(otra.x, otra.y));

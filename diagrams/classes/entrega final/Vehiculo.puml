@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Vehiculo
+{
+    -Posicion posicion
+    -int movimientos
+    + datosVehiculo():String
+    + pasarPor(Obstaculo obstaculo)
+    +abrirSorpresa(Sorpresa sorpresa)
+    +moverse(Posicion posicion)
+    +recibirSorpresa(double valorSorpresa)
+    +cambiarTipo()
+}
+interface TipoDeVehiculo
+{
+    +pasarPor(Obstaculo obstaculo):int
+    +getNombre():String
+    +obtenerNombreEnPosicion(Posicion posicion):String
+    +cambiarTipo():TipoDeVehiculo
+}
+
+class Auto
+{
+- String NOMBRE
+}
+
+class Moto{
+- String NOMBRE
+}
+
+class Auto4x4
+{
+- String NOMBRE
+}
+
+Vehiculo -> TipoDeVehiculo
+Auto ..|> TipoDeVehiculo
+Moto ..|> TipoDeVehiculo
+Auto4x4 ..|> TipoDeVehiculo
+
+@enduml

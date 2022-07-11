@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Usuario -> AppGpsChallenge: start
+AppGpsChallenge -> VistaInicial: mostrarVistaInicial()
+Usuario <-- VistaInicial: setScene(pantallaInicio)
+Usuario-> VistaInicial: ingresa su nombre
+Usuario -> VistaInicial: apreta boton auto
+VistaInicial -> ControladorOpciones: handle(nombre,"Auto)
+ControladorOpciones ->Gameplay: registrarUsuario(nombre,"Auto")
+Gameplay -> Mapa: mapa = new MapaBuilder().crearMapa()
+Gameplay-> Partida: partida = new Partida()
+Gameplay->Vehiculo: vehiculoEnJuego = new Vehiculo(new Auto(),Posicion.getPosicion(posicionInicial)
+Usuario -> VistaInicial: apreta boton comenzar
+VistaInicial -> VistaMapa: mostrarVistaMapa()
+VistaMapa -> ControladorMovimientos: getInformacionMapa()
+ControladorMovimientos-> Gameplay: getInformacionMapa()
+Gameplay -> Mapa: getInformacionMapa()
+Gameplay <-- Mapa: InformacionMapa
+ControladorMovimientos <-- Gameplay: InformacionMapa
+VistaMapa <-- ControladorMovimientos: InformacionMapa
+VistaMapa -> VistaMapa: dibujarMapa(informacionMapa)
+Usuario <-- VistaMapa : setScene(vistaMapa)
+Usuario -> VistaMapa: 'd' (adelante)
+VistaMapa -> ControladorMovimientos: direccion
+ControladorMovimientos -> Gameplay: jugar(direccion)
+Gameplay -> Mapa: avanzar(vehiculoEnJuego,direccion)
+Mapa-> Posicion: getPosicionSiguiente(posicionVehiculo,direccion)
+Mapa <-- Posicion: posicion
+Mapa -> Mapa: llegoAMeta()
+Mapa <-- Mapa: false
+Mapa -> Posicion: estaFueraDeLimites(alto,ancho)
+Mapa <-- Posicion: false
+Mapa->Mapa: getObstaculoEnPosicion(posicion)
+Mapa <-- Mapa: Pozo pozo
+Mapa-> Vehiculo: pasarPorObstaculo(pozo)
+Vehiculo->Auto: movimientos += auto.pasarPor(pozo)
+Auto -> Pozo: visit(auto)
+Pozo --> Auto: multaAuto
+Auto --> Vehiculo: multaAuto
+Mapa->Mapa: getSorpresaEnPosicion(posicion)
+Mapa <-- Mapa: SorpresaFavorable sorpresa
+Mapa->Vehiculo: abrirSorpresa(sorpresa)
+Vehiculo->SorpresaFavorable: activar(vehiculo)
+SorpresaFavorable-> Vehiculo: recibirSorpresa(0.25)
+Mapa-> Vehiculo: moverse(posicionSiguiente)
+Vehiculo-> Posicion: posicion = transladar(posicionSiguiente)
+VistaMapa->VistaMapa : dibujarSecuencia(direccion)
+Usuario <-- VistaMapa: setScene(nuevaVistaMapa)
+
+
+@enduml

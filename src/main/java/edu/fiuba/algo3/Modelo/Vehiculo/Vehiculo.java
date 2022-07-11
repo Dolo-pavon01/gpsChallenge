@@ -13,7 +13,6 @@ public class Vehiculo {
   private int movimientos;
 
   public String datosVehiculo() {
-    // return this.tipo.obtenerNombreEnPosicion(this.posicion);
 
     return this.posicion.posicionAString()+";"+this.tipo.getNombre();
   }
