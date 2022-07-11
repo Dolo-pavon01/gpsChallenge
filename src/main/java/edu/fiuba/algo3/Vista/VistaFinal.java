@@ -54,7 +54,7 @@ public class VistaFinal  {
             Text nombre  = new Text(split[0]);
             Text puntaje = new Text(split[1]);
 
-            nombre.setX(330);
+            nombre.setX(320);
             nombre.setY(175+(i*50));
             nombre.getStyleClass().add("nombreRanking");
 

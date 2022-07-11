@@ -22,7 +22,7 @@ public class MapaBuilder {
 
   public MapaBuilder() {
     this.randomizador = new Random();
-    this.alto = (this.randomizador.nextInt(4) + 2) * 2;
+    this.alto = (this.randomizador.nextInt(2) + 2) * 2;
     this.ancho = this.alto * 2;
     this.cantElementos = (this.alto * this.ancho) / FACTOR_DE_CARGA;
   }

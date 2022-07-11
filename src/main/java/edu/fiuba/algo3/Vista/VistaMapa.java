@@ -155,9 +155,6 @@ public class VistaMapa {
     int y = Integer.parseInt(coordenadas[1]);
 
 
-    /* int x = 0;
-    int y = this.callesEnY / 2;
-     */
     double techo = (Math.round((this.callesEnY - y) / 2) * this.AnchoAltoMatriz) + this.startMapY;
 
     double startY = techo;
@@ -189,8 +186,8 @@ public class VistaMapa {
     this.dibujoVehiculo.setImage(image_calle);
     this.dibujoVehiculo.setX(this.posX(x));
     this.dibujoVehiculo.setY(this.posY(y));
-    this.dibujoVehiculo.setFitHeight(this.altoCalle + 10);
-    this.dibujoVehiculo.setFitWidth(this.altoCalle + 10 );
+    this.dibujoVehiculo.setFitHeight(this.altoCalle + 15);
+    this.dibujoVehiculo.setFitWidth(this.altoCalle + 15 );
 
   }
 
