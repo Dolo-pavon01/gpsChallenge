@@ -54,7 +54,7 @@ public class Gameplay {
   }
 
   public String getVehiculo() {
-    return vehiculoEnJuego.datosVehiculo();
+    return this.vehiculoEnJuego.datosVehiculo();
   }
 
   public Mapa iniciarJuego(Vehiculo vehiculo) {
@@ -101,6 +101,10 @@ public class Gameplay {
 
   public String getMeta() {
     return this.mapa.getMeta();
+  }
+
+  public int getAlto() {
+    return this.mapa.getAlto();
   }
 
   /*public void infoRankings(ArrayList<String> rankingsJugadores){
