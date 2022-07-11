@@ -41,18 +41,17 @@ public class Mapa {
 
   public void avanzar(Vehiculo vehiculo, char direccion) {
     Posicion posicion = vehiculo.getPosicionSiguiente(direccion);
-    if (posicion.estaFueraDeLimites(this.ancho, this.alto)) return;
+    if (meta.equals(posicion)) {
+      this.llegoAMeta = true;
+    }
+    if (posicion.estaFueraDeLimites(this.ancho, this.alto + 1)) return;
     try {
       this.pasarPorObstaculos(vehiculo, posicion);
     } catch (HayPiqueteException e) {
       return;
     }
-
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
-    if (meta.equals(posicion)) {
-      this.llegoAMeta = true;
-    }
   }
 
   private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion) {
