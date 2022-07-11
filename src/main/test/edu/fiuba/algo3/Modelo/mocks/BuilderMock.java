@@ -7,6 +7,7 @@ import edu.fiuba.algo3.Modelo.Vehiculo.Mapa;
 import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 import edu.fiuba.algo3.Modelo.Vehiculo.Sentido;
 
+
 public class BuilderMock extends MapaBuilder {
   public BuilderMock(int alto, int ancho) {
     this.alto = alto;

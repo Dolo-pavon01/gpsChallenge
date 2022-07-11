@@ -52,7 +52,6 @@ public class Mapa {
     }
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
-
   }
 
   private void pasarPorObstaculos(Vehiculo vehiculo, Posicion posicion) {
@@ -63,7 +62,7 @@ public class Mapa {
     vehiculo.abrirSopresa(this.sorpresas.get(posicion));
   }
 
-  public Sorpresa obtenerSorpresaEn(Posicion posicion) {
+  private Sorpresa obtenerSorpresaEn(Posicion posicion) {
     return this.sorpresas.get(posicion);
   }
 

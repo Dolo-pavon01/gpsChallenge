@@ -16,7 +16,6 @@ public class MapaBuilder {
   protected HashMap sorpresas;
   protected Mapa mapa;
   protected Posicion meta;
-  //protected Posicion posVehiculo;
   private Random randomizador;
   private final int FACTOR_DE_CARGA = 3;
 

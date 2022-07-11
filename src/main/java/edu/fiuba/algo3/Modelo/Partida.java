@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Partida {
-  private ArrayList<String> podio_viejo = new ArrayList<String>();
+  private ArrayList<String> podio = new ArrayList<String>();
 
   public ArrayList<String> actualizarPodio(String nickname, Integer puntaje) {
 
@@ -17,7 +17,7 @@ public class Partida {
     this.escribir_archivo();
     this.podio_viejo = new ArrayList<String>();
     this.leer_archivo();
-    return this.podio_viejo;
+    return this.podio;
   }
 
   public void leer_archivo() {
@@ -32,12 +32,10 @@ public class Partida {
       }
       myReader.close();
     } catch (FileNotFoundException e) {
-      System.out.println("Ocurrió un error.");
-      e.printStackTrace();
     }
   }
 
-  public void escribir_archivo() {
+  private void escribir_archivo() {
     try {
       FileWriter myWriter = new FileWriter("src/main/java/edu/fiuba/algo3/rankings.txt");
       for (int i = 0; i < this.podio_viejo.size(); i++) {

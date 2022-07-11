@@ -23,7 +23,7 @@ class Adelante{
 class Direccion
 {
     -HashMap <Character,Sentido> comandos
-    -moverA(Posicion posicion, char unaDireccion)
+    +moverA(Posicion posicion, char unaDireccion)
 }
 
 class Posicion
@@ -34,6 +34,9 @@ class Posicion
     +transladar(Posicion nueva)
     +siguiente(char unaDireccion)
     + getPosicion(x,y):Posicion
+    +posicionAString():String
+    +mover(int x, int y):Posicion
+    +estaFueraDeLimites(int xLimite, int yLimite):boolean
 }
 
 

@@ -33,12 +33,10 @@ public class Vehiculo {
   }
 
   public void pasarPor(Obstaculo visitor) {
-    if (visitor == null) return;
     this.movimientos += this.tipo.pasarPor(visitor);
   }
 
   public void abrirSopresa(Sorpresa sorpresa) {
-    if (sorpresa == null) return;
     sorpresa.activar(this);
   }
 

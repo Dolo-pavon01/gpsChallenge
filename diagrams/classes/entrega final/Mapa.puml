@@ -1,0 +1,76 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Mapa
+{
+  - Posicion meta;
+  - boolean llegoAMeta;
+  - int alto;
+  - int ancho;
+  + llegoAMeta():boolean
+  +avanzar(Vehiculo vehiculo,char direccion):void
+  +getSorpresas():ArrayList<String>
+  +getObstaculos():ArrayList<String>
+}
+interface Obstaculo
+{
+    +visit(Moto moto):int
+    +visit(Auto4x4 auto4x4):int
+    +visit(Auto auto):int
+    +nombreObstaculo():String
+    +obtenerNombreEnPosicion(Posicion posicion):String
+}
+
+class Pozo{
+-String NOMBRE
+- int MULTA_MOTO
+- int MULTA_AUTO
+- int MULTA_AUTO4X4
+}
+class ControlPolicial{
+-String NOMBRE
+- int MULTA
+}
+class Piquete{
+-String NOMBRE
+- int MULTA_MOTO
+}
+class ObstaculoNulo{
+-String NOMBRE
+}
+Mapa --> Obstaculo: 0*
+Pozo ..|> Obstaculo
+ControlPolicial ..|> Obstaculo
+Piquete ..|> Obstaculo
+ObstaculoNulo ..|> Obstaculo
+
+interface Sorpresa
+{
++activar(Vehiculo vehiculo)
++nombreSorpresa():String
++obtenerNombreEnPosicion(Posicion posicion):String
+}
+class SorpresaNula
+{
+-String NOMBRE
+}
+class SorpresaFavorable
+{
+-String NOMBRE
+}
+class SorpresaDesfavorable
+{
+-String NOMBRE
+}
+
+class SorpresaCambioVehiculo
+{
+-String NOMBRE
+}
+
+SorpresaCambioVehiculo ..|> Sorpresa
+SorpresaNula ..|> Sorpresa
+SorpresaDesfavorable ..|> Sorpresa
+SorpresaFavorable ..|> Sorpresa
+Mapa --> Sorpresa: 0*
+@enduml

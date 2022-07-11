@@ -1,9 +1,5 @@
 package edu.fiuba.algo3.Controlador;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import edu.fiuba.algo3.Modelo.Gameplay;
 
