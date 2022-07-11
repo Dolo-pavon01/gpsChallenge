@@ -6,12 +6,14 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-
+import java.io.File;
 import java.util.ArrayList;
 
 public class VistaFinal  {
@@ -27,7 +29,7 @@ public class VistaFinal  {
     private Stage stage;
     private ControladorVistaFinal controladorFinal = new ControladorVistaFinal();
     private ArrayList items = new ArrayList();
-    private Group group = new Group();
+    private Pane group = new Pane();
     private ArrayList elements = new ArrayList<>();
 
 
@@ -53,14 +55,22 @@ public class VistaFinal  {
 
         for(int i =0;i< infoRankings.size();i++){
             Text nombre = new Text(infoRankings.get(i));
-            nombre.setX(200);
-            nombre.setY(100+(i*25));
+            nombre.setX(300);
+            nombre.setY(175+(i*35));
             this.elements.add(nombre);
             System.out.println(infoRankings.get(i));
         }
 
 
-        Scene scene = new Scene(this.group,800,800, Color.AQUAMARINE);
+        Scene scene = new Scene(this.group,1200,600);
+        Image img = new Image(new File("docs/ranking.png").toURI().toString());
+        BackgroundImage bImg = new BackgroundImage(img,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        Background bGround = new Background(bImg);
+        this.group.setBackground(bGround);
         this.group.getChildren().addAll(this.elements);
         this.stage.setScene(scene);
         this.stage.setMaximized(true);

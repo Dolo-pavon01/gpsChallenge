@@ -4,6 +4,7 @@ import edu.fiuba.algo3.Controlador.ControladorOpciones;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -29,6 +30,7 @@ public class VistaInicial {
   private Button motoBtn = new Button();
   private Button auto4x4Btn = new Button();
   private Button btnJugar = new Button();
+  private Alert alerta;
 
   private Stage stage;
 
@@ -112,13 +114,28 @@ public class VistaInicial {
 
     this.btnJugar.setOnAction(
         evento -> {
-          this.nickname = this.nombreInput.getText();
-          new ControladorOpciones(this.nickname, this.vehiculoElegido);
-          // System.out.println("hola");
-          try {
-            new VistaMapa(this.stage).mostrarVistaMapa();
-          } catch (Exception e) {
-            e.printStackTrace();
+          String mensaje = "Debes ingresar un NOMBRE VALIDO";
+          if(this.nombreInput.getText() == "" || this.nombreInput.getText().length() > 15){
+            this.alerta = new Alert(Alert.AlertType.WARNING);
+            if(this.vehiculoElegido == null){
+              mensaje += " y un VEHICULO";
+            }
+            this.alerta.setContentText(mensaje);
+            this.alerta.showAndWait();
+          }
+          else if(this.vehiculoElegido == null){
+            this.alerta = new Alert(Alert.AlertType.WARNING);
+            this.alerta.setContentText("Debes elegir un VEHICULO");
+            this.alerta.showAndWait();
+          }
+          else {
+            this.nickname = this.nombreInput.getText();
+            new ControladorOpciones(this.nickname, this.vehiculoElegido);
+            try {
+              new VistaMapa(this.stage).mostrarVistaMapa();
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
           }
         });
   }
