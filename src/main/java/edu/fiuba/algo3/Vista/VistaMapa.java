@@ -1,12 +1,15 @@
 package edu.fiuba.algo3.Vista;
 
 import edu.fiuba.algo3.Controlador.ControladorMovimientos;
+import edu.fiuba.algo3.Controlador.ControladorSonido;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Path;
@@ -17,6 +20,7 @@ import javafx.scene.shape.Shape;
 
 import java.awt.*;
 import java.awt.font.ImageGraphicAttribute;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -55,6 +59,7 @@ public class VistaMapa {
   private double metaX;
   private double metaY;
   private Circle meta;
+  private ControladorSonido sound;
 
   private ControladorMovimientos controladorMovimientos = new ControladorMovimientos();
 
@@ -114,6 +119,9 @@ public class VistaMapa {
           }
           System.out.println(direccion);
           if (this.controladorMovimientos.partidaCerrada()) {
+            this.sound = new ControladorSonido();
+            sound.playHitSound("docs/sonidoMeta.mp3");
+
             new VistaFinal(this.stage).mostrarVistaFinal();
           }
         });

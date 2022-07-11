@@ -29,6 +29,7 @@ public class VistaInicial {
   private Button motoBtn = new Button();
   private Button auto4x4Btn = new Button();
   private Button btnJugar = new Button();
+
   private Stage stage;
 
   public String fileToString(File stylesheetFile) {
@@ -77,6 +78,7 @@ public class VistaInicial {
     this.auto4x4Btn.setText("Auto 4x4");
     this.auto4x4Btn.getStyleClass().add("botones");
 
+
     HBox divBotones = new HBox(motoBtn, autoBtn, auto4x4Btn);
     divBotones.setId("divBotones");
 
@@ -106,6 +108,7 @@ public class VistaInicial {
         evento -> {
           this.vehiculoElegido = "Auto4x4";
         });
+
 
     this.btnJugar.setOnAction(
         evento -> {
