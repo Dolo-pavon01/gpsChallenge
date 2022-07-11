@@ -11,7 +11,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-
+import java.io.File;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class VistaFinal  {
@@ -30,7 +31,13 @@ public class VistaFinal  {
     private Group group = new Group();
     private ArrayList elements = new ArrayList<>();
 
-
+    public String fileToString(File stylesheetFile) {
+        try {
+            return stylesheetFile.toURI().toURL().toString();
+        } catch (MalformedURLException e) {
+            return null;
+        }
+    }
 
     public VistaFinal(Stage stage){
 
@@ -60,7 +67,9 @@ public class VistaFinal  {
         }
 
 
-        Scene scene = new Scene(this.group,800,800, Color.AQUAMARINE);
+        Scene scene = new Scene(this.group,800,800);
+        String stylesheet = fileToString(new File("src/main/java/edu/fiuba/algo3/Vista/estilos.css"));
+        scene.getStylesheets().addAll(this.getClass().getResource(stylesheet).toExternalForm());
         this.group.getChildren().addAll(this.elements);
         this.stage.setScene(scene);
         this.stage.setMaximized(true);
