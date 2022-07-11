@@ -23,8 +23,8 @@ public class AppGpsChallenge extends Application {
   public void start(Stage primaryStage) throws Exception {
 
     this.primaryStage = primaryStage;
-    //this.sound = new ControladorSonido();
-    //sound.playHitSound("docs/sonido.mp3");
+    this.sound = new ControladorSonido();
+    sound.playHitSound("docs/sonido.mp3");
 
 
     VistaInicial vistaInicial = new VistaInicial(primaryStage);
