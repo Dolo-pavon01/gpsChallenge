@@ -12,12 +12,6 @@ public class Vehiculo {
   private Posicion posicion;
   private int movimientos;
 
-  public Vehiculo(TipoVehiculo tipoVehiculo) {
-    this.tipo = tipoVehiculo;
-    this.movimientos = 0;
-    //this.posicion = Posicion.getPosicion(0, 1);
-  }
-
   public String datosVehiculo() {
     // return this.tipo.obtenerNombreEnPosicion(this.posicion);
 
@@ -35,12 +29,10 @@ public class Vehiculo {
   }
 
   public void pasarPor(Obstaculo visitor) {
-    if (visitor == null) return;
     this.movimientos += this.tipo.pasarPor(visitor);
   }
 
   public void abrirSopresa(Sorpresa sorpresa) {
-    if (sorpresa == null) return;
     sorpresa.activar(this);
   }
 

@@ -4,13 +4,56 @@
 class Gameplay
 {
     - Gameplay instancia
-    - Vehiculo vehiculoEnJuego
-    - Mapa mapa
-    - MapaBuilder builder
-    - private String nombreUsuario
-    - private Partida partida
-    + registrarUsuario(String usuario,String vehiculoElegido)
-
+    - String nombreUsuario
+    + registrarUsuario(String usuario,String vehiculoElegido):void
+    +getInstance():Gameplay
+    +getObstaculos():ArrayList<String>
+    +getSorpresas():ArrayList<String>
+    +getVehiculo():String
+    + jugar(char input):boolean
+    + llegoAMeta():boolean
+    + getMeta():String
+    +getAlto():int
+    +infoRankings():ArrayList<String>
 }
+
+class Mapa
+{
+  - HashMap<Posicion, Obstaculo> obstaculos;
+  - HashMap<Posicion, Sorpresa> sorpresas;
+  - Posicion meta;
+  - boolean llegoAMeta;
+  - int alto;
+  - int ancho;
+  + llegoAMeta():boolean
+  +avanzar(Vehiculo vehiculo,char direccion):void
+  +getSorpresas():ArrayList<String>
+  +getObstaculos():ArrayList<String>
+}
+
+class Vehiculo
+{
+    -TipoVehiculo tipo
+    -Posicion posicion
+    -int movimientos
+    + datosVehiculo():String
+    + pasarPor(Obstaculo obstaculo)
+    +abrirSorpresa(Sorpresa sorpresa)
+    +moverse(Posicion posicion)
+    +recibirSorpresa(double valorSorpresa)
+    +cambiarTipo()
+}
+
+class Partida
+{
+    - ArrayList<String> podio
+    +actualizarPodio(String nombreUsuario, int puntaje): ArrayList<String>
+}
+
+Gameplay -->Vehiculo
+Gameplay --> Mapa
+Gameplay --> Partida
+
+
 
 @enduml
