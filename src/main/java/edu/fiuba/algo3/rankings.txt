@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 dasdasd;56
 dolo;43
 Melu;68
@@ -6,3 +7,13 @@ Melu;29
 Melu;26
 Melu;32
 sadasd;36
+=======
+Flor;39
+melu;63
+Melu;32
+Melu;26
+Melu;29
+Mel;31
+Melu;68
+Roque;46
+>>>>>>> ee39ec6d537b9fae75f88bebd8e74646f1b71fb2

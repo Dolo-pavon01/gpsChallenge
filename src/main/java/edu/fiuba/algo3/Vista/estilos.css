@@ -86,4 +86,14 @@
     -fx-background-color: -fx-focus-color, -fx-background ;
     -fx-focus-color: rgb(255, 87, 22);
 }
+.nombreRanking{
+    -fx-fill: #08175e;
+    -fx-font-size: 2em;
+    -fx-font-family: Bungee;
 
+}
+.puntajeRanking{
+    -fx-fill: #08175e;
+    -fx-font-size: 2em;
+    -fx-font-family: Bungee;
+}

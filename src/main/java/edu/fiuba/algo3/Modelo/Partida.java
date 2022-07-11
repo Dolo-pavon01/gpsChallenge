@@ -27,10 +27,12 @@ public class Partida {
     try {
       File myObj = new File("src/main/java/edu/fiuba/algo3/rankings.txt");
       Scanner myReader = new Scanner(myObj);
-      while (myReader.hasNextLine()) {
+      int i =0;
+      while (myReader.hasNextLine() && i <= 6) {
         String data = myReader.nextLine();
         // this.podio_viejo.add(data);
         this.podio_viejo.add(data.replaceAll("\\n", ""));
+        i++;
       }
       myReader.close();
     } catch (FileNotFoundException e) {
