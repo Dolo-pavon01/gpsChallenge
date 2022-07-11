@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class VistaFinal  {
@@ -39,6 +40,15 @@ public class VistaFinal  {
         this.stage = stage;
 
     }
+    public String fileToString(File stylesheetFile) {
+        try {
+            return stylesheetFile.toURI().toURL().toString();
+        } catch (MalformedURLException e) {
+            return null;
+        }
+    }
+
+
     public void mostrarVistaFinal(){
 
         /*
@@ -51,25 +61,30 @@ public class VistaFinal  {
          */
 
         ArrayList<String> infoRankings = this.controladorFinal.getRankings();
-
+        String stylesheet = fileToString(new File("src/main/java/edu/fiuba/algo3/Vista/estilos.css"));
 
         for(int i =0;i< infoRankings.size();i++){
             Text informacion = new Text(infoRankings.get(i));
             String[] split = informacion.getText().split(";");
             Text nombre  = new Text(split[0]);
-            System.out.println("Nombre:"+ split[0] + "Puntaje:" + split[1]);
             Text puntaje = new Text(split[1]);
-            nombre.setX(320);
-            nombre.setY(175+(i*35));
-            puntaje.setX(750);
-            puntaje.setY(175+(i*35));
+
+            nombre.setX(330);
+            nombre.setY(175+(i*50));
+            nombre.getStyleClass().add("nombreRanking");
+
+            puntaje.setX(780);
+            puntaje.setY(175+(i*50));
+            puntaje.getStyleClass().add("puntajeRanking");
+
             this.elements.add(nombre);
             this.elements.add(puntaje);
-            System.out.println(infoRankings.get(i));
+
         }
 
 
         Scene scene = new Scene(this.group,1200,600);
+        scene.getStylesheets().add(stylesheet);
         Image img = new Image(new File("docs/ranking.png").toURI().toString());
         BackgroundImage bImg = new BackgroundImage(img,
                 BackgroundRepeat.NO_REPEAT,
@@ -82,6 +97,7 @@ public class VistaFinal  {
         this.stage.setScene(scene);
         this.stage.setMaximized(true);
         this.stage.show();
+
 
 
     }
