@@ -38,8 +38,8 @@ public class MapaBuilder {
   }
 
   private void agregarElemento(Obstaculo obstaculo) {
-    int x = this.randomizador.nextInt(this.ancho) + 1;
-    int y = this.randomizador.nextInt(this.alto) + 1;
+    int x = this.randomizador.nextInt(this.ancho-1) + 1;
+    int y = this.randomizador.nextInt(this.alto-1) + 1;
     this.obstaculos.put(Posicion.getPosicion(x, y), obstaculo);
   }
 
