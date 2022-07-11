@@ -93,7 +93,7 @@ public class VistaMapa {
         new Scene(this.group, this.widthMap, this.heightMap + this.startMapY, Color.LIGHTPINK);
     this.stage.setMaximized(true);
 
-    this.dibujarMeta("asas");
+    this.dibujarMeta();
     this.dibujarCapa();
     this.group.getChildren().addAll(this.elements);
     this.stage.setScene(scene);
@@ -141,7 +141,7 @@ public class VistaMapa {
     imagen.setImage(new Image(new FileInputStream("docs/" + entidad + ".png")));
   }
 
-  public void dibujarMeta(String meta) throws Exception {
+  public void dibujarMeta() throws Exception {
     String posicion = this.controladorMovimientos.meta();
     String[] coordenadas = posicion.split(";");
     int x = Integer.parseInt(coordenadas[0]);
@@ -282,16 +282,18 @@ public class VistaMapa {
       int x = Integer.parseInt(strings[0]);
       int y = Integer.parseInt(strings[1]);
       String entidad = strings[2];
+      System.out.println(obstaculos.get(i));
       this.dibujarObstaculo(entidad, x, y);
     }
   }
 
   public void dibujarSorpresas() throws Exception {
-    ArrayList<String> obstaculos = this.controladorMovimientos.getSorpresas();
-    for (int i = 0; i < obstaculos.size(); i++) {
-      String[] strings = obstaculos.get(i).split(";");
+    ArrayList<String> sorpresas = this.controladorMovimientos.getSorpresas();
+    for (int i = 0; i < sorpresas.size(); i++) {
+      String[] strings = sorpresas.get(i).split(";");
       int x = Integer.parseInt(strings[0]);
       int y = Integer.parseInt(strings[1]);
+      System.out.println(sorpresas.get(i));
       this.dibujarSorpresa(x, y, strings[2]);
     }
   }
@@ -316,15 +318,24 @@ public class VistaMapa {
     double costado =
         (Math.round((cantidadCallesX - (cantidadCallesX - coordenadaX)) / 2)
             * this.AnchoAltoMatriz);
+
+    /*
     double startX = costado + this.startMapX;
 
     if (coordenadaX % 2 == 0 & coordenadaX > 0) {
       startX -= ((this.altoCalle + this.altoAnchoCuadra) / 2);
     } else if (coordenadaX > 0) {
       startX += ((this.altoCalle + this.altoAnchoCuadra) / 2);
-    }
+    }*/
 
-    this.imagen(startX, startY, this.altoCalle, this.altoCalle, "docs/" + entidad + ".png");
+    double startX = costado + this.startMapX;
+
+    if (coordenadaX % 2 == 0 & coordenadaX > 0) {
+      startX += 0;
+    } else if (coordenadaX > 0) {
+      startX += this.altoCalle + this.altoAnchoCuadra;
+    }
+    this.imagen(startX + 10, startY, this.altoCalle /2 , this.altoCalle /2, "docs/" + entidad + ".png");
   }
 
   public void dibujarObstaculo(String entidad, int x, int y) throws Exception {

@@ -1,3 +1,4 @@
-0Jugador: hadhadad Puntaje: 34
-110Jugador: DASDSAASD Puntaje: 35
-20Jugador: fsadad Puntaje: 205
+0Jugador: asdada Puntaje: 23
+120Jugador: fsadad Puntaje: 205
+2110Jugador: DASDSAASD Puntaje: 35
+30Jugador: hadhadad Puntaje: 34
