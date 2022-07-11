@@ -39,7 +39,6 @@ public class VistaMapa {
        y el mapa.
   */
   private Stage stage;
-  public Random randoNumber = new Random();
   private double startMapX = 0;
   private double startMapY = 0;
   private double widthMap = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -129,7 +128,7 @@ public class VistaMapa {
         });
   }
 
-  public void dibujarCapa() {
+  private void dibujarCapa() {
 
     this.capa = this.rectangule(this.startMapX, this.startMapY, this.widthMap, this.heightMap);
     this.circle = new Circle();
@@ -148,7 +147,7 @@ public class VistaMapa {
     this.elements.add(filtro);
   }
 
-  public void dibujarMeta() throws Exception {
+  private void dibujarMeta() throws Exception {
     String posicion = this.controladorMovimientos.meta();
     String[] coordenadas = posicion.split(";");
     int x = Integer.parseInt(coordenadas[0]);
@@ -173,7 +172,7 @@ public class VistaMapa {
         "docs/" + coordenadas[2] + ".png");
   }
 
-  public void dibujarVehiculo() throws Exception {
+  private void dibujarVehiculo() throws Exception {
 
     String posicion = this.controladorMovimientos.vehiculo();
     String[] coordenadas = posicion.split(";");
@@ -191,7 +190,7 @@ public class VistaMapa {
 
   }
 
-  public double posY(int y) {
+  private double posY(int y) {
 
     int coordenadaY = y;
     int cantidadCallesY = this.callesEnY;
@@ -221,7 +220,7 @@ public class VistaMapa {
     return  startX;
   }
 
-  public void dibujarMatriz(double startX, double startY, double m, double t, double p)
+  private void dibujarMatriz(double startX, double startY, double m, double t, double p)
       throws Exception {
     Integer counter = 0;
     Rectangle calle1 = this.rectangule(startX, startY, m, p);
@@ -275,7 +274,7 @@ public class VistaMapa {
     this.imagen(startX, startY + p + t, m, p, "docs/calle.png");
   }
 
-  public ImageView imagen(double startX, double startY, double m, double p, String path)
+  private ImageView imagen(double startX, double startY, double m, double p, String path)
       throws Exception {
     FileInputStream input = new FileInputStream(path);
     Image image_calle = new Image(input);
@@ -289,7 +288,7 @@ public class VistaMapa {
     return imageView1;
   }
 
-  public Rectangle rectangule(double x, double y, double w, double h) {
+  private Rectangle rectangule(double x, double y, double w, double h) {
     Rectangle rect = new Rectangle();
     rect.setX(x);
     rect.setY(y);
@@ -299,7 +298,7 @@ public class VistaMapa {
     return rect;
   }
 
-  public void dibujarObstaculos() throws Exception {
+  private void dibujarObstaculos() throws Exception {
 
     ArrayList<String> obstaculos = this.controladorMovimientos.getObstaculos();
 
@@ -312,7 +311,7 @@ public class VistaMapa {
     }
   }
 
-  public void dibujarSorpresas() throws Exception {
+  private void dibujarSorpresas() throws Exception {
     ArrayList<String> sorpresas = this.controladorMovimientos.getSorpresas();
     for (int i = 0; i < sorpresas.size(); i++) {
       String[] strings = sorpresas.get(i).split(";");
@@ -323,7 +322,7 @@ public class VistaMapa {
     }
   }
 
-  public void dibujarSecuencia(char direccion) {
+  private void dibujarSecuencia(char direccion) {
 
     this.dibujoVehiculo.setRotationAxis(Rotate.Z_AXIS);
     this.group.getChildren().remove(this.filtro);
