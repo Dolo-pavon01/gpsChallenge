@@ -108,7 +108,7 @@ public class VistaInicial {
     this.btnJugar.setOnAction(
         evento -> {
           String mensaje = "Debes ingresar un NOMBRE VALIDO";
-          if(this.nombreInput.getText() == "" || this.nombreInput.getText().length() > 15){
+          if(this.nombreInput.getText().length() < 1 || this.nombreInput.getText().length() > 15){
             this.alerta = new Alert(Alert.AlertType.WARNING);
             if(this.vehiculoElegido == null){
               mensaje += " y un VEHICULO";
