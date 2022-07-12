@@ -3,6 +3,7 @@ package edu.fiuba.algo3.Modelo.Vehiculo;
 import edu.fiuba.algo3.Modelo.HayPiqueteException;
 import edu.fiuba.algo3.Modelo.ObstaculoEsNulo;
 import edu.fiuba.algo3.Modelo.Obstaculos.Obstaculo;
+import edu.fiuba.algo3.Modelo.Obstaculos.ObstaculoNulo;
 import edu.fiuba.algo3.Modelo.Sorpresas.Sorpresa;
 import edu.fiuba.algo3.Modelo.Vehiculo.Posicion;
 import edu.fiuba.algo3.Modelo.Vehiculo.Sentido;
@@ -44,11 +45,13 @@ public class Mapa {
     if (meta.equals(posicion)) {
       this.llegoAMeta = true;
     }
-    if (posicion.estaFueraDeLimites(this.ancho, this.alto )) return;
+    if (posicion.estaFueraDeLimites(this.ancho, this.alto)) return;
     try {
       this.pasarPorObstaculos(vehiculo, posicion);
     } catch (HayPiqueteException e) {
       return;
+    } catch (HayPiquetazoException e) {
+      this.obstaculos.put(posicion, new ObstaculoNulo());
     }
     this.abrirSorpresas(vehiculo, posicion);
     vehiculo.moverse(posicion);
@@ -102,5 +105,4 @@ public class Mapa {
   public String getMeta() {
     return this.meta.posicionAString() + SEPARADOR + NOMBRE_META;
   }
-
 }

@@ -17,7 +17,7 @@ public class MapaBuilder {
   protected Mapa mapa;
   protected Posicion meta;
   private Random randomizador;
-  private final int FACTOR_DE_CARGA = 3;
+  private final int FACTOR_DE_CARGA = 4;
 
   public MapaBuilder() {
     this.randomizador = new Random();
@@ -51,6 +51,7 @@ public class MapaBuilder {
       this.agregarElemento(new Pozo());
       this.agregarElemento(new ControlPolicial());
       this.agregarElemento(new Piquete());
+      this.agregarElemento(new Piquetazo());
     }
     this.definirMeta();
     return new Mapa(this.obstaculos, this.sorpresas, this.meta, alto, ancho);
@@ -62,8 +63,7 @@ public class MapaBuilder {
   }
 
   protected void definirMeta() {
-    int yDeMeta = this.randomizador.nextInt(this.alto)+1;
-    this.meta = Posicion.getPosicion(this.ancho,yDeMeta);
+    int yDeMeta = this.randomizador.nextInt(this.alto) + 1;
+    this.meta = Posicion.getPosicion(this.ancho, yDeMeta);
   }
-
 }
